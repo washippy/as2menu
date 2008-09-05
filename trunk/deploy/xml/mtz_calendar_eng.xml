@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<calendar>
+	
+	<!-- CALENDAR EVENT ITEMS -->
+		<settings startx="-10" starty="40" width="36" height="33" />
+		
+		
+		<item id="9.1.2008" headline="Lord’s Prayer Time" eventTime="10 AM"><![CDATA[]]></item>
+		<item id="9.1.2008" headline="A-L MZSPA Registration" eventTime="9-11 AM"><![CDATA[]]></item>
+		<item id="9.1.2008" headline="M-Z MZSPA Registration" eventTime="11 AM-1 PM"><![CDATA[]]></item>
+		<item id="9.1.2008" headline="Teen Hangout (WCA)" eventTime="6 PM"><![CDATA[]]></item>
+		<item id="9.1.2008" headline="Game Night at the District" eventTime="6:30 PM"><![CDATA[]]></item>
+		<item id="9.1.2008" headline="Lord’s Prayer Time" eventTime="10 AM"><![CDATA[]]></item>
+		<item id="9.1.2008" headline="A-L MZSPA Registration" eventTime="9-11 AM"><![CDATA[]]></item>
+		<item id="9.1.2008" headline="M-Z MZSPA Registration" eventTime="11 AM-1 PM"><![CDATA[]]></item>
+		<item id="9.1.2008" headline="Teen Hangout (WCA)" eventTime="6 PM"><![CDATA[]]></item>
+		<item id="9.1.2008" headline="Game Night at the District" eventTime="6:30 PM"><![CDATA[]]></item>
+		
+
+
+		<item  id="9.4.2008" headline="EVENT TITLE 1" eventTime="7-8 PM"><![CDATA[Chunk of text here would describe the event and provide <A HREF="moreinfo.html" target="_blank">links to more content</A>.]]></item>
+		
+
+		<item id="9.5.2008" headline="EVENT TITLE" eventTime="7-8 PM"><![CDATA[Chunk of text here would describe the event and provide <A HREF="moreinfo.html" target="_blank">links to more content</A>.]]></item>
+	
+
+		<item  id="9.6.2008" headline="EVENT TITLE 2" eventTime="7-8 PM"><![CDATA[Chunk of text here would describe the event and provide <A HREF="moreinfo.html" target="_blank">links to more content</A>.]]></item>
+	
+
+
+		<item  id="9.7.2008" headline="EVENT TITLE 3" eventTime="7-8 PM"><![CDATA[Chunk of text here would describe the event and provide <A HREF="moreinfo.html" target="_blank">links to more content</A>.]]></item>
+	
+
+
+		<item  id="9.8.2008" headline="EVENT TITLE 1" eventTime="7-8 PM"><![CDATA[Chunk of text here would describe the event and provide <A HREF="moreinfo.html" target="_blank">links to more content</A>.]]></item>
+	
+
+	
+</calendar>
