@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<news>
+	
+	<!-- NEWS ITEMS -->
+	<!-- HEADLINE -->
+	<!-- DATE -->
+	<!-- LINK in case theres a link out-->
+	<!-- STORY separated into SHORT and FULL by SEPARATOR —> | <— POST -->
+	<!-- SHORT ~ 250 characters , 45 words-->
+	<!-- LONG 750 characters -->
+
+		<item headline="HEADLINE HERE." date="FRIDAY, JULY 05, 2008" link="moreinfo.html"><![CDATA[Story here needs to have an indicator of where it should be truncated for the short version. When the user clicks the MORE button, the full story, which is here after the separator, appears. Hopefully this won't be too hard to manage.| We will need character counts for each value. Headline, Short story and FULL story. Looks like the separator will be a POST or vertical line. Ill put it in after about 100 characters.]]></item>
+	
+
+		<item headline="HEADLINE HERE." date="FRIDAY, JULY 05, 2008" link="moreinfo.html"><![CDATA[Story here needs to have an indicator of where it should be truncated for the short version. When the user clicks the MORE button, the full story, which is here after the separator, appears. Hopefully this won't be too hard to manage.| We will need character counts for each value. Headline, Short story and FULL story. Looks like the separator will be a POST or vertical line. Ill put it in after about 100 characters.]]></item>
+	
+
+		<item headline="HEADLINE HERE." date="FRIDAY, JULY 05, 2008" link="moreinfo.html"><![CDATA[Story here needs to have an indicator of where it should be truncated for the short version. When the user clicks the MORE button, the full story, which is here after the separator, appears. Hopefully this won't be too hard to manage.| We will need character counts for each value. Headline, Short story and FULL story. Looks like the separator will be a POST or vertical line. Ill put it in after about 100 characters.]]></item>
+	
+
+		<item headline="HEADLINE HERE." date="FRIDAY, JULY 05, 2008" link="moreinfo.html"><![CDATA[Story here needs to have an indicator of where it should be truncated for the short version. When the user clicks the MORE button, the full story, which is here after the separator, appears. Hopefully this won't be too hard to manage.| We will need character counts for each value. Headline, Short story and FULL story. Looks like the separator will be a POST or vertical line. Ill put it in after about 100 characters.]]></item>
+	
+
+		<item headline="HEADLINE HERE." date="FRIDAY, JULY 05, 2008" link="moreinfo.html"><![CDATA[Story here needs to have an indicator of where it should be truncated for the short version. When the user clicks the MORE button, the full story, which is here after the separator, appears. Hopefully this won't be too hard to manage.| We will need character counts for each value. Headline, Short story and FULL story. Looks like the separator will be a POST or vertical line. Ill put it in after about 100 characters.]]></item>
+	
+	
+
+	
+	
+</news>

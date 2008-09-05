@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<main>
+	
+	<appvalues assetpath="assets/" />
+
+	<!-- MAIN IMAGE : can be a swf, jpg, gif, or png :: path relative to root dir-->
+	<mainimage assetname="sept08.swf"/>
+	
+	<!-- RED NAV BAR VALUES -->
+	<navbar>
+		<item title="About Us" />	
+		<item title="Get Connected" />	
+		<item title="Education" />
+		<item title="Ministries" />						
+		<item title="International" />	
+		<item title="Pastoral Care" />					
+	</navbar>
+	
+	<!-- DYNAMIC PROMO BAR PARTS :: may be overridden by SWF some day -->
+	<promobar>
+		<item headline="BUILDING UPDATES." assetname="promo_bldgupdates.jpg"><![CDATA[Pics, highlights, updates, cool stuff. Go here.]]></item>
+		<item headline="EL SALVADOR." assetname="promo_elsalvador.jpg"><![CDATA[Learn more about this amazing outreach and how you can help.]]></item>
+		<item headline="GENERATION ONE." assetname="promo_genone.jpg"><![CDATA[If you are a young adult, we want to meet you. Find out about the latest events.]]></item>
+		<item headline="EMPTY PROMO." assetname="promo_bldgupdates.jpg"><![CDATA[This on is empty to test the arrow nav. HIT IT!]]></item>	
+	</promobar>
+	
+	
+	<!-- LEFT COLUMN PIC above the NEWS app :: 249x99 :: could be jpg gif swf or png -->
+	<leftcolumnpic assetname="pastor_pic.jpg"/>
+	
+	<!-- other XML PATHS -->
+	<newsapp XMLpath="mtz_news_eng.xml"/>
+	<calendarapp XMLpath="mtz_calendar_eng.xml"/>
+	<videoannouncementsapp XMLpath="mtz_va_eng.xml"/>
+	
+	<!-- BUTTON BAR PARTS :: SOME LAUNCH POP UP WINDOWS, SOME CALL FUNCTIONS-->
+	<sidebuttonbar>
+		<item title="MEDIA CENTER" url="mediacenter.html" />
+		<item title="PRAYER REQUESTS" url="prayerrequests.html" />
+		<item title="E NEWS LETTER" url="enewsletter.html" />
+		<item title="QUICK LINKS" url="quicklinks.html" />	
+	</sidebuttonbar>
+	
+	
+</main>
