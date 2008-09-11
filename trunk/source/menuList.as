@@ -1,64 +1,37 @@
 //
-//  menuItem
+//  menuList builds stack of menu items ...
 //
 //  Created by Bill Shippy on 2008-09-03.
 //  Copyright (c) 2008 __MyCompanyName__. All rights reserved.
 //
 
-
-/*
-	ACTIONSCRIPT ON FRAME 1 OF MAIN TIMELINE
-	Responsible for loading XML and initializing App.
-*/
-
 import mx.utils.Delegate;
 
+class menuList extends MovieClip {
+	private var mc:MovieClip;
+	private var listArray:Array;
+	private var listHolder:MovieClip;
 
-
-
-
-
-
-
-
-
-class menuItem extends MovieClip {
-	
-	private var title:String;
-	var XMLPATH:String="";
-	var xml:XML;
-	var oXml:Object;
-	var app:App;
-	
-	// get length
-	
-	private function menuItem(){
-		// GET XML FOR NOW, LATER MAYBE JUST DROP ONE IN 
-		XML.prototype.ignoreWhite = true;
-		xml = new XML();
-		xml.onLoad = Delegate.create(this, onXmlLoad);
-		xml.load(XMLPATH);
-		XMLPATH = "menu.xml";
+	public function menuList(_list:Array, _mc:MovieClip){
+		mc=_mc;
+		listHolder = mc.createEmptyMovieClip("lH", mc.getNextHighestDepth());
+		listArray = _list;
+		for(var item in listArray){trace(listArray[item])}
+		buildList();
 	}
 	
-	
-	function onXmlLoad($success:Boolean):Void
-	{
-		trace('xml loaded');
-
-		if (!$success) {
-			// bad.
-			return;
+	private function buildList(){
+		for(var num = 0; num<listArray.length ; num++){
+			//var menu:menuItem = new menuItem("HEY IT WORKED", this);
+			trace(num+" :: " +listHolder._x);
+			var _title:Object = new Object();
+			_title = "BOB WAS HERE";
+			
+			var _mc:Object = new Object();
+			_mc = mc;
+			
+			listHolder.attachMovie("menuItem", "menuItem"+num, 10+num, {_x:0, _y:(10 * num), _title:_title, _mc:_mc});
 		}
 
-		var myXmlObject:XMLObject = new XMLObject();
-		oXml = myXmlObject.parseXML(xml);
-	 	oXml = oXml.menu; 
-
-		// RUN PROGRAM
-		//	app = new App(mcApp, oXml);
-		
 	}
-	
-	
 }
