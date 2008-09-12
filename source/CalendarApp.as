@@ -375,7 +375,6 @@ class CalendarApp extends MovieClip {
 						
 			// GET EVENTS from XML
 			// populate curent day item 
-			// dont forget month changer buttons
 			
 	
 		

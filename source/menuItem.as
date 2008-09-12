@@ -51,7 +51,7 @@ class menuItem extends MovieClip {
 		itemArray = _t.split(" ");
 		for(var i =0 ; i< itemArray.length; i++){
 			//mc.attachMovie("menuitem", "menuItem"+i, 10+i, {_x:0, _y:0}); // move it later
-			mItem.   HOLY COW    top_tf_mc.tf.text = itemArray[i];
+			mItem.top_tf_mc.tf.text = itemArray[i];
 			mItem.bottom_tf_mc.tf.text = itemArray[i];
 			mItem.top_tf_mc.tf.autoSize = true;
 			mItem.bottom_tf_mc.tf.autoSize = true;
@@ -68,7 +68,7 @@ class menuItem extends MovieClip {
 
 			}
 		//	trace("mc width :"+mc["menuItem"+i]._y);
-			
+			 
 		}
 
 		// BUILD hitarea 
