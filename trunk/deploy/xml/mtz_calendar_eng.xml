@@ -32,7 +32,10 @@
 	
 
 
-		<item  id="9.8.2008" headline="EVENT TITLE 1" eventTime="7-8 PM"><![CDATA[Chunk of text here would describe the event and provide <A HREF="moreinfo.html" target="_blank">links to more content</A>.]]></item>
+		<item  id="9.12.2008" headline="EVENT TITLE 1" eventTime="7-8 PM"><![CDATA[Chunk of text here would describe the event and provide <A HREF="moreinfo.html" target="_blank">links to more content</A>.]]></item>
+		<item id="9.12.2008" headline="Teen Hangout (WCA)" eventTime="6 PM"><![CDATA[]]></item>
+		<item id="9.12.2008" headline="Game Night at the District" eventTime="6:30 PM"><![CDATA[]]></item>
+		
 	
 
 	
