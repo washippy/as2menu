@@ -13,9 +13,7 @@ import utils.BroadCaster;
 class menuItem extends MovieClip {
 	
 	private var _title:String;
-	
-	private var _mc:MovieClip;
-	private var mc:MovieClip;
+	private var _mc:MovieClip; // listHolder
 	
 	private var mItem:MovieClip;
 	
@@ -31,11 +29,12 @@ class menuItem extends MovieClip {
 	var itemArray:Array;
 	
 	public function menuItem(){  //_title:String, _mc:MovieClip
-		mc = _mc; 
+
 		STARTX = this._x;
 		STARTY = this._y;
 		mItem = this;
-		trace("MENU ITEM ::: "+mItem+" :: "+_title);
+		trace("MENU ITEM ::: "+mItem);
+		
 		//title = _title;"FREAK BOY IS GONE FOREVER";
 		BroadCaster.register(this,"rollEmOver");
 		BroadCaster.register(this,"rollEmOut");
@@ -45,45 +44,59 @@ class menuItem extends MovieClip {
 	
 	private function parseTitle(_t:String){
 
-		trace("+++++++++++++++++++++++"+mc)
+		trace("+++++++  "+_t);
+		
 		var fullWidth:Number=0;
 		
 		itemArray = _t.split(" ");
+		for(var item in itemArray){trace("----- "+itemArray[item])};
+		
+		
 		for(var i =0 ; i< itemArray.length; i++){
-			//mc.attachMovie("menuitem", "menuItem"+i, 10+i, {_x:0, _y:0}); // move it later
-			mItem.top_tf_mc.tf.text = itemArray[i];
+			
+		///if(i!=0){
+			mItem.attachMovie("menuItemWord", "menuItemWord"+i, 10+i, {_x:0, _y:0, _title:itemArray[i]}); // move it later;
+			
+			/// GET THESE SIZED and BKG MC AND MASKED;
+			
+			
+		///}
+		/*   	mItem.top_tf_mc.tf.text = itemArray[i];
 			mItem.bottom_tf_mc.tf.text = itemArray[i];
 			mItem.top_tf_mc.tf.autoSize = true;
-			mItem.bottom_tf_mc.tf.autoSize = true;
-			trace("TF WIDTH = "+ mItem.top_tf_mc.tf._width);
+			mItem.bottom_tf_mc.tf.autoSize = true;   */
+		
+			trace("TF WIDTH = "+ mItem["menuItemWord"+i]._width);
 			fullWidth += mItem.top_tf_mc.tf._width;
-			trace("FULL W ="+ fullWidth);
+			
+			//trace("FULL W ="+ fullWidth);
 			mItem.mask_mc._width = mItem.top_tf_mc.tf._width;
 			
 		//	trace(mItem.bkg_mc._width);
 			
 			if(i!=0){
-				trace(i);
-				mc.lH["menuItem"+i]._x = mc.lH["menuItem"+(i-1)]._x +  mc.lH["menuItem"+(i-1)].top_tf_mc.tf._width;
+			//	trace(i+" :: "+_mc);
+				_mc["menuItem"+i]._x = _mc["menuItem"+(i-1)]._x +  _mc["menuItem"+(i-1)].top_tf_mc.tf._width;
 
 			}
-		//	trace("mc width :"+mc["menuItem"+i]._y);
-			 
+		//	trace("_mc width :"+_mc["menuItem"+i]._y);
+		//	 trace(newline+newline+"+++++++++++++++++++++++"+newline+newline);
+			
 		}
 
 		// BUILD hitarea 
-		mc.lH.attachMovie("bkg_mc", "bkg_mc", 5, {_x:0, _y:0}); // move it later
-		mc.lH.bkg_mc._width = fullWidth;
+		_mc.attachMovie("bkg_mc", "bkg_mc", 5, {_x:0, _y:0}); // move it later
+		_mc.bkg_mc._width = fullWidth;
 		addEvents();
 		
 	}
 	 
 	private function addEvents(){
 		for(var i =0 ; i< itemArray.length; i++){
-			mc.lH.bkg_mc.onRollOver = Delegate.create(mc, mRollOver);
-			mc.lH.bkg_mc.onRollOut = Delegate.create(mc, mRollOut);
-			mc.lH.bkg_mc.onPress = Delegate.create(mc, mPress);
-			mc.lH.bkg_mc.onRelease = Delegate.create(mc, mRelease);
+			_mc.bkg_mc.onRollOver = Delegate.create(_mc, mRollOver);
+			_mc.bkg_mc.onRollOut = Delegate.create(_mc, mRollOut);
+			_mc.bkg_mc.onPress = Delegate.create(_mc, mPress);
+			_mc.bkg_mc.onRelease = Delegate.create(_mc, mRelease);
 		}
 	}
 	
@@ -99,23 +112,23 @@ class menuItem extends MovieClip {
 		var count=0;
 	//	trace("R OVER+++++++++++++"+itemArray.length);
 		var limit = itemArray.length;
-		delete mc.engine.onEnterFrame;
+		delete _mc.engine.onEnterFrame;
 		
-		mc.engine.onEnterFrame = function(){
+		_mc.engine.onEnterFrame = function(){
 			
 			this._parent["menuItem"+count].gotoAndPlay("over");
 			count++;
 			if(count>=limit){
-				delete mc.engine.onEnterFrame;
+				delete _mc.engine.onEnterFrame;
 			}
 		}
 	}
 	
 	public function rollEmOut(){
 	//	trace("R OUT+++++++++++++");
-		delete mc.engine.onEnterFrame;
+		delete _mc.engine.onEnterFrame;
 		for(var i =0 ; i< itemArray.length; i++){
-			mc.lH["menuItem"+i].gotoAndPlay("off");
+			_mc["menuItem"+i].gotoAndPlay("off");
 		}
 	}
 	
