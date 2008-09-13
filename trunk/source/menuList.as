@@ -5,32 +5,66 @@
 //  Copyright (c) 2008 __MyCompanyName__. All rights reserved.
 //
 
+/*
+
+var suckerArray:Array = new Array();
+suckerArray[0]= "CHILDREN";
+suckerArray[1]= "YOUTH";
+
+suckerArray[2]= "YOUNG ADULT";
+suckerArray[3]= "SINGLES";
+suckerArray[4]= "GENERATION LIFE";
+suckerArray[5]= "HILLTOPPERS";
+suckerArray[6]= "CREATIVE ARTS";
+suckerArray[7]= "MARRIAGE & FAMILY";
+suckerArray[8]= "ESPANOL";
+
+
+var ML:menuList= new menuList(suckerArray, this);
+
+menuList 
+	menuItem
+		menuItemWord
+			tf
+			mask
+		bkg_mc
+
+*/
+
 import mx.utils.Delegate;
 
 class menuList extends MovieClip {
-	private var mc:MovieClip;
+	
+//	private var mc:MovieClip;	
 	private var listArray:Array;
-	private var listHolder:MovieClip;
+	private var menulist:MovieClip;
+
+	//var menu:menuItem = new menuItem("HEY IT WORKED", this);
+
 
 	public function menuList(_list:Array, _mc:MovieClip){
-		mc=_mc;
-		listHolder = mc.createEmptyMovieClip("lH", mc.getNextHighestDepth());
+		//mc=_mc;
+		//menuitem = new menuItem();
+		menulist = _mc.createEmptyMovieClip("mI", _mc.getNextHighestDepth());
+	
+		trace("menu List trace this :: "+menulist);
+		
+		
 		listArray = _list;
 		for(var item in listArray){trace(listArray[item])}
-		buildList();
+		buildList(_mc);
 	}
 	
-	private function buildList(){
+	private function buildList(_mc:MovieClip){
 		for(var num = 0; num<listArray.length ; num++){
 			//var menu:menuItem = new menuItem("HEY IT WORKED", this);
-			trace(num+" :: " +listHolder._x);
-			var _title:Object = new Object();
-			_title = "BOB WAS HERE";
+			//trace(num+" :: " +listHolder._x);
+			var _titleObj:Object = new Object();
+			_titleObj = listArray[num];
+			var _mcObj:Object = new Object();
+			_mcObj = menulist;
 			
-			var _mc:Object = new Object();
-			_mc = mc;
-			
-			listHolder.attachMovie("menuItem", "menuItem"+num, 10+num, {_x:0, _y:(10 * num), _title:_title, _mc:_mc});
+			menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(10 * num), _title:_titleObj, _mc:_mcObj});
 		}
 
 	}
