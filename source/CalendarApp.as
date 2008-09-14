@@ -25,6 +25,8 @@ class CalendarApp extends MovieClip {
 	private var currentDay_tf:TextField;
 	private var calscroller_mc:MovieClip;
 	private var content_tf:TextField;
+	private var content_tf_STARTY:Number =150;
+
 
 	private var eventsArray:Array;
 
@@ -56,8 +58,6 @@ class CalendarApp extends MovieClip {
 		calApp = clip.calendar_app_mc;
 		BroadCaster.register(this,"setEvents");
 		BroadCaster.register(this,"writeScrollerEvents");
-		
-		
 		
 		monthArray = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
 		weekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -111,15 +111,15 @@ class CalendarApp extends MovieClip {
 			w = Number(cXml.settings.attributes.width);
 			h = Number(cXml.settings.attributes.height);
 			
-			calApp.currentDay_tf.htmlText = monthArray[curMonth]+" "+curDay + ", "+ curYear;
-			
+			//calApp.currentDay_tf.htmlText = monthArray[curMonth]+" "+curDay + ", "+ curYear; // KILLED for later
+			content_tf_STARTY = calApp.calscroller_mc.content_tf._y; // grab the Y pos of the scrollable tf for later replacement
 			
 			eventsArray = new Array();
 			buildEventsObject();			
 			displayMonth(currentMonth, currentYear);
 			
 		} else {
-			// trace("load cal data died WHAA "+ $success);
+			 trace("load cal data died WHAA "+ $success);
 		}
 		
 
@@ -153,20 +153,13 @@ class CalendarApp extends MovieClip {
 	
 	private function buildEventsObject(){
 		var cLen = cXml.item.length;
-		for (var stuff in cXml.item){
-			for (var things in cXml.item[stuff]){
-			
-			trace("FOOBAR : "+stuff+" :: "+things+" :: "+cXml.item[stuff][things]);
-		}
 		
-		}
-		for(var c =0; c<cLen;c++){
-			
-			
+		for(var c=0; c<cLen;c++){ /// this is just the whole list. . . . 
+					
 			eventsArray.push({
 				id:cXml.item[c].attributes.id,
 				headline:cXml.item[c].attributes.headline,
-				eventDate:cXml.item[c].attributes.eventDate,
+				eventTime:cXml.item[c].attributes.eventTime,
 				description:cXml.item[c].data
 			});
 		}	
@@ -221,6 +214,7 @@ class CalendarApp extends MovieClip {
 			            mc["sDate" + z]._y = starty + (h * yspan)-27;  
 			            mc["sDate" + z].date = weekSArray[z];
 						mc["sDate" + z].gotoAndStop(4);
+						
 				}
 			
 			
@@ -238,7 +232,6 @@ class CalendarApp extends MovieClip {
 		            mc["date" + dayCounter].weekday = weekArray[d.getDay()];
 		            mc["date" + dayCounter].year = d.getFullYear();
 		            mc["date" + dayCounter].month = monthArray[month];
-						
 				
 					 doIhaveEvents(dayCounter, d);
 					
@@ -370,68 +363,98 @@ class CalendarApp extends MovieClip {
 				}
 			}
 		   
-
-			
-						
+		
+		/// ADD EVENTS 
+			for(var gg=1; gg<=42; gg++){		
+				trace(gg+"BINGO : "+ mc["date" +gg ]);
+				if(mc["date" +gg]!=undefined){
+					mc["date" +gg].onRollOver =function(){
+						//trace(this.date);
+						trace(this._parent._parent.app.calendarApp.content_tf_STARTY)
+					}
+					mc["date" +gg].onPress =function(){
+						var cDate:Object = this.date;
+						BroadCaster.broadcastEvent("setEvents", cDate, true);
+						//tween
+						var clip = this._parent.calscroller_mc.content_tf;
+						var yVal = this._parent._parent.app.calendarApp.content_tf_STARTY;
+						Tweener.addTween(clip, {time:1, transition:"easeOut", _y:yVal}); 
+					}
+					
+				}
+			}
+							
 			// GET EVENTS from XML
 			// populate curent day item 
-			
-	
-		
-			/*   	
-  		for (var k = 0;k < t_xml.length;k++) {	 ////// fix xml references			
-			if (d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear() == t_xml[k].attributes.datum) { /// if theres data for this day, mark it
-				mc["date" + i].gotoAndStop(3);
-				mc["date" + i].nr = k;				
-			}
-		}   
-		   */
-	
-		
-		 
+	 
 	        current = (monthArray[month] + " - ") + year;
-	        //currentLength = daysInMonth(month, year);
-			
-			// SET EVENTS
-			//setEvents();
+	
 			var cDate:Object = curDay;
+		 	
+			///////////////////////////////////////////
+			//var cDate:Object = 19;  // TEST ONLY ///////////////////////////////////////////
+			///////////////////////////////////////////
+			
+			
 			BroadCaster.broadcastEvent("setEvents", cDate, true);
 			
-			calApp._alpha=100;        		
+			calApp._alpha=100;        		// FADE MAYBE??
 	}
 	
 	
-	private function setEvents(__date:Number){
+	private function setEvents(__date:Number){ 
 		//		trace(calApp["date" + curDay].eventData);
 		
-		var dString:String =  (curMonth+1)+ "." + curDay + "." +  curYear;
-		trace("SET EVENTS ::::::::::: "+ dString); 
+		/// run thru events array
+		/// get events for passed DAY __date
+		/// send em to text field and enable scroller
 		
+		var dString:String =  (curMonth+1)+ "." + __date + "." +  curYear;
+
+	//var dString:String =  (curMonth+1)+ "." + curDay + "." +  curYear;
+		trace("SET EVENTS ::::::::::: "+ dString); //9.19.2008
+		trace("SET EVENTS ::::::::::: "+ __date); //19
+				
 		var counter=0;
 		var tempArr = new Array();
+		///// this aint workin . .. . . maybe an array by ID
+		var g:Number=0;
 		
-		for(var x=0; x<eventsArray.length; x++){
-			trace("WHOA"+eventsArray[x].id)
+		for(var x=0; x<eventsArray.length; x++){ 
 			if(dString==eventsArray[x].id){
-				tempArr[x]=eventsArray[x];
-				}
-		}
-		calApp.calscroller_mc.content_tf.htmlText ="";
+				trace("WHOA "+eventsArray[x].id)
+				tempArr[g] = eventsArray[x];
+				g++;
+				
+			}
+		/*   		for(var item in tempArr){
+					for(var obj in tempArr[item]){
+						trace(item+" "+obj +" ~ "+tempArr[item][obj]);
+					}
+				}	   */
 		
-		for (var z=0; z<=(tempArr.length-1); z++){
+		}
+		calApp.calscroller_mc.content_tf.htmlText =""; 
+		calApp.currentDay_tf.htmlText = monthArray[curMonth]+" "+__date + ", "+ curYear; // changes Date above scroller
+		var tAlen = tempArr.length;
+		
+		for (var z=0; z<tAlen; z++){
 			trace("? ? ? ? "+tempArr[z].headline);
-			var boldMe = "<B>"+cXml.item[z].attributes.headline +"</B>" ; //cXml.item[z].attributes.headline; 
-			var cData = cXml.item[z].data;
+			var boldMe = "<B>"+tempArr[z].headline +"</B>" ; //cXml.item[z].attributes.headline; 
+			var cData = tempArr[z].description;
 			if (cData == undefined || cData == null){
-				var pile:String = boldMe + "\r"+cXml.item[z].attributes.eventTime +"\r\r";
+				var pile:String = boldMe + "\r"+tempArr[z].eventTime +"\r\r";
 			}else{
-				var pile:String = boldMe + "\r"+cXml.item[z].attributes.eventTime + "\r"+cData +"\r\r";
+				var pile:String = boldMe + "\r"+tempArr[z].eventTime + "\r"+cData +"\r\r";
 			}
 			
 					trace("PILE :"+pile);
 					calApp.calscroller_mc.content_tf.htmlText += pile;
 
 		}
+		
+		
+		
 		if(tempArr.length<=0){
 			calApp.calscroller_mc.content_tf.htmlText = "No events scheduled.";
 		}
@@ -479,8 +502,8 @@ class CalendarApp extends MovieClip {
 		
 	}
 	private function writeScrollerEvents(){
-	//	trace(calApp.calscroller_mc.content_tf._height);
-	//	trace(calApp.calscroller_mc.content_tf._y);
+		trace(calApp.calscroller_mc.content_tf._height);
+		trace(calApp.calscroller_mc.content_tf._y);
 		trace(":::::::::");
 		
 		
@@ -490,6 +513,14 @@ class CalendarApp extends MovieClip {
 		var tf = calApp.calscroller_mc.content_tf._y;
 		var topY = 14 - calApp.calscroller_mc.content_tf._height;
 		var bottomY =  14;
+		var deltaTOP = tf+Math.abs(topY);
+		trace("delta top :"+deltaTOP);
+		
+		var deltaBTM = Math.abs(bottomY-tf);
+		trace("delta bottom :"+deltaBTM);
+		
+		
+		
 		if(tf > topY && tf < bottomY){
 			// enable both
 			
@@ -509,8 +540,10 @@ class CalendarApp extends MovieClip {
 				
 			};
 				
-			calApp.calscroller_mc.moreDOWN.	onPress=function(){
-				this._parent.content_tf._y+=10;		
+			calApp.calscroller_mc.moreDOWN.onPress=function(){
+				Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y+100});
+				
+				//this._parent.content_tf._y+=10;		
 				BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
 							
 			};
@@ -532,7 +565,9 @@ class CalendarApp extends MovieClip {
 			
 		
 			calApp.calscroller_mc.moreUP.onPress=function(){
-				this._parent.content_tf._y-=10;
+			//	this._parent.content_tf._y-=10;
+				Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y-100});
+				
 				BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
 				
 			};
@@ -563,8 +598,10 @@ class CalendarApp extends MovieClip {
 			};
 				
 			calApp.calscroller_mc.moreDOWN.	onPress=function(){
-				this._parent.content_tf._y+=10;
-				BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
+			//	this._parent.content_tf._y+=10;
+			Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y+100});
+			
+				//BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
 									
 			};
 			

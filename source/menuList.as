@@ -35,24 +35,24 @@ import mx.utils.Delegate;
 
 class menuList extends MovieClip {
 	
-//	private var mc:MovieClip;	
 	private var listArray:Array;
+	private var justify:String; // left or right
+	
 	private var menulist:MovieClip;
+	private var TF_HEIGHT:Number=15;
 
-	//var menu:menuItem = new menuItem("HEY IT WORKED", this);
 
-
-	public function menuList(_list:Array, _mc:MovieClip){
+	public function menuList(_list:Array, _mc:MovieClip, _justify:String){
 		//mc=_mc;
 		//menuitem = new menuItem();
 		menulist = _mc.createEmptyMovieClip("mI", _mc.getNextHighestDepth());
-	
-		trace("menu List trace this :: "+menulist);
-		
-		
+		justify = _justify; // send this on to the menu items
+		trace("menu List trace this :: "+menulist+" "+justify);
+
 		listArray = _list;
 		for(var item in listArray){trace(listArray[item])}
-		buildList(_mc);
+			buildList(_mc);
+
 	}
 	
 	private function buildList(_mc:MovieClip){
@@ -64,8 +64,9 @@ class menuList extends MovieClip {
 			var _mcObj:Object = new Object();
 			_mcObj = menulist;
 			
-			menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(10 * num), _title:_titleObj, _mc:_mcObj});
+			menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(TF_HEIGHT * num), _title:_titleObj, _mc:_mcObj, _justify:justify});
 		}
 
 	}
+
 }
