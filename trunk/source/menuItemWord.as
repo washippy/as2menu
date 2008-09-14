@@ -39,22 +39,4 @@ class menuItemWord extends MovieClip {
 		wordWidth = this.top_tf_mc.tf._width;
 		
 	}
-	 
-
-	private function onRollOver(){
-		trace(this);
-		BroadCaster.broadcastEvent("rollEmOver", this, true);
-	}
-		
-	private function onRollOut(){
-		BroadCaster.broadcastEvent("rollEmOut", this, true);
-	}   		
-	
-	private function onRelease(){
-		trace("BOO 2")		
-	}
-
-	private function onPress(){
-		trace("BOO")
-	}
-}
+ }
