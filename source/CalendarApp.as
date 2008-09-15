@@ -54,6 +54,12 @@ class CalendarApp extends MovieClip {
 
 	public function CalendarApp(passmealong:String, clip:MovieClip){
 		// trace("Calendar APP :" + clip.calendar_app_mc._y);
+		if (_global.lang = "SPANISH"){
+			
+		}else{
+			
+		}
+		
 		XMLPATH = "xml/"+passmealong;     /////  FIX THIS>?
 		calApp = clip.calendar_app_mc;
 		BroadCaster.register(this,"setEvents");
@@ -368,18 +374,24 @@ class CalendarApp extends MovieClip {
 			for(var gg=1; gg<=42; gg++){		
 				trace(gg+"BINGO : "+ mc["date" +gg ]);
 				if(mc["date" +gg]!=undefined){
-					mc["date" +gg].onRollOver =function(){
+				/*   	mc["date" +gg].onRollOver =function(){
 						//trace(this.date);
 						trace(this._parent._parent.app.calendarApp.content_tf_STARTY)
 					}
-					mc["date" +gg].onPress =function(){
-						var cDate:Object = this.date;
+					mc["date" +gg].onRollOut =function(){
+						//trace(this.date);
+						trace(this._parent._parent.app.calendarApp.content_tf_STARTY)
+					}   */
+				
+			 		mc["date" +gg].blank.onPress =function(){
+						var cDate:Object = this._parent.date;
 						BroadCaster.broadcastEvent("setEvents", cDate, true);
 						//tween
-						var clip = this._parent.calscroller_mc.content_tf;
-						var yVal = this._parent._parent.app.calendarApp.content_tf_STARTY;
+						var clip = this._parent._parent.calscroller_mc.content_tf;
+						var yVal = this._parent._parent._parent.app.calendarApp.content_tf_STARTY;
 						Tweener.addTween(clip, {time:1, transition:"easeOut", _y:yVal}); 
-					}
+					}   
+			
 					
 				}
 			}
@@ -501,18 +513,29 @@ class CalendarApp extends MovieClip {
 		writeScrollerEvents();
 		
 	}
+	
+	private function shipIt(){
+		trace("SHIPPED");
+		BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
+	}
+	
 	private function writeScrollerEvents(){
-		trace(calApp.calscroller_mc.content_tf._height);
-		trace(calApp.calscroller_mc.content_tf._y);
-		trace(":::::::::");
+	//	trace(calApp.calscroller_mc.content_tf._height);
+	//	trace(calApp.calscroller_mc.content_tf._y);
+		trace("WSE ::::::::::::::::");
+		
+		// MASKHEIGHT = 186
 		
 		
 		
 		
 		//if the Y of the tf is near start y  - height 
 		var tf = calApp.calscroller_mc.content_tf._y;
-		var topY = 14 - calApp.calscroller_mc.content_tf._height;
+		trace("tf Y: "+tf)
+		var topY = 14 -calApp.calscroller_mc.content_tf._height;
+		trace("topY: "+topY)
 		var bottomY =  14;
+		trace("bottomY: "+bottomY)
 		var deltaTOP = tf+Math.abs(topY);
 		trace("delta top :"+deltaTOP);
 		
@@ -523,7 +546,7 @@ class CalendarApp extends MovieClip {
 		
 		if(tf > topY && tf < bottomY){
 			// enable both
-			
+			trace("A")
 			calApp.calscroller_mc.moreUP._visible=true;
 			calApp.calscroller_mc.moreDOWN._visible=true;
 
@@ -535,16 +558,21 @@ class CalendarApp extends MovieClip {
 			
 		
 			calApp.calscroller_mc.moreUP.onPress=function(){
-				this._parent.content_tf._y-=10;
-				BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
+			//	this._parent.content_tf._y-=10;
+		////	if delta top is greater than 100, use 100,  else use delta top
+				Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y-100, onCompleteEvent:calApp.shipIt});
+				
+			//	BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
 				
 			};
 				
 			calApp.calscroller_mc.moreDOWN.onPress=function(){
-				Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y+100});
+				////	if delta bottom is less than 100 use delta bottom else use 100
+				
+				Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y+100, onCompleteEvent:calApp.shipIt});
 				
 				//this._parent.content_tf._y+=10;		
-				BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
+				//BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
 							
 			};
 			
@@ -552,8 +580,7 @@ class CalendarApp extends MovieClip {
 		}else if(tf > topY && tf >= bottomY){
 			//disable DOWN
 			//enable UP
-			
-			
+			trace("B")
 			calApp.calscroller_mc.moreUP._visible=true;
 			calApp.calscroller_mc.moreDOWN._visible=true;
 
@@ -566,9 +593,11 @@ class CalendarApp extends MovieClip {
 		
 			calApp.calscroller_mc.moreUP.onPress=function(){
 			//	this._parent.content_tf._y-=10;
-				Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y-100});
+			
+	
+			Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y-100, onCompleteEvent:shipIt});
 				
-				BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
+			//	BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
 				
 			};
 				
@@ -582,7 +611,7 @@ class CalendarApp extends MovieClip {
 		}else if(tf <= topY && tf < bottomY){
 			//disable UP
 			//enable DOWN
-			
+			trace("C")
 			calApp.calscroller_mc.moreUP._visible=true;
 			calApp.calscroller_mc.moreDOWN._visible=true;
 
@@ -595,11 +624,13 @@ class CalendarApp extends MovieClip {
 		
 			calApp.calscroller_mc.moreUP.onPress=function(){
 				//this._parent.content_tf._y-=10;
+				Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y-100, onCompleteEvent:shipIt});
+				
 			};
 				
 			calApp.calscroller_mc.moreDOWN.	onPress=function(){
 			//	this._parent.content_tf._y+=10;
-			Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y+100});
+			Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y+100, onCompleteEvent:shipIt});
 			
 				//BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
 									

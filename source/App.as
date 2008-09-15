@@ -21,7 +21,7 @@ class App extends MovieClip {
 	private var _mc:MovieClip;	
 	
 	private var assetPath:String;
-	private var mainImage:String;
+	private var mainImagePath:String;
 	
 	private var navBarArray:Array;
 	
@@ -36,6 +36,8 @@ class App extends MovieClip {
 //	private var newsApp:newsApp;
 	private var calendarApp:CalendarApp;
 //	private var videoannouncementsApp:videoannouncementsApp;
+	private var navbarApp:Navbar;
+	private var mainImageApp:MainImage;
 	
 	private var sideButtonBarArray:Array;
 
@@ -64,7 +66,7 @@ class App extends MovieClip {
 	private function distributeData():Void{
 		assetPath=_oXml.appvalues.attributes.assetpath;
 
-		mainImage=_oXml.mainimage.attributes.assetname;
+		mainImagePath=_oXml.mainimage.attributes.assetname;
 		
 		navBarArray = new Array();
 		var nLen = _oXml.navbar.item.length;
@@ -110,7 +112,8 @@ class App extends MovieClip {
 		// LAUNCH SUB APPS which should be ALPHA zero to fade in when loaded
 		//trace("what is this "+ _mc)
 		calendarApp = new CalendarApp(calendarAppXMLPath, _mc);
-		
+		navbarApp = new Navbar(navBarArray, _mc);
+		mainImageApp = new MainImage(mainImagePath, _mc);
 		
 		
 		
