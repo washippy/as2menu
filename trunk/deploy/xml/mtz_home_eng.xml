@@ -4,7 +4,7 @@
 	<appvalues assetpath="assets/" />
 
 	<!-- MAIN IMAGE : can be a swf, jpg, gif, or png :: path relative to root dir-->
-	<mainimage assetname="sept08.swf"/>
+	<mainimage assetname="main_image1.swf"/>
 	
 	<!-- RED NAV BAR VALUES -->
 	<navbar>
