@@ -10,12 +10,10 @@ import utils.*;
 
 class App extends MovieClip {
 	
-//	private static var DOCUMENT_WIDTH:Number = 709;
-//	private static var DOCUMENT_HEIGHT:Number = 642;
-
-
-//	private static var BLUR_MAX:Number = 6;
-//	private static var BUTTONGLOW:GlowFilter = new GlowFilter(0xE36101, 0.66, 8, 8, 2);
+	//	private static var DOCUMENT_WIDTH:Number = 709;
+	//	private static var DOCUMENT_HEIGHT:Number = 642;
+	//	private static var BLUR_MAX:Number = 6;
+	//	private static var BUTTONGLOW:GlowFilter = new GlowFilter(0xE36101, 0.66, 8, 8, 2);
 	
 	private var _oXml:Object;
 	private var _mc:MovieClip;	
@@ -98,14 +96,15 @@ class App extends MovieClip {
 				url:_oXml.sidebuttonbar.item[s].attributes.url
 				});
 		}	
-/*   
+		
+		/*   
 		for(var z in sideButtonBarArray){	
 			for (var stuff in sideButtonBarArray[z]){
 				trace(z+" :: "+stuff+" :: "+sideButtonBarArray[z][stuff]);
 			}
-		}        */
+		}        
+		*/
  
-
 	}
 	
 	private function initDisplayElements():Void{
@@ -158,7 +157,7 @@ class App extends MovieClip {
 	
 	private function initEvents():Void
 	{
-			/*
+		/*
 		Tweener.addTween(_mc.mcNavigator, {delay:2.25, time:1, transition:"easeInBack", _alpha:100, _yscale:100, _xscale:100});
 		Tweener.addTween(_mc.mcThumbTitle, {delay:2, time:1, transition:"easeInBack", _alpha:100, _yscale:100, _xscale:100});
 		
@@ -166,7 +165,5 @@ class App extends MovieClip {
 		BroadCaster.register(this,"onThumbRelease");
 		BroadCaster.register(this,"updateThumbTitle");
 		*/
-	
 	}
-	
 }
