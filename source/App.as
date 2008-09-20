@@ -20,13 +20,9 @@ class App extends MovieClip {
 	
 	private var assetPath:String;
 	private var mainImagePath:String;
-	
 	private var navBarArray:Array;
-	
 	private var promoBarArray:Array;
-	
 	private var leftColumnPicPath:String;
-	
 	private var newsAppXMLPath:String;
 	private var calendarAppXMLPath:String;
 	private var videoannouncementsAppXMLPath:String;
@@ -36,8 +32,11 @@ class App extends MovieClip {
 //	private var videoannouncementsApp:videoannouncementsApp;
 	private var navbarApp:Navbar;
 	private var mainImageApp:MainImage;
+	private var promoApp:PromoBar;
 	
 	private var sideButtonBarArray:Array;
+
+	
 
 	public function App($mc:MovieClip, $oXml:Object){
 		_mc = $mc;
@@ -96,15 +95,6 @@ class App extends MovieClip {
 				url:_oXml.sidebuttonbar.item[s].attributes.url
 				});
 		}	
-		
-		/*   
-		for(var z in sideButtonBarArray){	
-			for (var stuff in sideButtonBarArray[z]){
-				trace(z+" :: "+stuff+" :: "+sideButtonBarArray[z][stuff]);
-			}
-		}        
-		*/
- 
 	}
 	
 	private function initDisplayElements():Void{
@@ -113,43 +103,8 @@ class App extends MovieClip {
 		calendarApp = new CalendarApp(calendarAppXMLPath, _mc);
 		navbarApp = new Navbar(navBarArray, _mc);
 		mainImageApp = new MainImage(mainImagePath, _mc);
+		promoApp = new PromoBar(promoBarArray, _mc);
 		
-		
-		
-		/*
-		for (var i:Number = 0; i < 2; i++) {
-			THUMBPOS[i] = new Point( _mc["mcThumb"+i]._x, _mc["mcThumb"+i]._y );
-			trace(i + " " + THUMBPOS[i].x + " " + THUMBPOS[i].y);
-		}
-		THUMBFRAME_WIDTH =	_mc.mcThumb0.mcFrame._width;
-		THUMBFRAME_HEIGHT =	_mc.mcThumb0.mcFrame._height;
-		THUMBIMAGE_WIDTH = 	_mc.mcThumb0.mcMask._width;
-		THUMBIMAGE_HEIGHT =	_mc.mcThumb0.mcMask._height;
-		
-		
-		_mc.mcCopyArea.mcTitle.tf.text = _oXml.copyArea.title.data;
-		_mc.mcCopyArea.mcCopy.tf1.autoSize = true;
-		_mc.mcCopyArea.mcCopy.tf1.htmlText = _oXml.copyArea.paragraph1.data;
-		_mc.mcCopyArea.mcCopy.tf2.autoSize = true;
-		_mc.mcCopyArea.mcCopy.tf2.htmlText = _oXml.copyArea.paragraph2.data;		
-		_mc.mcCopyArea.mcCopy.tf2._y = _mc.mcCopyArea.mcCopy.tf1._y + _mc.mcCopyArea.mcCopy.tf1._height + 10;
-
-	//	_mc.mcButton._y = _mc.mcCopyArea.mcCopy._y + _mc.mcCopyArea.mcCopy._height + 15;
-		_mc.mcButton.tf.text = _oXml.copyArea.buttonLabel.data;
-				
-	//	_mc.mcThumb0.mcImage1._visible = false;
-	//	_mc.mcThumb0.mcButton.tf.text = _oXml.thumb0.button.data;
-		_mc.mcThumbTitle.tf.text = _oXml.thumb0.title.data;
-		
-
-	//	_mc.mcThumb1.mcImage0._visible = false;
-	//	_mc.mcThumb1.mcButton.tf.text = _oXml.thumb1.button.data;
-	//	_mc.mcThumb1.mcTitle.tf.text = _oXml.thumb1.title.data;
-		
-		// set state - thumbnail 0 is 'at'
-	//	_mc.mcThumb1.mcImage1.filters = [new BlurFilter(BLUR_MAX, BLUR_MAX)];
-	//	_mc.mcThumb0.mcButton.filters = [BUTTONGLOW];		
-		_mc.mcVideo._visible = false;	*/	
 	}
 	
 	
