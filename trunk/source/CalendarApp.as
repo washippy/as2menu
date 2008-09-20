@@ -1,4 +1,15 @@
-﻿/*	CalendarApp.as:  */ 
+﻿/*	CalendarApp.as:  
+	
+TO DO :
+
+BUG when you change MONTHS with little arrows, data doesnt change. .  . it keeps current month	
+	
+SCROLLER sucks
+		
+SPANISH SWITCH
+
+*/ 
+
 import utils.XMLObject;
 import mx.utils.Delegate;
 import utils.BroadCaster;
@@ -27,10 +38,8 @@ class CalendarApp extends MovieClip {
 	private var content_tf:TextField;
 	private var content_tf_STARTY:Number =150;
 
-
 	private var eventsArray:Array;
 
-	
 	private var startx:Number;
 	private var starty:Number;
 	
@@ -53,7 +62,7 @@ class CalendarApp extends MovieClip {
 
 
 	public function CalendarApp(passmealong:String, clip:MovieClip){
-		// trace("Calendar APP :" + clip.calendar_app_mc._y);
+		 trace("Calendar APP CONSTRUCTOR");
 		if (_global.lang = "SPANISH"){
 			
 		}else{
@@ -372,7 +381,7 @@ class CalendarApp extends MovieClip {
 		
 		/// ADD EVENTS 
 			for(var gg=1; gg<=42; gg++){		
-				trace(gg+"BINGO : "+ mc["date" +gg ]);
+				//trace(gg+"BINGO : "+ mc["date" +gg ]);
 				if(mc["date" +gg]!=undefined){
 				/*   	mc["date" +gg].onRollOver =function(){
 						//trace(this.date);
@@ -424,8 +433,8 @@ class CalendarApp extends MovieClip {
 		var dString:String =  (curMonth+1)+ "." + __date + "." +  curYear;
 
 	//var dString:String =  (curMonth+1)+ "." + curDay + "." +  curYear;
-		trace("SET EVENTS ::::::::::: "+ dString); //9.19.2008
-		trace("SET EVENTS ::::::::::: "+ __date); //19
+		//trace("SET EVENTS ::::::::::: "+ dString); //9.19.2008
+		//trace("SET EVENTS ::::::::::: "+ __date); //19
 				
 		var counter=0;
 		var tempArr = new Array();
@@ -434,7 +443,7 @@ class CalendarApp extends MovieClip {
 		
 		for(var x=0; x<eventsArray.length; x++){ 
 			if(dString==eventsArray[x].id){
-				trace("WHOA "+eventsArray[x].id)
+				//trace("WHOA "+eventsArray[x].id)
 				tempArr[g] = eventsArray[x];
 				g++;
 				
@@ -451,7 +460,7 @@ class CalendarApp extends MovieClip {
 		var tAlen = tempArr.length;
 		
 		for (var z=0; z<tAlen; z++){
-			trace("? ? ? ? "+tempArr[z].headline);
+			//trace("? ? ? ? "+tempArr[z].headline);
 			var boldMe = "<B>"+tempArr[z].headline +"</B>" ; //cXml.item[z].attributes.headline; 
 			var cData = tempArr[z].description;
 			if (cData == undefined || cData == null){
@@ -460,7 +469,7 @@ class CalendarApp extends MovieClip {
 				var pile:String = boldMe + "\r"+tempArr[z].eventTime + "\r"+cData +"\r\r";
 			}
 			
-					trace("PILE :"+pile);
+					//trace("PILE :"+pile);
 					calApp.calscroller_mc.content_tf.htmlText += pile;
 
 		}
@@ -507,7 +516,7 @@ class CalendarApp extends MovieClip {
 	}
 	
 	private function enableScroller(h:Number){
-		trace("scroller tf height = "+h);
+		//trace("scroller tf height = "+h);
 		// mask height = 186
 		
 		writeScrollerEvents();
@@ -515,14 +524,14 @@ class CalendarApp extends MovieClip {
 	}
 	
 	private function shipIt(){
-		trace("SHIPPED");
+		//trace("SHIPPED");
 		BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
 	}
 	
 	private function writeScrollerEvents(){
 	//	trace(calApp.calscroller_mc.content_tf._height);
 	//	trace(calApp.calscroller_mc.content_tf._y);
-		trace("WSE ::::::::::::::::");
+		//trace("WSE ::::::::::::::::");
 		
 		// MASKHEIGHT = 186
 		
@@ -531,22 +540,22 @@ class CalendarApp extends MovieClip {
 		
 		//if the Y of the tf is near start y  - height 
 		var tf = calApp.calscroller_mc.content_tf._y;
-		trace("tf Y: "+tf)
+		//trace("tf Y: "+tf)
 		var topY = 14 -calApp.calscroller_mc.content_tf._height;
-		trace("topY: "+topY)
+		//trace("topY: "+topY)
 		var bottomY =  14;
-		trace("bottomY: "+bottomY)
+		//trace("bottomY: "+bottomY)
 		var deltaTOP = tf+Math.abs(topY);
-		trace("delta top :"+deltaTOP);
+		//trace("delta top :"+deltaTOP);
 		
 		var deltaBTM = Math.abs(bottomY-tf);
-		trace("delta bottom :"+deltaBTM);
+		//trace("delta bottom :"+deltaBTM);
 		
 		
 		
 		if(tf > topY && tf < bottomY){
 			// enable both
-			trace("A")
+			//trace("A")
 			calApp.calscroller_mc.moreUP._visible=true;
 			calApp.calscroller_mc.moreDOWN._visible=true;
 
@@ -580,7 +589,7 @@ class CalendarApp extends MovieClip {
 		}else if(tf > topY && tf >= bottomY){
 			//disable DOWN
 			//enable UP
-			trace("B")
+			//trace("B")
 			calApp.calscroller_mc.moreUP._visible=true;
 			calApp.calscroller_mc.moreDOWN._visible=true;
 
@@ -611,7 +620,7 @@ class CalendarApp extends MovieClip {
 		}else if(tf <= topY && tf < bottomY){
 			//disable UP
 			//enable DOWN
-			trace("C")
+			//trace("C")
 			calApp.calscroller_mc.moreUP._visible=true;
 			calApp.calscroller_mc.moreDOWN._visible=true;
 

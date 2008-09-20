@@ -1,9 +1,11 @@
-//
-//  MainImage
-//
-//  Created by William Shippy on 2008-09-15.
-//  Copyright (c) 2008 __MyCompanyName__. All rights reserved.
-//
+/*		MainImage
+
+TO DO:
+ 	ROTATE?
+	TIMING
+	SPANISH
+
+*/
 
 class MainImage extends MovieClip{
 	private var MAINIMAGEPATH:String;
@@ -21,5 +23,4 @@ class MainImage extends MovieClip{
 		CLIP.mainimage_mc.loadMovie(MAINIMAGEPATH);
 		
 	}
-	/// WELL ROTATE?
 }
