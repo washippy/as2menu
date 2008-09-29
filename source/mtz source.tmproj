@@ -16,7 +16,7 @@
 			<key>filename</key>
 			<string>App.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-20T04:04:32Z</date>
+			<date>2008-09-28T05:02:56Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -74,7 +74,7 @@
 			<key>filename</key>
 			<string>PromoBar.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-20T04:04:32Z</date>
+			<date>2008-09-28T05:02:56Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
@@ -82,7 +82,7 @@
 			<key>filename</key>
 			<string>Promo.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-20T03:51:39Z</date>
+			<date>2008-09-26T06:07:58Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -94,9 +94,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>9</integer>
 				<key>line</key>
-				<integer>76</integer>
+				<integer>115</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
@@ -107,16 +107,16 @@
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>7</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>80</integer>
+				<integer>115</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>76</integer>
+				<integer>116</integer>
 			</dict>
 		</dict>
 		<key>MainImage.as</key>
@@ -138,28 +138,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>29</integer>
 				<key>line</key>
-				<integer>19</integer>
+				<integer>13</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>4</integer>
 		</dict>
 		<key>PromoBar.as</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>69</integer>
+				<integer>2</integer>
 				<key>line</key>
-				<integer>42</integer>
+				<integer>142</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>11</integer>
+			<integer>62</integer>
 		</dict>
 		<key>menuList.as</key>
 		<dict>
@@ -229,6 +229,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{209, 4}, {1231, 874}}</string>
+	<string>{{204, 4}, {1231, 874}}</string>
 </dict>
 </plist>
