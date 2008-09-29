@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>PromoBar.as</string>
+	<string>App.as</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -16,27 +16,21 @@
 			<key>filename</key>
 			<string>App.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-28T05:02:56Z</date>
+			<date>2008-09-29T04:00:06Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CalendarApp.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-20T03:40:57Z</date>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>caurina</string>
-			<key>regexFolderFilter</key>
-			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>sourceDirectory</key>
-			<string>caurina</string>
+			<date>2008-09-29T02:06:51Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>menuItem.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-14T01:04:43Z</date>
+			<date>2008-09-29T02:06:49Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -68,21 +62,33 @@
 			<key>filename</key>
 			<string>Navbar.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-20T03:43:44Z</date>
+			<date>2008-09-29T04:00:06Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>PromoBar.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-28T05:02:56Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2008-09-29T04:00:05Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>PastorPic.as</string>
+			<key>lastUsed</key>
+			<date>2008-09-29T04:00:04Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Promo.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-26T06:07:58Z</date>
+			<date>2008-09-29T04:00:05Z</date>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>caurina</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>caurina</string>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -94,29 +100,29 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>9</integer>
+				<integer>16</integer>
 				<key>line</key>
-				<integer>115</integer>
+				<integer>84</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>70</integer>
+			<integer>65</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>10</integer>
 				<key>line</key>
-				<integer>115</integer>
+				<integer>84</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>27</integer>
 				<key>line</key>
-				<integer>116</integer>
+				<integer>84</integer>
 			</dict>
 		</dict>
 		<key>MainImage.as</key>
@@ -132,34 +138,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>Promo.as</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>29</integer>
-				<key>line</key>
-				<integer>13</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>4</integer>
-		</dict>
-		<key>PromoBar.as</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>142</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>62</integer>
 		</dict>
 		<key>menuList.as</key>
 		<dict>
@@ -223,12 +201,10 @@
 	<key>openDocuments</key>
 	<array>
 		<string>App.as</string>
-		<string>PromoBar.as</string>
-		<string>Promo.as</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{204, 4}, {1231, 874}}</string>
+	<string>{{191, -254}, {1231, 874}}</string>
 </dict>
 </plist>

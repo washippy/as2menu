@@ -18,11 +18,11 @@ class App extends MovieClip {
 	private var _oXml:Object;
 	private var _mc:MovieClip;	
 	
-	private var assetPath:String;
+//	GLOBAL private var assetPath:String;
 	private var mainImagePath:String;
 	private var navBarArray:Array;
 	private var promoBarArray:Array;
-	private var leftColumnPicPath:String;
+// GLOBAL private var leftColumnPicPath:String;
 	private var newsAppXMLPath:String;
 	private var calendarAppXMLPath:String;
 	private var videoannouncementsAppXMLPath:String;
@@ -61,7 +61,7 @@ class App extends MovieClip {
 	
 	
 	private function distributeData():Void{
-		assetPath=_oXml.appvalues.attributes.assetpath;
+		_global.assetPath=_oXml.appvalues.attributes.assetpath;
 
 		mainImagePath=_oXml.mainimage.attributes.assetname;
 		
@@ -77,11 +77,12 @@ class App extends MovieClip {
 			promoBarArray.push({
 				headline:_oXml.promobar.item[z].attributes.headline,
 				assetname:_oXml.promobar.item[z].attributes.assetname,
+				assetType:_oXml.promobar.item[z].attributes.type,
 				copy:_oXml.promobar.item[z].data
 				});
 		}
 		
-		leftColumnPicPath=_oXml.leftcolumnpic.attributes.assetname;
+		_global.leftColumnPicPath=_oXml.leftcolumnpic.attributes.assetname;
 
 		newsAppXMLPath=_oXml.newsapp.attributes.XMLpath;
 		calendarAppXMLPath=_oXml.calendarapp.attributes.XMLpath;
@@ -104,7 +105,7 @@ class App extends MovieClip {
 		navbarApp = new Navbar(navBarArray, _mc);
 		mainImageApp = new MainImage(mainImagePath, _mc);
 		promoApp = new PromoBar(promoBarArray, _mc);
-		
+
 	}
 	
 	
