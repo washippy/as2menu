@@ -18,7 +18,9 @@ class PromoBar extends MovieClip{
 	private var PROMOTOTAL:Number;
 	private var CURRENTLEFTPROMO:Number=1;
 	function PromoBar(_promoArray:Array, _clip:MovieClip){
+		
 		CLIP = _clip;
+		
 		promoArray = _promoArray;
 		trace("PROMO BAR CONSTRUCTOR :"+PROMOTOTAL);
 		PROMOTOTAL=promoArray.length;
@@ -44,9 +46,10 @@ class PromoBar extends MovieClip{
 			var _headlineObj = promoArray[i].headline;
 			var _bodyCopyObj = promoArray[i].copy;
 			var _assetName = promoArray[i].assetname;  ////////// PUT THESE IN
+			var _assetType = promoArray[i].assetType;  ////////// PUT THESE IN
 			
 			trace(i+"promo"+promoArray[i].headline);
-			promoholder.attachMovie("promo_mc", "promo_mc"+i, promoholder.getNextHighestDepth(), {_x:(260*i)+ (10*i), _y:15, headline:_headlineObj, bodyCopy:_bodyCopyObj, assetName:_assetName});
+			promoholder.attachMovie("promo_mc", "promo_mc"+i, promoholder.getNextHighestDepth(), {_x:(260*i)+ (10*i), _y:15, assetType:_assetType, headline:_headlineObj, bodyCopy:_bodyCopyObj, assetName:_assetName});
 			
 		} 
 		
@@ -58,7 +61,7 @@ class PromoBar extends MovieClip{
 		}
 	
 	private function manageArrows(){
-		trace("MANAGE ARR");
+		trace("MANAGE ARROWS "+CURRENTLEFTPROMO);
 	
 	/* 
 		var pw =promoholder._width;
@@ -123,10 +126,13 @@ class PromoBar extends MovieClip{
 	
 	
 	private function lArrowPress(){
-		var newX = CLIP.promo_app_mc.promoholder._x  - (CLIP.promo_app_mc.promoholder._width/PROMOTOTAL); //FUZZY MATH
-		Tweener.addTween(CLIP.promo_app_mc.promoholder, {time:1, transition:"linear", _x:newX});
-		CURRENTLEFTPROMO++;
-		manageArrows();
+		removeLEvents();
+		
+		var newX = CLIP.promo_app_mc.promoholder._x  + (CLIP.promo_app_mc.promoholder._width/PROMOTOTAL); //FUZZY MATH
+		var fn =  Delegate.create(this, manageArrows);
+		
+		Tweener.addTween(CLIP.promo_app_mc.promoholder, {time:.35,  transition:"easeOutQuart",_x:newX, onComplete:fn});
+		CURRENTLEFTPROMO--;
 	}
 	private function lArrowRollOver(){
 		
@@ -136,10 +142,12 @@ class PromoBar extends MovieClip{
 	}
 	
 	private function rArrowPress(){
-		var newX = CLIP.promo_app_mc.promoholder._x  + (CLIP.promo_app_mc.promoholder._width/PROMOTOTAL); //FUZZY MATH
-		Tweener.addTween(CLIP.promo_app_mc.promoholder, {time:1, transition:"easeOut", _x:newX});
+		removeREvents();
+		
+		var newX = CLIP.promo_app_mc.promoholder._x  - (CLIP.promo_app_mc.promoholder._width/PROMOTOTAL); //FUZZY MATH
+		var fn =  Delegate.create(this, manageArrows);
+		Tweener.addTween(CLIP.promo_app_mc.promoholder, {time:.45, transition:"easeOutQuart",_x:newX, onComplete:fn});
 		CURRENTLEFTPROMO++;
-		manageArrows();
 		
 	}
 	private function rArrowRollOver(){
