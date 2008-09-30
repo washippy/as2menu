@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>App.as</string>
+	<string>NewsApp.as</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -16,21 +16,19 @@
 			<key>filename</key>
 			<string>App.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-29T04:00:06Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2008-09-30T03:53:03Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CalendarApp.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-29T02:06:51Z</date>
+			<date>2008-09-30T03:53:05Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>menuItem.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-29T02:06:49Z</date>
+			<date>2008-09-30T03:53:05Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -56,7 +54,7 @@
 			<key>filename</key>
 			<string>menuItemWord.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-19T04:17:54Z</date>
+			<date>2008-09-30T03:53:04Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -68,19 +66,19 @@
 			<key>filename</key>
 			<string>PromoBar.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-29T04:00:05Z</date>
+			<date>2008-09-30T03:53:04Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>PastorPic.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-29T04:00:04Z</date>
+			<date>2008-09-30T03:53:02Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Promo.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-29T04:00:05Z</date>
+			<date>2008-09-30T03:53:06Z</date>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -90,41 +88,23 @@
 			<key>sourceDirectory</key>
 			<string>caurina</string>
 		</dict>
+		<dict>
+			<key>filename</key>
+			<string>NewsApp.as</string>
+			<key>lastUsed</key>
+			<date>2008-09-30T03:53:06Z</date>
+			<key>selected</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>NewsStory.as</string>
+		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>199</integer>
 	<key>metaData</key>
 	<dict>
-		<key>App.as</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>16</integer>
-				<key>line</key>
-				<integer>84</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>65</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>10</integer>
-				<key>line</key>
-				<integer>84</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>27</integer>
-				<key>line</key>
-				<integer>84</integer>
-			</dict>
-		</dict>
 		<key>MainImage.as</key>
 		<dict>
 			<key>caret</key>
@@ -138,6 +118,20 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>NewsApp.as</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>128</integer>
+				<key>line</key>
+				<integer>110</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>66</integer>
 		</dict>
 		<key>menuList.as</key>
 		<dict>
@@ -200,11 +194,11 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>App.as</string>
+		<string>NewsApp.as</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{191, -254}, {1231, 874}}</string>
+	<string>{{223, 300}, {1231, 578}}</string>
 </dict>
 </plist>

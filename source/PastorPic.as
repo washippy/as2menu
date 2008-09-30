@@ -34,18 +34,18 @@ class PastorPic extends MovieClip{
 
 		loadImageListener.onLoadStart = function(target_mc:MovieClip, httpStatus:Number):Void {}		
 		loadImageListener.onLoadComplete = function(target_mc:MovieClip, httpStatus:Number):Void {
-			trace("PASTOR PIC COMPLETE "+target_mc);
+			//trace("PASTOR PIC COMPLETE "+target_mc);
 			} 
 		loadImageListener.onLoadInit = Delegate.create(this, imageLoaded);
 		
 		loadImageListener.onLoadProgress = function(target:MovieClip, bytesLoaded:Number, bytesTotal:Number):Void {
-				trace("progress "+bytesLoaded);
+				//trace("progress "+bytesLoaded);
 		}
 		this.__mcImageLoader.addListener(loadImageListener);
 	}
 	
 	private function imageLoaded():Void {
-		trace("PASTOR IMAGE LOADED");
+		//trace("PASTOR IMAGE LOADED");
 		Tweener.addTween(this, {_alpha:100, delay:2.5, time:1.1, transition:"easeOut"});
 	}
 	
@@ -55,19 +55,19 @@ class PastorPic extends MovieClip{
 	private function onRollOver(){
 		//this.headline_tf.setTextFormat(OVER);
 		gotoAndPlay("over");
-		trace(this._name+" over");
+		//trace(this._name+" over");
 	}
 	private function onRollOut(){
 		//this.headline_tf.setTextFormat(OFF);
 		gotoAndPlay("off");
 		
-		trace(this._name+" and out");
+		//trace(this._name+" and out");
 	}
 	private function onPress(){
-		trace(this._name+" press");
+		//trace(this._name+" press");
 	}
 	private function onRelease(){
-		trace(this._name+" release");
+		//trace(this._name+" release");
 	} 
 */
 
