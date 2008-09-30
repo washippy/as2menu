@@ -27,7 +27,7 @@ class App extends MovieClip {
 	private var calendarAppXMLPath:String;
 	private var videoannouncementsAppXMLPath:String;
 	
-//	private var newsApp:newsApp;
+	private var newsApp:NewsApp;
 	private var calendarApp:CalendarApp;
 //	private var videoannouncementsApp:videoannouncementsApp;
 	private var navbarApp:Navbar;
@@ -85,6 +85,7 @@ class App extends MovieClip {
 		_global.leftColumnPicPath=_oXml.leftcolumnpic.attributes.assetname;
 
 		newsAppXMLPath=_oXml.newsapp.attributes.XMLpath;
+		trace(newsAppXMLPath+"*******************  **    * * * * *  * *")
 		calendarAppXMLPath=_oXml.calendarapp.attributes.XMLpath;
 		videoannouncementsAppXMLPath=_oXml.videoannouncementsapp.attributes.XMLpath;
 	
@@ -105,7 +106,7 @@ class App extends MovieClip {
 		navbarApp = new Navbar(navBarArray, _mc);
 		mainImageApp = new MainImage(mainImagePath, _mc);
 		promoApp = new PromoBar(promoBarArray, _mc);
-
+		newsApp = new NewsApp(newsAppXMLPath, _mc);
 	}
 	
 	

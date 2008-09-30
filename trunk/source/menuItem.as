@@ -58,11 +58,11 @@ class menuItem extends MovieClip {
 	}
 	 
 	private function parseTitleRight(_t:String){
-		trace("RIGHT +++++++  "+_t);
+		//trace("RIGHT +++++++  "+_t);
 		itemArray = _t.split(" ");	
 		itemArray.reverse();
 		for(var i = 0 ; i<itemArray.length; i++){
-			trace(i + "ARR +++++++  "+itemArray[i]);
+			//trace(i + "ARR +++++++  "+itemArray[i]);
 			
 			mItem.attachMovie("menuItemWordRight", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:0, _y:0, _title:itemArray[i]}); // move it later;
 			mItem.mask_mc._width = mItem.top_tf_mc.tf._width;
@@ -96,7 +96,7 @@ class menuItem extends MovieClip {
 	
 	
    	private function addEvents(){
-		trace("	ADD EVENTS " +mItem.bkg_mc);
+		//trace("	ADD EVENTS " +mItem.bkg_mc);
 			for(var i =0 ; i< itemArray.length; i++){
 				mItem.bkg_mc.onRollOver = Delegate.create(mItem, mRollOver);
 				mItem.bkg_mc.onRollOut = Delegate.create(mItem, mRollOut);
@@ -108,7 +108,7 @@ class menuItem extends MovieClip {
 
 	
 	private function mRollOver(){
-		trace("OVER "+this);
+		//trace("OVER "+this);
 		rollEmOver();
 		// broadcast
 	//	BroadCaster.broadcastEvent("rollEmOver", this, true);
@@ -117,7 +117,7 @@ class menuItem extends MovieClip {
 	
 	public function rollEmOver(){
 		var count=0;
-		trace("R OVER+++++++++++++"+itemArray.length);
+		//trace("R OVER+++++++++++++"+itemArray.length);
 		var limit = itemArray.length;
 		delete mItem.onEnterFrame;
 		
@@ -147,7 +147,7 @@ class menuItem extends MovieClip {
 	}
 	
 	public function rollEmOut(){
-		trace("R OUT+++++++++++++");
+		//trace("R OUT+++++++++++++");
 		
 		delete mItem.onEnterFrame;
 		for(var i =0 ; i< itemArray.length; i++){
@@ -158,7 +158,7 @@ class menuItem extends MovieClip {
 	
 	
 	private function mRollOut(){
-		trace("OUT "+this);
+		//trace("OUT "+this);
 		rollEmOut();
 		
 	//	BroadCaster.broadcastEvent("rollEmOut", this, true);
@@ -166,12 +166,12 @@ class menuItem extends MovieClip {
 	
 	
 	private function mRelease(){
-		trace("BOO 2 "+this)
+		//trace("BOO 2 "+this)
 		/////// get some ACTIONS in here
 	}
 	
 	private function mPress(){
-		trace("BOO "+this)
+		//trace("BOO "+this)
 		/////// get some ACTIONS in here
 		
 	}

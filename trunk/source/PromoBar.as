@@ -28,7 +28,7 @@ class PromoBar extends MovieClip{
 	}
 	
 	public function fireItUp(){
-		trace("FIRE IT UP "+CLIP.promo_app_mc);
+		//trace("FIRE IT UP "+CLIP.promo_app_mc);
 
 		
 		var promoholder:MovieClip = CLIP.promo_app_mc.createEmptyMovieClip("promoholder", this.getNextHighestDepth());
@@ -48,7 +48,7 @@ class PromoBar extends MovieClip{
 			var _assetName = promoArray[i].assetname;  ////////// PUT THESE IN
 			var _assetType = promoArray[i].assetType;  ////////// PUT THESE IN
 			
-			trace(i+"promo"+promoArray[i].headline);
+			//trace(i+"promo"+promoArray[i].headline);
 			promoholder.attachMovie("promo_mc", "promo_mc"+i, promoholder.getNextHighestDepth(), {_x:(260*i)+ (10*i), _y:15, assetType:_assetType, headline:_headlineObj, bodyCopy:_bodyCopyObj, assetName:_assetName});
 			
 		} 
@@ -61,7 +61,7 @@ class PromoBar extends MovieClip{
 		}
 	
 	private function manageArrows(){
-		trace("MANAGE ARROWS "+CURRENTLEFTPROMO);
+		//trace("MANAGE ARROWS "+CURRENTLEFTPROMO);
 	
 	/* 
 		var pw =promoholder._width;
@@ -87,7 +87,7 @@ class PromoBar extends MovieClip{
 	}
 	
 	private function addREvents(){
-		trace("ADD R EV"+CLIP.promo_app_mc.promoarrow_right._alpha);
+		//trace("ADD R EV"+CLIP.promo_app_mc.promoarrow_right._alpha);
 		CLIP.promo_app_mc.promoarrow_right._alpha=100; // tween
 		CLIP.promo_app_mc.promoarrow_right.onRollOver = Delegate.create(this, rArrowRollOver);
 		CLIP.promo_app_mc.promoarrow_right.onRollOut = Delegate.create(this, rArrowRollOut);
@@ -97,7 +97,7 @@ class PromoBar extends MovieClip{
 		
 	}
 	private function removeREvents(){
-		trace("R REMOVED");
+		//trace("R REMOVED");
 		CLIP.promo_app_mc.promoarrow_right._alpha=50; // tween
 		delete CLIP.promo_app_mc.promoarrow_right.onRollOver;
 		delete CLIP.promo_app_mc.promoarrow_right.onRollOut;
@@ -108,7 +108,7 @@ class PromoBar extends MovieClip{
 	
 	
 	private function addLEvents(){
-		trace("ADD L EV"+CLIP.promo_app_mc.promoarrow_left._alpha);
+		//trace("ADD L EV"+CLIP.promo_app_mc.promoarrow_left._alpha);
 		CLIP.promo_app_mc.promoarrow_left._alpha=100; // tween
 		CLIP.promo_app_mc.promoarrow_left.onRollOver = Delegate.create(this, lArrowRollOver);
 		CLIP.promo_app_mc.promoarrow_left.onRollOut = Delegate.create(this, lArrowRollOut);
@@ -116,7 +116,7 @@ class PromoBar extends MovieClip{
 		CLIP.promo_app_mc.promoarrow_left.useHandCursor = true;
 	}
 	private function removeLEvents(){
-		trace("L REMOVED");
+		//trace("L REMOVED");
 		CLIP.promo_app_mc.promoarrow_left._alpha=50; // tween
 		delete CLIP.promo_app_mc.promoarrow_left.onRollOver;
 		delete CLIP.promo_app_mc.promoarrow_left.onRollOut;
@@ -151,7 +151,7 @@ class PromoBar extends MovieClip{
 		
 	}
 	private function rArrowRollOver(){
-	trace("ARR OVER");	
+	//trace("ARR OVER");	
 	}
 	private function rArrowRollOut(){
 		

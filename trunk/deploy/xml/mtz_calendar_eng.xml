@@ -3,6 +3,8 @@
 	
 	<!-- CALENDAR EVENT ITEMS -->
 		<settings startx="-10" starty="40" width="36" height="33" />
+		<item id="9.1.2008" headline="Yes this scroller is buggy." eventTime="10 AM"><![CDATA[]]></item>
+		
 		<item id="9.1.2008" headline="Lord’s Prayer Time" eventTime="10 AM"><![CDATA[]]></item>
 		<item id="9.1.2008" headline="A-L MZSPA Registration" eventTime="9-11 AM"><![CDATA[]]></item>
 		<item id="9.1.2008" headline="M-Z MZSPA Registration" eventTime="11 AM-1 PM"><![CDATA[]]></item>
