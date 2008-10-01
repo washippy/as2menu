@@ -45,7 +45,7 @@ class App extends MovieClip {
 		trace(_mc+" :: "+_oXml.appvalues.attributes.assetpath);
 		
 		distributeData();
-		initDisplayElements();
+	
 		initEvents();		
 		_mc.play();
 	}
@@ -55,8 +55,6 @@ class App extends MovieClip {
 		_oXml = $oXml;
 		// data re distributed
 		distributeData();
-		// APPS re initiated
-		initDisplayElements();
 	}
 	
 	
@@ -85,7 +83,6 @@ class App extends MovieClip {
 		_global.leftColumnPicPath=_oXml.leftcolumnpic.attributes.assetname;
 
 		newsAppXMLPath=_oXml.newsapp.attributes.XMLpath;
-		trace(newsAppXMLPath+"*******************  **    * * * * *  * *")
 		calendarAppXMLPath=_oXml.calendarapp.attributes.XMLpath;
 		videoannouncementsAppXMLPath=_oXml.videoannouncementsapp.attributes.XMLpath;
 	
@@ -97,11 +94,16 @@ class App extends MovieClip {
 				url:_oXml.sidebuttonbar.item[s].attributes.url
 				});
 		}	
+		
+		
+		// APPS re initiated
+		initDisplayElements();
+		
 	}
 	
 	private function initDisplayElements():Void{
 		// LAUNCH SUB APPS which should be ALPHA zero to fade in when loaded
-		//trace("what is this "+ _mc)
+		//trace("what is this "+ newsAppXMLPath)
 		calendarApp = new CalendarApp(calendarAppXMLPath, _mc);
 		navbarApp = new Navbar(navBarArray, _mc);
 		mainImageApp = new MainImage(mainImagePath, _mc);

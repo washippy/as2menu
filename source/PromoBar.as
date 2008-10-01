@@ -22,7 +22,7 @@ class PromoBar extends MovieClip{
 		CLIP = _clip;
 		
 		promoArray = _promoArray;
-		trace("PROMO BAR CONSTRUCTOR :"+PROMOTOTAL);
+		//trace("PROMO BAR CONSTRUCTOR :"+PROMOTOTAL);
 		PROMOTOTAL=promoArray.length;
 		fireItUp();
 	}

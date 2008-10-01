@@ -16,7 +16,7 @@
 			<key>filename</key>
 			<string>App.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-30T03:53:03Z</date>
+			<date>2008-10-01T03:54:22Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -40,7 +40,7 @@
 			<key>filename</key>
 			<string>mtz_init.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-19T02:49:34Z</date>
+			<date>2008-10-01T03:43:45Z</date>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -78,7 +78,7 @@
 			<key>filename</key>
 			<string>Promo.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-30T03:53:06Z</date>
+			<date>2008-10-01T03:54:24Z</date>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -92,13 +92,15 @@
 			<key>filename</key>
 			<string>NewsApp.as</string>
 			<key>lastUsed</key>
-			<date>2008-09-30T03:53:06Z</date>
+			<date>2008-10-01T04:48:24Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NewsStory.as</string>
+			<key>lastUsed</key>
+			<date>2008-10-01T04:48:24Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -124,14 +126,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>128</integer>
+				<integer>2</integer>
 				<key>line</key>
-				<integer>110</integer>
+				<integer>140</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>66</integer>
+			<integer>103</integer>
+		</dict>
+		<key>NewsStory.as</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>75</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>menuList.as</key>
 		<dict>
@@ -163,20 +179,6 @@
 				<integer>67</integer>
 			</dict>
 		</dict>
-		<key>mtz_init.as</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>16</integer>
-				<key>line</key>
-				<integer>38</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>15</integer>
-		</dict>
 		<key>utils/BroadCaster.as</key>
 		<dict>
 			<key>caret</key>
@@ -195,10 +197,11 @@
 	<key>openDocuments</key>
 	<array>
 		<string>NewsApp.as</string>
+		<string>NewsStory.as</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{223, 300}, {1231, 578}}</string>
+	<string>{{335, -896}, {1231, 896}}</string>
 </dict>
 </plist>
