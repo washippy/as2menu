@@ -20,7 +20,7 @@ class Navbar extends MovieClip {
 	
 	public function Navbar(_navdata:Object, clip:MovieClip){
 		navbar=clip.navbar_mc;
-		trace("NAVBAR CONSTRUCTOR ");
+		//trace("NAVBAR CONSTRUCTOR ");
 		
 		navbar._alpha=0;
 		navArray = new Array();
