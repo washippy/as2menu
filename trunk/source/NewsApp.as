@@ -42,7 +42,15 @@ class NewsApp extends MovieClip {
 	private var news_textmask_mc:MovieClip;
 	private var itemArray:Array;
 	//25 x 45
+	
+	private var scrubX:Number;
+	private var scrubStartY:Number;
+	private var scrubEndY:Number;
+	private var totalStories:Number;
 
+	private var mouseListener:Object = new Object();
+	
+	
 	public function NewsApp(passmealong:String, clip:MovieClip){
 		// trace("NEWS APP CONSTRUCTOR "+passmealong+clip);
 		newsApp = clip.news_app_mc;
@@ -50,13 +58,12 @@ class NewsApp extends MovieClip {
 		
 		XMLPATH = "xml/"+passmealong;     
 		//newsApp = clip.calendar_app_mc;
-		//BroadCaster.register(this,"setEvents");
+		BroadCaster.register(this,"updatePositions");
 		
 		newsScroller = newsApp.createEmptyMovieClip("newsScroller", this.getNextHighestDepth());
-
 		newsScroller._x=25;
 		newsScroller._y=45;
-		newsScroller.setMask(newsApp.news_textmask_mc);
+	//	newsScroller.setMask(newsApp.news_textmask_mc);
 	
 		getNews();
 	}
@@ -89,209 +96,165 @@ class NewsApp extends MovieClip {
 		
 	}
 	
-	
-
-	
-
 	private function makeStories():Void {
-		var totalStories = nXml.item.length;
+		totalStories = nXml.item.length;
 		
 		for(var i=0;i<totalStories;i++){
-		//	trace("				MAKE STORIES :: "+totalStories)
+				//	trace("				MAKE STORIES :: "+totalStories)
 			
-		//	var _hObj:Object = nXml.item[i].attributes.headline;
-		//	var _dObj:Object = nXml.item[i].attributes.date;
-		//	var _bcObj:Object = nXml.item[i].data;
-		//	var _lObj:Object = nXml.item[i].attributes.link;
-//		
-	/* 
-		trace("----------------"+newline+itemArray[i].childNodes[0].childNodes+
-				newline+itemArray[i].childNodes[1].childNodes+
-				newline+itemArray[i].childNodes[2].childNodes);
-			 
-	*/
+				//	var _hObj:Object = nXml.item[i].attributes.headline;
+				//	var _dObj:Object = nXml.item[i].attributes.date;
+				//	var _bcObj:Object = nXml.item[i].data;
+				//	var _lObj:Object = nXml.item[i].attributes.link;
 
-		var sendCopy:String="";
+
+			     /* 	trace("----------------"+newline+itemArray[i].childNodes[0].childNodes+
+						newline+itemArray[i].childNodes[1].childNodes+
+						newline+itemArray[i].childNodes[2].childNodes);	 */
+				
+				var sendCopy:String="";
 		
-		for(var b=0;b< itemArray[i].childNodes.length;b++){
-		//	trace(itemArray[i].childNodes[b].toString());
-			sendCopy = sendCopy+ itemArray[i].childNodes[b].toString();
-		}
-		trace("SEND >>> "+sendCopy)
-		newsScroller.attachMovie("news_story_mc", "news_story_mc"+i, newsScroller.getNextHighestDepth(), {bCopy:sendCopy});
+				for(var b=0;b< itemArray[i].childNodes.length;b++){
+				//	trace(itemArray[i].childNodes[b].toString());
+					sendCopy = sendCopy+ itemArray[i].childNodes[b].toString();
+				}
+				trace("SEND >>> "+sendCopy)
+				newsScroller.attachMovie("news_story_mc", "news_story_mc"+i, newsScroller.getNextHighestDepth(), {bCopy:sendCopy});
 		
 
-		//	newsScroller.attachMovie("news_story_mc", "news_story_mc"+i, newsScroller.getNextHighestDepth(), {headline:_hObj, date:_dObj, bodyCopy:_bcObj, link:_lObj});
-			if(i>0){
-				newsScroller["news_story_mc"+i]._y = newsScroller["news_story_mc"+(i-1)]._y +newsScroller["news_story_mc"+(i-1)]._height +10
-			}
+			//	newsScroller.attachMovie("news_story_mc", "news_story_mc"+i, newsScroller.getNextHighestDepth(), {headline:_hObj, date:_dObj, bodyCopy:_bcObj, link:_lObj});
+				if(i>0){
+					newsScroller["news_story_mc"+i]._y = newsScroller["news_story_mc"+(i-1)]._y +newsScroller["news_story_mc"+(i-1)]._height +10
+				}
+				
 		}
 	//	<item headline="HEADLINE HERE." date="FRIDAY, JULY 05, 2008" link="moreinfo.html">
 	//	<![CDATA[Story here.]]></item>
 		initScroll();
 		
 	}
+	private function updatePositions() {
+		for(var i=1;i<totalStories;i++){
+				newsScroller["news_story_mc"+i]._y = newsScroller["news_story_mc"+(i-1)]._y +newsScroller["news_story_mc"+(i-1)]._height +10;
+			}
+	}
+	
+	
 	
 	private function initScroll(){
-		trace(newsScroller._height)
-		trace(newsApp.news_scrollbar_mc.scrollchannel_mc._height)
-		trace(newsApp.news_scrollbar_mc.scrollscrubber._height)
-		Tweener.addTween(newsApp, {time:1.5, delay:2, transition:"easeOut", _alpha:100});
-	//newsApp._alpha=100;
+		trace("SCROLL HEIGHT "+newsScroller._height)
+		trace("SCROLL channel HEIGHT "+ newsApp.news_scrollbar_mc.scrollchannel_mc._height)
+		trace("SCROLL scrubber HEIGHT "+newsApp.news_scrollbar_mc.scrollscrubber._height)
+		Tweener.addTween(newsApp, {time:1.5, delay:2, transition:"easeOut", _alpha:100});  /// fade in  news app
 		
-	}
-
-
-
-
-
-
-//////////////////////// old stuff 
-
-
-
-/* 
+		var scrub:MovieClip = newsApp.news_scrollbar_mc.scrollscrubber;
+		var clip:MovieClip = newsScroller;
+		var clipStartY = newsScroller._y;
+		var clipHeight = newsScroller._height;
 		
-		if(calApp.calscroller_mc.content_tf._height >=MASKHEIGHT){
-			enableScroller(calApp.calscroller_mc.content_tf._height);
-		}else{
-			disableScroller();
-		}
- */
+		var maskHeight= newsApp.news_textmask_mc._height;
+		var clipScrollDist:Number = (clipHeight- maskHeight) +50;
 
-
-
-	   
-/*	
-	private function disableScroller(){
-		calApp.calscroller_mc.moreUP._visible=false;
-		calApp.calscroller_mc.moreDOWN._visible=false;
-
-		calApp.calscroller_mc.moreUP.enabled=false;
-		calApp.calscroller_mc.moreDOWN.enabled=false;
+		scrubStartY = scrub._y;
+		var channelheight:Number = newsApp.news_scrollbar_mc.scrollchannel_mc._height;
+		var scrubheight:Number = scrub._height;
+		scrubEndY = scrub._y + (channelheight - scrubheight);
+		scrubX = scrub._x;
 		
-	
-		calApp.calscroller_mc.moreUP.onPress=function(){
-		// nuthin
+		var scrollDist = scrubEndY - scrubStartY;
+		
+		mouseListener.onMouseMove = function() {
+			// get the %Y of the scrubber
+			var pct = scrub._y / channelheight;
+			trace("moved "+ scrub._y+" :: "+channelheight+ " :: "+pct);
+		   	clip._y =clipStartY-(clipScrollDist * pct);
+			trace( clipScrollDist );
+			// set the %Y of the scrollable clip to the % Y of the scrubber
+		    updateAfterEvent();
 		};
+		
+		
+		scrub.onPress = Delegate.create(this, sDrag);
+		scrub.onRelease = scrub.onReleaseOutside = Delegate.create(this, sDragStop);
+		
 			
-		calApp.calscroller_mc.moreDOWN.	onPress=function(){
-		// nuthin
-						
-		};
 	}
 	
-	private function enableScroller(h:Number){
-		//trace("scroller tf height = "+h);
-		// mask height = 186
-		writeScrollerEvents();		
+	private function sDrag(){
+		newsApp.news_scrollbar_mc.scrollscrubber.startDrag(false, scrubX, scrubStartY, scrubX, scrubEndY);
+		Mouse.addListener(mouseListener);
+		
 	}
 	
-	private function shipIt(){
-		//trace("SHIPPED");
-		BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
+	private function sDragStop(){
+		newsApp.news_scrollbar_mc.scrollscrubber.stopDrag();
+		Mouse.removeListener(mouseListener);
+		
 	}
 	
-	private function writeScrollerEvents(){
-	//	trace(calApp.calscroller_mc.content_tf._height);
-	//	trace(calApp.calscroller_mc.content_tf._y);
-		//trace("WSE ::::::::::::::::");
-		
-		// MASKHEIGHT = 186
-		
-		//if the Y of the tf is near start y  - height 
-		var tf = calApp.calscroller_mc.content_tf._y;
-		//trace("tf Y: "+tf)
-		var topY = 14 -calApp.calscroller_mc.content_tf._height;
-		//trace("topY: "+topY)
-		var bottomY =  14;
-		//trace("bottomY: "+bottomY)
-		var deltaTOP = tf+Math.abs(topY);
-		//trace("delta top :"+deltaTOP);
-		
-		var deltaBTM = Math.abs(bottomY-tf);
-		//trace("delta bottom :"+deltaBTM);
-		
-		
-		
-		if(tf > topY && tf < bottomY){
-			// enable both
-			//trace("A")
-			calApp.calscroller_mc.moreUP._visible=true;
-			calApp.calscroller_mc.moreDOWN._visible=true;
+	/* 
 
-			calApp.calscroller_mc.moreUP.enabled=true;
-			calApp.calscroller_mc.moreDOWN.enabled=true;
+			function disableInfoScrollers() {
+				this.indicator_mc._y = INDICATOR_START_Y;
+				this.textblock_mc._y = TEXTBOX_START_Y;
+				this.indicator_mc._visible = false;
+				this.uparrow_mc._visible = false;
+				this.downarrow_mc._visible = false;
+			}
+			function enableInfoScrollers(z) {
+				trace("HEY FOO ITS :"+z+" "+this);
+				this.indicator_mc._y = INDICATOR_START_Y;
+				this.textblock_mc._y = TEXTBOX_START_Y;
+				this.indicator_mc._visible = true;
+				this.uparrow_mc._visible = true;
+				this.downarrow_mc._visible = true;
+				textboxend = this.textblock_mc._height;
+				textboxdestination = (this.textMask_mc._y+this.textMask_mc._height)-10;
+				trace("end "+textboxend);
+				trace("dest "+textboxdestination);
+				diffH = (-(textboxend-textboxdestination)/INDICATOR_DIST);
+				trace("diffH : "+diffH);
+			}
+			function scrollBar(dir, y) {
+				switch (dir) {
+				case "up" :
+					if (y != undefined && y != null) {
+						if (this.indicator_mc._y>(16+y)) {
+							this.indicator_mc._y -= y;
+							this.textblock_mc._y -= diffH*y;
+						}else{
+						this.indicator_mc._y=INDICATOR_START_Y;
+						}
+					} else {
+						if (this.indicator_mc._y>16) {
+							this.indicator_mc._y--;
+							this.textblock_mc._y -= diffH;
+						}
+					}
+					break;
+				case "down" :
+					if (y != undefined && y != null) {
+						if (this.indicator_mc._y<(INDICATOR_DIST-y)) {
+							this.indicator_mc._y += y;
+							this.textblock_mc._y += diffH*y;
+						}else{
+						this.indicator_mc._y=INDICATOR_DIST;
+						}
+					} else {
+						if (this.indicator_mc._y<INDICATOR_DIST) {
+							this.indicator_mc._y++;
+							this.textblock_mc._y += diffH;
+						}
+					}
+					break;
+				case "indicator" :
+					trace("IND eeeeeeeeeeeeeeeee "+this.indicator_mc._y+"  :  "+this.textblock_mc._y);
+					this.textblock_mc._y = ((this.indicator_mc._y-16)*diffH)-16;
+					break;
+				}
+			}	
+	 
+	*/
 
-			calApp.calscroller_mc.moreUP._alpha=100;
-			calApp.calscroller_mc.moreDOWN._alpha=100;
-			
-		
-			calApp.calscroller_mc.moreUP.onPress=function(){
-			//	this._parent.content_tf._y-=10;
-		////	if delta top is greater than 100, use 100,  else use delta top
-				Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y-100, onCompleteEvent:calApp.shipIt});
-			//	BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
-				
-			};
-				
-			calApp.calscroller_mc.moreDOWN.onPress=function(){
-				////	if delta bottom is less than 100 use delta bottom else use 100
-				Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y+100, onCompleteEvent:calApp.shipIt});							
-			};
-			
-			
-		}else if(tf > topY && tf >= bottomY){
-			//disable DOWN
-			//enable UP
-			//trace("B")
-			calApp.calscroller_mc.moreUP._visible=true;
-			calApp.calscroller_mc.moreDOWN._visible=true;
-
-			calApp.calscroller_mc.moreUP.enabled=true;
-			calApp.calscroller_mc.moreDOWN.enabled=false;
-
-			calApp.calscroller_mc.moreUP._alpha=100;
-			calApp.calscroller_mc.moreDOWN._alpha=50;
 	
-			calApp.calscroller_mc.moreUP.onPress=function(){
-			//	this._parent.content_tf._y-=10;
-	
-			Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y-100, onCompleteEvent:shipIt});	
-			//	BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
-			};
-				
-			calApp.calscroller_mc.moreDOWN.	onPress=function(){
-			//	this._parent.content_tf._y+=10;					
-			};
-			
-		}else if(tf <= topY && tf < bottomY){
-			//disable UP
-			//enable DOWN
-			//trace("C")
-			calApp.calscroller_mc.moreUP._visible=true;
-			calApp.calscroller_mc.moreDOWN._visible=true;
-
-			calApp.calscroller_mc.moreUP.enabled=false;
-			calApp.calscroller_mc.moreDOWN.enabled=true;
-
-			calApp.calscroller_mc.moreUP._alpha=50;
-			calApp.calscroller_mc.moreDOWN._alpha=100;
-		
-			calApp.calscroller_mc.moreUP.onPress=function(){
-				//this._parent.content_tf._y-=10;
-				Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y-100, onCompleteEvent:shipIt});
-			};
-				
-			calApp.calscroller_mc.moreDOWN.	onPress=function(){
-			//	this._parent.content_tf._y+=10;
-			Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y+100, onCompleteEvent:shipIt});
-				//BroadCaster.broadcastEvent("writeScrollerEvents", this, false);						
-			};
-				
-		}
-	}
-
-
-*/	
-	}
+}
