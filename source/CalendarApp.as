@@ -60,6 +60,7 @@ class CalendarApp extends MovieClip {
 	private var current;
     private var currentLength;
 
+	private var firsttime=true;
 
 	public function CalendarApp(passmealong:String, clip:MovieClip){
 		 trace("Calendar APP CONSTRUCTOR");
@@ -406,30 +407,29 @@ class CalendarApp extends MovieClip {
 			}
 							
 			// GET EVENTS from XML
-			// populate curent day item 
 	 
 	        current = (monthArray[month] + " - ") + year;
-	
-			var cDate:Object = curDay;
-		 	
-			///////////////////////////////////////////
-			//var cDate:Object = 19;  // TEST ONLY ///////////////////////////////////////////
-			///////////////////////////////////////////
-			
-			
-			BroadCaster.broadcastEvent("setEvents", cDate, true);
+
+			// populate curent day item once, then dont until a date is clicked
+			if(firsttime){
+				
+					var cDate:Object = curDay;
+					trace("FT::::::::" + curDay)
+				
+					BroadCaster.broadcastEvent("setEvents", cDate, true);
+					firsttime=false;
+			}
 			
 			calApp._alpha=100;        		// FADE MAYBE??
 	}
 	
 	
 	private function setEvents(__date:Number){ 
-		//		trace(calApp["date" + curDay].eventData);
+			trace("SET EVENTS : "+ curMonth);
 		
 		/// run thru events array
 		/// get events for passed DAY __date
 		/// send em to text field and enable scroller
-		
 		var dString:String =  (curMonth+1)+ "." + __date + "." +  curYear;
 
 	//var dString:String =  (curMonth+1)+ "." + curDay + "." +  curYear;
@@ -456,7 +456,9 @@ class CalendarApp extends MovieClip {
 		
 		}
 		calApp.calscroller_mc.content_tf.htmlText =""; 
-		calApp.currentDay_tf.htmlText = monthArray[curMonth]+" "+__date + ", "+ curYear; // changes Date above scroller
+
+		calApp.currentDay_tf.htmlText = monthArray[currentMonth]+" "+__date + ", "+ curYear; // changes Date above scroller
+
 		var tAlen = tempArr.length;
 		
 		for (var z=0; z<tAlen; z++){

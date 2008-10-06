@@ -24,6 +24,8 @@ class NewsStory extends MovieClip {
 	private var bCopy:String;	
 	private var story_tf:TextField;
 	private var more_button:Button;
+	private var less_button:Button;
+	public var popped:Boolean=false;
 	private var styles:TextField.StyleSheet;
 	private var TF_SHORT = 79;
 	private var TF_EXTENDED;
@@ -32,7 +34,9 @@ class NewsStory extends MovieClip {
 		// trace("NEWS STORY CONSTRUCTOR :::::::: "+newline+bCopy);
 
 		//if (_global.lang = "SPANISH"){trace("SPAAAAANISH NEWS STORY")}else{}
+			less_button._visible=false;
 			
+			BroadCaster.register(this,"updateMoreButton");
 		
 			styles = new TextField.StyleSheet();
 			
@@ -63,12 +67,16 @@ class NewsStory extends MovieClip {
 
 
 		more_button.onPress = Delegate.create(this, bOnPress);	
+		less_button.onPress = Delegate.create(this, bLessOnPress);	
 		
 		popData();
 	}
 	private function bOnPress(){
 		trace(TF_EXTENDED + " :: "+ TF_SHORT);
 		Tweener.addTween(story_tf, {time:1.5, transition:"easeOut", _height:TF_EXTENDED, onUpdate:updateAllPositions});  /// fade in  news app
+		less_button._visible=true;
+		more_button._visible = false;
+		popped = true;
 	/* 
 		reportPosition = function() {
 				trace ("My _x is now " + this._x);
@@ -79,23 +87,40 @@ class NewsStory extends MovieClip {
 
 	
 	}
+		private function bLessOnPress(){
+		Tweener.addTween(story_tf, {time:1.5, transition:"easeOut", _height:TF_SHORT, onUpdate:updateAllPositions});  /// fade in  news app
+		less_button._visible=false;
+		more_button._visible = true;
+		popped = false;
+	/* 
+		reportPosition = function() {
+				trace ("My _x is now " + this._x);
+			};
+			Tweener.addTween(myMovieClip, {_x:100, time:1, onUpdate:reportPosition}); 
+	Tweener.addTween(myMovieClip, {_x:100, time:1, onUpdate:function() { trace ("My _x is now " + this._x); }});
+	*/
+
 	
+	}
 	private function updateAllPositions(){
 		// UPDATE SCROLLER TOO
+		BroadCaster.broadcastEvent("updateScroller", this, false);
 		BroadCaster.broadcastEvent("updatePositions", this, false);
-	}
-	private function bOnRollOver(){
+		BroadCaster.broadcastEvent("updateMoreButton", this, false);
 		
 	}
-	private function bOnRollOut(){
-		
+	
+	private function updateMoreButton(){
+		trace("GO ------------ -- - -- -- - - - -");
+		less_button._y = more_button._y = story_tf._y + story_tf._height + 4;
 	}
+
 	private function popData(){
 		
 		story_tf.styleSheet = styles;
 	    story_tf.htmlText = bCopy;
 		story_tf.autoSize=true;
-		TF_EXTENDED =story_tf._height;
+		TF_EXTENDED =story_tf._height + 20;
 		story_tf.autoSize=false;
 		
 		story_tf._height = TF_SHORT;
