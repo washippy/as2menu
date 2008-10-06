@@ -43,13 +43,7 @@ class NewsApp extends MovieClip {
 	private var itemArray:Array;
 	//25 x 45
 	
-	private var scrubX:Number;
-	private var scrubStartY:Number;
-	private var scrubEndY:Number;
-	private var totalStories:Number;
 
-	private var mouseListener:Object = new Object();
-	
 	
 	public function NewsApp(passmealong:String, clip:MovieClip){
 		// trace("NEWS APP CONSTRUCTOR "+passmealong+clip);
@@ -59,11 +53,14 @@ class NewsApp extends MovieClip {
 		XMLPATH = "xml/"+passmealong;     
 		//newsApp = clip.calendar_app_mc;
 		BroadCaster.register(this,"updatePositions");
-		
+		BroadCaster.register(this,"updateScroller");
+
 		newsScroller = newsApp.createEmptyMovieClip("newsScroller", this.getNextHighestDepth());
 		newsScroller._x=25;
 		newsScroller._y=45;
-	//	newsScroller.setMask(newsApp.news_textmask_mc);
+		clipStartY = 45;
+		
+		newsScroller.setMask(newsApp.news_textmask_mc);
 	
 		getNews();
 	}
@@ -131,6 +128,7 @@ class NewsApp extends MovieClip {
 	//	<item headline="HEADLINE HERE." date="FRIDAY, JULY 05, 2008" link="moreinfo.html">
 	//	<![CDATA[Story here.]]></item>
 		initScroll();
+		Tweener.addTween(newsApp, {time:1.5, delay:2, transition:"easeOut", _alpha:100});  /// fade in  news app
 		
 	}
 	private function updatePositions() {
@@ -139,36 +137,95 @@ class NewsApp extends MovieClip {
 			}
 	}
 	
+	private function updateScroller() {
+		
+		fireupScroller();
+	}
 	
 	
-	private function initScroll(){
-		trace("SCROLL HEIGHT "+newsScroller._height)
-		trace("SCROLL channel HEIGHT "+ newsApp.news_scrollbar_mc.scrollchannel_mc._height)
-		trace("SCROLL scrubber HEIGHT "+newsApp.news_scrollbar_mc.scrollscrubber._height)
-		Tweener.addTween(newsApp, {time:1.5, delay:2, transition:"easeOut", _alpha:100});  /// fade in  news app
-		
-		var scrub:MovieClip = newsApp.news_scrollbar_mc.scrollscrubber;
-		var clip:MovieClip = newsScroller;
-		var clipStartY = newsScroller._y;
-		var clipHeight = newsScroller._height;
-		
-		var maskHeight= newsApp.news_textmask_mc._height;
-		var clipScrollDist:Number = (clipHeight- maskHeight) +50;
+	
+	///////// scroller stuff //////// 
+	private var channelheight:Number;
+	private var scrubheight:Number;
+	
+	private var maskHeight:Number;
+	private var clipHeight:Number;
+	private var clipStartY:Number;
+	private var scrubX:Number;
+	private var scrubStartY:Number;
+	private var scrubEndY:Number;
+	private var totalStories:Number;
+	private var startPct:Number;
+	private var scrubberStartY:Number;
+	private var mouseListener:Object = new Object();
 
+	private function initScroll(){
+		var scrub:MovieClip = newsApp.news_scrollbar_mc.scrollscrubber;
+		
+		//// these are set for the startDrag args //////
 		scrubStartY = scrub._y;
-		var channelheight:Number = newsApp.news_scrollbar_mc.scrollchannel_mc._height;
-		var scrubheight:Number = scrub._height;
+		
+		channelheight = newsApp.news_scrollbar_mc.scrollchannel_mc._height;
+		var _cH = channelheight;// local for the mouse listener
+		
+		scrubheight = scrub._height;
 		scrubEndY = scrub._y + (channelheight - scrubheight);
 		scrubX = scrub._x;
 		
+		////////////////////////////////////////////
+		fireupScroller();
+	}
+	
+	private function fireupScroller(){
+		
+	
+		
+		trace("SCROLL HEIGHT "+newsScroller._height)
+		trace("SCROLL channel HEIGHT "+ newsApp.news_scrollbar_mc.scrollchannel_mc._height)
+		trace("SCROLL scrubber HEIGHT "+newsApp.news_scrollbar_mc.scrollscrubber._height)
+		
+		var scrub:MovieClip = newsApp.news_scrollbar_mc.scrollscrubber;
+		var clip:MovieClip = newsScroller;
+		
+	// 	clipStartY = 0;//newsScroller._y;
+		
+		var _cY = clipStartY; // local for the mouse listener
+		var _cH = channelheight;// local for the mouse listener
+		
+		clipHeight = newsScroller._height;
+		
+			//  get start pos of scrubber and adjust clip below
+			scrubberStartY = newsApp.news_scrollbar_mc.scrollscrubber._y;
+			startPct = scrub._y / channelheight;
+		
+		
+		
+		maskHeight= newsApp.news_textmask_mc._height;
+		var clipScrollDist:Number = (clipHeight- maskHeight) +50;
+
+
+
+		
+		
 		var scrollDist = scrubEndY - scrubStartY;
+		
+			// SET MC APPROPRIATELY TO SCRUB START DIST ...
+			// this is for later when scroller is reset
+		clip._y = clipStartY-(clipScrollDist * startPct);
+			
+			
+			
+	   	trace("TEST channel height "+channelheight);
+		
 		
 		mouseListener.onMouseMove = function() {
 			// get the %Y of the scrubber
-			var pct = scrub._y / channelheight;
-			trace("moved "+ scrub._y+" :: "+channelheight+ " :: "+pct);
-		   	clip._y =clipStartY-(clipScrollDist * pct);
-			trace( clipScrollDist );
+			trace("TEST channel height "+_cH);
+		   	
+			var pct = scrub._y / _cH;
+			trace("moved "+ scrub._y +" :: "+_cH+ " :: "+pct);
+		   	clip._y =_cY-(clipScrollDist * pct);
+			trace( _cY+"::"+clipScrollDist );
 			// set the %Y of the scrollable clip to the % Y of the scrubber
 		    updateAfterEvent();
 		};
@@ -192,69 +249,6 @@ class NewsApp extends MovieClip {
 		
 	}
 	
-	/* 
-
-			function disableInfoScrollers() {
-				this.indicator_mc._y = INDICATOR_START_Y;
-				this.textblock_mc._y = TEXTBOX_START_Y;
-				this.indicator_mc._visible = false;
-				this.uparrow_mc._visible = false;
-				this.downarrow_mc._visible = false;
-			}
-			function enableInfoScrollers(z) {
-				trace("HEY FOO ITS :"+z+" "+this);
-				this.indicator_mc._y = INDICATOR_START_Y;
-				this.textblock_mc._y = TEXTBOX_START_Y;
-				this.indicator_mc._visible = true;
-				this.uparrow_mc._visible = true;
-				this.downarrow_mc._visible = true;
-				textboxend = this.textblock_mc._height;
-				textboxdestination = (this.textMask_mc._y+this.textMask_mc._height)-10;
-				trace("end "+textboxend);
-				trace("dest "+textboxdestination);
-				diffH = (-(textboxend-textboxdestination)/INDICATOR_DIST);
-				trace("diffH : "+diffH);
-			}
-			function scrollBar(dir, y) {
-				switch (dir) {
-				case "up" :
-					if (y != undefined && y != null) {
-						if (this.indicator_mc._y>(16+y)) {
-							this.indicator_mc._y -= y;
-							this.textblock_mc._y -= diffH*y;
-						}else{
-						this.indicator_mc._y=INDICATOR_START_Y;
-						}
-					} else {
-						if (this.indicator_mc._y>16) {
-							this.indicator_mc._y--;
-							this.textblock_mc._y -= diffH;
-						}
-					}
-					break;
-				case "down" :
-					if (y != undefined && y != null) {
-						if (this.indicator_mc._y<(INDICATOR_DIST-y)) {
-							this.indicator_mc._y += y;
-							this.textblock_mc._y += diffH*y;
-						}else{
-						this.indicator_mc._y=INDICATOR_DIST;
-						}
-					} else {
-						if (this.indicator_mc._y<INDICATOR_DIST) {
-							this.indicator_mc._y++;
-							this.textblock_mc._y += diffH;
-						}
-					}
-					break;
-				case "indicator" :
-					trace("IND eeeeeeeeeeeeeeeee "+this.indicator_mc._y+"  :  "+this.textblock_mc._y);
-					this.textblock_mc._y = ((this.indicator_mc._y-16)*diffH)-16;
-					break;
-				}
-			}	
-	 
-	*/
 
 	
 }
