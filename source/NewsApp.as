@@ -115,7 +115,7 @@ class NewsApp extends MovieClip {
 				//	trace(itemArray[i].childNodes[b].toString());
 					sendCopy = sendCopy+ itemArray[i].childNodes[b].toString();
 				}
-				trace("SEND >>> "+sendCopy)
+			//	trace("SEND >>> "+sendCopy)
 				newsScroller.attachMovie("news_story_mc", "news_story_mc"+i, newsScroller.getNextHighestDepth(), {bCopy:sendCopy});
 		
 
@@ -249,6 +249,15 @@ class NewsApp extends MovieClip {
 		
 	}
 	
-
+	public function disable():Void{
+		trace(newsApp);
+		var invisify:Function = function(_ob:Object){
+			trace("I I :"+_ob);
+			_ob._visible=false;
+			}
+			
+		Tweener.addTween(newsApp, {time:1, transition:"easeOut", _alpha:0, onComplete:invisify, onCompleteParams:[newsApp]});
+		
+	}
 	
 }

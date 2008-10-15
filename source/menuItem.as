@@ -16,6 +16,8 @@ class menuItem extends MovieClip {
 	private var _mc:MovieClip; // listHolder
 	private var _justify:String; // left or right
 	
+	
+	
 	private var mItem:MovieClip;
 	
 	private var bottom_tf_mc:MovieClip;
@@ -39,6 +41,8 @@ class menuItem extends MovieClip {
 			parseTitle(_title);	
 		}else if(_justify=="right"){
 			parseTitleRight(_title);	
+		}else if(_justify=="center"){
+			parseTitleCenter(_title);
 		}
 	}
 	
@@ -47,24 +51,58 @@ class menuItem extends MovieClip {
 		//trace("+++++++  "+_t);
 		itemArray = _t.split(" ");	
 		for(var i =0 ; i< itemArray.length; i++){
+		
 			mItem.attachMovie("menuItemWord", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:0, _y:0, _title:itemArray[i]}); // move it later;
-			mItem.mask_mc._width = mItem.top_tf_mc.tf._width;
+			
 			
 			if(i!=0){	
 				mItem["menuItemWord"+i]._x = mItem["menuItemWord"+(i-1)]._x +  mItem["menuItemWord"+(i-1)].top_tf_mc.tf._width;
 			}
+			
 		}
+		
+		mItem.mask_mc._width = mItem.top_tf_mc.tf._width;
+		
 		popBKG();
 	}
 	 
+	private function parseTitleCenter(_t:String){
+		trace("CENTER ||||||||||| | | | |  "+_t);
+		itemArray = _t.split(" ");	
+		
+			for(var i = 0 ; i<itemArray.length; i++){
+			trace(i + "ARR ++++++++++++++  "+itemArray[i]);
+			
+			mItem.attachMovie("menuItemWordCenter", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:(mItem._width/2), _y:0, _title:itemArray[i]}); // move it later;
+			
+			mItem.mask_mc._width = mItem.top_tf_mc.tf._width;
+			
+			if(i!=0){	
+				mItem["menuItemWord"+i]._x = mItem["menuItemWord"+(i-1)]._x - mItem["menuItemWord"+(i)].top_tf_mc.tf._width;
+			}else{
+				mItem["menuItemWord"+i]._x = mItem["menuItemWord"+i].top_tf_mc.tf._width;
+			}
+			
+			
+		}	
+		
+		
+		popBKG();
+	}
+	
+	
 	private function parseTitleRight(_t:String){
 		//trace("RIGHT +++++++  "+_t);
 		itemArray = _t.split(" ");	
 		itemArray.reverse();
-		for(var i = 0 ; i<itemArray.length; i++){
-			//trace(i + "ARR +++++++  "+itemArray[i]);
+		
+			for(var i = 0 ; i<itemArray.length; i++){
+			trace(i + "ARR ++++++++++++++  "+itemArray[i]);
+			
 			
 			mItem.attachMovie("menuItemWordRight", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:0, _y:0, _title:itemArray[i]}); // move it later;
+		
+		
 			mItem.mask_mc._width = mItem.top_tf_mc.tf._width;
 			
 			if(i!=0){	
@@ -90,6 +128,9 @@ class menuItem extends MovieClip {
 			//trace("ATTACHED? ============ "+mItem.bkg_mc.getDepth());
 		if(_justify=="right"){
 			mItem.bkg_mc._x= 0-mItem.bkg_mc._width;
+		}else if(_justify=="center"){
+			mItem._x= 0-mItem.bkg_mc._width;
+			
 		}
 		addEvents();
 	}
