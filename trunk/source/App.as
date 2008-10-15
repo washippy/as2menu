@@ -21,6 +21,12 @@ class App extends MovieClip {
 //	GLOBAL private var assetPath:String;
 	private var mainImagePath:String;
 	private var navBarArray:Array;
+	
+	private var PAGE:String="HOME"; // HOME, SUB
+	
+	private var INIT:Boolean=false; // have the app instances been created?
+	
+	
 	private var promoBarArray:Array;
 // GLOBAL private var leftColumnPicPath:String;
 	private var newsAppXMLPath:String;
@@ -44,8 +50,10 @@ class App extends MovieClip {
 		
 		trace(_mc+" :: "+_oXml.appvalues.attributes.assetpath);
 		
+		BroadCaster.register(this,"launchNewPage");
+		
+		
 		distributeData();
-	
 		initEvents();		
 		_mc.play();
 	}
@@ -53,12 +61,16 @@ class App extends MovieClip {
 	public function reDistributeData($oXml:Object):Void{
 	 // when ESP is hit, a new data obj will be passed here, 
 		_oXml = $oXml;
+		// get current PAGE
+	
 		// data re distributed
 		distributeData();
 	}
 	
 	
 	private function distributeData():Void{
+		
+		
 		_global.assetPath=_oXml.appvalues.attributes.assetpath;
 
 		mainImagePath=_oXml.mainimage.attributes.assetname;
@@ -95,23 +107,77 @@ class App extends MovieClip {
 				});
 		}	
 		
-		
-		// APPS re initiated
-		initDisplayElements();
-		
+		if(INIT){
+				// APPS are already initiated
+				reloadDisplayElements();
+		}else{
+				// initiate
+				initDisplayElements();
+		}		
 	}
 	
 	private function initDisplayElements():Void{
 		// LAUNCH SUB APPS which should be ALPHA zero to fade in when loaded
 		//trace("what is this "+ newsAppXMLPath)
-		calendarApp = new CalendarApp(calendarAppXMLPath, _mc);
-		navbarApp = new Navbar(navBarArray, _mc);
-		mainImageApp = new MainImage(mainImagePath, _mc);
-		promoApp = new PromoBar(promoBarArray, _mc);
-		newsApp = new NewsApp(newsAppXMLPath, _mc);
+				calendarApp = new CalendarApp(calendarAppXMLPath, _mc);
+				navbarApp = new Navbar(navBarArray, _mc);
+				mainImageApp = new MainImage(mainImagePath, _mc);
+				promoApp = new PromoBar(promoBarArray, _mc);
+				newsApp = new NewsApp(newsAppXMLPath, _mc);
+				
+				//subPageApp = new SubPageApp(_mc);
 	}
 	
+	private function reloadDisplayElements():Void{
+			trace("RELOAD current PAGE :"+ PAGE);
+			switch(PAGE){
+				case "HOME" :
+				/* 
+					calendarApp.enable();
+									navbarApp.enable();
+									mainImageApp.enable();
+									promoApp.enable();
+									newsApp.enable();
+									
+									subPageApp.disable(); 
+				*/
+
+				
+				break;
+				case "SUB" :
+				/* 
+					calendarApp.disable();
+									navbarApp.disable();
+									mainImageApp.disable();
+									promoApp.disable();
+									newsApp.disable();
+									
+									subPageApp.enable();
+								 
+				*/
+
+				
+				break;
+			}
+			
+
+	}
 	
+	private function launchNewPage(_obj:Object):Void{
+		trace("LAUNCH "+_obj);
+		// fade out existing apps
+		if(PAGE=="HOME"){
+			calendarApp.disable();
+		//	buttonbar.disable();
+		//	mediaplayerstuff.disable();
+			promoApp.disable();
+			newsApp.disable();
+ 			BroadCaster.broadcastEvent("pastorPicDisable");
+			
+
+		}
+		
+	}
 	
 	
 	private function initEvents():Void

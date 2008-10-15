@@ -24,7 +24,8 @@ class CalendarApp extends MovieClip {
 	private var cXml:Object;
 	private var myXmlObject:XMLObject;
 	private var calApp:MovieClip;
-	
+		private var blocker_mc:MovieClip;
+
 	private var calArrow_right:MovieClip;
 	private var calArrow_left:MovieClip;
 	
@@ -701,6 +702,21 @@ class CalendarApp extends MovieClip {
            // removeMovieClip ("firstghost" + i);            
         }
     }
+
+
+	
+	public function disable():Void{ // this fades in a white blocker mc and then _visible = false to disable clicks.
+		trace(calApp.blocker_mc);
+		calApp.blocker_mc.swapDepths(calApp.getNextHighestDepth())
+		var invisify:Function = function(_ob:Object){
+			trace("I I :"+_ob);
+			_ob._visible=false;
+			}
+			
+		Tweener.addTween(calApp.blocker_mc, {time:1, transition:"easeOut", _alpha:100, onComplete:invisify, onCompleteParams:[calApp]});
+		
+	}
+
 
 
 		

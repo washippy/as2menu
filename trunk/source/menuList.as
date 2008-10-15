@@ -50,7 +50,7 @@ class menuList extends MovieClip {
 		trace("menu List trace this :: "+menulist+" "+justify);
 
 		listArray = _list;
-		for(var item in listArray){trace(listArray[item])}
+	//	for(var item in listArray){trace(listArray[item])}
 			buildList(_mc);
 
 	}

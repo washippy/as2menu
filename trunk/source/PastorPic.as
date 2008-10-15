@@ -11,17 +11,27 @@ GLOBAL FADE IN TIMING
 */
 import mx.utils.Delegate;
 import caurina.transitions.*;
+import utils.BroadCaster;
+
 
 class PastorPic extends MovieClip{
 	
 	private var pastorpic_mc:MovieClip;
+	
+	private var pastorphoto_mc:MovieClip;
+	
+	
 	private var __mcImageLoader:MovieClipLoader;
 	private var loadImageListener:Object = new Object();	
 
 	private function PastorPic(){
 		this._alpha=0;		
 		trace("PASTOR PIC");
-
+		BroadCaster.register(this,"pastorPicDisable");
+		BroadCaster.register(this,"pastorPicEnable");
+		
+		
+		
 		loadImageListener = new Object();
 		__mcImageLoader = new MovieClipLoader();
 		setUpImage();
@@ -50,6 +60,25 @@ class PastorPic extends MovieClip{
 	}
 	
 	
+	public function pastorPicDisable():Void{
+		trace(pastorpic_mc);
+		var invisify:Function = function(_ob:Object){
+			trace("I I :"+_ob);
+			_ob._visible=false;
+			}
+			
+		Tweener.addTween(this, {time:1, transition:"easeOut", _alpha:0, onComplete:invisify, onCompleteParams:[this]});
+		
+	}
+	public function pastorPicEnable():Void{
+		var visify:Function = function(_ob:Object){
+			trace(_ob);
+			_ob._visible=true;
+			}
+			
+		Tweener.addTween(this, {time:1, transition:"easeOut", _alpha:100, onComplete:visify, onCompleteParams:[this]});
+		
+	}
 	
 /* 
 	private function onRollOver(){
