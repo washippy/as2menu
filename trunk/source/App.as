@@ -6,7 +6,7 @@ import flash.filters.GlowFilter;
 import mx.utils.Delegate;
 import caurina.transitions.*;
 import utils.*;
-
+import StructureApp;
 
 class App extends MovieClip {
 	
@@ -26,6 +26,8 @@ class App extends MovieClip {
 	
 	private var INIT:Boolean=false; // have the app instances been created?
 	
+	private var structurePath:String;
+	private var structure:StructureApp;
 	
 	private var promoBarArray:Array;
 // GLOBAL private var leftColumnPicPath:String;
@@ -33,6 +35,8 @@ class App extends MovieClip {
 	private var calendarAppXMLPath:String;
 	private var videoannouncementsAppXMLPath:String;
 	
+	private var subPageApp:SubPageApp;
+
 	private var newsApp:NewsApp;
 	private var calendarApp:CalendarApp;
 //	private var videoannouncementsApp:videoannouncementsApp;
@@ -93,6 +97,8 @@ class App extends MovieClip {
 		}
 		
 		_global.leftColumnPicPath=_oXml.leftcolumnpic.attributes.assetname;
+	
+		structurePath=_oXml.structureapp.attributes.XMLpath;
 
 		newsAppXMLPath=_oXml.newsapp.attributes.XMLpath;
 		calendarAppXMLPath=_oXml.calendarapp.attributes.XMLpath;
@@ -119,13 +125,17 @@ class App extends MovieClip {
 	private function initDisplayElements():Void{
 		// LAUNCH SUB APPS which should be ALPHA zero to fade in when loaded
 		//trace("what is this "+ newsAppXMLPath)
+	
+		
+				//structure = new StructureApp();
+				trace(" HEY OOOOOO   ::: "+StructureApp.getInstance().getPath()); 	
 				calendarApp = new CalendarApp(calendarAppXMLPath, _mc);
 				navbarApp = new Navbar(navBarArray, _mc);
 				mainImageApp = new MainImage(mainImagePath, _mc);
 				promoApp = new PromoBar(promoBarArray, _mc);
 				newsApp = new NewsApp(newsAppXMLPath, _mc);
 				
-				//subPageApp = new SubPageApp(_mc);
+				subPageApp = new SubPageApp();
 	}
 	
 	private function reloadDisplayElements():Void{
@@ -174,7 +184,9 @@ class App extends MovieClip {
 			newsApp.disable();
  			BroadCaster.broadcastEvent("pastorPicDisable");
 			
-
+			// LAUNCH THE SUB APP using structure
+			//trace(" HEY OOOOOO   ::: "+StructureApp.getInstance().getPath()); 	
+			
 		}
 		
 	}

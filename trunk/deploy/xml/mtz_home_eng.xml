@@ -36,6 +36,9 @@
 	<leftcolumnpic assetname="pastor_pic.jpg"/>
 	
 	<!-- other XML PATHS -->
+	
+	<structureapp XMLpath="structure.xml"/>
+
 	<newsapp XMLpath="mtz_news_eng.xml"/>
 	<calendarapp XMLpath="mtz_calendar_eng.xml"/>
 	<videoannouncementsapp XMLpath="mtz_va_eng.xml"/>
