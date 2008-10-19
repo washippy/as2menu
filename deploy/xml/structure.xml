@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+	structure
+	Created by William Shippy on 2008-10-19.
+	Copyright (c) 2008 __MyCompanyName__. All rights reserved.
+-->
+
+<mtzion>
+	<home eng="Home" esp="Inicio"/>
+	<about eng="About Mt. Zion" esp="Acerca De Mt. Zion">
+		<item eng="History" esp="Historia">History</item>
+		<item eng="What We Believe" esp="Lo Que Creemos">What We Believe</item>
+		<item eng="Pastor Loren" esp="Pastor Loren">Pastor Loren</item>
+		<item eng="Service Times" esp="N A">Service Times</item>
+		<item eng="Contact Information and Directions" esp="Conexiones Y Direcciones"></item>
+		<item eng="What Should I Expect?" esp="¿Dònde esta Mt. Zion?"></item>
+		<item eng="FAQ" esp="Preguntas Frecuentes">FAQ</item>
+	</about>
+	
+	 
+	<connections>
+		<item eng="Small Groups" esp="Inicio">Small Groups</item>
+		<item eng="Volunteer" esp="Inicio">Volunteer</item>
+	</connections>
+		
+	<ministries>
+		<item eng="Family Ministry" esp="Inicio">Family Ministry</item>
+		<item eng="Student Ministry Young Adults 18 to 35" esp="Inicio"></item>
+		<item eng="Singles" esp="Inicio">Singles</item>
+		<item eng="Generation 'LIFE!'" esp="Inicio">Generation 'LIFE!'</item>
+		<item eng="Hilltoppers" esp="Inicio">Hilltoppers</item>
+		<item eng="Women's Ministry" esp="Inicio">Women's Ministry</item>
+		<item eng="Men's Ministry" esp="Inicio">Men's Ministry</item>
+		<item eng="Engaged/Newly Married" esp="Inicio">Engaged/Newly Married</item>
+		<item eng="Hispanic Outreach" esp="Inicio">Hispanic Outreach</item>
+		<item eng="Creative Arts" esp="Inicio">Creative Arts</item>
+		<item eng="Deaf Ministry" esp="Inicio">Deaf Ministry</item>
+		<item eng="Life Enrichment" esp="Inicio">Life Enrichment</item>
+		<item eng="Miracle Healing Service" esp="Inicio">Miracle Healing Service</item>
+	</ministries>
+		
+	<education>
+		<item eng="Foundational Class" esp="Inicio">Foundational Class</item>
+		<item eng="Leadership Training Classes" esp="Inicio"></item>
+		<item eng="Sunday Night Classes" esp="Inicio"></item>
+		<item eng="Mt. Zion School of Performing Arts" esp="Inicio"></item>
+	</education>
+		
+	<community>	
+		<item eng="The District" esp="Inicio" link="http://thedistrictvenue.com"></item> 
+		<item eng="WCA" esp="Inicio">WCA</item>
+		<item eng="Zero Gravity" esp="Inicio" link="http://www.zerogravitysk8.com/"></item> 
+	</community>	
+		 
+	<pastoral_care/>
+	<el_salvadore/>
+	<partnership/>
+	<bookstore/>
+	<donations>
+		<item eng="Home" esp="Inicio">On-line Donations</item>	
+	</donations>
+</mtzion>

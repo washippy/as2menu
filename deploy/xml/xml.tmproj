@@ -16,7 +16,7 @@
 			<key>filename</key>
 			<string>mtz_home_eng.xml</string>
 			<key>lastUsed</key>
-			<date>2008-09-29T02:36:12Z</date>
+			<date>2008-10-19T05:35:56Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
@@ -28,11 +28,23 @@
 			<key>filename</key>
 			<string>mtz_news_eng.xml</string>
 			<key>lastUsed</key>
-			<date>2008-09-29T02:30:40Z</date>
+			<date>2008-10-19T04:38:31Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>menu.xml</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>structure.xml</string>
+			<key>lastUsed</key>
+			<date>2008-10-19T05:35:56Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>mtz_history_eng.xml</string>
+			<key>lastUsed</key>
+			<date>2008-10-19T05:32:56Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -44,23 +56,38 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>37</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>35</integer>
+				<integer>39</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>27</integer>
+			<integer>13</integer>
+		</dict>
+		<key>structure.xml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>36</integer>
+				<key>line</key>
+				<integer>13</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
+		<string>structure.xml</string>
 		<string>mtz_home_eng.xml</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{203, 536}, {1188, 342}}</string>
+	<string>{{790, 17}, {746, 861}}</string>
 </dict>
 </plist>

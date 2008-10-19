@@ -49,6 +49,11 @@ class CalendarApp extends MovieClip {
 	private var monthArray:Array;
 	private var weekArray:Array;
 	private var weekSArray:Array;
+	
+	
+	private var sp_monthArray:Array;
+	private var sp_weekArray:Array;
+	private var sp_weekSArray:Array;
 	                          
 	private var tempDate:Date;	
 	private var currentMonth;
@@ -80,6 +85,10 @@ class CalendarApp extends MovieClip {
 		weekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 		weekSArray = ["S", "M", "T", "W", "T", "F", "S"];
 		
+		sp_monthArray = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AUGUSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
+		sp_weekArray = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"];
+		sp_weekSArray = ["D", "L", "Mt", "Mc", "J", "V", "S"];
+		
 		// grab current date info
 		tempDate = new Date ();	
 		currentMonth = tempDate.getMonth();
@@ -103,10 +112,10 @@ class CalendarApp extends MovieClip {
 	}
 	
 	private function getEventList():Void{
-
+		// maybe cal_xml = null; ??
 		cal_xml = new XML();
 		cal_xml.ignoreWhite = true;
-		cal_xml.load(XMLPATH); ////////////// add espANOL func later
+		cal_xml.load(XMLPATH); 
 
 		cal_xml.onLoad = Delegate.create(this, onXmlLoad);
 		
@@ -167,6 +176,13 @@ class CalendarApp extends MovieClip {
 			
 	}
 	
+	public function reLoadCalendar(passmealong:String){
+		// for spanish... new xmlpath
+		XMLPATH = "xml/"+passmealong;  
+		getEventList();
+		
+	}
+
 	
 	private function buildEventsObject(){
 		var cLen = cXml.item.length;
@@ -480,7 +496,7 @@ class CalendarApp extends MovieClip {
 		
 		
 		if(tempArr.length<=0){
-			calApp.calscroller_mc.content_tf.htmlText = "No events scheduled.";
+			calApp.calscroller_mc.content_tf.htmlText = "No events scheduled."; //Ningunos acontecimientos programados.
 		}
 		calApp.calscroller_mc.content_tf.autoSize = true;
 		
@@ -705,7 +721,9 @@ class CalendarApp extends MovieClip {
 
 
 	
-	public function disable():Void{ // this fades in a white blocker mc and then _visible = false to disable clicks.
+	public function disable():Void{ 
+		
+	// this fades in a white blocker mc and then _visible = false to disable clicks.
 		trace(calApp.blocker_mc);
 		calApp.blocker_mc.swapDepths(calApp.getNextHighestDepth())
 		var invisify:Function = function(_ob:Object){
@@ -717,9 +735,7 @@ class CalendarApp extends MovieClip {
 		
 	}
 
-
-
-		
+	
 	private function rightArrowRelease(){
 			// trace("HEY "+this.currentMonth);
 			 cleanUp();
@@ -743,4 +759,6 @@ class CalendarApp extends MovieClip {
 			    }		   
 			displayMonth(currentMonth, currentYear);
    	}
+
+
 }
