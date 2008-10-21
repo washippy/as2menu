@@ -24,7 +24,7 @@ class CalendarApp extends MovieClip {
 	private var cXml:Object;
 	private var myXmlObject:XMLObject;
 	private var calApp:MovieClip;
-		private var blocker_mc:MovieClip;
+	private var blocker_mc:MovieClip;
 
 	private var calArrow_right:MovieClip;
 	private var calArrow_left:MovieClip;

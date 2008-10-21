@@ -6,8 +6,8 @@
 -->
 
 <mtzion>
-	<home eng="Home" esp="Inicio"/>
-	<about eng="About Mt. Zion" esp="Acerca De Mt. Zion">
+	<section name="home" eng="Home" esp="Inicio"/>
+	<section name="about" eng="About Mt. Zion" esp="Acerca De Mt. Zion">
 		<item eng="History" esp="Historia">History</item>
 		<item eng="What We Believe" esp="Lo Que Creemos">What We Believe</item>
 		<item eng="Pastor Loren" esp="Pastor Loren">Pastor Loren</item>
@@ -15,17 +15,22 @@
 		<item eng="Contact Information and Directions" esp="Conexiones Y Direcciones"></item>
 		<item eng="What Should I Expect?" esp="¿Dònde esta Mt. Zion?"></item>
 		<item eng="FAQ" esp="Preguntas Frecuentes">FAQ</item>
-	</about>
+	</section>
 	
 	 
-	<connections>
+	<section name="connections" eng="Connections" esp="Inicio">
 		<item eng="Small Groups" esp="Inicio">Small Groups</item>
 		<item eng="Volunteer" esp="Inicio">Volunteer</item>
-	</connections>
+	</section>
 		
-	<ministries>
+	<section name="ministries" eng="Ministries" esp="Inicio">
 		<item eng="Family Ministry" esp="Inicio">Family Ministry</item>
-		<item eng="Student Ministry Young Adults 18 to 35" esp="Inicio"></item>
+		<item eng="Student Ministry Young Adults 18 to 35" esp="Inicio" subnav_enabled="true">
+			<subnav eng="THE DISTRICT" esp="El Districto" link="http://www.thedistrictvenue.com"/>
+			<subnav eng="GEN ONE SITE" esp="E" link="http://www.genone.com"/>
+			<subnav eng="MYSPACE" esp="E" link="http://www.myspace.com/thedistrictvenue"/>
+		</item>
+		
 		<item eng="Singles" esp="Inicio">Singles</item>
 		<item eng="Generation 'LIFE!'" esp="Inicio">Generation 'LIFE!'</item>
 		<item eng="Hilltoppers" esp="Inicio">Hilltoppers</item>
@@ -37,26 +42,27 @@
 		<item eng="Deaf Ministry" esp="Inicio">Deaf Ministry</item>
 		<item eng="Life Enrichment" esp="Inicio">Life Enrichment</item>
 		<item eng="Miracle Healing Service" esp="Inicio">Miracle Healing Service</item>
-	</ministries>
+	</section>
 		
-	<education>
+	<section name="education" eng="Education" esp="Inicio">
 		<item eng="Foundational Class" esp="Inicio">Foundational Class</item>
 		<item eng="Leadership Training Classes" esp="Inicio"></item>
 		<item eng="Sunday Night Classes" esp="Inicio"></item>
 		<item eng="Mt. Zion School of Performing Arts" esp="Inicio"></item>
-	</education>
+	</section>
 		
-	<community>	
+	<section name="community" eng="Community" esp="Inicio">	
 		<item eng="The District" esp="Inicio" link="http://thedistrictvenue.com"></item> 
 		<item eng="WCA" esp="Inicio">WCA</item>
 		<item eng="Zero Gravity" esp="Inicio" link="http://www.zerogravitysk8.com/"></item> 
-	</community>	
+	</section>	
 		 
-	<pastoral_care/>
-	<el_salvadore/>
-	<partnership/>
-	<bookstore/>
-	<donations>
-		<item eng="Home" esp="Inicio">On-line Donations</item>	
-	</donations>
+	<section name="pastoral_care" eng="Pastoral Care" esp="Inicio" />
+	<section name="el_salvadore" eng="El Salvadore" esp="Inicio"/>
+	<section name="partnership" eng="Partnership" esp="Inicio"/>
+	<section name="bookstore" eng="Bookstore" esp="Inicio"/>
+	<section name="donations" eng="Donations" esp="Inicio" subnav_enabled="true">
+		<item eng="On-Line Donations" esp="Inicio">On-line Donations</item>	
+	</section>
+	<section name="building_updates" eng="Building Updates" esp="Inicio" gallery_enabled="true" gallery_xml="building_gallery.xml" />
 </mtzion>
