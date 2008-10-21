@@ -126,9 +126,9 @@ class App extends MovieClip {
 		// LAUNCH SUB APPS which should be ALPHA zero to fade in when loaded
 		//trace("what is this "+ newsAppXMLPath)
 	
-		
-				//structure = new StructureApp();
-				trace(" HEY OOOOOO   ::: "+StructureApp.getInstance().getPath()); 	
+				StructureApp.getInstance().setPath(structurePath);
+				
+				//trace(" HEY OOOOOO   ::: "+StructureApp.getInstance().getPath()); 	
 				calendarApp = new CalendarApp(calendarAppXMLPath, _mc);
 				navbarApp = new Navbar(navBarArray, _mc);
 				mainImageApp = new MainImage(mainImagePath, _mc);
