@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Navbar.as</string>
+	<string>SubPageApp.as</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -16,7 +16,7 @@
 			<key>filename</key>
 			<string>App.as</string>
 			<key>lastUsed</key>
-			<date>2008-10-22T04:04:16Z</date>
+			<date>2008-10-23T04:11:00Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -62,9 +62,7 @@
 			<key>filename</key>
 			<string>Navbar.as</string>
 			<key>lastUsed</key>
-			<date>2008-10-22T04:04:16Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2008-10-23T04:09:32Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -96,25 +94,27 @@
 			<key>filename</key>
 			<string>NewsApp.as</string>
 			<key>lastUsed</key>
-			<date>2008-10-22T03:48:04Z</date>
+			<date>2008-10-23T04:12:13Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NewsStory.as</string>
 			<key>lastUsed</key>
-			<date>2008-10-22T03:48:10Z</date>
+			<date>2008-10-23T04:11:15Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>SubPageApp.as</string>
 			<key>lastUsed</key>
-			<date>2008-10-22T03:56:34Z</date>
+			<date>2008-10-23T04:12:13Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>StructureApp.as</string>
 			<key>lastUsed</key>
-			<date>2008-10-22T04:03:16Z</date>
+			<date>2008-10-23T04:10:45Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -126,130 +126,132 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>48</integer>
+				<integer>13</integer>
 				<key>line</key>
-				<integer>86</integer>
+				<integer>105</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>64</integer>
+			<integer>82</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>44</integer>
+				<integer>2</integer>
 				<key>line</key>
-				<integer>86</integer>
+				<integer>105</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>51</integer>
+				<integer>16</integer>
 				<key>line</key>
-				<integer>86</integer>
+				<integer>105</integer>
 			</dict>
-		</dict>
-		<key>CalendarApp.as</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>21</integer>
-				<key>line</key>
-				<integer>72</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>57</integer>
 		</dict>
 		<key>Navbar.as</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>86</integer>
+				<integer>93</integer>
 				<key>line</key>
-				<integer>32</integer>
+				<integer>76</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>7</integer>
+			<integer>87</integer>
 		</dict>
 		<key>NewsApp.as</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>22</integer>
+				<integer>31</integer>
 				<key>line</key>
-				<integer>50</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>27</integer>
-		</dict>
-		<key>NewsStory.as</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>23</integer>
-				<key>line</key>
-				<integer>35</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>12</integer>
-		</dict>
-		<key>StructureApp.as</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>52</integer>
-				<key>line</key>
-				<integer>32</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>2</integer>
-		</dict>
-		<key>SubPageApp.as</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>23</integer>
-				<key>line</key>
-				<integer>42</integer>
+				<integer>115</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>38</integer>
+			<integer>95</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>17</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>42</integer>
+				<integer>115</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>29</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>42</integer>
+				<integer>116</integer>
 			</dict>
+		</dict>
+		<key>NewsStory.as</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>30</integer>
+				<key>line</key>
+				<integer>120</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>82</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>25</integer>
+				<key>line</key>
+				<integer>120</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>30</integer>
+				<key>line</key>
+				<integer>120</integer>
+			</dict>
+		</dict>
+		<key>StructureApp.as</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>18</integer>
+				<key>line</key>
+				<integer>41</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>22</integer>
+		</dict>
+		<key>SubPageApp.as</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>5</integer>
+				<key>line</key>
+				<integer>137</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>92</integer>
 		</dict>
 		<key>menuItem.as</key>
 		<dict>
@@ -309,35 +311,19 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>utils/BroadCaster.as</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>48</integer>
-				<key>line</key>
-				<integer>25</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>2</integer>
-		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>App.as</string>
 		<string>Navbar.as</string>
 		<string>SubPageApp.as</string>
-		<string>utils/BroadCaster.as</string>
-		<string>CalendarApp.as</string>
-		<string>NewsApp.as</string>
 		<string>NewsStory.as</string>
+		<string>NewsApp.as</string>
 		<string>StructureApp.as</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{198, 4}, {1231, 874}}</string>
+	<string>{{192, -54}, {1231, 874}}</string>
 </dict>
 </plist>
