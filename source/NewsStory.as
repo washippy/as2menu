@@ -33,7 +33,7 @@ class NewsStory extends MovieClip {
 		// trace("NEWS STORY CONSTRUCTOR : "+this+newline+headline +newline+date+newline+bodyCopy+newline+link);
 		// trace("NEWS STORY CONSTRUCTOR :::::::: "+newline+bCopy);
 
-		//if (_global.lang = "SPANISH"){trace("SPAAAAANISH NEWS STORY")}else{}
+		//if (_global.lang == "SPANISH"){trace("SPAAAAANISH NEWS STORY")}else{}
 			less_button._visible=false;
 			
 			BroadCaster.register(this,"updateMoreButton");

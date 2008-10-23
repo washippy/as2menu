@@ -2,27 +2,8 @@
 //  StructureApp
 //
 //  Created by William Shippy on 2008-10-19.
-//  Copyright (c) 2008 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2008 All rights reserved.
 //
-
-/* 
-
-private var _currentAmount:Number = 0; 
-
-public function getAmount():Number 
-{ 
-return _currentAmount; 
-} 
-
-public function setAmount(newAmount:Number):Void 
-{ 
-_currentAmount = newAmount 
-}
-var foo:Singleton = new Singleton(); 
-The above call will create a new instance and therefore return 0 the default value set 
-in the singleton class. So to retrieve the amount stored in the class you use: 
-Singleton.getInstance().getAmount();  
-*/
 
 
 import utils.XMLObject;
@@ -47,11 +28,23 @@ class StructureApp {
 		} 
 			return _instance; 
 	}
+	
+	
+	public function getArrayData(_name:String):Array { 
+		// loop thru array and ship appropriate one
+		for(var x in section_array){
+			if(section_array[x].name == _name){
+				return section_array[x];
+				trace("returning : "+section_array[x].name);
+			}
+		}
+	}
+	
 		
 	public function getPath():String { 
 		return _xmlPath; 
 	} 
-
+	
 	public function setPath(_xP:String):Void { 
 		_xmlPath = "xml/"+_xP;
 		trace("++++++++++++++++ STRUCTURE PATH RECEIVED :"+_xP);
@@ -105,6 +98,10 @@ class StructureApp {
 			for(var bill in section_array[bob]){
 			trace("OOOOO "+ bob +":"+bill+ " :: "+ section_array[bob][bill])
 		}
-		}
+		
+	}
+	
+
+
 	}
 }

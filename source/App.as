@@ -22,7 +22,7 @@ class App extends MovieClip {
 	private var mainImagePath:String;
 	private var navBarArray:Array;
 	
-	private var PAGE:String="HOME"; // HOME, SUB
+	private var PAGE:String="home"; // home or nuthin
 	
 	private var INIT:Boolean=false; // have the app instances been created?
 	
@@ -82,7 +82,10 @@ class App extends MovieClip {
 		navBarArray = new Array();
 		var nLen = _oXml.navbar.item.length;
 		for(var n=0;n<nLen;n++){
-			navBarArray.push({title:_oXml.navbar.item[n].attributes.title});
+			navBarArray.push({
+				title:_oXml.navbar.item[n].attributes.title,
+				navName:_oXml.navbar.item[n].attributes.navName				
+				});  //////// change this to a structure thing maybe
 		}
 		
 		promoBarArray = new Array();
@@ -141,7 +144,7 @@ class App extends MovieClip {
 	private function reloadDisplayElements():Void{
 			trace("RELOAD current PAGE :"+ PAGE);
 			switch(PAGE){
-				case "HOME" :
+				case "home" :
 				/* 
 					calendarApp.enable();
 									navbarApp.enable();
@@ -154,7 +157,7 @@ class App extends MovieClip {
 
 				
 				break;
-				case "SUB" :
+				default :
 				/* 
 					calendarApp.disable();
 									navbarApp.disable();
@@ -176,7 +179,7 @@ class App extends MovieClip {
 	private function launchNewPage(_obj:Object):Void{
 		trace("LAUNCH "+_obj);
 		// fade out existing apps
-		if(PAGE=="HOME"){
+		if(PAGE=="home"){
 			calendarApp.disable();
 		//	buttonbar.disable();
 		//	mediaplayerstuff.disable();
@@ -188,6 +191,8 @@ class App extends MovieClip {
 			//trace(" HEY OOOOOO   ::: "+StructureApp.getInstance().getPath()); 	
 			
 		}
+		PAGE=toString(_obj);
+		BroadCaster.broadcastEvent("loadASubPage", _obj , false);
 		
 	}
 	
