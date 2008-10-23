@@ -18,7 +18,7 @@ class StructureApp {
 	private var str_xml:XML;
 	private var sXml:Object;
 	private var myXmlObject:XMLObject;
-	
+	private var hotarray:String;
 	private var section_array:Array;
 	private function StructureApp(){}
 	
@@ -30,17 +30,23 @@ class StructureApp {
 	}
 	
 	
-	public function getArrayData(_name:String):Array { 
+	public function setArrayData(_set:String):Void { 
 		// loop thru array and ship appropriate one
-		for(var x in section_array){
-			if(section_array[x].name == _name){
-				return section_array[x];
-				trace("returning : "+section_array[x].name);
-			}
-		}
+		hotarray = _set;
 	}
 	
-		
+	public function getArrayData():Object { 
+			// loop thru array and ship appropriate one
+			trace("GET ARRAY DAATA :: " + hotarray);
+			for(var f in section_array){
+				trace("checkin : "+section_array[f].name);
+				
+				if(section_array[f].name == hotarray){
+					return section_array[f];
+					trace("returning : "+section_array[f].name);
+				}
+			}
+		}
 	public function getPath():String { 
 		return _xmlPath; 
 	} 

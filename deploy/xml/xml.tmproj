@@ -3,22 +3,20 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>mtz_home_eng.xml</string>
+	<string>mtz_news_eng.xml</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>mtz_calendar_eng.xml</string>
 			<key>lastUsed</key>
-			<date>2008-10-22T03:56:01Z</date>
+			<date>2008-10-23T04:06:00Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>mtz_home_eng.xml</string>
 			<key>lastUsed</key>
-			<date>2008-10-22T04:02:59Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2008-10-23T02:26:09Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -28,31 +26,33 @@
 			<key>filename</key>
 			<string>mtz_news_eng.xml</string>
 			<key>lastUsed</key>
-			<date>2008-10-19T04:38:31Z</date>
+			<date>2008-10-23T04:06:00Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>menu.xml</string>
 			<key>lastUsed</key>
-			<date>2008-10-22T04:00:45Z</date>
+			<date>2008-10-23T04:05:45Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>about_eng.xml</string>
 			<key>lastUsed</key>
-			<date>2008-10-22T03:55:26Z</date>
+			<date>2008-10-23T04:05:44Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>history_eng.xml</string>
 			<key>lastUsed</key>
-			<date>2008-10-22T03:55:56Z</date>
+			<date>2008-10-23T04:05:49Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>structure.xml</string>
 			<key>lastUsed</key>
-			<date>2008-10-22T04:02:59Z</date>
+			<date>2008-10-23T03:55:57Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -64,9 +64,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>16</integer>
+				<integer>15</integer>
 				<key>line</key>
-				<integer>4</integer>
+				<integer>5</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -113,35 +113,49 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>8</integer>
 		</dict>
 		<key>mtz_home_eng.xml</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>30</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>13</integer>
+				<integer>10</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>2</integer>
+			<integer>7</integer>
+		</dict>
+		<key>mtz_news_eng.xml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>645</integer>
+				<key>line</key>
+				<integer>19</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>structure.xml</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>8</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>10</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>4</integer>
+			<integer>6</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -149,6 +163,7 @@
 		<string>structure.xml</string>
 		<string>menu.xml</string>
 		<string>mtz_calendar_eng.xml</string>
+		<string>mtz_news_eng.xml</string>
 		<string>history_eng.xml</string>
 		<string>about_eng.xml</string>
 		<string>mtz_home_eng.xml</string>

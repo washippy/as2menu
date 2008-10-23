@@ -6,6 +6,9 @@
 	<!-- MAIN IMAGE : can be a swf, jpg, gif, or png :: path relative to root dir-->
 	<mainimage assetname="main_image1.swf"/>
 	
+	
+	
+	
 	<!-- RED NAV BAR VALUES -->
 	<!-- navName MUST LINE UP WITH structure.xml VALUES -->
 	
@@ -17,6 +20,11 @@
 		<item navName="international" title="International" />	
 		<item navName="pastoral_care" title="Pastoral Care" />					
 	</navbar>
+	
+	
+	
+	
+	
 	
 	<!-- DYNAMIC PROMO BAR PARTS :: may be overridden by SWF some day -->
 	<promobar>
