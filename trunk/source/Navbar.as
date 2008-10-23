@@ -25,17 +25,22 @@ class Navbar extends MovieClip {
 	
 	public function Navbar(_navdata:Object, clip:MovieClip){
 		navbar=clip.navbar_mc;
-		//trace("NAVBAR CONSTRUCTOR ");
+		trace("NAVBAR CONSTRUCTOR "+_navdata[0].navName);
 		
 		navbar._alpha=0;
 		navArray = new Array();
 		navLength = _navdata.length;
+		navArray = _navdata;  /////// FIX  ... not gonna work  . go thru obj and build array
+	/* 
 		
-		for(var i=0;i<navLength;i++){
-			
-			navArray[i] = _navdata[i].title;
-			//trace(navArray[i]);
-		}
+			for(var i=0;i<navLength;i++){
+				
+				navArray[i] = _navdata[i].title;
+				//trace(navArray[i]);
+			} 
+	*/
+
+	
 		buildButtons();
 	}
 	
@@ -63,7 +68,7 @@ class Navbar extends MovieClip {
 		
 			navbar["nb"+i].nameNum = i+1;
 			navbar["nb"+i].nameString = navArray[i];
-			
+			navbar["nb"+i].nameString = _navdata[i].navName;
 			navbar["nb"+i].top_tf_mc.tf.text = navbar["nb"+i].bottom_tf_mc.tf.text = navArray[i];
 			navbar["nb"+i].top_tf_mc.tf.autoSize = navbar["nb"+i].bottom_tf_mc.tf.autoSize = "center";
 			
@@ -115,8 +120,8 @@ class Navbar extends MovieClip {
 	}
 	
 	private function nbPress(){
-			var testObj:Object = new Object(); // new stuff
-			testObj = this.nameString;
+			var testObj:Object = new Object(); // TESTING == FIX THIS
+			testObj = this.navName;
 			BroadCaster.broadcastEvent("launchNewPage", testObj, true);
 	}
 

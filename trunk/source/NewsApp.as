@@ -48,7 +48,7 @@ class NewsApp extends MovieClip {
 	public function NewsApp(passmealong:String, clip:MovieClip){
 		// trace("NEWS APP CONSTRUCTOR "+passmealong+clip);
 		newsApp = clip.news_app_mc;
-		//if (_global.lang = "SPANISH"){}else{}
+		//if (_global.lang == "SPANISH"){}else{}
 		
 		XMLPATH = "xml/"+passmealong;     
 		//newsApp = clip.calendar_app_mc;

@@ -7,13 +7,15 @@
 	<mainimage assetname="main_image1.swf"/>
 	
 	<!-- RED NAV BAR VALUES -->
+	<!-- navName MUST LINE UP WITH structure.xml VALUES -->
+	
 	<navbar>
-		<item title="About Us" />	
-		<item title="Get Connected" />	
-		<item title="Education" />
-		<item title="Ministries" />						
-		<item title="International" />	
-		<item title="Pastoral Care" />					
+		<item navName="about" title="About Us" />	 
+		<item navName="connections" title="Get Connected" />	
+		<item navName="education" title="Education" />
+		<item navName="ministries" title="Ministries" />						
+		<item navName="international" title="International" />	
+		<item navName="pastoral_care" title="Pastoral Care" />					
 	</navbar>
 	
 	<!-- DYNAMIC PROMO BAR PARTS :: may be overridden by SWF some day -->
