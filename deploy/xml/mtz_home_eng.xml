@@ -18,7 +18,8 @@
 		<item navName="education" title="Education" />
 		<item navName="ministries" title="Ministries" />						
 		<item navName="international" title="International" />	
-		<item navName="pastoral_care" title="Pastoral Care" />					
+		<item navName="pastoralcare" title="Pastoral Care" />					
+		
 	</navbar>
 	
 	

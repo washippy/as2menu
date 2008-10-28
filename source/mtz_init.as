@@ -14,6 +14,8 @@ import utils.XMLObject;
 	_global.lang ="ENGLISH";
 //}
 
+	
+	
 /*   	esp.onPress = function(){
 		trace("GGGGGGGGGGGGGGGGGGGGGG "+_global.lang)
 		if(_global.lang == "SPANISH"){
@@ -60,6 +62,11 @@ function onXmlLoad($success:Boolean):Void{
 	
 	// RUN PROGRAM
 	app = new App(this, oXml);
+}
+
+home.onPress = function(){
+	trace("HOME JAMES ")
+	app.reloadDisplayElements();
 }
 
 

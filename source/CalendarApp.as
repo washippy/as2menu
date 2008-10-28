@@ -721,19 +721,6 @@ class CalendarApp extends MovieClip {
 
 
 	
-	public function disable():Void{ 
-		
-	// this fades in a white blocker mc and then _visible = false to disable clicks.
-		trace(calApp.blocker_mc);
-		calApp.blocker_mc.swapDepths(calApp.getNextHighestDepth())
-		var invisify:Function = function(_ob:Object){
-			trace("I I :"+_ob);
-			_ob._visible=false;
-			}
-			
-		Tweener.addTween(calApp.blocker_mc, {time:1, transition:"easeOut", _alpha:100, onComplete:invisify, onCompleteParams:[calApp]});
-		
-	}
 
 	
 	private function rightArrowRelease(){
@@ -759,6 +746,24 @@ class CalendarApp extends MovieClip {
 			    }		   
 			displayMonth(currentMonth, currentYear);
    	}
-
+	
+	public function disable():Void{ 
+		
+	// this fades in a white blocker mc and then _visible = false to disable clicks.
+		trace(calApp.blocker_mc);
+		calApp.blocker_mc.swapDepths(calApp.getNextHighestDepth())
+		var invisify:Function = function(_ob:Object){
+			trace("I I :"+_ob);
+			_ob._visible=false;
+			}
+			
+		Tweener.addTween(calApp.blocker_mc, {time:1, transition:"easeOut", _alpha:100, onComplete:invisify, onCompleteParams:[calApp]});
+		
+	}
+	
+	public function enable():Void{ 
+		calApp._visible=true;				
+		Tweener.addTween(calApp.blocker_mc, {time:1, transition:"easeOut", _alpha:0});
+	}
 
 }

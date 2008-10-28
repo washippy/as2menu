@@ -24,6 +24,9 @@ class SubPageApp extends MovieClip {
 	private var subpage_xml:XML;
 	private var sXml:Object;
 	private var myXmlObject:XMLObject;
+	private var subpage1_mc:MovieClip;
+	private var menuholder_mc:MovieClip;
+	private var ML:menuList;
 	
 	private var galleryEnabled:Boolean;
 	
@@ -31,12 +34,12 @@ class SubPageApp extends MovieClip {
 	
 	private var styles:TextField.StyleSheet;
 	
-	public function SubPageApp(passmealong:String, clip:MovieClip){
+	public function SubPageApp(clip:MovieClip){
 		 trace("SUBPAGE APP CONSTRUCTOR ");
 		
 		trace(" HEY SUBPAGE   ::: "+StructureApp.getInstance().getPath()); 	
 		BroadCaster.register(this,"loadASubPage");
-
+		subpage1_mc = clip.subpage1;
 				styles = new TextField.StyleSheet();
 
 				styles.setStyle("headline", {
@@ -113,20 +116,43 @@ class SubPageApp extends MovieClip {
 	}
 	
 	private function fireitupman():Void{
-		
+		disable();
 			for (var zed in sXml){
 				for (var zing in sXml[zed]){
 					for (var zap in sXml[zed][zing]){
 						trace(zed+" :: "+zing+" :: " +zap+ " :: "+sXml[zed][zing][zap]);
 						}}}
-			// goFn();
-			 trace(sXml.main.item.data);
+						
+			//subpage1_mc.menuholder_mc.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(TF_HEIGHT * num), _title:_titleObj, _mc:_mcObj, _justify:justify});
+		
+			var suckerArray:Array = new Array();
+			suckerArray[0]= "CHILDREN";
+			suckerArray[1]= "YOUTH";
+
+			suckerArray[2]= "YOUNG ADULT";
+			suckerArray[3]= "SINGLES";
+			suckerArray[4]= "GENERATION LIFE";
+			suckerArray[5]= "HILLTOPPERS";
+			suckerArray[6]= "CREATIVE ARTS";
+			suckerArray[7]= "MARRIAGE & FAMILY";
+			suckerArray[8]= "ESPANOL";
+		
+			ML = new menuList(suckerArray, subpage1_mc.menuholder_mc, "right"); // justify right or left
+	
+			popData();
+		 //	trace(sXml.main.item.copy.data);
 		
 	}
 	
 	private function popData(){
 		// bCopy = bCopy+ itemArray[i].childNodes[b].toString();
-
+		trace(subpage1_mc);
+		subpage1_mc.header_tf.text = sXml.main.item.headline.data;
+		
+		
+	//	subpage1_mc.bodycopy_tf.styleSheet= styles;
+		subpage1_mc.bodycopy_tf.htmlText = sXml.main.item.copy.data;
+		Tweener.addTween(subpage1_mc, {_alpha:100, time:1.1, transition:"easeOut"});
 		// story_tf.styleSheet = styles;
 		// story_tf.htmlText = bCopy;
 		// story_tf.autoSize=true;
@@ -140,6 +166,10 @@ class SubPageApp extends MovieClip {
 	
 	
 	public function disable():Void{ 
+		trace("sub page disable -->");
+		Tweener.addTween(subpage1_mc, {_alpha:0, time:0.5, transition:"easeOut"});
+				ML.disable();
+		
 		/* 
 		thisapp.blocker_mc.swapDepths(thisapp.getNextHighestDepth())
 			var invisify:Function = function(_ob:Object){

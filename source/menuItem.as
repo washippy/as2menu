@@ -92,12 +92,12 @@ class menuItem extends MovieClip {
 	
 	
 	private function parseTitleRight(_t:String){
-		//trace("RIGHT +++++++  "+_t);
+		//trace("RIGHT ++++++++++++  "+_t);
 		itemArray = _t.split(" ");	
 		itemArray.reverse();
 		
 			for(var i = 0 ; i<itemArray.length; i++){
-			trace(i + "ARR ++++++++++++++  "+itemArray[i]);
+			trace(i + "ARR --------------------  "+itemArray[i]);
 			
 			
 			mItem.attachMovie("menuItemWordRight", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:0, _y:0, _title:itemArray[i]}); // move it later;
@@ -171,7 +171,7 @@ class menuItem extends MovieClip {
 				}
 			}
 		}else{
-			count = limit; // switch a roo
+			count = limit; // switch a roo  ... i mean left to right
 			limit = 0;
 			mItem.onEnterFrame = function(){
 				mItem["menuItemWord"+count].gotoAndPlay("over");
@@ -181,10 +181,6 @@ class menuItem extends MovieClip {
 				}
 			}
 		}
-		
-
-		
-		
 	}
 	
 	public function rollEmOut(){

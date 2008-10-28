@@ -69,7 +69,7 @@ class Navbar extends MovieClip {
 		navbar.attachMovie("menuItem", "nb"+i, navbar.getNextHighestDepth(), {_title:_titleObj, _mc:_mcObj, _justify:justify});//(TF_HEIGHT * i)
 		 
 		*/
-trace(navArray[i].title+" OYOYOY "+navArray[i].navName);
+		trace(navArray[i].title+" OYOYOY "+navArray[i].navName);
 		
 			navbar["nb"+i].nameNum = i+1;
 			navbar["nb"+i].nameString = navArray[i].title;

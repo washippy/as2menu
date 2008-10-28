@@ -68,5 +68,13 @@ class menuList extends MovieClip {
 		}
 
 	}
+	
+	public function disable(){
+		trace("menu list disable -------------");
+		for(var num = 0; num<listArray.length ; num++){
+			menulist["menuItem"+num].removeMovieClip();
+			}
+
+	}
 
 }

@@ -50,19 +50,20 @@
 		<item eng="Sunday Night Classes" esp="Inicio"></item>
 		<item eng="Mt. Zion School of Performing Arts" esp="Inicio"></item>
 	</section>
-		
-	<section name="community" eng="Community" esp="Inicio">	
+	<section name="international" eng="International" esp="Inicio" />
+
+	<section name="pastoralcare" eng="Pastoral Care" esp="Inicio" />
+<!--	<section name="community" eng="Community" esp="Inicio">	
 		<item eng="The District" esp="Inicio" link="http://thedistrictvenue.com"></item> 
 		<item eng="WCA" esp="Inicio">WCA</item>
 		<item eng="Zero Gravity" esp="Inicio" link="http://www.zerogravitysk8.com/"></item> 
 	</section>	
-		 
-	<section name="pastoral_care" eng="Pastoral Care" esp="Inicio" />
+ 
 	<section name="el_salvadore" eng="El Salvadore" esp="Inicio"/>
 	<section name="partnership" eng="Partnership" esp="Inicio"/>
 	<section name="bookstore" eng="Bookstore" esp="Inicio"/>
 	<section name="donations" eng="Donations" esp="Inicio" subnav_enabled="true">
 		<item eng="On-Line Donations" esp="Inicio">On-line Donations</item>	
 	</section>
-	<section name="building_updates" eng="Building Updates" esp="Inicio" gallery_enabled="true" gallery_xml="building_gallery.xml" />
+	<section name="building_updates" eng="Building Updates" esp="Inicio" gallery_enabled="true" gallery_xml="building_gallery.xml" />-->
 </mtzion>
