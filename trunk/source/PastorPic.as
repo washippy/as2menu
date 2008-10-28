@@ -71,12 +71,9 @@ class PastorPic extends MovieClip{
 		
 	}
 	public function pastorPicEnable():Void{
-		var visify:Function = function(_ob:Object){
-			trace(_ob);
-			_ob._visible=true;
-			}
-			
-		Tweener.addTween(this, {time:1, transition:"easeOut", _alpha:100, onComplete:visify, onCompleteParams:[this]});
+	
+		this._visible=true;	
+		Tweener.addTween(this, {time:1, transition:"easeOut", _alpha:100});
 		
 	}
 	

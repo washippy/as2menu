@@ -85,7 +85,7 @@ class App extends MovieClip {
 			navBarArray.push({
 				title:_oXml.navbar.item[n].attributes.title,
 				navName:_oXml.navbar.item[n].attributes.navName				
-				});  //////// change this to a structure thing maybe
+				}); 					 //////// change this to a structure thing maybe
 		}
 		
 		promoBarArray = new Array();
@@ -138,36 +138,39 @@ class App extends MovieClip {
 				promoApp = new PromoBar(promoBarArray, _mc);
 				newsApp = new NewsApp(newsAppXMLPath, _mc);
 				
-				subPageApp = new SubPageApp();
+				subPageApp = new SubPageApp(_mc);
 	}
 	
-	private function reloadDisplayElements():Void{
-			trace("RELOAD current PAGE :"+ PAGE);
+	public function reloadDisplayElements():Void{
+		var p = String(PAGE);
+			trace("RELOAD DISPLAY ELEMENTS :: current PAGE ::"+ p);
 			switch(PAGE){
 				case "home" :
-				/* 
-					calendarApp.enable();
-									navbarApp.enable();
-									mainImageApp.enable();
-									promoApp.enable();
-									newsApp.enable();
-									
-									subPageApp.disable(); 
-				*/
+				
+					/* 
+						calendarApp.disable();
+										navbarApp.disable();
+										mainImageApp.disable();
+										promoApp.disable();
+										newsApp.disable();
+
+										subPageApp.enable();
+
+					*/
 
 				
 				break;
 				default :
-				/* 
-					calendarApp.disable();
-									navbarApp.disable();
-									mainImageApp.disable();
-									promoApp.disable();
-									newsApp.disable();
-									
-									subPageApp.enable();
-								 
-				*/
+				
+					subPageApp.disable(); 
+				
+					calendarApp.enable();
+				//	navbarApp.enable();
+				//	mainImageApp.enable();
+					promoApp.enable();
+					newsApp.enable();
+					BroadCaster.broadcastEvent("pastorPicEnable");
+					PAGE = "home";
 
 				
 				break;
@@ -191,7 +194,7 @@ class App extends MovieClip {
 			//trace(" HEY OOOOOO   ::: "+StructureApp.getInstance().getPath()); 	
 			
 		}
-		PAGE=toString(_obj);
+		PAGE=String(_obj);
 		BroadCaster.broadcastEvent("loadASubPage", _obj , false);
 		
 	}

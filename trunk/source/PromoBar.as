@@ -19,7 +19,7 @@ class PromoBar extends MovieClip{
 	private var CURRENTLEFTPROMO:Number=1;
 	
 	
-	function PromoBar(_promoArray:Array, _clip:MovieClip){
+	public function PromoBar(_promoArray:Array, _clip:MovieClip){
 		
 		CLIP = _clip;
 		
@@ -60,19 +60,10 @@ class PromoBar extends MovieClip{
 		promoholder.setMask(CLIP.promo_app_mc.promomask_mc);
 	
 		manageArrows();
-		}
-	
-	
-	public function disable():Void{
-		trace(CLIP.promo_app_mc);
-		var invisify:Function = function(_ob:Object){
-			trace("I I :"+_ob);
-			_ob._visible=false;
-			}
-			
-		Tweener.addTween(CLIP.promo_app_mc, {time:1, transition:"easeOut", _alpha:0, onComplete:invisify, onCompleteParams:[CLIP.promo_app_mc]});
-		
 	}
+	
+	
+
 	
 	
 	private function manageArrows(){
@@ -95,9 +86,7 @@ class PromoBar extends MovieClip{
 		}else{
 			removeREvents();
 			addLEvents();
-		}
-		
-		
+		}	
 		
 	}
 	
@@ -171,4 +160,23 @@ class PromoBar extends MovieClip{
 	private function rArrowRollOut(){
 		
 	}
+	
+	
+	public function disable():Void{
+		trace(CLIP.promo_app_mc);
+		var invisify:Function = function(_ob:Object){
+			trace("I I :"+_ob);
+			_ob._visible=false;
+			}
+
+		Tweener.addTween(CLIP.promo_app_mc, {time:1, transition:"easeOut", _alpha:0, onComplete:invisify, onCompleteParams:[CLIP.promo_app_mc]});
+
+	}
+
+	public function enable():Void{
+	
+		CLIP.promo_app_mc._visible=true;
+		Tweener.addTween(CLIP.promo_app_mc, {time:1, transition:"easeOut", _alpha:100});
+	}
+	
 }

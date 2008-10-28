@@ -259,5 +259,11 @@ class NewsApp extends MovieClip {
 		Tweener.addTween(newsApp, {time:1, transition:"easeOut", _alpha:0, onComplete:invisify, onCompleteParams:[newsApp]});
 		
 	}
+	public function enable():Void{
+		newsApp._visible=true;
+			
+		Tweener.addTween(newsApp, {time:1, transition:"easeOut", _alpha:100});
+		
+	}
 	
 }
