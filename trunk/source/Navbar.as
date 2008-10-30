@@ -5,6 +5,7 @@
 import mx.utils.Delegate;
 import utils.BroadCaster;
 import caurina.transitions.*;
+import StructureApp;
 
 
 
@@ -14,6 +15,9 @@ class Navbar extends MovieClip {
 	private var navbar:MovieClip; 
 	private var navbar_button_mc:MovieClip;
 	private var navArray:Array;
+	
+	private var sectionArray:Array;
+	
 	private var navLength:Number;
 	private var nameString:String;
 	private var nameId:String;	
@@ -24,37 +28,50 @@ class Navbar extends MovieClip {
 	private var justify:String = "center";
 	
 	
-	public function Navbar(_navdata:Array, clip:MovieClip){
+	public function Navbar(clip:MovieClip){
 		navbar=clip.navbar_mc;
-		trace("NAVBAR CONSTRUCTOR "+_navdata[0].navName);
 		
-		navbar._alpha=0;
-		navArray = new Array();
-		navLength = _navdata.length;
-		navArray = _navdata;  
-	
-		/* 
-
-					for(var i=0;i<navLength;i++){
-						
-						navArray[i] = _navdata[i].title;
-						//trace(navArray[i]);
-					} 
-			 
-		*/
-
+		trace("NAVBAR CONSTRUCTOR");
+		BroadCaster.register(this,"navBarGetData");
+		BroadCaster.register(this,"buildButtons");
 		
-
-	
-		buildButtons();
+		navbar._alpha=0;	
 	}
 	
-	private function buildButtons():Void{	
-		var bWidth = Math.floor((navbar._width - 3) / navLength); // button width = total width / number of buttons
-		var bHeight = navbar._height;
+	public function navBarGetData():Void{
+		sectionArray = new Array();
 		
+		var sectionArray = StructureApp.getInstance().getNavArray();
+		var saLen = sectionArray.length;
+		trace("section GET DATA "+sectionArray);
+	
+		navArray = new Array();
+		
+		for(var o=0; o<saLen; o++){
+			if(sectionArray[o].navNum != 0){
+				var nObj:Object = new Object();
+				nObj.name = sectionArray[o].name;
+				nObj.eng = sectionArray[o].eng;
+				nObj.esp = sectionArray[o].esp;
+				navArray[sectionArray[o].navNum]=nObj;
+				trace(" B  "+this);
+				trace(" BOOOO  "+navArray[o].eng);
+			
+			}
+		}
+		
+		BroadCaster.broadcastEvent("buildButtons");	
+	
+	}
+	
+	private function buildButtons():Void{
+	trace("BB -----------------"+navArray.length);
+			navLength = navArray.length;
+			
+		var bWidth = Math.floor((navbar._width - 3) / (navLength-1)); // button width = total width / number of buttons
+		var bHeight = navbar._height;
 		//trace("WW : "+navbar._width+" :: "+ navLength+" :: "+bWidth);
-		for(var i=0;i<navLength;i++){
+		for(var i=1;i<navLength;i++){
 			
 			navbar.attachMovie("navbar_button_mc", "nb"+i, navbar.getNextHighestDepth(), {_x:0, _y:-2});	
 			
@@ -69,12 +86,12 @@ class Navbar extends MovieClip {
 		navbar.attachMovie("menuItem", "nb"+i, navbar.getNextHighestDepth(), {_title:_titleObj, _mc:_mcObj, _justify:justify});//(TF_HEIGHT * i)
 		 
 		*/
-		trace(navArray[i].title+" OYOYOY "+navArray[i].navName);
+		trace(navArray[i].eng+" OYOYOY "+navArray[i].name);
 		
 			navbar["nb"+i].nameNum = i+1;
-			navbar["nb"+i].nameString = navArray[i].title;
-			navbar["nb"+i].nameId = navArray[i].navName;
-			navbar["nb"+i].top_tf_mc.tf.text = navbar["nb"+i].bottom_tf_mc.tf.text = navArray[i].title;
+			navbar["nb"+i].nameString = navArray[i].eng;
+			navbar["nb"+i].nameId = navArray[i].name;
+			navbar["nb"+i].top_tf_mc.tf.text = navbar["nb"+i].bottom_tf_mc.tf.text = navArray[i].eng;
 			navbar["nb"+i].top_tf_mc.tf.autoSize = navbar["nb"+i].bottom_tf_mc.tf.autoSize = "center";
 			
 			navbar["nb"+i].bkg_mc._width = bWidth;
