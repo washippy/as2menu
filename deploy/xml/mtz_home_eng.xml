@@ -10,7 +10,7 @@
 	
 	
 	<!-- RED NAV BAR VALUES -->
-	<!-- navName MUST LINE UP WITH structure.xml VALUES -->
+	<!-- navName MUST LINE UP WITH structure.xml VALUES     MOVED
 	
 	<navbar>
 		<item navName="about" title="About Us" />	 
@@ -22,7 +22,7 @@
 		
 	</navbar>
 	
-	
+	-->
 	
 	
 	

@@ -79,14 +79,18 @@ class App extends MovieClip {
 
 		mainImagePath=_oXml.mainimage.attributes.assetname;
 		
+	/* 
 		navBarArray = new Array();
-		var nLen = _oXml.navbar.item.length;
-		for(var n=0;n<nLen;n++){
-			navBarArray.push({
-				title:_oXml.navbar.item[n].attributes.title,
-				navName:_oXml.navbar.item[n].attributes.navName				
-				}); 					 //////// change this to a structure thing maybe
-		}
+			var nLen = _oXml.navbar.item.length;
+			for(var n=0;n<nLen;n++){
+				navBarArray.push({
+					title:_oXml.navbar.item[n].attributes.title,
+					navName:_oXml.navbar.item[n].attributes.navName				
+					}); 					 //////// change this to a structure thing maybe
+			} 
+	*/
+
+	
 		
 		promoBarArray = new Array();
 		var pLen = _oXml.promobar.item.length;
@@ -133,7 +137,7 @@ class App extends MovieClip {
 				
 				//trace(" HEY OOOOOO   ::: "+StructureApp.getInstance().getPath()); 	
 				calendarApp = new CalendarApp(calendarAppXMLPath, _mc);
-				navbarApp = new Navbar(navBarArray, _mc);
+				navbarApp = new Navbar(_mc);//navBarArray
 				mainImageApp = new MainImage(mainImagePath, _mc);
 				promoApp = new PromoBar(promoBarArray, _mc);
 				newsApp = new NewsApp(newsAppXMLPath, _mc);

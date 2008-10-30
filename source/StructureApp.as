@@ -6,8 +6,8 @@
 //
 
 
-import utils.XMLObject;
 import mx.utils.Delegate;
+import utils.*;
 
 
 class StructureApp {
@@ -20,6 +20,9 @@ class StructureApp {
 	private var myXmlObject:XMLObject;
 	private var hotarray:String;
 	private var section_array:Array;
+	
+	private var navbar_array:Array;
+	
 	private function StructureApp(){}
 	
 	static public function getInstance():StructureApp{ 
@@ -31,7 +34,7 @@ class StructureApp {
 	
 	
 	public function setArrayData(_set:String):Void { 
-		// loop thru array and ship appropriate one
+		// set var to loop thru array and ship appropriate one
 		hotarray = _set;
 	}
 	
@@ -45,8 +48,19 @@ class StructureApp {
 					return section_array[f];
 					trace("returning : "+section_array[f].name);
 				}
-			}
-		}
+			}			
+	}
+
+
+
+	
+	public function getNavArray():Array { 
+			// loop thru array and ship appropriate one
+			trace("GET NAV ARRAY DAATA :: "+section_array);
+			return section_array;		
+	}	
+	
+	
 	public function getPath():String { 
 		return _xmlPath; 
 	} 
@@ -68,7 +82,7 @@ class StructureApp {
 	}
 	
 	private function onXmlLoad($success:Boolean):Void{
-			if ($success) {
+		if ($success) {
 			
 			// trace("load cal data :"+ $success);
 							
@@ -87,27 +101,26 @@ class StructureApp {
 	
 	private function setupArrays():Void{
 		section_array = new Array();
-		var subnav_array:Array = new Array();
-		for (var item in sXml.section) {
-					section_array.push({
-								name:sXml.section[item].attributes.name,
-								eng:sXml.section[item].attributes.eng,
-							  	esp:sXml.section[item].attributes.esp,
-								link:sXml.section[item].attributes.link,
-								data:sXml.section[item].data,
-								galleryenabled:sXml.section[item].attributes.gallery_enabled, // if yes, get XML path later
-								subnav_enabled:sXml.section[item].attributes.subnav_enabled // if yes, get subnav later
-							   });
-		}
+		var slen:Number = sXml.section.length;
 		
-		for(var bob in section_array){
-			for(var bill in section_array[bob]){
-			trace("OOOOO "+ bob +":"+bill+ " :: "+ section_array[bob][bill])
-		}
+		//navbar_array = new Array(slen);
+		trace("BANGOOOO "+ navbar_array.length);
 		
-	}
-	
-
-
-	}
+			for (var i:Number=0;i< slen; i++) {
+						section_array.push({
+							name:sXml.section[i].attributes.name,
+							eng:sXml.section[i].attributes.eng,
+						  	esp:sXml.section[i].attributes.esp,
+						    navNum:sXml.section[i].attributes.navbarposition,
+							link:sXml.section[i].attributes.link,
+							data:sXml.section[i].data,
+							galleryenabled:sXml.section[i].attributes.gallery_enabled, // if yes, get XML path later
+							subnav_enabled:sXml.section[i].attributes.subnav_enabled // if yes, get subnav later
+						   });
+			}
+			
+		// BROADCAST THIS EVENT
+		BroadCaster.broadcastEvent("navBarGetData");	
+			
+	}	
 }
