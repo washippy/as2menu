@@ -27,6 +27,8 @@ class SubPageApp extends MovieClip {
 	private var subpage1_mc:MovieClip;
 	private var menuholder_mc:MovieClip;
 	private var ML:menuList;
+	private var MLArray:Array;
+	private var MLArray_esp:Array;
 	
 	private var galleryEnabled:Boolean;
 	
@@ -79,17 +81,46 @@ class SubPageApp extends MovieClip {
 		
 		dataObj = StructureApp.getInstance().getArrayData(); 
 		
-		if (_global.lang == "SPANISH"){
-			var _lang:String = "esp";
-		}else{
-			var _lang:String = "eng";
-		}	
+			if (_global.lang == "SPANISH"){
+				var _lang:String = "esp";
+			}else{
+				var _lang:String = "eng";
+			}	
 		
 		XMLPATH = "xml/"+dataObj.name+"_"+ _lang +".xml";   
-	//		BroadCaster.register(this,"setEvents");
 		getXMLData();
+		
+		if(dataObj.subnav_item_array != undefined){
+			buildSubNav();
+		} else{
+				MLArray = null;
+				MLArray_esp = null;
+			ML.disable();
+		}
 			
 	}
+	
+	
+	private function buildSubNav():Void{
+		MLArray = new Array();
+		MLArray_esp = new Array();
+		
+		
+		trace("-----------------------+++++++++  "+dataObj.subnav_item_array[i].attributes.eng);
+		var aLen = dataObj.subnav_item_array.length;
+		
+		for(var xx=0;xx<aLen;xx++){
+			trace("XXX  :: "+dataObj.subnav_item_array[xx].attributes.eng)
+		}
+		
+		for(var i:Number = 0; i<aLen; i++){
+			MLArray[i] = dataObj.subnav_item_array[i].attributes.eng;
+			MLArray_esp[i] = dataObj.subnav_item_array[i].attributes.esp;
+		}
+		
+	}
+	
+
 	private function getXMLData():Void{
 		// maybe cal_xml = null; ??
 		trace("getting "+ XMLPATH)
@@ -117,30 +148,25 @@ class SubPageApp extends MovieClip {
 	
 	private function fireitupman():Void{
 		disable();
-			for (var zed in sXml){
-				for (var zing in sXml[zed]){
-					for (var zap in sXml[zed][zing]){
-						trace(zed+" :: "+zing+" :: " +zap+ " :: "+sXml[zed][zing][zap]);
-						}}}
-						
-			//subpage1_mc.menuholder_mc.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(TF_HEIGHT * num), _title:_titleObj, _mc:_mcObj, _justify:justify});
 		
-			var suckerArray:Array = new Array();
-			suckerArray[0]= "CHILDREN";
-			suckerArray[1]= "YOUTH";
+		/* 
 
-			suckerArray[2]= "YOUNG ADULT";
-			suckerArray[3]= "SINGLES";
-			suckerArray[4]= "GENERATION LIFE";
-			suckerArray[5]= "HILLTOPPERS";
-			suckerArray[6]= "CREATIVE ARTS";
-			suckerArray[7]= "MARRIAGE & FAMILY";
-			suckerArray[8]= "ESPANOL";
+					for (var zed in sXml){
+						for (var zing in sXml[zed]){
+							for (var zap in sXml[zed][zing]){
+								trace(zed+" :: "+zing+" :: " +zap+ " :: "+sXml[zed][zing][zap]);
+								}}}
+								 
+		*/
+
 		
-			ML = new menuList(suckerArray, subpage1_mc.menuholder_mc, "right"); // justify right or left
-	
-			popData();
-		 //	trace(sXml.main.item.copy.data);
+		if (_global.lang == "SPANISH"){
+				ML = new menuList(MLArray_esp, subpage1_mc.menuholder_mc, "right"); // justify right or left
+			}else{
+				ML = new menuList(MLArray, subpage1_mc.menuholder_mc, "right"); // justify right or left
+			}
+		
+		popData();
 		
 	}
 	

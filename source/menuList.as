@@ -47,7 +47,7 @@ class menuList extends MovieClip {
 		//menuitem = new menuItem();
 		menulist = _mc.createEmptyMovieClip("mI", _mc.getNextHighestDepth());
 		justify = _justify; // send this on to the menu items
-		trace("menu List trace this :: "+menulist+" "+justify);
+		trace("menu List trace this :: "+_list+" :: "+justify);
 
 		listArray = _list;
 	//	for(var item in listArray){trace(listArray[item])}

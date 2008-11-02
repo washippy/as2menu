@@ -11,62 +11,62 @@
 <mtzion>
 	<section name="home" eng="Home" esp="Inicio" navbarposition="0"/>
 	<section name="about" eng="About Mt. Zion" esp="Acerca De Mt. Zion" navbarposition="1">
-		<item eng="History" esp="Historia"/>
-		<item eng="What We Believe" esp="Lo Que Creemos"/>
-		<item eng="Pastor Loren" esp="Pastor Loren"/>
-		<item eng="Service Times" esp="N A"/>
-		<item eng="Contact Information and Directions" esp="Conexiones Y Direcciones"/>
-		<item eng="What Should I Expect?" esp="¿Dònde esta Mt. Zion?"/>
-		<item eng="FAQ" esp="Preguntas Frecuentes"/>
+		<item name="history" eng="HISTORY" esp="Historia"/>
+		<item name="whatwebelieve" eng="WHAT WE BELIEVE" esp="Lo Que Creemos"/>
+		<item name="pastorloren" eng="PASTOR LOREN" esp="Pastor Loren"/>
+		<item name="servicetimes" eng="SERVICE TIMES" esp="N A"/>
+		<item name="contact_directions" eng="CONTACT INFO AND DIRECTIONS" esp="Conexiones Y Direcciones"/>
+		<item name="whatshouldiexpect" eng="WHAT SHOULD I EXPECT?" esp="¿Dònde esta Mt. Zion?"/>
+		<item name="faq" eng="FAQ" esp="Preguntas Frecuentes"/>
 	</section>
 	
 	 
 	<section name="connections" eng="Connections" esp="Inicio" navbarposition="2">
-		<item eng="Small Groups" esp="Inicio">Small Groups</item>
-		<item eng="Volunteer" esp="Inicio">Volunteer</item>
+		<item name="smallgroups" eng="SMALL GROUPS" esp="Inicio">Small Groups</item>
+		<item name="volunteer" eng="VOLUNTEER" esp="Inicio">Volunteer</item>
 	</section>
 		
 	<section name="ministries" eng="Ministries" esp="Inicio" navbarposition="3">
-		<item eng="Family Ministry" esp="Inicio">Family Ministry</item>
-		<item eng="Student Ministry Young Adults 18 to 35" esp="Inicio" subnav_enabled="true">
+		<item name="familyministry" eng="FAMILY MINISTRY" esp="Inicio">Family Ministry</item>
+		<item name="studentministry" eng="STUDENT MINISTRY" esp="Inicio" subnav_enabled="true"><!-- Young Adults 18 to 35 -->
 			<subnav eng="THE DISTRICT" esp="El Districto" link="http://www.thedistrictvenue.com"/>
 			<subnav eng="GEN ONE SITE" esp="E" link="http://www.genone.com"/>
 			<subnav eng="MYSPACE" esp="E" link="http://www.myspace.com/thedistrictvenue"/>
 		</item>
 		
-		<item eng="Singles" esp="Inicio">Singles</item>
-		<item eng="Generation 'LIFE!'" esp="Inicio">Generation 'LIFE!'</item>
-		<item eng="Hilltoppers" esp="Inicio">Hilltoppers</item>
-		<item eng="Women's Ministry" esp="Inicio">Women's Ministry</item>
-		<item eng="Men's Ministry" esp="Inicio">Men's Ministry</item>
-		<item eng="Engaged/Newly Married" esp="Inicio">Engaged/Newly Married</item>
-		<item eng="Hispanic Outreach" esp="Inicio">Hispanic Outreach</item>
-		<item eng="Creative Arts" esp="Inicio">Creative Arts</item>
-		<item eng="Deaf Ministry" esp="Inicio">Deaf Ministry</item>
-		<item eng="Life Enrichment" esp="Inicio">Life Enrichment</item>
-		<item eng="Miracle Healing Service" esp="Inicio">Miracle Healing Service</item>
+		<item name="singles" eng="SINGLES" esp="Inicio">Singles</item>
+		<item name="genlife" eng="GENERATION 'LIFE!'" esp="Inicio">Generation 'LIFE!'</item>
+		<item name="hilltoppers" eng="HILLTOPPERS" esp="Inicio">Hilltoppers</item>
+		<item name="womens" eng="WOMEN'S MINISTRY" esp="Inicio">Women's Ministry</item>
+		<item name="mens" eng="MEN'S MINISTRY" esp="Inicio">Men's Ministry</item>
+		<item name="newmarrieds" eng="ENGAGED/NEWLY MARRIED" esp="Inicio">Engaged/Newly Married</item>
+		<item name="hispanicoutreach" eng="HISPANIC OUTREACH" esp="Inicio">Hispanic Outreach</item>
+		<item name="creativearts" eng="CREATIVE ARTS" esp="Inicio">Creative Arts</item>
+		<item name="deafministry" eng="DEAF MINISTRY" esp="Inicio">Deaf Ministry</item>
+		<item name="lifeenrichment" eng="LIFE ENRICHMENT" esp="Inicio">Life Enrichment</item>
+		<item name="miracleservic" eng="MIRACLE HEALING SERVICE" esp="Inicio">Miracle Healing Service</item>
 	</section>
 		
 	<section name="education" eng="Education" esp="Inicio" navbarposition="4">
-		<item eng="Foundational Class" esp="Inicio">Foundational Class</item>
-		<item eng="Leadership Training Classes" esp="Inicio"></item>
-		<item eng="Sunday Night Classes" esp="Inicio"></item>
-		<item eng="Mt. Zion School of Performing Arts" esp="Inicio"></item>
+		<item name="about" eng="FOUNDATIONAL CLASS" esp="Inicio">Foundational Class</item>
+		<item name="about" eng="LEADERSHIP TRAINING CLASSES" esp="Inicio"></item>
+		<item name="about" eng="SUNDAY NIGHT CLASSES" esp="Inicio"></item>
+		<item name="about" eng="MT. ZION SCHOOL OF PERFORMING ARTS" esp="Inicio"></item>
 	</section>
 	<section name="international" eng="International" esp="Inicio"  navbarposition="5"/>
 
 	<section name="pastoralcare" eng="Pastoral Care" esp="Inicio" navbarposition="6"/>
 	<section name="community" eng="Community" esp="Inicio"  navbarposition="0">	
-		<item eng="The District" esp="Inicio" link="http://thedistrictvenue.com"></item> 
+		<item eng="THE DISTRICT" esp="Inicio" link="http://thedistrictvenue.com"></item> 
 		<item eng="WCA" esp="Inicio">WCA</item>
-		<item eng="Zero Gravity" esp="Inicio" link="http://www.zerogravitysk8.com/"></item> 
+		<item eng="ZERO GRAVITY" esp="Inicio" link="http://www.zerogravitysk8.com/"></item> 
 	</section>	
  
 	<section name="el_salvadore" eng="El Salvadore" esp="Inicio" navbarposition="0"/>
 	<section name="partnership" eng="Partnership" esp="Inicio" navbarposition="0"/>
 	<section name="bookstore" eng="Bookstore" esp="Inicio" navbarposition="0"/>
 	<section name="donations" eng="Donations" esp="Inicio" subnav_enabled="true" navbarposition="0">
-		<item eng="On-Line Donations" esp="Inicio">On-line Donations</item>	
+		<item name="about" eng="ON-LINE DONATIONS" esp="Inicio">On-line Donations</item>	
 	</section>
 	<section name="building_updates" eng="Building Updates" esp="Inicio" gallery_enabled="true" gallery_xml="building_gallery.xml" navbarposition="0"/>
 </mtzion>
