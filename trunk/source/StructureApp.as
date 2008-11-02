@@ -115,7 +115,9 @@ class StructureApp {
 							link:sXml.section[i].attributes.link,
 							data:sXml.section[i].data,
 							galleryenabled:sXml.section[i].attributes.gallery_enabled, // if yes, get XML path later
-							subnav_enabled:sXml.section[i].attributes.subnav_enabled // if yes, get subnav later
+							subnav_enabled:sXml.section[i].attributes.subnav_enabled, // if yes, get subnav later
+							subnav_item_array:sXml.section[i].item // if yes, get subnav later
+							
 						   });
 			}
 			
