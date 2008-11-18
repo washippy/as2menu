@@ -9,24 +9,25 @@
 
 -->
 <mtzion>
-	<section name="home" eng="Home" esp="Inicio" navbarposition="0"/>
-	<section name="about" eng="About Mt. Zion" esp="Acerca De Mt. Zion" navbarposition="1">
+	<section name="home" eng="Home" esp="Inicio" navbarposition="1"/>
+
+	<section name="about" eng="About Mt. Zion" esp="Acerca De Mt. Zion" navbarposition="2">
 		<item name="history" eng="HISTORY" esp="Historia"/>
 		<item name="whatwebelieve" eng="WHAT WE BELIEVE" esp="Lo Que Creemos"/>
 		<item name="pastorloren" eng="PASTOR LOREN" esp="Pastor Loren"/>
 		<item name="servicetimes" eng="SERVICE TIMES" esp="N A"/>
-		<item name="contact_directions" eng="CONTACT INFO AND DIRECTIONS" esp="Conexiones Y Direcciones"/>
+		<item name="contact_directions" eng="GENERAL INFORMATION" esp="Conexiones Y Direcciones"/>
 		<item name="whatshouldiexpect" eng="WHAT SHOULD I EXPECT?" esp="¿Dònde esta Mt. Zion?"/>
 		<item name="faq" eng="FAQ" esp="Preguntas Frecuentes"/>
 	</section>
 	
 	 
-	<section name="connections" eng="Connections" esp="Inicio" navbarposition="2">
+	<section name="connections" eng="Connections" esp="Inicio" navbarposition="3">
 		<item name="smallgroups" eng="SMALL GROUPS" esp="Inicio">Small Groups</item>
 		<item name="volunteer" eng="VOLUNTEER" esp="Inicio">Volunteer</item>
 	</section>
 		
-	<section name="ministries" eng="Ministries" esp="Inicio" navbarposition="3">
+	<section name="ministries" eng="Ministries" esp="Inicio" navbarposition="4">
 		<item name="familyministry" eng="FAMILY MINISTRY" esp="Inicio">Family Ministry</item>
 		<item name="studentministry" eng="STUDENT MINISTRY" esp="Inicio" subnav_enabled="true"><!-- Young Adults 18 to 35 -->
 			<subnav eng="THE DISTRICT" esp="El Districto" link="http://www.thedistrictvenue.com"/>
@@ -47,15 +48,15 @@
 		<item name="miracleservic" eng="MIRACLE HEALING SERVICE" esp="Inicio">Miracle Healing Service</item>
 	</section>
 		
-	<section name="education" eng="Education" esp="Inicio" navbarposition="4">
+	<section name="education" eng="Education" esp="Inicio" navbarposition="5">
 		<item name="about" eng="FOUNDATIONAL CLASS" esp="Inicio">Foundational Class</item>
 		<item name="about" eng="LEADERSHIP TRAINING CLASSES" esp="Inicio"></item>
 		<item name="about" eng="SUNDAY NIGHT CLASSES" esp="Inicio"></item>
 		<item name="about" eng="MT. ZION SCHOOL OF PERFORMING ARTS" esp="Inicio"></item>
 	</section>
-	<section name="international" eng="International" esp="Inicio"  navbarposition="5"/>
+	<section name="international" eng="International" esp="Inicio"  navbarposition="6"/>
 
-	<section name="pastoralcare" eng="Pastoral Care" esp="Inicio" navbarposition="6"/>
+	<section name="pastoralcare" eng="Pastoral Care" esp="Inicio" navbarposition="7"/>
 	<section name="community" eng="Community" esp="Inicio"  navbarposition="0">	
 		<item eng="THE DISTRICT" esp="Inicio" link="http://thedistrictvenue.com"></item> 
 		<item eng="WCA" esp="Inicio">WCA</item>

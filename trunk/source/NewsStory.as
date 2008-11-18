@@ -1,16 +1,12 @@
 ﻿/*	NewsStory.as:  
 	
 TO DO :	
-
-
 */ 
 
 import utils.XMLObject;
 import mx.utils.Delegate;
 import utils.BroadCaster;
 import caurina.transitions.*;
-
-
 
 class NewsStory extends MovieClip {
 

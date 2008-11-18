@@ -56,7 +56,7 @@ class NewsApp extends MovieClip {
 		BroadCaster.register(this,"updateScroller");
 
 		newsScroller = newsApp.createEmptyMovieClip("newsScroller", this.getNextHighestDepth());
-		newsScroller._x=25;
+		newsScroller._x=17;
 		newsScroller._y=45;
 		clipStartY = 45;
 		
