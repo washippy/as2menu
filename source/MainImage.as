@@ -6,6 +6,7 @@ TO DO:
 	SPANISH
 
 */
+import utils.BroadCaster;
 
 class MainImage extends MovieClip{
 	private var MAINIMAGEPATH:String;
@@ -13,6 +14,9 @@ class MainImage extends MovieClip{
 	private var CLIP:MovieClip;
 
 	function MainImage(_MIP:String, _clip:MovieClip){
+		
+		BroadCaster.register(this,"reloadMainImage");
+		
 		MAINIMAGEPATH = _MIP;
 		CLIP = _clip;
 		trace("MAIN IMAGE AS LOAD : "+ CLIP.mainimage_mc._y);
@@ -23,4 +27,10 @@ class MainImage extends MovieClip{
 		CLIP.mainimage_mc.loadMovie(MAINIMAGEPATH);
 		
 	}
+	
+	public function reloadMainImage(){
+		CLIP.mainimage_mc.loadMovie(_global.mainImagePath);
+		
+	}
+	
 }

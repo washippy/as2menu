@@ -98,7 +98,7 @@ class Navbar extends MovieClip {
 			navbar["nb"+i].mask_mc._width = bWidth;
 			
 			navbar["nb"+i].bkg_mc._height = bHeight;
-			navbar["nb"+i].mask_mc._height = bHeight-10;
+		//	navbar["nb"+i].mask_mc._height = bHeight-10;
 
 			navbar["nb"+i]._y = bHeight/2;
 			navbar["nb"+i]._x = bWidth/2;

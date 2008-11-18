@@ -4,10 +4,8 @@
 	<appvalues assetpath="assets/" />
 
 	<!-- MAIN IMAGE : can be a swf, jpg, gif, or png :: path relative to root dir-->
-	<mainimage assetname="main_image1.swf"/>
-	
-	
-	
+	<mainimage swfName="main_image1.swf"/>
+
 	
 	<!-- RED NAV BAR VALUES -->
 	<!-- navName MUST LINE UP WITH structure.xml VALUES     MOVED

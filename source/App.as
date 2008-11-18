@@ -19,7 +19,7 @@ class App extends MovieClip {
 	private var _mc:MovieClip;	
 	
 //	GLOBAL private var assetPath:String;
-	private var mainImagePath:String;
+//  GLOBAL private var mainImagePath:String;
 	private var navBarArray:Array;
 	
 	private var PAGE:String="home"; // home or nuthin
@@ -77,7 +77,7 @@ class App extends MovieClip {
 		
 		_global.assetPath=_oXml.appvalues.attributes.assetpath;
 
-		mainImagePath=_oXml.mainimage.attributes.assetname;
+		_global.mainImagePath=_oXml.mainimage.attributes.swfName;
 		
 	/* 
 		navBarArray = new Array();
@@ -138,7 +138,7 @@ class App extends MovieClip {
 				//trace(" HEY OOOOOO   ::: "+StructureApp.getInstance().getPath()); 	
 				calendarApp = new CalendarApp(calendarAppXMLPath, _mc);
 				navbarApp = new Navbar(_mc);//navBarArray
-				mainImageApp = new MainImage(mainImagePath, _mc);
+				mainImageApp = new MainImage(_global.mainImagePath, _mc);
 				promoApp = new PromoBar(promoBarArray, _mc);
 				newsApp = new NewsApp(newsAppXMLPath, _mc);
 				
@@ -150,33 +150,28 @@ class App extends MovieClip {
 			trace("RELOAD DISPLAY ELEMENTS :: current PAGE ::"+ p);
 			switch(PAGE){
 				case "home" :
-				
 					/* 
 						calendarApp.disable();
 										navbarApp.disable();
 										mainImageApp.disable();
 										promoApp.disable();
 										newsApp.disable();
-
 										subPageApp.enable();
-
 					*/
-
-				
 				break;
 				default :
 				
 					subPageApp.disable(); 
-				
 					calendarApp.enable();
 				//	navbarApp.enable();
 				//	mainImageApp.enable();
 					promoApp.enable();
 					newsApp.enable();
 					BroadCaster.broadcastEvent("pastorPicEnable");
+					// set main image back to default here /////////////////////////////////
+					
+					BroadCaster.broadcastEvent("reloadMainImage");
 					PAGE = "home";
-
-				
 				break;
 			}
 			
@@ -186,7 +181,19 @@ class App extends MovieClip {
 	private function launchNewPage(_obj:Object):Void{
 		trace("LAUNCH "+_obj);
 		// fade out existing apps
-		if(PAGE=="home"){
+		if(PAGE=="home" && _obj=="home"){
+			trace("LAUNCH ::: PAGE==home && _obj==home");
+			return;
+			}
+		
+		if(_obj=="home"){
+			
+			PAGE=String(_obj);
+			reloadDisplayElements();
+			return;
+		}
+		
+	//	if(PAGE=="home"){
 			calendarApp.disable();
 		//	buttonbar.disable();
 		//	mediaplayerstuff.disable();
@@ -197,9 +204,10 @@ class App extends MovieClip {
 			// LAUNCH THE SUB APP using structure
 			//trace(" HEY OOOOOO   ::: "+StructureApp.getInstance().getPath()); 	
 			
-		}
-		PAGE=String(_obj);
-		BroadCaster.broadcastEvent("loadASubPage", _obj , false);
+			PAGE=String(_obj);
+			BroadCaster.broadcastEvent("loadASubPage", _obj , false);
+
+	//	}
 		
 	}
 	

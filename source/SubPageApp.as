@@ -29,7 +29,8 @@ class SubPageApp extends MovieClip {
 	private var ML:menuList;
 	private var MLArray:Array;
 	private var MLArray_esp:Array;
-	
+	private var ANIM_ENDPOINT:Number;
+	private var ANIM_STARTPOINT:Number;
 	private var galleryEnabled:Boolean;
 	
 	private var dataObj:Object;
@@ -42,6 +43,9 @@ class SubPageApp extends MovieClip {
 		trace(" HEY SUBPAGE   ::: "+StructureApp.getInstance().getPath()); 	
 		BroadCaster.register(this,"loadASubPage");
 		subpage1_mc = clip.subpage1;
+		ANIM_ENDPOINT = subpage1_mc._y;
+		ANIM_STARTPOINT = subpage1_mc._y +40;
+		subpage1_mc._y = ANIM_STARTPOINT;
 				styles = new TextField.StyleSheet();
 
 				styles.setStyle("headline", {
@@ -74,6 +78,12 @@ class SubPageApp extends MovieClip {
 	}
 	public function loadASubPage(_pagename:String):Void{
 		// use page name to get data
+		trace("L A S P :: "+subpage1_mc);
+		Tweener.removeTweens(subpage1_mc);
+		
+		subpage1_mc._alpha=0;
+		subpage1_mc._y=ANIM_STARTPOINT;
+		
 		dataObj = new Object();
 		trace("DANGIT "+_pagename);//StructureApp.getInstance().getArrayData(_pagename));
 		var bob:String = _pagename;
@@ -174,11 +184,12 @@ class SubPageApp extends MovieClip {
 		// bCopy = bCopy+ itemArray[i].childNodes[b].toString();
 		trace(subpage1_mc);
 		subpage1_mc.header_tf.text = sXml.main.item.headline.data;
-		
+		_global.mainImagePath =  sXml.main.item.attributes.swfName;
+		BroadCaster.broadcastEvent("reloadMainImage");
 		
 	//	subpage1_mc.bodycopy_tf.styleSheet= styles;
 		subpage1_mc.bodycopy_tf.htmlText = sXml.main.item.copy.data;
-		Tweener.addTween(subpage1_mc, {_alpha:100, time:1.1, transition:"easeOut"});
+		Tweener.addTween(subpage1_mc, {_alpha:100, _y:ANIM_ENDPOINT, delay:.5, time:1.1, transition:"easeOut"});
 		// story_tf.styleSheet = styles;
 		// story_tf.htmlText = bCopy;
 		// story_tf.autoSize=true;
@@ -193,7 +204,7 @@ class SubPageApp extends MovieClip {
 	
 	public function disable():Void{ 
 		trace("sub page disable -->");
-		Tweener.addTween(subpage1_mc, {_alpha:0, time:0.5, transition:"easeOut"});
+		Tweener.addTween(subpage1_mc, {_alpha:0, _y:ANIM_STARTPOINT, time:0.25, transition:"easeOut"});
 				ML.disable();
 		
 		/* 
