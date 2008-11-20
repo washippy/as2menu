@@ -66,7 +66,7 @@ function onXmlLoad($success:Boolean):Void{
 
 home.onPress = function(){
 	trace("HOME JAMES ")
-	app.reloadDisplayElements();
+	app.reloadDisplayElements("home");
 }
 
 
