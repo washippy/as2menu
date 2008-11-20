@@ -98,6 +98,15 @@ class NewsStory extends MovieClip {
 
 	
 	}
+	
+	public function closeStory(){
+		story_tf._height=TF_SHORT; 
+		less_button._visible=false;
+		more_button._visible = true;
+		popped = false;
+		updateAllPositions();
+	}
+	
 	private function updateAllPositions(){
 		// UPDATE SCROLLER TOO
 		BroadCaster.broadcastEvent("updateScroller", this, false);

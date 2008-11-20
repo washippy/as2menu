@@ -126,6 +126,7 @@ class App extends MovieClip {
 		}else{
 				// initiate
 				initDisplayElements();
+				INIT = true;
 		}		
 	}
 	
@@ -145,19 +146,23 @@ class App extends MovieClip {
 				subPageApp = new SubPageApp(_mc);
 	}
 	
-	public function reloadDisplayElements():Void{
+	public function reloadDisplayElements(_sendPAGE:String):Void{
+		
 		var p = String(PAGE);
-			trace("RELOAD DISPLAY ELEMENTS :: current PAGE ::"+ p);
-			switch(PAGE){
+			trace("RELOAD DISPLAY ELEMENTS :: currentPAGE ::"+ p+"  :: "+_sendPAGE);
+			if(p==_sendPAGE){
+				return;
+			}
+			switch(PAGE){  // if the current page is home; kill all the apps, otherwise we're loading a subpage
 				case "home" :
-					/* 
 						calendarApp.disable();
-										navbarApp.disable();
-										mainImageApp.disable();
-										promoApp.disable();
-										newsApp.disable();
-										subPageApp.enable();
-					*/
+						//navbarApp.disable();
+						//mainImageApp.disable();
+						promoApp.disable();
+						newsApp.disable();
+					//	subPageApp.loadASubPage();
+					PAGE = "home";
+					
 				break;
 				default :
 				
@@ -166,7 +171,7 @@ class App extends MovieClip {
 				//	navbarApp.enable();
 				//	mainImageApp.enable();
 					promoApp.enable();
-					newsApp.enable();
+					newsApp.enable(true);
 					BroadCaster.broadcastEvent("pastorPicEnable");
 					// set main image back to default here /////////////////////////////////
 					
@@ -181,15 +186,16 @@ class App extends MovieClip {
 	private function launchNewPage(_obj:Object):Void{
 		trace("LAUNCH "+_obj);
 		// fade out existing apps
-		if(PAGE=="home" && _obj=="home"){
-			trace("LAUNCH ::: PAGE==home && _obj==home");
+		//if(PAGE=="home" && _obj=="home"){  // at home and home is clicked
+		if(PAGE==_obj){  // at 
+			trace("LAUNCH ::: PAGE=_obj :: "+ PAGE +" :: "+_obj);
 			return;
 			}
 		
-		if(_obj=="home"){
+		if(_obj=="home"){ // not home but home is clicked
 			
-			PAGE=String(_obj);
-			reloadDisplayElements();
+			var sendPAGE=String(_obj);
+			reloadDisplayElements(sendPAGE);
 			return;
 		}
 		
