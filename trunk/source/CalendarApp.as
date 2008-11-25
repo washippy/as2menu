@@ -2,11 +2,21 @@
 	
 TO DO :
 
+
+
 BUG when you change MONTHS with little arrows, data doesnt change. .  . it keeps current month	
 	
+	
+	
 SCROLLER sucks
+	
+	
 		
 SPANISH SWITCH
+
+
+
+
 
 */ 
 
@@ -78,6 +88,7 @@ class CalendarApp extends MovieClip {
 		
 		XMLPATH = "xml/"+passmealong;     /////  FIX THIS>?
 		calApp = clip.calendar_app_mc;
+		
 		BroadCaster.register(this,"setEvents");
 		BroadCaster.register(this,"writeScrollerEvents");
 		
@@ -108,6 +119,8 @@ class CalendarApp extends MovieClip {
 		
 		calApp.calscroller_mc.moreUP._visible=false;
 		calApp.calscroller_mc.moreDOWN._visible=false;
+	//	calApp.blocker_mc._alpha=100;
+		//calApp._visible=false;
 		
 	}
 	
@@ -242,12 +255,12 @@ class CalendarApp extends MovieClip {
 			
 			/// SETS WEEK ABBREVIATIONS on top of calendar S M T W T F S
 				for (var z=0; z<=6; z++){
-						mc.attachMovie("day", "sDate"+z, z+50);   				 	
-					 	mc["sDate" + z]._x = startx + (w * (z+1));             
+						mc.attachMovie("day", "sDate"+z, z+50);  
+					 	mc["sDate" + z]._x = startx + (w * (z+1));   
 			            mc["sDate" + z]._y = starty + (h * yspan)-27;  
 			            mc["sDate" + z].date = weekSArray[z];
 						mc["sDate" + z].gotoAndStop(4);
-						
+						mc["sDate" + z]._visible=false;  // to be re visified later
 				}
 			
 			
@@ -265,7 +278,6 @@ class CalendarApp extends MovieClip {
 		            mc["date" + dayCounter].weekday = weekArray[d.getDay()];
 		            mc["date" + dayCounter].year = d.getFullYear();
 		            mc["date" + dayCounter].month = monthArray[month];
-				
 					 doIhaveEvents(dayCounter, d);
 					
 					if( isitToday(dayCounter, d)){
@@ -409,6 +421,7 @@ class CalendarApp extends MovieClip {
 						//trace(this.date);
 						trace(this._parent._parent.app.calendarApp.content_tf_STARTY)
 					}   */
+					mc["date" + gg]._visible=false; // make all boxes invisible
 				
 			 		mc["date" +gg].blank.onPress =function(){
 						var cDate:Object = this._parent.date;
@@ -437,7 +450,18 @@ class CalendarApp extends MovieClip {
 					firsttime=false;
 			}
 			
-			calApp._alpha=100;        		// FADE MAYBE??
+		//	calApp._alpha=100;        		// FADE MAYBE??
+		
+	
+		calApp.blocker_mc.swapDepths(calApp.getNextHighestDepth())
+		
+		Tweener.addTween(calApp, {delay:1.5, _x:279}); // its loading off stage so put it back when the bkg is done transitioning
+		
+		Tweener.addTween(calApp.blocker_mc, {time:1, delay:2, transition:"easeOut", _alpha:0}); // fade it in
+			for(var ff=0; ff<=42; ff++){	// re visible all the boxes
+				mc["sDate" + ff]._visible=true;
+				mc["date" + ff]._visible=true;
+			}
 	}
 	
 	
@@ -748,10 +772,11 @@ class CalendarApp extends MovieClip {
    	}
 	
 	public function disable():Void{ 
+	//	calApp.blocker_mc.swapDepths(calApp.getNextHighestDepth())
 		
 	// this fades in a white blocker mc and then _visible = false to disable clicks.
 		trace(calApp.blocker_mc);
-		calApp.blocker_mc.swapDepths(calApp.getNextHighestDepth())
+	//	calApp.blocker_mc.swapDepths(calApp.getNextHighestDepth())
 		var invisify:Function = function(_ob:Object){
 			trace("I I :"+_ob);
 			_ob._visible=false;

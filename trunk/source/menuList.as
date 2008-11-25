@@ -48,8 +48,15 @@ class menuList extends MovieClip {
 		menulist = _mc.createEmptyMovieClip("mI", _mc.getNextHighestDepth());
 		justify = _justify; // send this on to the menu items
 		trace("menu List trace this :: "+_list+" :: "+justify);
-
 		listArray = _list;
+	/* 
+		for(var i=0;i< _list.length;i++){
+			   listArray[i] = _list[i].title;	
+			} 
+	*/
+
+	
+		
 	//	for(var item in listArray){trace(listArray[item])}
 			buildList(_mc);
 
@@ -60,11 +67,16 @@ class menuList extends MovieClip {
 			//var menu:menuItem = new menuItem("HEY IT WORKED", this);
 			//trace(num+" :: " +listHolder._x);
 			var _titleObj:Object = new Object();
-			_titleObj = listArray[num];
+			_titleObj = listArray[num].title;
+			
+			var _pageNameObj:Object = new Object();
+				_pageNameObj = listArray[num].name;
+			trace(" DDDDDDDDDDDDDDDDDDDDDDDD "+ listArray[num].name);
+			
 			var _mcObj:Object = new Object();
 			_mcObj = menulist;
 			
-			menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(TF_HEIGHT * num), _title:_titleObj, _mc:_mcObj, _justify:justify});
+			menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(TF_HEIGHT * num), _title:_titleObj, _pagename:_pageNameObj, _mc:_mcObj, _justify:justify});
 		}
 
 	}

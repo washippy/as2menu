@@ -1,6 +1,24 @@
 /*
 	ACTIONSCRIPT ON FRAME 1 OF MAIN TIMELINE
 	Responsible for loading XML and initializing App.
+	
+	
+	
+	
+	TO DO
+	
+	
+	STEAL DEEP LINK CODE FROM TONY
+	:D
+	
+	
+	
+	
+	
+	
+	
+	
+	
 */
 import mx.utils.Delegate;
 import utils.XMLObject;
@@ -14,7 +32,13 @@ import utils.XMLObject;
 	_global.lang ="ENGLISH";
 //}
 
+////   DEEP LINKING	  ////////////
+//	make an object with all deep elements
+		//language
+		//firstpage
+		//
 	
+/////////////////////////////////	
 	
 /*   	esp.onPress = function(){
 		trace("GGGGGGGGGGGGGGGGGGGGGG "+_global.lang)

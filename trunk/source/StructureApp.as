@@ -20,6 +20,7 @@ class StructureApp {
 	private var myXmlObject:XMLObject;
 	private var hotarray:String;
 	private var section_array:Array;
+	private var subsection_array:Array;
 	
 	private var navbar_array:Array;
 	
@@ -38,15 +39,18 @@ class StructureApp {
 		hotarray = _set;
 	}
 	
-	public function getArrayData():Object { 
+	public function getArrayData():Object {   //////////////this needs a level heirarchy
 			// loop thru array and ship appropriate one
 			trace("GET ARRAY DAATA :: " + hotarray);
 			for(var f in section_array){
-				trace("checkin : "+section_array[f].name);
+				trace("checkin : "+section_array[f].name +" :: "+ section_array[f].subnav_item_array[0].attributes.name);
 				
 				if(section_array[f].name == hotarray){
 					return section_array[f];
 					trace("returning : "+section_array[f].name);
+				}else{
+					trace("nuthin here");
+					
 				}
 			}			
 	}
@@ -101,10 +105,12 @@ class StructureApp {
 	
 	private function setupArrays():Void{
 		section_array = new Array();
+//		subsection_array = new Array();
+		
 		var slen:Number = sXml.section.length;
 		
 		//navbar_array = new Array(slen);
-		trace("BANGOOOO "+ navbar_array.length);
+		//trace("BANGOOOO "+ navbar_array.length);
 		
 			for (var i:Number=0;i< slen; i++) {
 						section_array.push({
@@ -115,12 +121,15 @@ class StructureApp {
 							link:sXml.section[i].attributes.link,
 							data:sXml.section[i].data,
 							galleryenabled:sXml.section[i].attributes.gallery_enabled, // if yes, get XML path later
-							subnav_enabled:sXml.section[i].attributes.subnav_enabled, // if yes, get subnav later
+						//	subnav_enabled:sXml.section[i].attributes.subnav_enabled, // if yes, get subnav later
 							subnav_item_array:sXml.section[i].item // if yes, get subnav later
 							
 						   });
+//						subsection_array[i] = sXml.section[i].item;
+					
 			}
-			
+		
+		
 		// BROADCAST THIS EVENT
 		BroadCaster.broadcastEvent("navBarGetData");	
 			
