@@ -13,10 +13,10 @@ import utils.BroadCaster;
 class menuItem extends MovieClip {
 	
 	private var _title:String;
+	private var _pagename:String;
+	
 	private var _mc:MovieClip; // listHolder
 	private var _justify:String; // left or right
-	
-	
 	
 	private var mItem:MovieClip;
 	
@@ -32,11 +32,13 @@ class menuItem extends MovieClip {
 
 	var itemArray:Array;
 	
-	public function menuItem(){  //_title:String, _mc:MovieClip, _justify:String
+	public function menuItem(){  //_title:String, _pagename:Obj, _mc:MovieClip, _justify:String
 
 		STARTX = this._x;
 		STARTY = this._y;
 		mItem = this;
+		
+		trace(_title + " ::::::: ::::::: ::::: "+ _pagename)
 		if(_justify=="left"){
 			parseTitle(_title);	
 		}else if(_justify=="right"){
@@ -44,7 +46,7 @@ class menuItem extends MovieClip {
 		}else if(_justify=="center"){
 			parseTitleCenter(_title);
 		}
-	}
+ 	}
 	
 	
 	private function parseTitle(_t:String){
@@ -52,7 +54,7 @@ class menuItem extends MovieClip {
 		itemArray = _t.split(" ");	
 		for(var i =0 ; i< itemArray.length; i++){
 		
-			mItem.attachMovie("menuItemWord", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:0, _y:0, _title:itemArray[i]}); // move it later;
+			mItem.attachMovie("menuItemWord", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:0, _y:0, _title:itemArray[i].title}); // move it later;
 			
 			
 			if(i!=0){	
@@ -158,7 +160,7 @@ class menuItem extends MovieClip {
 	
 	public function rollEmOver(){
 		var count=0;
-		//trace("R OVER+++++++++++++"+itemArray.length);
+		trace("R OVER+++++++++++++"+ mItem);
 		var limit = itemArray.length;
 		delete mItem.onEnterFrame;
 		
@@ -208,7 +210,10 @@ class menuItem extends MovieClip {
 	}
 	
 	private function mPress(){
-		//trace("BOO "+this)
+		trace("BOO "+this._pagename);
+		var _obj = _pagename;
+	//	BroadCaster.broadcastEvent("loadASubPage", _obj , false);
+	/// JUST RELOAD TEXT AREA
 		/////// get some ACTIONS in here
 		
 	}

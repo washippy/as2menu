@@ -1,5 +1,18 @@
 ﻿/*
 	App.as:
+	
+	TO DO 
+	
+	
+	
+	
+	DEEP LINK
+	
+	
+	
+	
+	
+	
 */ 
 import flash.filters.BlurFilter;
 import flash.filters.GlowFilter;
@@ -56,6 +69,10 @@ class App extends MovieClip {
 		
 		BroadCaster.register(this,"launchNewPage");
 		
+		
+		/////////////////////////
+		// GET DEEP LINK VALUES // 
+		/////////////////////////
 		
 		distributeData();
 		initEvents();		
@@ -139,6 +156,8 @@ class App extends MovieClip {
 				//trace(" HEY OOOOOO   ::: "+StructureApp.getInstance().getPath()); 	
 				calendarApp = new CalendarApp(calendarAppXMLPath, _mc);
 				navbarApp = new Navbar(_mc);//navBarArray
+				navbarApp.hotSection = "home" // GET FROM DEEP LINK
+				
 				mainImageApp = new MainImage(_global.mainImagePath, _mc);
 				promoApp = new PromoBar(promoBarArray, _mc);
 				newsApp = new NewsApp(newsAppXMLPath, _mc);

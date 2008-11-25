@@ -23,17 +23,19 @@
 	-->
 	
 	
+
+
 	
 	
 	<!-- DYNAMIC PROMO BAR PARTS :: may be overridden by SWF some day -->
 	<promobar>
-		<item headline="BUILDING UPDATES." assetname="promo_bldgupdates.jpg"><![CDATA[Pics, highlights, updates, cool stuff. Go here.]]></item>
-		<item headline="EL SALVADOR." assetname="promo_elsalvador.jpg"><![CDATA[Learn more about this amazing outreach and how you can help.]]></item>
-		<item headline="GENERATION ONE." assetname="promo_genone.jpg"><![CDATA[If you are a young adult, we want to meet you. Find out about the latest events.]]></item>
+		<item headline="MID-YEAR SPOTLIGHT" assetname="promo_bldgupdates.jpg"><![CDATA[It was an amazing 2009 mid-year spotlight showcasing the many talents in the school.]]></item>
+		<item headline="BABY DEDICATION" assetname="promo_elsalvador.jpg"><![CDATA[Raising a godly seed is our plan and baby dedication is the start.]]></item>
+		<item headline="2ND SATURDAY" assetname="promo_genone.jpg"><![CDATA[Come out for a fun night with friends or make some new ones!]]></item>
 		<item headline="EMPTY PROMO.4" assetname="promoswf.swf" type="swf"><![CDATA[This on is empty to test the arrow nav. HIT IT!]]></item>
-		<item headline="EMPTY PROMO.5" assetname="promo_owie.jpg"><![CDATA[This on is empty to test the arrow nav. HIT IT!]]></item>	
+		<item headline="THEATER" assetname="promo_owie.jpg"><![CDATA[Too be or not to be! It's always exciting when you have actors among us.]]></item>	
 		
-		<item headline="EMPTY PROMO.6" assetname="promo_owie.jpg"><![CDATA[This on is empty to test the arrow nav. HIT IT!]]></item>	
+		<item headline="ACQUIRE THE FIRE" assetname="promo_owie.jpg"><![CDATA[Get the youth fired up and enjoy a weekend of music and speakers.]]></item>	
 		
 		<item headline="EMPTY PROMO.7" assetname="promo_owie.jpg"><![CDATA[This on is empty to test the arrow nav. HIT IT!]]></item>	
 		

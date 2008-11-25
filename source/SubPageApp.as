@@ -8,6 +8,20 @@ MAIN NAV
 SUB NAV
 SPANISH SWITCH
 
+
+MANAGE SUB NAVS
+
+see comps
+
+
+
+
+
+
+
+
+
+
 */ 
 
 import utils.XMLObject;
@@ -119,15 +133,24 @@ class SubPageApp extends MovieClip {
 		trace("-----------------------+++++++++  "+dataObj.subnav_item_array[i].attributes.eng);
 		var aLen = dataObj.subnav_item_array.length;
 		
+	/* 
 		for(var xx=0;xx<aLen;xx++){
-			trace("XXX  :: "+dataObj.subnav_item_array[xx].attributes.eng)
-		}
+				trace("XXXXX  :: "+dataObj.subnav_item_array[xx].attributes.eng)
+			} 
+	*/
+
+	
 		
 		for(var i:Number = 0; i<aLen; i++){
-			MLArray[i] = dataObj.subnav_item_array[i].attributes.eng;
-			MLArray_esp[i] = dataObj.subnav_item_array[i].attributes.esp;
+			MLArray.push({
+						name:dataObj.subnav_item_array[i].attributes.name,
+						title:dataObj.subnav_item_array[i].attributes.eng
+						});
+			MLArray_esp.push({
+						name:dataObj.subnav_item_array[i].attributes.name,
+						title:dataObj.subnav_item_array[i].attributes.esp
+						});
 		}
-		
 	}
 	
 

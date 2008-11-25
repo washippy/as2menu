@@ -12,7 +12,12 @@
 	<section name="home" eng="Home" esp="Inicio" navbarposition="1"/>
 
 	<section name="about" eng="About Mt. Zion" esp="Acerca De Mt. Zion" navbarposition="2">
-		<item name="history" eng="HISTORY" esp="Historia"/>
+		<item name="history" eng="HISTORY" esp="Historia">
+			<subnav eng="MYSPACE" esp="E" link="http://www.myspace.com/thedistrictvenue"/>
+			<subnav eng="MYSPACE" esp="E" link="http://www.myspace.com/thedistrictvenue"/>
+			<subnav eng="MYSPACE" esp="E" link="http://www.myspace.com/thedistrictvenue"/>
+			
+		</item>
 		<item name="whatwebelieve" eng="WHAT WE BELIEVE" esp="Lo Que Creemos"/>
 		<item name="pastorloren" eng="PASTOR LOREN" esp="Pastor Loren"/>
 		<item name="servicetimes" eng="SERVICE TIMES" esp="N A"/>
@@ -21,7 +26,6 @@
 		<item name="faq" eng="FAQ" esp="Preguntas Frecuentes"/>
 	</section>
 	
-	 
 	<section name="connections" eng="Connections" esp="Inicio" navbarposition="3">
 		<item name="smallgroups" eng="SMALL GROUPS" esp="Inicio">Small Groups</item>
 		<item name="volunteer" eng="VOLUNTEER" esp="Inicio">Volunteer</item>
@@ -29,7 +33,7 @@
 		
 	<section name="ministries" eng="Ministries" esp="Inicio" navbarposition="4">
 		<item name="familyministry" eng="FAMILY MINISTRY" esp="Inicio">Family Ministry</item>
-		<item name="studentministry" eng="STUDENT MINISTRY" esp="Inicio" subnav_enabled="true"><!-- Young Adults 18 to 35 -->
+		<item name="studentministry" eng="STUDENT MINISTRY" esp="Inicio"><!-- Young Adults 18 to 35 -->
 			<subnav eng="THE DISTRICT" esp="El Districto" link="http://www.thedistrictvenue.com"/>
 			<subnav eng="GEN ONE SITE" esp="E" link="http://www.genone.com"/>
 			<subnav eng="MYSPACE" esp="E" link="http://www.myspace.com/thedistrictvenue"/>
@@ -66,7 +70,7 @@
 	<section name="el_salvadore" eng="El Salvadore" esp="Inicio" navbarposition="0"/>
 	<section name="partnership" eng="Partnership" esp="Inicio" navbarposition="0"/>
 	<section name="bookstore" eng="Bookstore" esp="Inicio" navbarposition="0"/>
-	<section name="donations" eng="Donations" esp="Inicio" subnav_enabled="true" navbarposition="0">
+	<section name="donations" eng="Donations" esp="Inicio"navbarposition="0">
 		<item name="about" eng="ON-LINE DONATIONS" esp="Inicio">On-line Donations</item>	
 	</section>
 	<section name="building_updates" eng="Building Updates" esp="Inicio" gallery_enabled="true" gallery_xml="building_gallery.xml" navbarposition="0"/>

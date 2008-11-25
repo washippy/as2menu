@@ -1,6 +1,10 @@
 ﻿/*	NAVBAR
 	TO DO:
-	SEND onclicks to main app
+	
+	
+	BREAK THIS UP INTO NAVBAR BUTTON CLASS W EVENTS THERE
+	
+	
 */
 import mx.utils.Delegate;
 import utils.BroadCaster;
@@ -20,30 +24,34 @@ class Navbar extends MovieClip {
 	
 	private var navLength:Number;
 	private var nameString:String;
-	private var nameId:String;	
+	private var nameID:String;	
 	private var nameNum:Number;
 	
 	// added 
 	private var TF_HEIGHT:Number=15;
 	private var justify:String = "center";
-	
+	public var hotSection:String;
 	
 	public function Navbar(clip:MovieClip){
 		navbar=clip.navbar_mc;
 		
 		trace("NAVBAR CONSTRUCTOR");
 		BroadCaster.register(this,"navBarGetData");
-		BroadCaster.register(this,"buildButtons");
+		BroadCaster.register(this,"updateHotSection");
 		
-		navbar._alpha=0;	
+		navbar._alpha=0;
+			
 	}
 	
 	public function navBarGetData():Void{
+		// this gets the section list from structure xml and builds an object 
+		// navArray[nave position number].object  =   (name, english title, spanish title)
+	
 		sectionArray = new Array();
 		
 		var sectionArray = StructureApp.getInstance().getNavArray();
 		var saLen = sectionArray.length;
-		trace("section GET DATA "+sectionArray);
+	//	trace("section GET DATA "+sectionArray);
 	
 		navArray = new Array();
 		
@@ -54,13 +62,11 @@ class Navbar extends MovieClip {
 				nObj.eng = sectionArray[o].eng;
 				nObj.esp = sectionArray[o].esp;
 				navArray[sectionArray[o].navNum]=nObj;
-				trace(" B  "+this);
-				trace(" BOOOO  "+navArray[o].eng);
+				
 			
 			}
 		}
-		
-		BroadCaster.broadcastEvent("buildButtons");	
+		buildButtons();
 	
 	}
 	
@@ -90,7 +96,7 @@ class Navbar extends MovieClip {
 		
 			navbar["nb"+i].nameNum = i+1;
 			navbar["nb"+i].nameString = navArray[i].eng;
-			navbar["nb"+i].nameId = navArray[i].name;
+			navbar["nb"+i].nameID = navArray[i].name;
 			navbar["nb"+i].top_tf_mc.tf.text = navbar["nb"+i].bottom_tf_mc.tf.text = navArray[i].eng;
 			navbar["nb"+i].top_tf_mc.tf.autoSize = navbar["nb"+i].bottom_tf_mc.tf.autoSize = "center";
 			
@@ -111,40 +117,28 @@ class Navbar extends MovieClip {
 
 		
 		} 
-			addEvents();
-		/// tween it in
 		navbar._y+=15;
 		Tweener.addTween(navbar, {delay:0, time:1, transition:"easeOut", _alpha:100, _y:navbar._y-15});
 		
+		
+		var dObj:Object = new Object(); 
+		dObj = "home"; // GET FROM DEEP LINK //
+		BroadCaster.broadcastEvent("updateHotSection", dObj, false);
 	}
 	
-	private function addEvents(){
-			for(var i=0;i<navLength;i++){
-				navbar["nb"+i].bkg_mc.onRollOver = Delegate.create(navbar["nb"+i], nbRollOver);
-				navbar["nb"+i].bkg_mc.onRollOut = Delegate.create(navbar["nb"+i], nbRollOut);
-				navbar["nb"+i].bkg_mc.onRelease = Delegate.create(navbar["nb"+i], nbRelease);
-				navbar["nb"+i].bkg_mc.onPress = Delegate.create(navbar["nb"+i], nbPress);
+
+
+	private function updateHotSection(foo:Object){
+		trace(foo + " :: :: :: " +hotSection);
+		hotSection = String(foo);
+		for(var i=1;i<navLength;i++){
+			if(hotSection == navbar["nb"+i].nameID){
+					navbar["nb"+i].Select();
+			}else{
+				navbar["nb"+i].unSelect();
 			}
-	}
-	
-	private function nbRollOver(){
-		trace("OVER "+this.nameId);
-		this.gotoAndPlay("over");		
-	}
-	
-	private function nbRollOut(){
-		//trace("OFF "+this);		
-		this.gotoAndPlay("off");
-	}
-	
-	private function nbRelease(){
-		//trace("release "+this);		
-	}
-	
-	private function nbPress(){
-			var testObj:Object = new Object(); // TESTING == FIX THIS
-			testObj = this.nameId;
-			BroadCaster.broadcastEvent("launchNewPage", testObj, true);
+		}
+		trace("++++++++++++++++++ + ++ ++ ++ + + +  "+hotSection);
 	}
 
 }

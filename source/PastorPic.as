@@ -5,7 +5,12 @@
 //
 
 TO DO
-SPANISH RELOAD
+
+
+
+
+
+
 GLOBAL FADE IN TIMING
 
 */
