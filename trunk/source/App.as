@@ -8,7 +8,39 @@
 	
 	DEEP LINK
 	
-	
+	////////// UNCOMMENT THIS FOR LOCAL TESTING /////////////
+
+	    //    var ooo:Object = new Object();
+	    //    ooo.path = "xml/mustang09_360.xml";
+	    //    ooo.asset = "_coupe";
+	    //    ooo.exterior = 1;
+	    //    ooo.interior = 0;
+	    //    ooo.background = "_env";
+	    //    gettingXML(ooo);
+
+	    //////////////////////////////////////////////////////
+
+
+	    function gettingXML(oData){
+	        var xmlData = oData.path == undefined ? "xml/mustang09_360.xml" : oData.path;
+	        threeSixtyModel.initXML(xmlData);
+
+	        trace("XXXXXXXXXXXXXXXXXXX "+oData.asset+ ":: "+oData.exterior+ ":: "+oData.interior+ ":: "+oData.background);
+
+
+	        Controller.trimVar = oData.asset;
+	        Controller.dExt =oData.exterior;
+	        Controller.dInt =oData.interior;
+	        Controller.bkgVar =oData.background;
+
+	        if(oData.deeplink.interior != 0 ){  //if int has a num, set it to "int", otherwise [and in case of error] set it to "ext"
+	            whichSideActive = "Int";
+	        }else {
+	            whichSideActive = "Ext";
+	        }
+
+
+	    }
 	
 	
 	
