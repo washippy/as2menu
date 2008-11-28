@@ -14,8 +14,8 @@
 	<section name="about" eng="About Mt. Zion" esp="Acerca De Mt. Zion" navbarposition="2">
 		<item name="history" eng="HISTORY" esp="Historia">
 			<subnav eng="MYSPACE" esp="E" link="http://www.myspace.com/thedistrictvenue"/>
-			<subnav eng="MYSPACE" esp="E" link="http://www.myspace.com/thedistrictvenue"/>
-			<subnav eng="MYSPACE" esp="E" link="http://www.myspace.com/thedistrictvenue"/>
+			<subnav eng="MYS PACE" esp="E" link="http://www.myspace.com/thedistrictvenue"/>
+			<subnav eng="M YSPA CE" esp="E" link="http://www.myspace.com/thedistrictvenue"/>
 			
 		</item>
 		<item name="whatwebelieve" eng="WHAT WE BELIEVE" esp="Lo Que Creemos"/>
