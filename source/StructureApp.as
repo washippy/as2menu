@@ -20,7 +20,7 @@ class StructureApp {
 	private var myXmlObject:XMLObject;
 	private var hotarray:String;
 	private var section_array:Array;
-	private var subsection_array:Array;
+	private var thirdnav_array:Array;
 	
 	private var navbar_array:Array;
 	
@@ -54,13 +54,25 @@ class StructureApp {
 				}
 			}			
 	}
-
+	public function getThirdNavArrayData():Array { 
+			// loop thru array and ship appropriate one
+			
+			
+			
+			// FIX THIS
+			
+			
+			
+			
+			
+			trace("GET THIRD NAV ARRAY DAATA :: "+thirdnav_array);
+			return thirdnav_array;		
+	}
 
 
 	
 	public function getNavArray():Array { 
-			// loop thru array and ship appropriate one
-			trace("GET NAV ARRAY DAATA :: "+section_array);
+			trace("GET NAV ARRAY :: "+section_array);
 			return section_array;		
 	}	
 	
@@ -105,12 +117,12 @@ class StructureApp {
 	
 	private function setupArrays():Void{
 		section_array = new Array();
-//		subsection_array = new Array();
+		thirdnav_array = new Array();
 		
 		var slen:Number = sXml.section.length;
 		
 		//navbar_array = new Array(slen);
-		//trace("BANGOOOO "+ navbar_array.length);
+		trace("BANGOOOO ");
 		
 			for (var i:Number=0;i< slen; i++) {
 						section_array.push({
@@ -125,10 +137,27 @@ class StructureApp {
 							subnav_item_array:sXml.section[i].item // if yes, get subnav later
 							
 						   });
-//						subsection_array[i] = sXml.section[i].item;
-					
+						
+						
+						var iLen = sXml.section[i].item.length;
+						for (var o=0;o<=iLen;o++){
+							
+							var snLen = sXml.section[i].item[o].subnav.length;
+							for (var p=0;p<=snLen;p++){
+								trace("WELL FOO HERE IT IS "+o+" :: "+p+" :: "+sXml.section[i].item[o].subnav[p].attributes.eng)
+								
+								thirdnav_array.push({
+										name:sXml.section[i].item[o].subnav[p].attributes.name,
+										eng:sXml.section[i].item[o].subnav[p].attributes.eng,
+									  	esp:sXml.section[i].item[o].subnav[p].attributes.esp,
+								})
+							}
+						}
+						
+						
 			}
-		
+			
+
 		
 		// BROADCAST THIS EVENT
 		BroadCaster.broadcastEvent("navBarGetData");	
