@@ -16,7 +16,7 @@ class menuItem extends MovieClip {
 	private var _pagename:String;
 	
 	private var _mc:MovieClip; // listHolder
-	private var _justify:String; // left or right
+	private var _justify:String; // left or right or horizontal
 	
 	private var mItem:MovieClip;
 	
@@ -45,6 +45,9 @@ class menuItem extends MovieClip {
 			parseTitleRight(_title);	
 		}else if(_justify=="center"){
 			parseTitleCenter(_title);
+		}else if(_justify == "horizontal"){
+			parseTitleHoriz(_title);
+			
 		}
  	}
 	
@@ -68,6 +71,26 @@ class menuItem extends MovieClip {
 		popBKG();
 	}
 	 
+	private function parseTitleHoriz(_t:String){
+		trace("HORIZ       +++++++  "+_t);
+		itemArray = _t.split(" ");	
+		for(var i =0 ; i< itemArray.length; i++){
+		
+			mItem.attachMovie("menuItemWord", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:0, _y:0, _title:itemArray[i].title}); // move it later;
+			
+			
+			if(i!=0){	
+				mItem["menuItemWord"+i]._x = mItem["menuItemWord"+(i-1)]._x +  mItem["menuItemWord"+(i-1)].top_tf_mc.tf._width;
+			}
+			
+		}
+		
+		mItem.mask_mc._width = mItem.top_tf_mc.tf._width;
+		
+		popBKG();
+	}
+	
+	
 	private function parseTitleCenter(_t:String){
 		trace("CENTER ||||||||||| | | | |  "+_t);
 		itemArray = _t.split(" ");	
@@ -212,7 +235,7 @@ class menuItem extends MovieClip {
 	private function mPress(){
 		trace("BOO "+this._pagename);
 		var _obj = _pagename;
-	//	BroadCaster.broadcastEvent("loadASubPage", _obj , false);
+		BroadCaster.broadcastEvent("loadASubSection", _obj , false);
 	/// JUST RELOAD TEXT AREA
 		/////// get some ACTIONS in here
 		

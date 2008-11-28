@@ -14,8 +14,8 @@ MANAGE SUB NAVS
 see comps
 
 
-
-
+FIX
+loadASubSection
 
 
 
@@ -43,6 +43,12 @@ class SubPageApp extends MovieClip {
 	private var ML:menuList;
 	private var MLArray:Array;
 	private var MLArray_esp:Array;
+	
+	private var TL:menuList;
+	private var TLArray:Array;
+	private var TLArray_esp:Array;
+		private var thirdmenuholder_mc:MovieClip;
+
 	private var ANIM_ENDPOINT:Number;
 	private var ANIM_STARTPOINT:Number;
 	private var galleryEnabled:Boolean;
@@ -115,15 +121,55 @@ class SubPageApp extends MovieClip {
 		getXMLData();
 		
 		if(dataObj.subnav_item_array != undefined){
+		
 			buildSubNav();
 		} else{
 				MLArray = null;
 				MLArray_esp = null;
 			ML.disable();
 		}
-			
 	}
 	
+	
+	
+	public function loadASubSection(_pagename:String):Void{
+		// use page name to get data
+		trace("L A S P :: "+subpage1_mc);
+		Tweener.removeTweens(subpage1_mc);
+		
+		subpage1_mc._alpha=0;
+		subpage1_mc._y=ANIM_STARTPOINT;
+		
+		dataObj = new Object();
+	//	trace("DANGIT "+_pagename);//StructureApp.getInstance().getArrayData(_pagename));
+	//	var bob:String = _pagename;
+	//	StructureApp.getInstance().setArrayData(_pagename); 
+		
+		dataObj = StructureApp.getInstance().getThirdNavArrayData(); 
+		
+			if (_global.lang == "SPANISH"){
+				var _lang:String = "esp";
+			}else{
+				var _lang:String = "eng";
+			}	
+		
+		XMLPATH = "xml/"+dataObj.name+"_"+ _lang +".xml";   
+		getXMLData();
+		
+		//setSubNavStatus
+		// buildThirdNav
+		
+		if(dataObj.subnav_item_array != undefined){ // change this to the item array
+			buildThirdNav();
+		} else{
+				TLArray = null;
+				TLArray_esp = null;
+			TL.disable();
+		}
+
+	
+			
+	}
 	
 	private function buildSubNav():Void{
 		MLArray = new Array();
@@ -153,7 +199,33 @@ class SubPageApp extends MovieClip {
 		}
 	}
 	
+	private function buildThirdNav():Void{
+		TLArray = new Array();
+		TLArray_esp = new Array();
+		
+		
+	//	trace("-----------------------+++++++++  "+dataObj.subnav_item_array[i].attributes.eng);
+		var aLen = dataObj.subnav_item_array.length;
+		
+	/* 
+		for(var xx=0;xx<aLen;xx++){
+				trace("XXXXX  :: "+dataObj.subnav_item_array[xx].attributes.eng)
+			} 
+	*/
 
+	
+		
+		for(var i:Number = 0; i<aLen; i++){
+			TLArray.push({
+						name:dataObj.subnav_item_array[i].attributes.name,
+						title:dataObj.subnav_item_array[i].attributes.eng
+						});
+			TLArray_esp.push({
+						name:dataObj.subnav_item_array[i].attributes.name,
+						title:dataObj.subnav_item_array[i].attributes.esp
+						});
+		}
+	}
 	private function getXMLData():Void{
 		// maybe cal_xml = null; ??
 		trace("getting "+ XMLPATH)
@@ -182,17 +254,6 @@ class SubPageApp extends MovieClip {
 	private function fireitupman():Void{
 		disable();
 		
-		/* 
-
-					for (var zed in sXml){
-						for (var zing in sXml[zed]){
-							for (var zap in sXml[zed][zing]){
-								trace(zed+" :: "+zing+" :: " +zap+ " :: "+sXml[zed][zing][zap]);
-								}}}
-								 
-		*/
-
-		
 		if (_global.lang == "SPANISH"){
 				ML = new menuList(MLArray_esp, subpage1_mc.menuholder_mc, "right"); // justify right or left
 			}else{
@@ -200,6 +261,13 @@ class SubPageApp extends MovieClip {
 			}
 		
 		popData();
+		
+		// if theres a third nav, launch it
+		if (_global.lang == "SPANISH"){
+				TL = new menuList(TLArray_esp, subpage1_mc.thirdmenuholder_mc, "horizontal"); // justify right or left
+			}else{
+				TL = new menuList(TLArray, subpage1_mc.thirdmenuholder_mc, "horizontal"); // justify right or left
+			}
 		
 	}
 	
