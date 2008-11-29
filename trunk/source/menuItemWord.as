@@ -31,7 +31,7 @@ class menuItemWord extends MovieClip {
 	
 	private function popText(_text:String){
 
-		trace("wwwwwwwwwwwwwwwwwwwwww  "+_text);
+		// trace("wwwwwwwwwwwwwwwwwwwwww  "+_text);
 		this.top_tf_mc.tf.text = _text;
 		this.bottom_tf_mc.tf.text = _text;
 		this.top_tf_mc.tf.autoSize = true;

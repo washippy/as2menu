@@ -71,12 +71,24 @@ class menuList extends MovieClip {
 			
 			var _pageNameObj:Object = new Object();
 				_pageNameObj = listArray[num].name;
-			trace(" DDDDDDDDDDDDDDDDDDDDDDDD "+ listArray[num].name);
+			trace( num + " DDDDDDDDDDDDDDDDDDDDDDDD "+ listArray[num].name);
 			
 			var _mcObj:Object = new Object();
 			_mcObj = menulist;
+			/*
 			
-			menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(TF_HEIGHT * num), _title:_titleObj, _pagename:_pageNameObj, _mc:_mcObj, _justify:justify});
+			if its justify right or center
+			
+			
+			else if horizontal
+			
+			*/
+			
+			
+			
+			menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:(30 * num), _y:0,  _title:_titleObj, _pagename:_pageNameObj, _mc:_mcObj, _justify:justify, nameNum:num});
+			
+		//	menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(TF_HEIGHT * num), _title:_titleObj, _pagename:_pageNameObj, _mc:_mcObj, _justify:justify, nameNum:num});
 		}
 
 	}
