@@ -24,7 +24,9 @@ class StructureApp {
 	
 	private var navbar_array:Array;
 	
-	private function StructureApp(){}
+	private function StructureApp(){
+		trace("STRUCTURE APP CONSTRUCTOR");
+	}
 	
 	static public function getInstance():StructureApp{ 
 		if (_instance == undefined){ 
@@ -54,19 +56,23 @@ class StructureApp {
 				}
 			}			
 	}
-	public function getThirdNavArrayData():Array { 
-			// loop thru array and ship appropriate one
+	public function getThirdNavArrayData(_num:Number):Array { 
 			
 			
+			trace(_num + "GET THIRD NAV ARRAY DAATA :: "+hotarray);
 			
-			// FIX THIS
-			
-			
-			
-			
-			
-			trace("GET THIRD NAV ARRAY DAATA :: "+thirdnav_array);
-			return thirdnav_array;		
+			for(var f in section_array){
+				trace("checkin : "+section_array[f].name +" :: "+ section_array[f].subnav_item_array[_num].subnav);
+				
+				if(section_array[f].name == hotarray){
+					return section_array[f].subnav_item_array[_num];
+					//trace("returning : "+section_array[f].subnav_item_array[_num].attributes.name);
+				}else{
+					trace("nuthin here");
+					
+				}
+			}
+				
 	}
 
 
@@ -88,16 +94,19 @@ class StructureApp {
 	}
 	
 	private function getData():Void{
+		trace("GET DATA "+_xmlPath);
 		// maybe str_xml = null; ??
 		str_xml = new XML();
 		str_xml.ignoreWhite = true;
+		str_xml.onLoad = Delegate.create(this, onXmlLoad);
+		
 		str_xml.load(_xmlPath); 
 
-		str_xml.onLoad = Delegate.create(this, onXmlLoad);
 		
 	}
 	
 	private function onXmlLoad($success:Boolean):Void{
+	trace("onXmlLoad")
 		if ($success) {
 			
 			// trace("load cal data :"+ $success);
@@ -106,9 +115,13 @@ class StructureApp {
 			sXml = myXmlObject.parseXML(str_xml);
 			sXml = sXml.mtzion; // xmlObject = root node...
 			//trace("FOOOOOOOOOOOOOOOOOOOOO : "+sXml.section[0]);
+			/* 
 			for (var item in sXml.section){
-				trace("structure data : " +item +" :: " +sXml.section[item].attributes.name);
-			}
+							trace("structure data : " +item +" :: " +sXml.section[item].attributes.name);
+						} 
+			*/
+
+		//	
 			setupArrays();
 		} else {
 			 trace("load structure data died WHAA "+ $success);
@@ -116,13 +129,14 @@ class StructureApp {
 	}
 	
 	private function setupArrays():Void{
+		trace("BANGOOOO ");
+		
 		section_array = new Array();
 		thirdnav_array = new Array();
 		
 		var slen:Number = sXml.section.length;
 		
 		//navbar_array = new Array(slen);
-		trace("BANGOOOO ");
 		
 			for (var i:Number=0;i< slen; i++) {
 						section_array.push({
@@ -138,21 +152,8 @@ class StructureApp {
 							
 						   });
 						
+						//// third nav here?
 						
-						var iLen = sXml.section[i].item.length;
-						for (var o=0;o<=iLen;o++){
-							
-							var snLen = sXml.section[i].item[o].subnav.length;
-							for (var p=0;p<=snLen;p++){
-								trace("WELL FOO HERE IT IS "+o+" :: "+p+" :: "+sXml.section[i].item[o].subnav[p].attributes.eng)
-								
-								thirdnav_array.push({
-										name:sXml.section[i].item[o].subnav[p].attributes.name,
-										eng:sXml.section[i].item[o].subnav[p].attributes.eng,
-									  	esp:sXml.section[i].item[o].subnav[p].attributes.esp,
-								})
-							}
-						}
 						
 						
 			}
@@ -164,3 +165,28 @@ class StructureApp {
 			
 	}	
 }
+
+
+/*
+
+var iLen = sXml.section[i].item.length;
+for (var o=0;o<=iLen;o++){
+	
+	var snLen = sXml.section[i].item[o].subnav.length;
+	for (var p=0;p<=snLen;p++){
+		trace("WELL FOO HERE IT IS "+o+" :: "+p+" :: "+sXml.section[i].item[o].subnav[p].attributes.eng)
+		
+		
+		thirdnav_array.push({
+												name:sXml.section[i].item[o].subnav[p].attributes.name,
+												eng:sXml.section[i].item[o].subnav[p].attributes.eng,
+											  	esp:sXml.section[i].item[o].subnav[p].attributes.esp
+										}); 
+	
+
+		
+	}
+}
+
+
+*/
