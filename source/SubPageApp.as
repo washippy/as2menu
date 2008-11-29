@@ -20,8 +20,6 @@ loadASubSection
 
 
 
-
-
 */ 
 
 import utils.XMLObject;
@@ -36,7 +34,11 @@ class SubPageApp extends MovieClip {
 
 	private var XMLPATH:String="";
 	private var subpage_xml:XML;
+		private var subsect_xml:XML;
 	private var sXml:Object;
+	private var mySubXmlObject:XMLObject;
+
+	private var sSubXml:Object;
 	private var myXmlObject:XMLObject;
 	private var subpage1_mc:MovieClip;
 	private var menuholder_mc:MovieClip;
@@ -62,6 +64,8 @@ class SubPageApp extends MovieClip {
 		
 		trace(" HEY SUBPAGE   ::: "+StructureApp.getInstance().getPath()); 	
 		BroadCaster.register(this,"loadASubPage");
+		BroadCaster.register(this,"loadASubSection");
+		
 		subpage1_mc = clip.subpage1;
 		ANIM_ENDPOINT = subpage1_mc._y;
 		ANIM_STARTPOINT = subpage1_mc._y +40;
@@ -102,7 +106,7 @@ class SubPageApp extends MovieClip {
 		Tweener.removeTweens(subpage1_mc);
 		
 		subpage1_mc._alpha=0;
-		subpage1_mc._y=ANIM_STARTPOINT;
+		subpage1_mc._y=ANIM_ENDPOINT;//ANIM_STARTPOINT;
 		
 		dataObj = new Object();
 		trace("DANGIT "+_pagename);//StructureApp.getInstance().getArrayData(_pagename));
@@ -132,42 +136,46 @@ class SubPageApp extends MovieClip {
 	
 	
 	
-	public function loadASubSection(_pagename:String):Void{
+	public function loadASubSection(stuff:Object):Void{
 		// use page name to get data
-		trace("L A S P :: "+subpage1_mc);
-		Tweener.removeTweens(subpage1_mc);
-		
-		subpage1_mc._alpha=0;
-		subpage1_mc._y=ANIM_STARTPOINT;
-		
-		dataObj = new Object();
-	//	trace("DANGIT "+_pagename);//StructureApp.getInstance().getArrayData(_pagename));
-	//	var bob:String = _pagename;
-	//	StructureApp.getInstance().setArrayData(_pagename); 
-		
-		dataObj = StructureApp.getInstance().getThirdNavArrayData(); 
-		
-			if (_global.lang == "SPANISH"){
-				var _lang:String = "esp";
-			}else{
-				var _lang:String = "eng";
-			}	
-		
-		XMLPATH = "xml/"+dataObj.name+"_"+ _lang +".xml";   
-		getXMLData();
-		
-		//setSubNavStatus
-		// buildThirdNav
-		
-		if(dataObj.subnav_item_array != undefined){ // change this to the item array
-			buildThirdNav();
-		} else{
-				TLArray = null;
-				TLArray_esp = null;
-			TL.disable();
-		}
+	//	var _obj:Object = new Object();
+	//	_obj.pageName = _pagename;
+	//	_obj.nameNum = nameNum;
+		trace("L A S Section :: "+stuff.nameNum);
+			Tweener.removeTweens(subpage1_mc);
+			
+			//subpage1_mc._alpha=0;
+		//	subpage1_mc._y=ANIM_STARTPOINT;
+			
+			dataObj = new Object(); 
+	
 
 	
+			trace("DANGIT "+stuff.pageName);//StructureApp.getInstance().getArrayData(_pagename));
+	//	var bob:String = _pagename;
+	//	StructureApp.getInstance().setArrayData(stuff.pageName); 
+		
+	
+			dataObj = StructureApp.getInstance().getThirdNavArrayData(stuff.nameNum); 
+			
+				if (_global.lang == "SPANISH"){
+					var _lang:String = "esp";
+				}else{
+					var _lang:String = "eng";
+				}	
+			
+			XMLPATH = "xml/"+dataObj.attributes.name+"_"+ _lang +".xml";   
+			getSubSectionXMLData(); 
+
+		trace("LOL _-_-______------_-_--_-_-_-_- "+dataObj.subnav)
+	 
+		if(dataObj.subnav != undefined){ // change this to the item array
+				buildThirdNav();
+			} else{
+					TLArray = null;
+					TLArray_esp = null;
+				TL.disable();
+			} 
 			
 	}
 	
@@ -184,8 +192,6 @@ class SubPageApp extends MovieClip {
 				trace("XXXXX  :: "+dataObj.subnav_item_array[xx].attributes.eng)
 			} 
 	*/
-
-	
 		
 		for(var i:Number = 0; i<aLen; i++){
 			MLArray.push({
@@ -200,35 +206,47 @@ class SubPageApp extends MovieClip {
 	}
 	
 	private function buildThirdNav():Void{
+		trace("BUILD THIRD NAV");
 		TLArray = new Array();
 		TLArray_esp = new Array();
 		
 		
 	//	trace("-----------------------+++++++++  "+dataObj.subnav_item_array[i].attributes.eng);
-		var aLen = dataObj.subnav_item_array.length;
+		var aLen = dataObj.subnav.length;
 		
+	
 	/* 
 		for(var xx=0;xx<aLen;xx++){
-				trace("XXXXX  :: "+dataObj.subnav_item_array[xx].attributes.eng)
-			} 
+					trace("XXXXX  :: "+dataObj.subnav[xx].attributes.eng)
+				} 
+		 
 	*/
 
-	
-		
+
+	 
 		for(var i:Number = 0; i<aLen; i++){
-			TLArray.push({
-						name:dataObj.subnav_item_array[i].attributes.name,
-						title:dataObj.subnav_item_array[i].attributes.eng
-						});
-			TLArray_esp.push({
-						name:dataObj.subnav_item_array[i].attributes.name,
-						title:dataObj.subnav_item_array[i].attributes.esp
-						});
-		}
+				TLArray.push({
+							name:dataObj.subnav[i].attributes.name,
+							title:dataObj.subnav[i].attributes.eng
+							});
+				TLArray_esp.push({
+							name:dataObj.subnav[i].attributes.name,
+							title:dataObj.subnav[i].attributes.esp
+							});
+			} 
+		
+		// if theres a third nav, launch it
+		if (_global.lang == "SPANISH"){
+				TL = new menuList(TLArray_esp, subpage1_mc.thirdmenuholder_mc, "horizontal"); // justify right or left
+			}else{
+				TL = new menuList(TLArray, subpage1_mc.thirdmenuholder_mc, "horizontal"); // justify right or left
+			}
+	
+	
 	}
 	private function getXMLData():Void{
 		// maybe cal_xml = null; ??
-		trace("getting "+ XMLPATH)
+		trace("getting X1"+ XMLPATH)
 		subpage_xml = new XML();
 		subpage_xml.ignoreWhite = true;
 		subpage_xml.load(XMLPATH); 
@@ -261,14 +279,7 @@ class SubPageApp extends MovieClip {
 			}
 		
 		popData();
-		
-		// if theres a third nav, launch it
-		if (_global.lang == "SPANISH"){
-				TL = new menuList(TLArray_esp, subpage1_mc.thirdmenuholder_mc, "horizontal"); // justify right or left
-			}else{
-				TL = new menuList(TLArray, subpage1_mc.thirdmenuholder_mc, "horizontal"); // justify right or left
-			}
-		
+
 	}
 	
 	private function popData(){
@@ -280,7 +291,9 @@ class SubPageApp extends MovieClip {
 		
 	//	subpage1_mc.bodycopy_tf.styleSheet= styles;
 		subpage1_mc.bodycopy_tf.htmlText = sXml.main.item.copy.data;
-		Tweener.addTween(subpage1_mc, {_alpha:100, _y:ANIM_ENDPOINT, delay:.5, time:1.1, transition:"easeOut"});
+	//	Tweener.addTween(subpage1_mc, {_alpha:100, _y:ANIM_ENDPOINT, delay:.5, time:1.1, transition:"easeOut"});
+		Tweener.addTween(subpage1_mc, {_alpha:100, delay:.5, time:1.1, transition:"easeOut"});
+		
 		// story_tf.styleSheet = styles;
 		// story_tf.htmlText = bCopy;
 		// story_tf.autoSize=true;
@@ -292,6 +305,49 @@ class SubPageApp extends MovieClip {
 		// this.story_tf.htmlText = bodyCopy;
 	}
 	
+
+//// subnav
+
+private function getSubSectionXMLData():Void{
+	// maybe cal_xml = null; ??
+	trace("getting X2"+ XMLPATH);
+	subsect_xml = new XML();
+	subsect_xml.ignoreWhite = true;
+	subsect_xml.load(XMLPATH); 
+
+	subsect_xml.onLoad = Delegate.create(this, onSubXmlLoad);
+	
+}
+	
+	private function onSubXmlLoad($success:Boolean):Void{		
+		
+			if ($success) {
+			
+				trace("load supbage data :"+$success);
+							
+				mySubXmlObject = new XMLObject();
+				sSubXml = myXmlObject.parseXML(subsect_xml);
+			
+			} else {
+				 trace("load data died "+ $success);
+			}
+		popSubData();
+	}
+
+	private function popSubData(){
+		// bCopy = bCopy+ itemArray[i].childNodes[b].toString();
+		trace("POP sub data "+sSubXml.main.item.headline.data);
+		subpage1_mc.header_tf.text = sSubXml.main.item.headline.data;
+		_global.mainImagePath =  sSubXml.main.item.attributes.swfName;
+		BroadCaster.broadcastEvent("reloadMainImage");
+		
+		subpage1_mc.bodycopy_tf.htmlText = sSubXml.main.item.copy.data;
+	//	Tweener.addTween(subpage1_mc, {_alpha:100, _y:ANIM_ENDPOINT, delay:.5, time:1.1, transition:"easeOut"});
+		Tweener.addTween(subpage1_mc, {_alpha:100, delay:.5, time:1.1, transition:"easeOut"});
+		
+	
+	}
+
 	
 	public function disable():Void{ 
 		trace("sub page disable -->");
