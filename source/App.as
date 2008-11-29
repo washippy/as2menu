@@ -2,18 +2,8 @@
 	App.as:
 	
 	TO DO 
-	
-	
-	
-	
+
 	DEEP LINK
-	
-
-
-
-	   
-	
-	
 	
 */ 
 import flash.filters.BlurFilter;
@@ -66,10 +56,11 @@ class App extends MovieClip {
 	
 
 	public function App($mc:MovieClip, $oXml:Object){
+		trace("APP CONSTRUCTOR")
 		_mc = $mc;
 		_oXml = $oXml;
 		
-		trace(_mc+" :: "+_oXml.appvalues.attributes.assetpath);
+//		trace(_mc+" :: "+_oXml.appvalues.attributes.assetpath);
 		
 		BroadCaster.register(this,"launchNewPage");
 		
@@ -79,13 +70,17 @@ class App extends MovieClip {
 		
 		////////// UNCOMMENT THIS FOR LOCAL TESTING /////////////
 
+	/* 
 		        var ooo:Object = new Object();
-		        ooo.path = "xml/mustang09_360.xml";
-		        ooo.asset = "_coupe";
-		        ooo.exterior = 1;
-		        ooo.interior = 0;
-		        ooo.background = "_env";
-		        gettingXML(ooo);
+			        ooo.path = "xml/mustang09_360.xml";
+			        ooo.asset = "_coupe";
+			        ooo.exterior = 1;
+			        ooo.interior = 0;
+			        ooo.background = "_env";
+			        gettingXML(ooo); 
+	*/
+
+	
 
 		    //////////////////////////////////////////////////////
 		
@@ -93,7 +88,6 @@ class App extends MovieClip {
 		/////////////////////////
 		
 		distributeData();
-		initEvents();		
 		_mc.play();
 	}
 	
@@ -148,6 +142,7 @@ class App extends MovieClip {
 	
 		sideButtonBarArray = new Array();
 		var sLen = _oXml.sidebuttonbar.item.length;
+		
 		for(var s=0;s<sLen;s++){
 			sideButtonBarArray.push({
 				title:_oXml.sidebuttonbar.item[s].attributes.title,
@@ -155,17 +150,22 @@ class App extends MovieClip {
 				});
 		}	
 		
+	
 		if(INIT){
-				// APPS are already initiated
-				reloadDisplayElements();
-		}else{
-				// initiate
-				initDisplayElements();
-				INIT = true;
-		}		
+					// APPS are already initiated
+					reloadDisplayElements();
+			}else{
+					// initiate
+					initDisplayElements();
+					INIT = true;
+			}		 
+	
+
+	
 	}
 	
-	 function gettingXML(oData){
+/* 
+	private function gettingXML(oData){
 	     //   var xmlData = oData.path == undefined ? "xml/mustang09_360.xml" : oData.path;
 	       // threeSixtyModel.initXML(xmlData);
 
@@ -178,13 +178,16 @@ class App extends MovieClip {
 	      //  Controller.bkgVar =oData.background;
 
 	    }
+ 
+*/
+
 	
 	
 	
 	
 	private function initDisplayElements():Void{
 		// LAUNCH SUB APPS which should be ALPHA zero to fade in when loaded
-		//trace("what is this "+ newsAppXMLPath)
+	trace("APP :: INIT DISPLAY ELEMENTS "+structurePath)
 	
 				StructureApp.getInstance().setPath(structurePath);
 				
@@ -272,15 +275,4 @@ class App extends MovieClip {
 	}
 	
 	
-	private function initEvents():Void
-	{
-		/*
-		Tweener.addTween(_mc.mcNavigator, {delay:2.25, time:1, transition:"easeInBack", _alpha:100, _yscale:100, _xscale:100});
-		Tweener.addTween(_mc.mcThumbTitle, {delay:2, time:1, transition:"easeInBack", _alpha:100, _yscale:100, _xscale:100});
-		
-		BroadCaster.register(this,"introFinished");
-		BroadCaster.register(this,"onThumbRelease");
-		BroadCaster.register(this,"updateThumbTitle");
-		*/
-	}
 }

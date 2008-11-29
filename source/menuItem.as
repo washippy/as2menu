@@ -14,6 +14,7 @@ class menuItem extends MovieClip {
 	
 	private var _title:String;
 	private var _pagename:String;
+	private var nameNum:Number;
 	
 	private var _mc:MovieClip; // listHolder
 	private var _justify:String; // left or right or horizontal
@@ -38,7 +39,7 @@ class menuItem extends MovieClip {
 		STARTY = this._y;
 		mItem = this;
 		
-		trace(_title + " ::::::: ::::::: ::::: "+ _pagename)
+		// trace(_title + " ::::::: ::::::: ::::: "+ _pagename)
 		if(_justify=="left"){
 			parseTitle(_title);	
 		}else if(_justify=="right"){
@@ -92,11 +93,11 @@ class menuItem extends MovieClip {
 	
 	
 	private function parseTitleCenter(_t:String){
-		trace("CENTER ||||||||||| | | | |  "+_t);
+		// trace("CENTER ||||||||||| | | | |  "+_t);
 		itemArray = _t.split(" ");	
 		
 			for(var i = 0 ; i<itemArray.length; i++){
-			trace(i + "ARR ++++++++++++++  "+itemArray[i]);
+			// trace(i + "ARR ++++++++++++++  "+itemArray[i]);
 			
 			mItem.attachMovie("menuItemWordCenter", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:(mItem._width/2), _y:0, _title:itemArray[i]}); // move it later;
 			
@@ -122,7 +123,7 @@ class menuItem extends MovieClip {
 		itemArray.reverse();
 		
 			for(var i = 0 ; i<itemArray.length; i++){
-			trace(i + "ARR --------------------  "+itemArray[i]);
+			// trace(i + "ARR --------------------  "+itemArray[i]);
 			
 			
 			mItem.attachMovie("menuItemWordRight", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:0, _y:0, _title:itemArray[i]}); // move it later;
@@ -156,7 +157,11 @@ class menuItem extends MovieClip {
 		}else if(_justify=="center"){
 			mItem._x= 0-mItem.bkg_mc._width;
 			
-		}
+		}	else if(_justify=="horizontal"){
+			mItem.bkg_mc._x= 0-mItem.bkg_mc._width;
+			   ///// FIX THIS
+
+			}
 		addEvents();
 	}
 	
@@ -183,7 +188,7 @@ class menuItem extends MovieClip {
 	
 	public function rollEmOver(){
 		var count=0;
-		trace("R OVER+++++++++++++"+ mItem);
+		// trace("R OVER +++++++++++++"+ mItem.nameNum);
 		var limit = itemArray.length;
 		delete mItem.onEnterFrame;
 		
@@ -233,12 +238,14 @@ class menuItem extends MovieClip {
 	}
 	
 	private function mPress(){
-		trace("BOO "+this._pagename);
-		var _obj = _pagename;
+		trace("BOO "+ this._pagename);
+		var _obj:Object = new Object();
+		_obj.pageName = _pagename;
+		_obj.nameNum = nameNum;
 		BroadCaster.broadcastEvent("loadASubSection", _obj , false);
 	/// JUST RELOAD TEXT AREA
 		/////// get some ACTIONS in here
-		
+	//	manageList(   ???  );
 	}
 	
 	 
