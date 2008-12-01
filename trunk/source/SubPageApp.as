@@ -215,22 +215,23 @@ class SubPageApp extends MovieClip {
 		var aLen = dataObj.subnav.length;
 		
 	
-	/* 
+	 
 		for(var xx=0;xx<aLen;xx++){
 					trace("XXXXX  :: "+dataObj.subnav[xx].attributes.eng)
 				} 
 		 
-	*/
+	
 
 
 	 
 		for(var i:Number = 0; i<aLen; i++){
 				TLArray.push({
-							name:dataObj.subnav[i].attributes.name,
+							link:dataObj.subnav[i].attributes.link,
 							title:dataObj.subnav[i].attributes.eng
 							});
+							
 				TLArray_esp.push({
-							name:dataObj.subnav[i].attributes.name,
+							link:dataObj.subnav[i].attributes.link,
 							title:dataObj.subnav[i].attributes.esp
 							});
 			} 
