@@ -32,6 +32,7 @@ menuList
 */
 
 import mx.utils.Delegate;
+import utils.BroadCaster;
 
 class menuList extends MovieClip {
 	
@@ -49,6 +50,10 @@ class menuList extends MovieClip {
 		justify = _justify; // send this on to the menu items
 		trace("menu List trace this :: "+_list+" :: "+justify);
 		listArray = _list;
+		
+		
+		BroadCaster.register(this,"horizSpacer");
+		
 	/* 
 		for(var i=0;i< _list.length;i++){
 			   listArray[i] = _list[i].title;	
@@ -71,7 +76,7 @@ class menuList extends MovieClip {
 			
 			var _pageNameObj:Object = new Object();
 				_pageNameObj = listArray[num].name;
-			trace( num + " DDDDDDDDDDDDDDDDDDDDDDDD "+ listArray[num].name);
+			trace( num + " DDDDDDDDDDDDDDDDDDDDDDDD "+ listArray[num].title);
 			
 			var _mcObj:Object = new Object();
 			_mcObj = menulist;
@@ -84,13 +89,25 @@ class menuList extends MovieClip {
 			
 			*/
 			
+			if(justify=="horizontal"){
+				
+				menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:(num * 30), _y:0, _title:_titleObj, _pagename:_pageNameObj, _mc:_mcObj, _justify:justify, nameNum:num});
+			}else{
+				
+					menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(TF_HEIGHT * num), _title:_titleObj, _pagename:_pageNameObj, _mc:_mcObj, _justify:justify, nameNum:num});
+			}
 			
-			
-			menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:(30 * num), _y:0,  _title:_titleObj, _pagename:_pageNameObj, _mc:_mcObj, _justify:justify, nameNum:num});
-			
-		//	menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(TF_HEIGHT * num), _title:_titleObj, _pagename:_pageNameObj, _mc:_mcObj, _justify:justify, nameNum:num});
+		
 		}
 
+	}
+	
+	public function horizSpacer(clip:MovieClip){
+		trace("H SPACER  -------------"+clip+newline+newline);
+		
+		for(var num = 1; num< clip.listArray.length; num++){
+			clip.menulist["menuItem"+num]._x = clip.menulist["menuItem"+(num-1)]._x + clip.menulist["menuItem"+(num-1)]._width +10;
+		}
 	}
 	
 	public function disable(){
