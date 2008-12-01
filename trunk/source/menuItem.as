@@ -39,7 +39,7 @@ class menuItem extends MovieClip {
 		STARTY = this._y;
 		mItem = this;
 		
-		// trace(_title + " ::::::: ::::::: ::::: "+ _pagename)
+		trace(_title + " ::::::: ::::::: ::::: "+ nameNum)
 		if(_justify=="left"){
 			parseTitle(_title);	
 		}else if(_justify=="right"){
@@ -75,9 +75,11 @@ class menuItem extends MovieClip {
 	private function parseTitleHoriz(_t:String){
 		trace("HORIZ       +++++++  "+_t);
 		itemArray = _t.split(" ");	
+		trace("HORIZ       +++++++  "+itemArray[0]);
+		
 		for(var i =0 ; i< itemArray.length; i++){
 		
-			mItem.attachMovie("menuItemWord", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:0, _y:0, _title:itemArray[i].title}); // move it later;
+			mItem.attachMovie("menuItemWord", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:0, _y:0, _title:itemArray[i]}); // move it later;
 			
 			
 			if(i!=0){	
@@ -87,7 +89,14 @@ class menuItem extends MovieClip {
 		}
 		
 		mItem.mask_mc._width = mItem.top_tf_mc.tf._width;
-		
+
+	//	BroadCaster.broadcastEvent("horizSpacer");
+	
+		var _obj:Object = new Object();
+		_obj = mItem;
+		BroadCaster.broadcastEvent("horizSpacer", _obj , false);
+	
+	
 		popBKG();
 	}
 	
@@ -158,8 +167,8 @@ class menuItem extends MovieClip {
 			mItem._x= 0-mItem.bkg_mc._width;
 			
 		}	else if(_justify=="horizontal"){
-			mItem.bkg_mc._x= 0-mItem.bkg_mc._width;
-			   ///// FIX THIS
+			mItem.bkg_mc._x= 0;
+			 
 
 			}
 		addEvents();
