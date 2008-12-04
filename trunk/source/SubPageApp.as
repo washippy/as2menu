@@ -46,7 +46,7 @@ class SubPageApp extends MovieClip {
 	private var MLArray:Array;
 	private var MLArray_esp:Array;
 	
-	private var TL:menuList;
+	private var TL:menuListHoriz;
 	private var TLArray:Array;
 	private var TLArray_esp:Array;
 		private var thirdmenuholder_mc:MovieClip;
@@ -238,9 +238,9 @@ class SubPageApp extends MovieClip {
 		
 		// if theres a third nav, launch it
 		if (_global.lang == "SPANISH"){
-				TL = new menuList(TLArray_esp, subpage1_mc.thirdmenuholder_mc, "horizontal"); // justify right or left
+				TL = new menuListHoriz(TLArray_esp, subpage1_mc.thirdmenuholder_mc);
 			}else{
-				TL = new menuList(TLArray, subpage1_mc.thirdmenuholder_mc, "horizontal"); // justify right or left
+				TL = new menuListHoriz(TLArray, subpage1_mc.thirdmenuholder_mc); 
 			}
 	
 	
