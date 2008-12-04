@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>menuList.as</string>
+	<string>menuItemHoriz.as</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>MainImage.as</string>
 			<key>lastUsed</key>
-			<date>2008-11-20T04:53:49Z</date>
+			<date>2008-12-01T06:17:35Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -22,7 +22,7 @@
 			<key>filename</key>
 			<string>App.as</string>
 			<key>lastUsed</key>
-			<date>2008-11-29T04:40:51Z</date>
+			<date>2008-12-01T06:18:00Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -32,17 +32,29 @@
 		</dict>
 		<dict>
 			<key>filename</key>
+			<string>menuItemHoriz.as</string>
+			<key>lastUsed</key>
+			<date>2008-12-04T06:53:39Z</date>
+			<key>selected</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>menuListHoriz.as</string>
+			<key>lastUsed</key>
+			<date>2008-12-04T06:53:39Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
 			<string>menuItem.as</string>
 			<key>lastUsed</key>
-			<date>2008-11-29T06:13:55Z</date>
+			<date>2008-12-04T06:37:37Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>menuList.as</string>
 			<key>lastUsed</key>
-			<date>2008-11-29T06:13:55Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2008-12-04T06:20:07Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -64,7 +76,7 @@
 			<key>filename</key>
 			<string>menuItemWord.as</string>
 			<key>lastUsed</key>
-			<date>2008-11-29T05:43:41Z</date>
+			<date>2008-12-04T06:44:35Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -120,7 +132,7 @@
 			<key>filename</key>
 			<string>SubPageApp.as</string>
 			<key>lastUsed</key>
-			<date>2008-11-29T06:08:31Z</date>
+			<date>2008-12-04T06:23:13Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -133,59 +145,43 @@
 	<integer>199</integer>
 	<key>metaData</key>
 	<dict>
-		<key>menuItem.as</key>
+		<key>menuItemHoriz.as</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>18</integer>
+				<integer>28</integer>
 				<key>line</key>
-				<integer>38</integer>
+				<integer>162</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>15</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>16</integer>
-				<key>line</key>
-				<integer>38</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>18</integer>
-				<key>line</key>
-				<integer>38</integer>
-			</dict>
+			<integer>127</integer>
 		</dict>
-		<key>menuList.as</key>
+		<key>menuListHoriz.as</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>91</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>88</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>45</integer>
+			<integer>-1</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>menuItem.as</string>
-		<string>menuList.as</string>
+		<string>menuListHoriz.as</string>
+		<string>menuItemHoriz.as</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{10, 14}, {1228, 864}}</string>
+	<string>{{31, 4}, {1231, 874}}</string>
 </dict>
 </plist>
