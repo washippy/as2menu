@@ -46,59 +46,34 @@ class menuItem extends MovieClip {
 			parseTitleRight(_title);	
 		}else if(_justify=="center"){
 			parseTitleCenter(_title);
-		}else if(_justify == "horizontal"){
-			parseTitleHoriz(_title);
-			
 		}
  	}
 	
 	
 	private function parseTitle(_t:String){
-		//trace("+++++++  "+_t);
+		trace("+++ PARSE TITLE ++++  "+_t+newline+newline+newline);
 		itemArray = _t.split(" ");	
 		for(var i =0 ; i< itemArray.length; i++){
 		
 			mItem.attachMovie("menuItemWord", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:0, _y:0, _title:itemArray[i].title}); // move it later;
+			trace("+++ ++++  "+i);
 			
 			
 			if(i!=0){	
 				mItem["menuItemWord"+i]._x = mItem["menuItemWord"+(i-1)]._x +  mItem["menuItemWord"+(i-1)].top_tf_mc.tf._width;
 			}
 			
+			fullWidth +=mItem["menuItemWord"+(i)].top_tf_mc.tf._width;
+			
 		}
 		
-		mItem.mask_mc._width = mItem.top_tf_mc.tf._width;
+		trace("HOO AHH "+ fullWidth)
+		
+		mItem.mask_mc._width = fullWidth;//mItem.top_tf_mc.tf._width;
 		
 		popBKG();
 	}
 	 
-	private function parseTitleHoriz(_t:String){
-		trace("HORIZ       +++++++  "+_t);
-		itemArray = _t.split(" ");	
-		trace("HORIZ       +++++++  "+itemArray[0]);
-		
-		for(var i =0 ; i< itemArray.length; i++){
-		
-			mItem.attachMovie("menuItemWord", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:0, _y:0, _title:itemArray[i]}); // move it later;
-			
-			
-			if(i!=0){	
-				mItem["menuItemWord"+i]._x = mItem["menuItemWord"+(i-1)]._x +  mItem["menuItemWord"+(i-1)].top_tf_mc.tf._width;
-			}
-			
-		}
-		
-		mItem.mask_mc._width = mItem.top_tf_mc.tf._width;
-
-	//	BroadCaster.broadcastEvent("horizSpacer");
-	
-		var _obj:Object = new Object();
-		_obj = mItem;
-		BroadCaster.broadcastEvent("horizSpacer", _obj , false);
-	
-	
-		popBKG();
-	}
 	
 	
 	private function parseTitleCenter(_t:String){
@@ -127,7 +102,7 @@ class menuItem extends MovieClip {
 	
 	
 	private function parseTitleRight(_t:String){
-		//trace("RIGHT ++++++++++++  "+_t);
+		trace("RIGHT ++++++++++++  "+_t);
 		itemArray = _t.split(" ");	
 		itemArray.reverse();
 		
@@ -138,7 +113,6 @@ class menuItem extends MovieClip {
 			mItem.attachMovie("menuItemWordRight", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:0, _y:0, _title:itemArray[i]}); // move it later;
 		
 		
-			mItem.mask_mc._width = mItem.top_tf_mc.tf._width;
 			
 			if(i!=0){	
 				mItem["menuItemWord"+i]._x = mItem["menuItemWord"+(i-1)]._x - mItem["menuItemWord"+(i)].top_tf_mc.tf._width;
@@ -146,10 +120,14 @@ class menuItem extends MovieClip {
 				mItem["menuItemWord"+i]._x = 0 - mItem["menuItemWord"+i].top_tf_mc.tf._width;
 				
 			}
+			fullWidth += mItem["menuItemWord"+(i)].top_tf_mc.tf._width;
 			
 			
 		}	
 		
+		mItem.mask_mc._width = fullWidth;//mItem.top_tf_mc.tf._width;
+		trace("HOO AHH "+ fullWidth)
+
 		
 		popBKG();
 	}
@@ -188,7 +166,7 @@ class menuItem extends MovieClip {
 
 	
 	private function mRollOver(){
-		//trace("OVER "+this);
+		trace("OVER "+this);
 		rollEmOver();
 		// broadcast
 	//	BroadCaster.broadcastEvent("rollEmOver", this, true);
@@ -196,29 +174,49 @@ class menuItem extends MovieClip {
 	
 	
 	public function rollEmOver(){
-		var count=0;
-		// trace("R OVER +++++++++++++"+ mItem.nameNum);
-		var limit = itemArray.length;
+		var limit = itemArray.length-1;
+		trace("OY"+limit)
+		
+		var count=0;		
+		var timer=3;
+		
 		delete mItem.onEnterFrame;
 		
 		if(_justify =="left"){
 			mItem.onEnterFrame = function(){
-				mItem["menuItemWord"+count].gotoAndPlay("over");
-				count++;
-				if(count>=limit){
-					delete mItem.onEnterFrame;
+				if(timer<3){
+					timer++;
+				}else{
+					timer=0;
+					mItem["menuItemWord"+count].gotoAndPlay("over");
+					count++;
+					if(count>=limit){
+						delete mItem.onEnterFrame;
+					}
 				}
 			}
 		}else{
-			count = limit; // switch a roo  ... i mean left to right
+			count = limit; // switch i mean left to right
 			limit = 0;
 			mItem.onEnterFrame = function(){
-				mItem["menuItemWord"+count].gotoAndPlay("over");
-				count--;
-				if(count<limit){
-					delete mItem.onEnterFrame;
+				if(timer<3){
+					trace(timer);
+					timer++;
+				}else{
+					trace("BOOP "+ count);
+					timer=0;
+					
+					mItem["menuItemWord"+count].gotoAndPlay("over");
+					count--;
+					if(count<limit){
+						delete mItem.onEnterFrame;
+					}
 				}
-			}
+			} 
+
+
+		
+				
 		}
 	}
 	

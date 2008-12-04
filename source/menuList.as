@@ -7,21 +7,6 @@
 
 /*
 
-var suckerArray:Array = new Array();
-suckerArray[0]= "CHILDREN";
-suckerArray[1]= "YOUTH";
-
-suckerArray[2]= "YOUNG ADULT";
-suckerArray[3]= "SINGLES";
-suckerArray[4]= "GENERATION LIFE";
-suckerArray[5]= "HILLTOPPERS";
-suckerArray[6]= "CREATIVE ARTS";
-suckerArray[7]= "MARRIAGE & FAMILY";
-suckerArray[8]= "ESPANOL";
-
-
-var ML:menuList= new menuList(suckerArray, this);
-
 menuList 
 	menuItem
 		menuItemWord
@@ -54,16 +39,7 @@ class menuList extends MovieClip {
 		
 		BroadCaster.register(this,"horizSpacer");
 		
-	/* 
-		for(var i=0;i< _list.length;i++){
-			   listArray[i] = _list[i].title;	
-			} 
-	*/
-
-	
-		
-	//	for(var item in listArray){trace(listArray[item])}
-			buildList(_mc);
+		buildList(_mc);
 
 	}
 	
@@ -80,35 +56,14 @@ class menuList extends MovieClip {
 			
 			var _mcObj:Object = new Object();
 			_mcObj = menulist;
-			/*
-			
-			if its justify right or center
-			
-			
-			else if horizontal
-			
-			*/
-			
-			if(justify=="horizontal"){
+
 				
-				menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:(num * 30), _y:0, _title:_titleObj, _pagename:_pageNameObj, _mc:_mcObj, _justify:justify, nameNum:num});
-			}else{
-				
-					menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(TF_HEIGHT * num), _title:_titleObj, _pagename:_pageNameObj, _mc:_mcObj, _justify:justify, nameNum:num});
-			}
+			menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(TF_HEIGHT * num), _title:_titleObj, _pagename:_pageNameObj, _mc:_mcObj, _justify:justify, nameNum:num});
 			
-		
 		}
 
 	}
-	
-	public function horizSpacer(clip:MovieClip){
-		trace("H SPACER  -------------"+clip+newline+newline);
-		
-		for(var num = 1; num< clip.listArray.length; num++){
-			clip.menulist["menuItem"+num]._x = clip.menulist["menuItem"+(num-1)]._x + clip.menulist["menuItem"+(num-1)]._width +10;
-		}
-	}
+
 	
 	public function disable(){
 		trace("menu list disable -------------");
