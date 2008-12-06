@@ -13,8 +13,13 @@ import utils.BroadCaster;
 class menuItem extends MovieClip {
 	
 	private var _title:String;
+	
 	private var _pagename:String;
-	private var nameNum:Number;
+	
+	private var SELECTED:Boolean=false;
+	
+	
+	public var nameNum:Number;
 	
 	private var _mc:MovieClip; // listHolder
 	private var _justify:String; // left or right or horizontal
@@ -166,10 +171,11 @@ class menuItem extends MovieClip {
 
 	
 	private function mRollOver(){
+		
 		trace("OVER "+this);
-		rollEmOver();
-		// broadcast
-	//	BroadCaster.broadcastEvent("rollEmOver", this, true);
+		if(!SELECTED){
+			rollEmOver();
+		}
 	}
 	
 	
@@ -233,9 +239,9 @@ class menuItem extends MovieClip {
 	
 	private function mRollOut(){
 		//trace("OUT "+this);
-		rollEmOut();
-		
-	//	BroadCaster.broadcastEvent("rollEmOut", this, true);
+		if(!SELECTED){
+			rollEmOut();
+		}
 	}   		
 	
 	
@@ -245,13 +251,18 @@ class menuItem extends MovieClip {
 	}
 	
 	private function mPress(){
-		trace("BOO "+ this._pagename);
+		trace("BOO "+ this.nameNum);
+		rollEmOut();
+		var _exceptthisone:Object = new Object();
+		_exceptthisone = nameNum;
+		BroadCaster.broadcastEvent("unselectList", _exceptthisone , false);
+		
 		var _obj:Object = new Object();
 		_obj.pageName = _pagename;
 		_obj.nameNum = nameNum;
 		BroadCaster.broadcastEvent("loadASubSection", _obj , false);
-	/// JUST RELOAD TEXT AREA
-		/////// get some ACTIONS in here
+	
+	
 	//	manageList(   ???  );
 	}
 	
