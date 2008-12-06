@@ -26,7 +26,12 @@ class menuList extends MovieClip {
 	
 	private var menulist:MovieClip;
 	private var TF_HEIGHT:Number=15;
-
+	
+	
+	private var MI_unselected:Object = { ra: 100, rb: 0, ga: 100, gb: 0, ba: 100, bb: 0, aa: 100, ab: 0}; //greyed out
+	private var MI_selected:Object = { ra: 0, rb: 122, ga: 0, gb: 25, ba: 0, bb: 47, aa: 100, ab: 0};
+	
+			
 
 	public function menuList(_list:Array, _mc:MovieClip, _justify:String){
 		//mc=_mc;
@@ -36,7 +41,8 @@ class menuList extends MovieClip {
 		trace("menu List trace this :: "+_list+" :: "+justify);
 		listArray = _list;
 		
-		
+				BroadCaster.register(this,"unselectList");
+
 		BroadCaster.register(this,"horizSpacer");
 		
 		buildList(_mc);
@@ -62,6 +68,29 @@ class menuList extends MovieClip {
 			
 		}
 
+	}
+
+	private function unselectList(_exceptthisone):Void {
+		for(var num = 0; num<listArray.length ; num++){
+			if(_exceptthisone == menulist["menuItem"+num].nameNum){
+				menulist["menuItem"+num].SELECTED = true;
+				
+				
+				var mi1color:Color = new Color(menulist["menuItem"+num]);
+
+				mi1color.setTransform(MI_selected);
+				
+				
+				
+			}else{
+				menulist["menuItem"+num].SELECTED = false;
+				
+				var mi2color:Color = new Color(menulist["menuItem"+num]);
+				mi2color.setTransform(MI_unselected);
+
+				
+			}
+		}
 	}
 
 	

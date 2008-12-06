@@ -160,7 +160,7 @@ class menuItemHoriz extends MovieClip {
 	
 	private function mPress(){
 		trace("BOO "+ this._link);
-		getURL(this._link, "_blank")
+		getURL(this._link, "_blank");
 	//	var _obj:Object = new Object();
 	//	_obj.pageName = _pagename;
 	//	_obj.nameNum = nameNum;
