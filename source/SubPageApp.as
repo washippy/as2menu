@@ -49,11 +49,17 @@ class SubPageApp extends MovieClip {
 	private var TL:menuListHoriz;
 	private var TLArray:Array;
 	private var TLArray_esp:Array;
-		private var thirdmenuholder_mc:MovieClip;
+	private var thirdmenuholder_mc:MovieClip;
+		
+	private var _galleryEnabled:Boolean;		
+	private var	galleryArray:Array;
+	private var empty_mc:MovieClip;
+	private var image_mcl:MovieClipLoader;
+
+
 
 	private var ANIM_ENDPOINT:Number;
 	private var ANIM_STARTPOINT:Number;
-	private var galleryEnabled:Boolean;
 	
 	private var dataObj:Object;
 	
@@ -70,6 +76,11 @@ class SubPageApp extends MovieClip {
 		ANIM_ENDPOINT = subpage1_mc._y;
 		ANIM_STARTPOINT = subpage1_mc._y +40;
 		subpage1_mc._y = ANIM_STARTPOINT;
+		
+		galleryArray = new Array();
+		image_mcl = new MovieClipLoader();
+		
+		
 				styles = new TextField.StyleSheet();
 
 				styles.setStyle("headline", {
@@ -100,13 +111,14 @@ class SubPageApp extends MovieClip {
 		//////////////  WAIT PATIENTLY ////////////////
 		
 	}
+	
 	public function loadASubPage(_pagename:String):Void{
 		// use page name to get data
 		trace("L A S P :: "+subpage1_mc);
 		Tweener.removeTweens(subpage1_mc);
 		
 		subpage1_mc._alpha=0;
-		subpage1_mc._y=ANIM_ENDPOINT;//ANIM_STARTPOINT;
+		subpage1_mc._y=ANIM_ENDPOINT;//ANIM_STARTPOINT; I BAILED ON THE SLIDE IN ANIM FOR NOW
 		
 		dataObj = new Object();
 		trace("DANGIT "+_pagename);//StructureApp.getInstance().getArrayData(_pagename));
@@ -120,9 +132,18 @@ class SubPageApp extends MovieClip {
 			}else{
 				var _lang:String = "eng";
 			}	
+			
+			
+		
 		
 		XMLPATH = "xml/"+dataObj.name+"_"+ _lang +".xml";   
 		getXMLData();
+		
+			// GALLERY ENABLED
+		trace("HEY HERE IT IS :::::::::::::::::::::::::: "+dataObj.galleryenabled);
+		
+		_galleryEnabled = dataObj.galleryenabled;
+		
 		
 		if(dataObj.subnav_item_array != undefined){
 		
@@ -133,8 +154,6 @@ class SubPageApp extends MovieClip {
 			ML.disable();
 		}
 	}
-	
-	
 	
 	public function loadASubSection(stuff:Object):Void{
 		// use page name to get data
@@ -259,7 +278,7 @@ class SubPageApp extends MovieClip {
 	private function onXmlLoad($success:Boolean):Void{
 			if ($success) {
 			
-				trace("load cal data :"+ $success);
+				trace("load subpage data :"+ $success);
 							
 				myXmlObject = new XMLObject();
 				sXml = myXmlObject.parseXML(subpage_xml);
@@ -272,7 +291,6 @@ class SubPageApp extends MovieClip {
 	
 	private function fireitupman():Void{
 		disable();
-		
 		if (_global.lang == "SPANISH"){
 				ML = new menuList(MLArray_esp, subpage1_mc.menuholder_mc, "right"); // justify right or left
 			}else{
@@ -280,36 +298,80 @@ class SubPageApp extends MovieClip {
 			}
 		
 		popData();
-
 	}
 	
 	private function popData(){
 		// bCopy = bCopy+ itemArray[i].childNodes[b].toString();
-		trace(subpage1_mc);
+		
+		//if its a GALLERY hop outta here
+			trace("_galleryEnabled" +_galleryEnabled)
+				
+		
+//		trace(subpage1_mc);
 		subpage1_mc.header_tf.text = sXml.main.item.headline.data;
 		_global.mainImagePath =  sXml.main.item.attributes.swfName;
 		BroadCaster.broadcastEvent("reloadMainImage");
+		if(_galleryEnabled){
+			buildGallery();  // GO GO GADGET GALLERY!
+			subpage1_mc.bodycopy_tf.htmlText = "";
+		}else{
+			image_mcl.unloadClip(subpage1_mc.empty_mc);
+		    
+			subpage1_mc.bodycopy_tf.htmlText = sXml.main.item.copy.data;			
+		}
 		
-	//	subpage1_mc.bodycopy_tf.styleSheet= styles;
-		subpage1_mc.bodycopy_tf.htmlText = sXml.main.item.copy.data;
 	//	Tweener.addTween(subpage1_mc, {_alpha:100, _y:ANIM_ENDPOINT, delay:.5, time:1.1, transition:"easeOut"});
 		Tweener.addTween(subpage1_mc, {_alpha:100, delay:.5, time:1.1, transition:"easeOut"});
 		
-		// story_tf.styleSheet = styles;
-		// story_tf.htmlText = bCopy;
-		// story_tf.autoSize=true;
-		// TF_EXTENDED =story_tf._height + 20;
-		// story_tf.autoSize=false;
-		//
-		// story_tf._height = TF_SHORT;
-
-		// this.story_tf.htmlText = bodyCopy;
 	}
 	
+	
+	
+	private function buildGallery():Void{
 
+		var gLen =  sXml.main.pic.length;	
+		for(var i=0;i<=(gLen-1);i++){
+			trace("." +sXml.main.pic[i].attributes.filename);
+		
+			galleryArray.push({
+				filename:sXml.main.pic[i].attributes.filename,
+				picdate:sXml.main.pic[i].attributes.date,
+				caption:sXml.main.pic[i].attributes.caption
+			});	
+		}
+		
+		
+			trace(gLen+" :: "+galleryArray[1].filename);
+		/* 
+			
+					var mclListener:Object = new Object();
+					mclListener.onLoadStart = function(target_mc:MovieClip) {
+					   // target_mc.startTimer = getTimer();
+					trace("START "+target_mc)
+					};
+					mclListener.onLoadComplete = function(target_mc:MovieClip) {
+					    //target_mc.completeTimer = getTimer();
+						trace("COMPLETE "+target_mc)
+					
+					};
+					mclListener.onLoadInit = function(target_mc:MovieClip) {
+					    //var timerMS:Number = target_mc.completeTimer-target_mc.startTimer;
+					    //target_mc.createTextField("timer_txt", target_mc.getNextHighestDepth(), 0, target_mc._height, target_mc._width, 22);
+					    //target_mc.timer_txt.text = "loaded in "+timerMS+" ms.";
+						trace("BING BANG "+target_mc)
+					}; 
+		*/
+
+		
+			//image_mcl.addListener(mclListener);
+			image_mcl.loadClip(galleryArray[0].filename, subpage1_mc.empty_mc);
+			
+		
+	}
+	
 //// subnav
 
-private function getSubSectionXMLData():Void{
+	private function getSubSectionXMLData():Void{
 	// maybe cal_xml = null; ??
 	trace("getting X2"+ XMLPATH);
 	subsect_xml = new XML();
@@ -349,11 +411,10 @@ private function getSubSectionXMLData():Void{
 	
 	}
 
-	
 	public function disable():Void{ 
 		trace("sub page disable -->");
-		Tweener.addTween(subpage1_mc, {_alpha:0, _y:ANIM_STARTPOINT, time:0.25, transition:"easeOut"});
-				ML.disable();
+		Tweener.addTween(subpage1_mc, {_alpha:0, _y:ANIM_ENDPOINT, time:0.25, transition:"easeOut"});//ANIM_STARTPOINT
+		ML.disable();
 		
 		/* 
 		thisapp.blocker_mc.swapDepths(thisapp.getNextHighestDepth())

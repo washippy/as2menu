@@ -71,10 +71,24 @@ class menuList extends MovieClip {
 	}
 
 	private function unselectList(_exceptthisone):Void {
+							trace("UNSELECT ======= =====" + listArray.length);
+
+
+
+
+// listArray needs to be emptied out  .. .  multiple instances of this list are hangin around
+
+
+
+
+
+
+
+
 		for(var num = 0; num<listArray.length ; num++){
+
 			if(_exceptthisone == menulist["menuItem"+num].nameNum){
 				menulist["menuItem"+num].SELECTED = true;
-				
 				
 				var mi1color:Color = new Color(menulist["menuItem"+num]);
 

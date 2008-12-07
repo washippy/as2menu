@@ -128,6 +128,8 @@ class App extends MovieClip {
 				headline:_oXml.promobar.item[z].attributes.headline,
 				assetname:_oXml.promobar.item[z].attributes.assetname,
 				assetType:_oXml.promobar.item[z].attributes.type,
+				launchType:_oXml.promobar.item[z].attributes.launchType,
+				launchName:_oXml.promobar.item[z].attributes.launchName,     				
 				copy:_oXml.promobar.item[z].data
 				});
 		}

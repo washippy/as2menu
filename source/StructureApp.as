@@ -129,8 +129,6 @@ class StructureApp {
 	}
 	
 	private function setupArrays():Void{
-		trace("BANGOOOO ");
-		
 		section_array = new Array();
 		thirdnav_array = new Array();
 		
@@ -153,8 +151,7 @@ class StructureApp {
 						   });
 						
 						//// third nav here?
-						
-						
+						trace("!!!"+sXml.section[i].attributes.name)
 						
 			}
 			
