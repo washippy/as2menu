@@ -74,5 +74,5 @@
 	<section name="donations" eng="Donations" esp="Inicio" navbarposition="0">
 		<item name="about" eng="ON-LINE DONATIONS" esp="Inicio">On-line Donations</item>	
 	</section>
-	<section name="building_updates" eng="Building Updates" esp="Inicio" gallery_enabled="true" gallery_xml="building_gallery.xml" navbarposition="0"/>
+	<section name="building_updates" eng="Building Updates" esp="Inicio" gallery_enabled="true" navbarposition="0"/>
 </mtzion>
