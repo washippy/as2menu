@@ -10,6 +10,8 @@ class PromoBar extends MovieClip{
 //	private var promo_mc:MovieClip;
 	private var promo_app_mc:MovieClip;
 	private var promomask_mc:MovieClip;
+
+		private var FADEINDELAY:Number = 1.5; // seconds
 	
 	private var promoarrow_right:MovieClip;
 	private var promoarrow_left:MovieClip;
@@ -34,7 +36,8 @@ class PromoBar extends MovieClip{
 
 		
 		var promoholder:MovieClip = CLIP.promo_app_mc.createEmptyMovieClip("promoholder", this.getNextHighestDepth());
-		promoholder._x +=20;
+		promoholder._x +=60;//20;
+		promoholder._alpha=0;
 		/*
 		promoBarArray.push({
 			headline:_oXml.promobar.item[z].attributes.headline,
@@ -50,14 +53,19 @@ class PromoBar extends MovieClip{
 			var _assetName = promoArray[i].assetname;  ////////// PUT THESE IN
 			var _assetType = promoArray[i].assetType;  ////////// PUT THESE IN
 			
+			var _launchType = promoArray[i].launchType;
+			var _launchName= promoArray[i].launchName;
+			
 			//trace(i+"promo"+promoArray[i].headline);
-			promoholder.attachMovie("promo_mc", "promo_mc"+i, promoholder.getNextHighestDepth(), {_x:(260*i)+ (10*i), _y:15, assetType:_assetType, headline:_headlineObj, bodyCopy:_bodyCopyObj, assetName:_assetName});
+			promoholder.attachMovie("promo_mc", "promo_mc"+i, promoholder.getNextHighestDepth(), {_x:(260*i)+ (10*i), _y:15, assetType:_assetType, headline:_headlineObj, bodyCopy:_bodyCopyObj, assetName:_assetName, launchType:_launchType, launchName:_launchName});
 			
 		} 
 		
 		
 	
 		promoholder.setMask(CLIP.promo_app_mc.promomask_mc);
+		// fade it in
+		Tweener.addTween(CLIP.promo_app_mc.promoholder, {time:1.2, delay:FADEINDELAY, transition:"easeOutExpo",_x:20, _alpha:100});
 	
 		manageArrows();
 	}
@@ -174,9 +182,9 @@ class PromoBar extends MovieClip{
 	}
 
 	public function enable():Void{
-	
+	trace("ENABLE PROMO BAR || | | | | | || | | | | || || "+newline+newline);
 		CLIP.promo_app_mc._visible=true;
-		Tweener.addTween(CLIP.promo_app_mc, {time:1, transition:"easeOut", _alpha:100});
+		Tweener.addTween(CLIP.promo_app_mc, {time:1, transition:"easeOut", _alpha:100});//_x:20
 	}
 	
 }

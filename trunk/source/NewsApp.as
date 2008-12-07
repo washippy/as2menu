@@ -42,6 +42,7 @@ class NewsApp extends MovieClip {
 	private var news_textmask_mc:MovieClip;
 	private var itemArray:Array;
 	//25 x 45
+		private var FADEINDELAY:Number = 1.5; // seconds
 	
 
 	
@@ -128,7 +129,7 @@ class NewsApp extends MovieClip {
 	//	<item headline="HEADLINE HERE." date="FRIDAY, JULY 05, 2008" link="moreinfo.html">
 	//	<![CDATA[Story here.]]></item>
 		initScroll();
-		Tweener.addTween(newsApp, {time:1.5, delay:2, transition:"easeOut", _alpha:100});  /// fade in  news app
+		Tweener.addTween(newsApp, {time:1.5, delay:FADEINDELAY, transition:"easeOut", _alpha:100});  /// fade in  news app
 		
 	}
 	private function updatePositions() {

@@ -35,6 +35,8 @@ class CalendarApp extends MovieClip {
 	private var myXmlObject:XMLObject;
 	private var calApp:MovieClip;
 	private var blocker_mc:MovieClip;
+	
+		private var FADEINDELAY:Number = 1.5; // seconds
 
 	private var calArrow_right:MovieClip;
 	private var calArrow_left:MovieClip;
@@ -457,7 +459,9 @@ class CalendarApp extends MovieClip {
 		
 		Tweener.addTween(calApp, {delay:1.5, _x:279}); // its loading off stage so put it back when the bkg is done transitioning
 		
-		Tweener.addTween(calApp.blocker_mc, {time:1, delay:2, transition:"easeOut", _alpha:0}); // fade it in
+		Tweener.addTween(calApp.blocker_mc, {time:1, delay:FADEINDELAY, transition:"easeOut", _alpha:0}); // fade it in
+		
+		
 			for(var ff=0; ff<=42; ff++){	// re visible all the boxes
 				mc["sDate" + ff]._visible=true;
 				mc["date" + ff]._visible=true;

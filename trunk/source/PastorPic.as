@@ -25,6 +25,7 @@ class PastorPic extends MovieClip{
 	
 	private var pastorphoto_mc:MovieClip;
 	
+		private var FADEINDELAY:Number = 1.5; // seconds
 	
 	private var __mcImageLoader:MovieClipLoader;
 	private var loadImageListener:Object = new Object();	
@@ -61,7 +62,7 @@ class PastorPic extends MovieClip{
 	
 	private function imageLoaded():Void {
 		//trace("PASTOR IMAGE LOADED");
-		Tweener.addTween(this, {_alpha:100, delay:2.5, time:1.1, transition:"easeOut"});
+		Tweener.addTween(this, {_alpha:100, delay:FADEINDELAY, time:1.1, transition:"easeOut"});
 	}
 	
 	
