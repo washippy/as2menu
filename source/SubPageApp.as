@@ -27,6 +27,7 @@ import mx.utils.Delegate;
 import utils.BroadCaster;
 import caurina.transitions.*;
 import StructureApp;
+import menuList;
 
 
 
@@ -42,7 +43,9 @@ class SubPageApp extends MovieClip {
 	private var myXmlObject:XMLObject;
 	private var subpage1_mc:MovieClip;
 	private var menuholder_mc:MovieClip;
+	
 	private var ML:menuList;
+	
 	private var MLArray:Array;
 	private var MLArray_esp:Array;
 	
@@ -76,6 +79,14 @@ class SubPageApp extends MovieClip {
 		ANIM_ENDPOINT = subpage1_mc._y;
 		ANIM_STARTPOINT = subpage1_mc._y +40;
 		subpage1_mc._y = ANIM_STARTPOINT;
+		
+		MLArray = new Array();
+		MLArray_esp = new Array();
+		TLArray = new Array();
+		TLArray_esp = new Array();
+		
+		
+		
 		
 		galleryArray = new Array();
 		image_mcl = new MovieClipLoader();
@@ -149,8 +160,8 @@ class SubPageApp extends MovieClip {
 		
 			buildSubNav();
 		} else{
-				MLArray = null;
-				MLArray_esp = null;
+				MLArray = [];
+				MLArray_esp = [];
 			ML.disable();
 		}
 	}
@@ -191,17 +202,17 @@ class SubPageApp extends MovieClip {
 		if(dataObj.subnav != undefined){ // change this to the item array
 				buildThirdNav();
 			} else{
-					TLArray = null;
-					TLArray_esp = null;
+					TLArray = [];
+					TLArray_esp = [];
 				TL.disable();
 			} 
 			
 	}
 	
 	private function buildSubNav():Void{
-		MLArray = new Array();
-		MLArray_esp = new Array();
-		
+
+			MLArray = [];
+			MLArray_esp = [];
 		
 		trace("-----------------------+++++++++  "+dataObj.subnav_item_array[i].attributes.eng);
 		var aLen = dataObj.subnav_item_array.length;
@@ -226,9 +237,9 @@ class SubPageApp extends MovieClip {
 	
 	private function buildThirdNav():Void{
 		trace("BUILD THIRD NAV");
-		TLArray = new Array();
-		TLArray_esp = new Array();
-		
+
+			TLArray = [];
+			TLArray_esp = [];
 		
 	//	trace("-----------------------+++++++++  "+dataObj.subnav_item_array[i].attributes.eng);
 		var aLen = dataObj.subnav.length;
@@ -291,10 +302,30 @@ class SubPageApp extends MovieClip {
 	
 	private function fireitupman():Void{
 		disable();
+		trace(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> "+ML)
 		if (_global.lang == "SPANISH"){
-				ML = new menuList(MLArray_esp, subpage1_mc.menuholder_mc, "right"); // justify right or left
+		/* 
+			
+					
+					Create another class like below, this will make another connection to the singleton 
+					class, now if you use the standard way of connecting to another class you would use 
+					the ‘new’ keyword like so: 
+					var foo:Singleton = new Singleton(); 
+					The above call will create a new instance and therefore return 0 the default value set 
+					in the singleton class. So to retrieve the amount stored in the class you use: 
+					Singleton.getInstance().getAmount(); 
+					Of course you must remember to import the file for this method to work. 
+					The caller class uses this Singleton pattern.
+					
+					 
+		*/
+
+				menuList.getInstance().init(MLArray_esp, subpage1_mc.menuholder_mc, "right");
+		
+			//	ML = new menuList(MLArray_esp, subpage1_mc.menuholder_mc, "right"); // justify right or left
 			}else{
-				ML = new menuList(MLArray, subpage1_mc.menuholder_mc, "right"); // justify right or left
+			//	ML = new menuList(MLArray, subpage1_mc.menuholder_mc, "right"); // justify right or left
+				menuList.getInstance().init(MLArray, subpage1_mc.menuholder_mc, "right");
 			}
 		
 		popData();
@@ -373,7 +404,7 @@ class SubPageApp extends MovieClip {
 
 	private function getSubSectionXMLData():Void{
 	// maybe cal_xml = null; ??
-	trace("getting X2"+ XMLPATH);
+	trace("getting X2  "+ XMLPATH);
 	subsect_xml = new XML();
 	subsect_xml.ignoreWhite = true;
 	subsect_xml.load(XMLPATH); 

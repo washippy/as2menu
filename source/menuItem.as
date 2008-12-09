@@ -7,7 +7,7 @@
 import mx.utils.Delegate;
 import caurina.transitions.*;
 import utils.BroadCaster;
-
+import menuList;
 
 
 class menuItem extends MovieClip {
@@ -21,7 +21,7 @@ class menuItem extends MovieClip {
 	
 	public var nameNum:Number;
 	
-	private var _mc:MovieClip; // listHolder
+	private var __mc:MovieClip; // listHolder
 	private var _justify:String; // left or right or horizontal
 	
 	private var mItem:MovieClip;
@@ -172,7 +172,7 @@ class menuItem extends MovieClip {
 	
 	private function mRollOver(){
 		
-		trace("OVER "+this);
+		trace("OVER "+SELECTED);
 		if(!SELECTED){
 			rollEmOver();
 		}
@@ -227,18 +227,22 @@ class menuItem extends MovieClip {
 	}
 	
 	public function rollEmOut(){
-		//trace("R OUT+++++++++++++");
+		trace("R OUT+++++++++++++");
 		
 		delete mItem.onEnterFrame;
+		
+	
 		for(var i =0 ; i< itemArray.length; i++){
-			mItem["menuItemWord"+i].gotoAndPlay("off");
+				
+					mItem["menuItemWord"+i].gotoAndPlay("off");
+				
 		}
 		
 	}
 	
 	
 	private function mRollOut(){
-		//trace("OUT "+this);
+		trace("OUT "+SELECTED);
 		if(!SELECTED){
 			rollEmOut();
 		}
@@ -251,11 +255,15 @@ class menuItem extends MovieClip {
 	}
 	
 	private function mPress(){
-		trace("BOO "+ this.nameNum);
-		rollEmOut();
+		trace("BOO "+ __mc);
 		var _exceptthisone:Object = new Object();
 		_exceptthisone = nameNum;
-		BroadCaster.broadcastEvent("unselectList", _exceptthisone , false);
+		//BroadCaster.broadcastEvent("unselectList", _exceptthisone , false);
+	//	_mc._parent.unselectList(_exceptthisone);
+	//_mc.unselectList(_exceptthisone);
+		menuList.getInstance().unselectList(_exceptthisone);
+		
+		rollEmOut();
 		
 		var _obj:Object = new Object();
 		_obj.pageName = _pagename;
