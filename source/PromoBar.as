@@ -1,4 +1,9 @@
-/*		PromoBar	*/
+/*		PromoBar	
+		
+		
+		TIMER TO AUTO ADVANCE?
+		
+		*/
 import mx.utils.Delegate;
 import utils.BroadCaster;
 import caurina.transitions.*;

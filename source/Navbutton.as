@@ -53,9 +53,9 @@ class Navbutton extends MovieClip {
 	}
 
 	private function onPress(){
-		if(selectedstate){
-			return;
-		}
+	//	if(selectedstate){
+	//		return;
+	//	}
 		
 		var testObj:Object = new Object(); // TESTING == FIX THIS
 		testObj = this.nameID;

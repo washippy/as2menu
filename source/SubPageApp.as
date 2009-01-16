@@ -90,23 +90,20 @@ class SubPageApp extends MovieClip {
 		
 		
 		
-		
+			
 		galleryArray = new Array();
 		
 		
 		styles = new TextField.StyleSheet();
 	
 
-		styles.setStyle("subhead", {
+		styles.setStyle(".subhead", {
 		    color:'#7A192F',
 			fontFamily:'Univers 67 CondensedBold', 
 		    fontSize:'12'
 		});
-		styles.setStyle("date", {
-		    color:'#8EB8BF', 
-			fontFamily:'Univers 57 Condensed', 
-		    fontWeight:'bold', 
-		    fontSize:'11'
+		styles.setStyle(".ital", {
+			fontFamily:'Univers 45 LightOblique'
 		});
 			
 		styles.setStyle("a:link", {
