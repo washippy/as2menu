@@ -1,0 +1,125 @@
+mtz_init.as included frame 1 code ------
+
+1. checks for deep linked params
+2. sets defaults
+
+3. loads main XML data : mtz_home.xml [HARD CODED ... send in thru param?]
+4. creates App and sends in data obj
+5. function  onXmlRELoad will reload new home XML in case of spanishswitch .. obsolete
+
+APP.AS-----------
+1. deeplink
+2. distributes data 
+	a. promo bar, asset paths,  XML paths, etc
+3. inits HOMEPAGE APPS
+
+4. functions launch new pages by enabling and disabling apps
+
+	StructureApp
+
+	CalendarApp
+	Navbar
+	VidPlayer
+	MainImage
+	PromoBar
+	NewsApp
+	Pastor Pic
+	
+	SubPageApp
+	
+STRUCTURE APP ------------- singleton
+	gets structure XML
+	builds arrays for SECTIONS 
+		- every sub section gets a node in the structure XML 
+		- this array holds em and all their params
+		
+	[ THIRD NAV commented out ]
+	inits NavBar [red bar]
+	
+	
+CALENDAR APP -------------
+	nice chunk of code that builds a calendar month based on todays date [from server]
+	builds an EVENTS array and enables DATES with events to pop EVENTS LIST
+	spanish version not used but parts are there
+	crazy EVENTS pager
+	month switcher
+	when DISABLED a white box fades over it [fake fade out] and it moves off stage until re enabled
+	
+	// someday launch a larger calendar app with expanded info [not comped]
+	
+NAVBAR -------------
+	STRUCTURE NODES contain an attribute    navbarposition="4"   this sets position in red nav bar
+	if number is DUPED it'll break; if ZERO its not included ;
+	holds hotSection var
+	uses flippy button classes
+	calls App :: launchsubpage()
+	
+PROMOBAR -------------
+	gets list from app
+	builds promos; or gets swf
+	calls App :: launchsubpage() or getURL
+	
+VIDPLAYER -------------
+	starts on PLAY VID button
+	on click loads VID path from XML 
+	simple controls
+	one size
+	disables on subpage
+	
+MAINIMAGE -------------
+	at this time, every subpage has the ability to load a MAINIMAGE swf
+	this may change with assets
+	class is passed a path from APP
+	loadClip and play
+	
+NEWS APP -------------
+	loads news xml
+	creates news scroller
+	stories auto truncate to 4 lines or so
+	expand to full height with MORE button
+	scroll bar adjusts to new height on the fly
+	text is HTML formattable w <A HREF> clickable to URL
+	
+	// someday launch a news app [not comped]
+
+PASTOR PIC -------------
+	loads w homepage from APP
+	external image
+	disables w subpage
+	
+SUBPAGEAPP -------------
+	any page thats not the homepage
+	2 formats : TEXT / HEADER
+				GALLERY / HEADER
+				
+	format and XML path comes from Structure app
+	content comes from XML
+	text is HTML format
+	
+	GALLERY version
+	gets gallery list and builds nav  << 1 2 3 4 >>
+										uses flippy button classes
+	LARGER button pops large JPG in new browser window
+	
+	
+	structure also determines SUBNAV and THIRD NAV and SOON ... isSpanishEnabled
+	
+	This page available in Spanish >>
+	changes global var
+	relaunches some things in spanish [RICH]
+	
+	SUBNAV ----
+	data from structure
+	calls App :: launchsubpage()
+	uses flippy button classes
+	
+	THIRD NAV ----
+	data from structure
+	uses flippy button classes
+	calls App :: launchsubpage() or getURL
+
+
+	BUTTON BAR AT BOTTOM LEFT
+	Hard coded at this time
+	calls App :: launchsubpage() or getURL
+	disables w homepage

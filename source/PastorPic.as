@@ -67,9 +67,9 @@ class PastorPic extends MovieClip{
 	
 	
 	public function pastorPicDisable():Void{
-		trace(pastorpic_mc);
+		// trace(pastorpic_mc);
 		var invisify:Function = function(_ob:Object){
-			trace("I I :"+_ob);
+			// trace("I I :"+_ob);
 			_ob._visible=false;
 			}
 			

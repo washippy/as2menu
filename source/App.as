@@ -5,6 +5,21 @@
 
 	DEEP LINK
 	
+	
+		
+		vid.pauseVideo();
+		vid.disable();
+		
+		vid.enable();
+		vid.playVideo();
+		
+		vid = new BtsVidPlayer(_mc.mcVideo, _oXml, this);
+		
+		vid.setVideo($i, true);
+	
+	
+	
+	
 */ 
 import flash.filters.BlurFilter;
 import flash.filters.GlowFilter;
@@ -40,13 +55,16 @@ class App extends MovieClip {
 // GLOBAL private var leftColumnPicPath:String;
 	private var newsAppXMLPath:String;
 	private var calendarAppXMLPath:String;
-	private var videoannouncementsAppXMLPath:String;
+	
+	private var vidPlayerXMLPath:String;
 	
 	private var subPageApp:SubPageApp;
 
+	private var vidPlayer:VidPlayer;
+	private var buttonbar_mc:MovieClip;
+
 	private var newsApp:NewsApp;
 	private var calendarApp:CalendarApp;
-//	private var videoannouncementsApp:videoannouncementsApp;
 	private var navbarApp:Navbar;
 	private var mainImageApp:MainImage;
 	private var promoApp:PromoBar;
@@ -56,7 +74,7 @@ class App extends MovieClip {
 	
 
 	public function App($mc:MovieClip, $oXml:Object){
-		trace("APP CONSTRUCTOR")
+		trace("APP CONSTRUCTOR ")
 		_mc = $mc;
 		_oXml = $oXml;
 		
@@ -140,7 +158,7 @@ class App extends MovieClip {
 
 		newsAppXMLPath=_oXml.newsapp.attributes.XMLpath;
 		calendarAppXMLPath=_oXml.calendarapp.attributes.XMLpath;
-		videoannouncementsAppXMLPath=_oXml.videoannouncementsapp.attributes.XMLpath;
+		vidPlayerXMLPath=_oXml.vidapp.attributes.XMLpath;
 	
 		sideButtonBarArray = new Array();
 		var sLen = _oXml.sidebuttonbar.item.length;
@@ -171,7 +189,7 @@ class App extends MovieClip {
 	     //   var xmlData = oData.path == undefined ? "xml/mustang09_360.xml" : oData.path;
 	       // threeSixtyModel.initXML(xmlData);
 
-	        trace("XXXXXXXXXXXXXXXXXXX "+oData.asset+ ":: "+oData.exterior+ ":: "+oData.interior+ ":: "+oData.background);
+	        // trace("XXXXXXXXXXXXXXXXXXX "+oData.asset+ ":: "+oData.exterior+ ":: "+oData.interior+ ":: "+oData.background);
 
 
 	      //  Controller.trimVar = oData.asset;
@@ -189,26 +207,26 @@ class App extends MovieClip {
 	
 	private function initDisplayElements():Void{
 		// LAUNCH SUB APPS which should be ALPHA zero to fade in when loaded
-	trace("APP :: INIT DISPLAY ELEMENTS "+structurePath)
+	 trace("APP :: INIT DISPLAY ELEMENTS "+_mc.buttonbar_mc)
 	
 				StructureApp.getInstance().setPath(structurePath);
 				
-				//trace(" HEY OOOOOO   ::: "+StructureApp.getInstance().getPath()); 	
+				//// trace(" HEY OOOOOO   ::: "+StructureApp.getInstance().getPath()); 	
 				calendarApp = new CalendarApp(calendarAppXMLPath, _mc);
 				navbarApp = new Navbar(_mc);//navBarArray
 				navbarApp.hotSection = "home" // GET FROM DEEP LINK
-				
+				vidPlayer = new VidPlayer(vidPlayerXMLPath, _mc);
 				mainImageApp = new MainImage(_global.mainImagePath, _mc);
 				promoApp = new PromoBar(promoBarArray, _mc);
 				newsApp = new NewsApp(newsAppXMLPath, _mc);
-				
+				_mc.buttonbar_mc.gotoAndPlay("IN");
 				subPageApp = new SubPageApp(_mc);
 	}
 	
 	public function reloadDisplayElements(_sendPAGE:String):Void{
 		
 		var p = String(PAGE);
-			trace("RELOAD DISPLAY ELEMENTS :: currentPAGE ::"+ p+"  :: "+_sendPAGE);
+			// trace("RELOAD DISPLAY ELEMENTS :: currentPAGE ::"+ p+"  :: "+_sendPAGE);
 			if(p==_sendPAGE){
 				return;
 			}
@@ -217,8 +235,11 @@ class App extends MovieClip {
 						calendarApp.disable();
 						//navbarApp.disable();
 						//mainImageApp.disable();
+						vidPlayer.disable();
 						promoApp.disable();
 						newsApp.disable();
+						_mc.buttonbar_mc.gotoAndStop(1);
+						
 					//	subPageApp.loadASubPage();
 					PAGE = "home";
 					
@@ -229,10 +250,12 @@ class App extends MovieClip {
 					calendarApp.enable();
 				//	navbarApp.enable();
 				//	mainImageApp.enable();
+					vidPlayer.enable();
 					promoApp.enable();
 					newsApp.enable(true);
 					BroadCaster.broadcastEvent("pastorPicEnable");
 					// set main image back to default here /////////////////////////////////
+					_mc.buttonbar_mc.gotoAndPlay("IN");
 					
 					BroadCaster.broadcastEvent("reloadMainImage");
 					PAGE = "home";
@@ -243,11 +266,11 @@ class App extends MovieClip {
 	}
 	
 	private function launchNewPage(_obj:Object):Void{
-		trace("LAUNCH "+_obj);
+		// trace("LAUNCH "+_obj);
 		// fade out existing apps
 		//if(PAGE=="home" && _obj=="home"){  // at home and home is clicked
 		if(PAGE==_obj){  // at 
-			trace("LAUNCH ::: PAGE=_obj :: "+ PAGE +" :: "+_obj);
+			// trace("LAUNCH ::: PAGE=_obj :: "+ PAGE +" :: "+_obj);
 			return;
 			}
 		
@@ -261,9 +284,11 @@ class App extends MovieClip {
 	//	if(PAGE=="home"){
 			calendarApp.disable();
 		//	buttonbar.disable();
-		//	mediaplayerstuff.disable();
+			vidPlayer.disable();
 			promoApp.disable();
 			newsApp.disable();
+			_mc.buttonbar_mc.gotoAndStop(1);
+			
  			BroadCaster.broadcastEvent("pastorPicDisable");
 			
 			// LAUNCH THE SUB APP using structure

@@ -104,11 +104,9 @@ class menuList extends MovieClip {
 	 
 */
 
-
-	
 	
 	private function buildList(){
-		trace( mc + " BBBB BBBB BBBB BBBB BBB BB BB B BB "+ justify);
+		// trace( mc + " BBBB BBBB BBBB BBBB BBB BB BB B BB "+ justify);
 		
 		for(var num = 0; num<listArray.length ; num++){
 			//var menu:menuItem = new menuItem("HEY IT WORKED", this);
@@ -131,7 +129,7 @@ class menuList extends MovieClip {
 	}
 
 	public function unselectList(_exceptthisone):Void {
-		trace("UNSELECT ======= =====");
+		// trace("UNSELECT ======= =====");
 
 		for(var num = 0; num<listArray.length ; num++){
 			
@@ -148,8 +146,8 @@ class menuList extends MovieClip {
 	}
 
 	
-	public function disable(){
-		trace("menu list disable -------------");
+	public function disable():Void{
+		// trace("menu list disable -------------");
 		for(var num = 0; num<listArray.length ; num++){
 			menulist["menuItem"+num].removeMovieClip();
 			}

@@ -38,7 +38,7 @@ class menuItemHoriz extends MovieClip {
 		STARTY = this._y;
 		mItemH = this;
 		
-		trace(_title + " ::::::: ::::::: ::::: "+ nameNum)
+		// trace(_title + " ::::::: ::::::: ::::: "+ nameNum)
 	
 		parseTitleHoriz(_title);
 			
@@ -48,9 +48,9 @@ class menuItemHoriz extends MovieClip {
 
 	 
 	private function parseTitleHoriz(_t:String){
-		trace("HORIZ       +++++++  "+_t);
+		// trace("HORIZ       +++++++  "+_t);
 		itemArray = _t.split(" ");	
-		trace("HORIZ       +++++++  "+itemArray[0]);
+		// trace("HORIZ       +++++++  "+itemArray[0]);
 		
 		for(var i =0 ; i< itemArray.length; i++){
 		
@@ -65,7 +65,7 @@ class menuItemHoriz extends MovieClip {
 		}
 		
 		mItemH.mask_mc._width =fullWidth;
-		trace("BLAAAAAAAH "+fullWidth);
+		// trace("BLAAAAAAAH "+fullWidth);
 	
 		popBKG();
 	}
@@ -103,7 +103,7 @@ class menuItemHoriz extends MovieClip {
 
 	
 	private function mRollOver(){
-		trace("OVER "+this);
+		// trace("OVER "+this);
 		rollEmOver();
 		// broadcast
 	//	BroadCaster.broadcastEvent("rollEmOver", this, true);
@@ -112,7 +112,7 @@ class menuItemHoriz extends MovieClip {
 	
 	public function rollEmOver(){
 		var limit = itemArray.length;
-		trace("OY"+limit)
+		// trace("OY"+limit)
 		
 		var count=0;		
 		var timer=3;
@@ -159,7 +159,7 @@ class menuItemHoriz extends MovieClip {
 	}
 	
 	private function mPress(){
-		trace("BOO "+ this._link);
+		// trace("BOO "+ this._link);
 		getURL(this._link, "_blank");
 	//	var _obj:Object = new Object();
 	//	_obj.pageName = _pagename;

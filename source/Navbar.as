@@ -71,7 +71,7 @@ class Navbar extends MovieClip {
 	}
 	
 	private function buildButtons():Void{
-	trace("BB -----------------"+navArray.length);
+	// trace("BB -----------------"+navArray.length);
 			navLength = navArray.length;
 			
 		var bWidth = Math.floor((navbar._width - 3) / (navLength-1)); // button width = total width / number of buttons
@@ -92,7 +92,7 @@ class Navbar extends MovieClip {
 		navbar.attachMovie("menuItem", "nb"+i, navbar.getNextHighestDepth(), {_title:_titleObj, _mc:_mcObj, _justify:justify});//(TF_HEIGHT * i)
 		 
 		*/
-		trace(navArray[i].eng+" OYOYOY "+navArray[i].name);
+		// trace(navArray[i].eng+" OYOYOY "+navArray[i].name);
 		
 			navbar["nb"+i].nameNum = i+1;
 			navbar["nb"+i].nameString = navArray[i].eng;
@@ -117,8 +117,9 @@ class Navbar extends MovieClip {
 
 		
 		} 
-		navbar._y+=15;
-		Tweener.addTween(navbar, {delay:0, time:1, transition:"easeOut", _alpha:100, _y:navbar._y-15});
+	//	navbar._y+=15;
+	
+		Tweener.addTween(navbar, {delay:0.75, time:1, transition:"easeOut", _alpha:100});
 		
 		
 		var dObj:Object = new Object(); 
@@ -128,8 +129,8 @@ class Navbar extends MovieClip {
 	
 
 
-	private function updateHotSection(foo:Object){
-		trace(foo + " :: :: :: " +hotSection);
+	public function updateHotSection(foo:Object){
+		// trace(foo + " :: :: :: " +hotSection);
 		hotSection = String(foo);
 		for(var i=1;i<navLength;i++){
 			if(hotSection == navbar["nb"+i].nameID){
@@ -138,7 +139,7 @@ class Navbar extends MovieClip {
 				navbar["nb"+i].unSelect();
 			}
 		}
-		trace("++++++++++++++++++ + ++ ++ ++ + + +  "+hotSection);
+		// trace("++++++++++++++++++ + ++ ++ ++ + + +  "+hotSection);
 	}
 
 }

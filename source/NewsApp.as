@@ -89,7 +89,7 @@ class NewsApp extends MovieClip {
 			makeStories();
 		
 		} else {
-			 trace("load news data died "+ $success);
+			 // trace("load news data died "+ $success);
 		}
 		
 	}
@@ -132,6 +132,7 @@ class NewsApp extends MovieClip {
 		Tweener.addTween(newsApp, {time:1.5, delay:FADEINDELAY, transition:"easeOut", _alpha:100});  /// fade in  news app
 		
 	}
+	
 	private function updatePositions() {
 		for(var i=1;i<totalStories;i++){
 				newsScroller["news_story_mc"+i]._y = newsScroller["news_story_mc"+(i-1)]._y +newsScroller["news_story_mc"+(i-1)]._height +10;
@@ -181,9 +182,9 @@ class NewsApp extends MovieClip {
 		
 	
 		
-		trace("SCROLL HEIGHT "+newsScroller._height)
-		trace("SCROLL channel HEIGHT "+ newsApp.news_scrollbar_mc.scrollchannel_mc._height)
-		trace("SCROLL scrubber HEIGHT "+newsApp.news_scrollbar_mc.scrollscrubber._height)
+		// trace("SCROLL HEIGHT "+newsScroller._height)
+		// trace("SCROLL channel HEIGHT "+ newsApp.news_scrollbar_mc.scrollchannel_mc._height)
+		// trace("SCROLL scrubber HEIGHT "+newsApp.news_scrollbar_mc.scrollscrubber._height)
 		
 		var scrub:MovieClip = newsApp.news_scrollbar_mc.scrollscrubber;
 		var clip:MovieClip = newsScroller;
@@ -193,7 +194,7 @@ class NewsApp extends MovieClip {
 		var _cY = clipStartY; // local for the mouse listener
 		var _cH = channelheight;// local for the mouse listener
 		
-		clipHeight = newsScroller._height;
+		clipHeight = newsScroller._height + 100;  //100 is a buffer area
 		
 			//  get start pos of scrubber and adjust clip below
 			scrubberStartY = newsApp.news_scrollbar_mc.scrollscrubber._y;
@@ -216,17 +217,17 @@ class NewsApp extends MovieClip {
 			
 			
 			
-	   	trace("TEST channel height "+channelheight);
+	   	// trace("TEST channel height "+channelheight);
 		
 		
 		mouseListener.onMouseMove = function() {
 			// get the %Y of the scrubber
-			trace("TEST channel height "+_cH);
+			// trace("TEST channel height "+_cH);
 		   	
 			var pct = scrub._y / _cH;
-			trace("moved "+ scrub._y +" :: "+_cH+ " :: "+pct);
+			// trace("moved "+ scrub._y +" :: "+_cH+ " :: "+pct);
 		   	clip._y =_cY-(clipScrollDist * pct);
-			trace( _cY+"::"+clipScrollDist );
+			// trace( _cY+"::"+clipScrollDist );
 			// set the %Y of the scrollable clip to the % Y of the scrubber
 		    updateAfterEvent();
 		};
@@ -251,7 +252,7 @@ class NewsApp extends MovieClip {
 	}
 	
 	public function disable():Void{
-		trace(newsApp);
+		// trace(newsApp);
 		var invisify:Function = function(_ob:Object){
 			trace("I I :"+_ob);
 			_ob._visible=false;
@@ -260,6 +261,7 @@ class NewsApp extends MovieClip {
 		Tweener.addTween(newsApp, {time:1, transition:"easeOut", _alpha:0, onComplete:invisify, onCompleteParams:[newsApp]});
 		
 	}
+	
 	public function enable(_reset:Boolean):Void{
 		if(_reset){
 				totalStories = nXml.item.length;

@@ -171,9 +171,9 @@ class PromoBar extends MovieClip{
 	
 	
 	public function disable():Void{
-		trace(CLIP.promo_app_mc);
+		// trace(CLIP.promo_app_mc);
 		var invisify:Function = function(_ob:Object){
-			trace("I I :"+_ob);
+			// trace("I I :"+_ob);
 			_ob._visible=false;
 			}
 
@@ -182,7 +182,7 @@ class PromoBar extends MovieClip{
 	}
 
 	public function enable():Void{
-	trace("ENABLE PROMO BAR || | | | | | || | | | | || || "+newline+newline);
+	// trace("ENABLE PROMO BAR || | | | | | || | | | | || || "+newline+newline);
 		CLIP.promo_app_mc._visible=true;
 		Tweener.addTween(CLIP.promo_app_mc, {time:1, transition:"easeOut", _alpha:100});//_x:20
 	}

@@ -30,7 +30,7 @@ class menuListHoriz extends MovieClip {
 		//mc=_mc;
 		//menuitem = new menuItem();
 		menulistH = _mc.createEmptyMovieClip("mIH", _mc.getNextHighestDepth());
-		trace("menu List trace this :: "+_list+" :: ");
+		// trace("menu List // trace this :: "+_list+" :: ");
 		listArray = _list;
 		
 		
@@ -43,7 +43,7 @@ class menuListHoriz extends MovieClip {
 	private function buildList(_mc:MovieClip){
 		for(var num = 0; num<listArray.length ; num++){
 			//var menu:menuItem = new menuItem("HEY IT WORKED", this);
-			trace("----------||||||||||---------" +listArray[num].link);
+			// trace("----------||||||||||---------" +listArray[num].link);
 			var _titleObj:Object = new Object();
 			_titleObj = listArray[num].title;
 			
@@ -64,7 +64,7 @@ class menuListHoriz extends MovieClip {
 	 
 	private function spaceEmOut():Void {
 		for(var num = 0; num<listArray.length ; num++){
-			trace("------- - -  - --------"+menulistH["menuItemH"+num].fullWidth);
+			// trace("------- - -  - --------"+menulistH["menuItemH"+num].fullWidth);
 			if(num!=0){
 				menulistH["menuItemH"+num]._x = menulistH["menuItemH"+(num-1)]._x + menulistH["menuItemH"+(num-1)].fullWidth+10;
 			}
@@ -72,7 +72,7 @@ class menuListHoriz extends MovieClip {
 	}
 	
 	public function disable(){
-		trace("menu list disable -------------");
+		// trace("menu list disable ------------- ");
 		for(var num = 0; num<listArray.length ; num++){
 			menulistH["menuItemH"+num].removeMovieClip();
 			}
