@@ -28,6 +28,7 @@ import utils.BroadCaster;
 import caurina.transitions.*;
 import StructureApp;
 import menuList;
+import TextField.StyleSheet;
 
 
 
@@ -57,8 +58,11 @@ class SubPageApp extends MovieClip {
 	private var _galleryEnabled:Boolean;		
 	private var	galleryArray:Array;
 	private var empty_mc:MovieClip;
-	private var image_mcl:MovieClipLoader;
+	//private var larger_mc:MovieClip;
 
+	private var gn:GalleryNav;
+
+	private var TEXTFIELDMASKHEIGHT = 310; // hardcoded
 
 
 	private var ANIM_ENDPOINT:Number;
@@ -66,12 +70,11 @@ class SubPageApp extends MovieClip {
 	
 	private var dataObj:Object;
 	
-	private var styles:TextField.StyleSheet;
+	private var styles:StyleSheet;
 	
 	public function SubPageApp(clip:MovieClip){
 		 trace("SUBPAGE APP CONSTRUCTOR ");
-		
-		trace(" HEY SUBPAGE   ::: "+StructureApp.getInstance().getPath()); 	
+		// trace(" HEY SUBPAGE   ::: "+StructureApp.getInstance().getPath()); 	
 		BroadCaster.register(this,"loadASubPage");
 		BroadCaster.register(this,"loadASubSection");
 		
@@ -89,69 +92,64 @@ class SubPageApp extends MovieClip {
 		
 		
 		galleryArray = new Array();
-		image_mcl = new MovieClipLoader();
 		
 		
-				styles = new TextField.StyleSheet();
+		styles = new TextField.StyleSheet();
+	
 
-				styles.setStyle("headline", {
-				    color:'#7A192F', 
-					fontFamily:'Univers 67 CondensedBold', 
-				    fontSize:'11', 
-				    fontWeight:'bold'
-				});
-				styles.setStyle("date", {
-				    color:'#8EB8BF', 
-					fontFamily:'Univers 57 Condensed', 
-				    fontWeight:'bold', 
-				    fontSize:'11'
-				});
-				styles.setStyle("copy", {
-				    color:'#666666', 
-					fontFamily:'Univers 57 Condensed', 
-				    fontSize:'11'
-				});
+		styles.setStyle("subhead", {
+		    color:'#7A192F',
+			fontFamily:'Univers 67 CondensedBold', 
+		    fontSize:'12'
+		});
+		styles.setStyle("date", {
+		    color:'#8EB8BF', 
+			fontFamily:'Univers 57 Condensed', 
+		    fontWeight:'bold', 
+		    fontSize:'11'
+		});
+			
+		styles.setStyle("a:link", {
+		    color:'#7A192F'
+		});
+		styles.setStyle("a:hover", {
+		    textDecoration:'underline'
+		});
+					 
+		
 
-				styles.setStyle("a:link", {
-				    color:'#7A192F'
-				});
-				styles.setStyle("a:hover", {
-				    textDecoration:'underline'
-				});
-				
+			
 		//////////////  WAIT PATIENTLY ////////////////
 		
 	}
 	
 	public function loadASubPage(_pagename:String):Void{
 		// use page name to get data
-		trace("L A S P :: "+subpage1_mc);
+		// trace("L A S P :: "+subpage1_mc);
 		Tweener.removeTweens(subpage1_mc);
 		
 		subpage1_mc._alpha=0;
 		subpage1_mc._y=ANIM_ENDPOINT;//ANIM_STARTPOINT; I BAILED ON THE SLIDE IN ANIM FOR NOW
 		
 		dataObj = new Object();
-		trace("DANGIT "+_pagename);//StructureApp.getInstance().getArrayData(_pagename));
+		// trace("DANGIT "+_pagename);//StructureApp.getInstance().getArrayData(_pagename));
 		var bob:String = _pagename;
 		StructureApp.getInstance().setArrayData(_pagename); 
 		
 		dataObj = StructureApp.getInstance().getArrayData(); 
 		
 			if (_global.lang == "SPANISH"){
-				var _lang:String = "esp";
+				var _lang:String = "_esp";
 			}else{
-				var _lang:String = "eng";
+				var _lang:String = "";
 			}	
 			
-			
 		
-		
-		XMLPATH = "xml/"+dataObj.name+"_"+ _lang +".xml";   
+		XMLPATH = "xml/"+dataObj.name+ _lang +".xml";   
 		getXMLData();
 		
 			// GALLERY ENABLED
-		trace("HEY HERE IT IS :::::::::::::::::::::::::: "+dataObj.galleryenabled);
+		// trace("HEY HERE IT IS :::::::::::::::::::::::::: "+dataObj.galleryenabled);
 		
 		_galleryEnabled = dataObj.galleryenabled;
 		
@@ -171,7 +169,7 @@ class SubPageApp extends MovieClip {
 	//	var _obj:Object = new Object();
 	//	_obj.pageName = _pagename;
 	//	_obj.nameNum = nameNum;
-		trace("L A S Section :: "+stuff.nameNum);
+		// trace("L A S Section :: "+stuff.nameNum);
 			Tweener.removeTweens(subpage1_mc);
 			
 			//subpage1_mc._alpha=0;
@@ -181,7 +179,7 @@ class SubPageApp extends MovieClip {
 	
 
 	
-			trace("DANGIT "+stuff.pageName);//StructureApp.getInstance().getArrayData(_pagename));
+			// trace("DANGIT "+stuff.pageName);//StructureApp.getInstance().getArrayData(_pagename));
 	//	var bob:String = _pagename;
 	//	StructureApp.getInstance().setArrayData(stuff.pageName); 
 		
@@ -189,15 +187,15 @@ class SubPageApp extends MovieClip {
 			dataObj = StructureApp.getInstance().getThirdNavArrayData(stuff.nameNum); 
 			
 				if (_global.lang == "SPANISH"){
-					var _lang:String = "esp";
+					var _lang:String = "_esp";
 				}else{
-					var _lang:String = "eng";
+					var _lang:String = "";
 				}	
 			
-			XMLPATH = "xml/"+dataObj.attributes.name+"_"+ _lang +".xml";   
+			XMLPATH = "xml/"+dataObj.attributes.name+ _lang +".xml";   
 			getSubSectionXMLData(); 
 
-		trace("LOL _-_-______------_-_--_-_-_-_- "+dataObj.subnav)
+		// trace("LOL _-_-______------_-_--_-_-_-_- "+dataObj.subnav)
 	 
 		if(dataObj.subnav != undefined){ // change this to the item array
 				buildThirdNav();
@@ -214,12 +212,12 @@ class SubPageApp extends MovieClip {
 			MLArray = [];
 			MLArray_esp = [];
 		
-		trace("-----------------------+++++++++  "+dataObj.subnav_item_array[i].attributes.eng);
+	//	trace("-----------------------+++++++++  "+dataObj.subnav_item_array[i].attributes.eng);
 		var aLen = dataObj.subnav_item_array.length;
 		
 	/* 
 		for(var xx=0;xx<aLen;xx++){
-				trace("XXXXX  :: "+dataObj.subnav_item_array[xx].attributes.eng)
+				// trace("XXXXX  :: "+dataObj.subnav_item_array[xx].attributes.eng)
 			} 
 	*/
 		
@@ -232,6 +230,7 @@ class SubPageApp extends MovieClip {
 						name:dataObj.subnav_item_array[i].attributes.name,
 						title:dataObj.subnav_item_array[i].attributes.esp
 						});
+			
 		}
 	}
 	
@@ -247,7 +246,7 @@ class SubPageApp extends MovieClip {
 	
 	 
 		for(var xx=0;xx<aLen;xx++){
-					trace("XXXXX  :: "+dataObj.subnav[xx].attributes.eng)
+					// trace("XXXXX  :: "+dataObj.subnav[xx].attributes.eng)
 				} 
 		 
 	
@@ -275,9 +274,10 @@ class SubPageApp extends MovieClip {
 	
 	
 	}
+	
 	private function getXMLData():Void{
 		// maybe cal_xml = null; ??
-		trace("getting X1"+ XMLPATH)
+		// trace("getting X1"+ XMLPATH)
 		subpage_xml = new XML();
 		subpage_xml.ignoreWhite = true;
 		subpage_xml.load(XMLPATH); 
@@ -289,20 +289,20 @@ class SubPageApp extends MovieClip {
 	private function onXmlLoad($success:Boolean):Void{
 			if ($success) {
 			
-				trace("load subpage data :"+ $success);
+				// trace("load subpage data :"+ $success);
 							
 				myXmlObject = new XMLObject();
 				sXml = myXmlObject.parseXML(subpage_xml);
 			
 			} else {
-				 trace("load data died "+ $success);
+				 // trace("load data died "+ $success);
 			}
 		fireitupman();
 	}
 	
 	private function fireitupman():Void{
 		disable();
-		trace(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> "+ML)
+		// trace(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> "+ML)
 		if (_global.lang == "SPANISH"){
 		/* 
 			
@@ -335,34 +335,58 @@ class SubPageApp extends MovieClip {
 		// bCopy = bCopy+ itemArray[i].childNodes[b].toString();
 		
 		//if its a GALLERY hop outta here
-			trace("_galleryEnabled" +_galleryEnabled)
+			// trace("_galleryEnabled" +_galleryEnabled)
 				
 		
 //		trace(subpage1_mc);
 		subpage1_mc.header_tf.text = sXml.main.item.headline.data;
 		_global.mainImagePath =  sXml.main.item.attributes.swfName;
 		BroadCaster.broadcastEvent("reloadMainImage");
-		if(_galleryEnabled){
+		if(_galleryEnabled=="true"){
+			subpage1_mc.subpagestroke_mc._alpha=0;
 			buildGallery();  // GO GO GADGET GALLERY!
-			subpage1_mc.bodycopy_tf.htmlText = "";
+			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.htmlText = "";
 		}else{
-			image_mcl.unloadClip(subpage1_mc.empty_mc);
-		    
-			subpage1_mc.bodycopy_tf.htmlText = sXml.main.item.copy.data;			
+		//	image_mcl.unloadClip(subpage1_mc.empty_mc);
+		    subpage1_mc.subpagestroke_mc._alpha=100;
+		//disable gallery
+			gn.disable();
+			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.styleSheet = styles;
+			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.htmlText = sXml.main.item.copy.data;
+			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.autoSize = true;
+			
+			trace("TEXT FIELD HEIGHT "+ subpage1_mc.bodycopy_tf_mc.bodycopy_tf._height +"<------- - - - - - -  - -"+TEXTFIELDMASKHEIGHT);	
+			var tfh = subpage1_mc.bodycopy_tf_mc.bodycopy_tf._height;
+			
+
+			//	test for scroller
+			if(tfh > TEXTFIELDMASKHEIGHT){
+				trace("SCROLL ON")
+				disablescroller();
+				initScroll();
+			}else{
+				trace("SCROLL ON")
+				
+				disablescroller();
+			}
+				
 		}
+		
+
 		
 	//	Tweener.addTween(subpage1_mc, {_alpha:100, _y:ANIM_ENDPOINT, delay:.5, time:1.1, transition:"easeOut"});
 		Tweener.addTween(subpage1_mc, {_alpha:100, delay:.5, time:1.1, transition:"easeOut"});
-		
+
+
 	}
 	
-	
+
 	
 	private function buildGallery():Void{
-
+		galleryArray=[];
 		var gLen =  sXml.main.pic.length;	
 		for(var i=0;i<=(gLen-1);i++){
-			trace("." +sXml.main.pic[i].attributes.filename);
+			// trace("." +sXml.main.pic[i].attributes.filename);
 		
 			galleryArray.push({
 				filename:sXml.main.pic[i].attributes.filename,
@@ -371,90 +395,210 @@ class SubPageApp extends MovieClip {
 			});	
 		}
 		
+		trace("GALLERY : "+subpage1_mc.galleryNav);
+		//image_mcl.loadClip(galleryArray[0].filename, subpage1_mc.empty_mc);
+		if(gn){
+			delete gn;//.init(galleryArray, subpage1_mc.galleryNav);
+		}
+			gn = new GalleryNav(galleryArray, subpage1_mc.galleryNav);
 		
-			trace(gLen+" :: "+galleryArray[1].filename);
-		/* 
+	}	
 			
-					var mclListener:Object = new Object();
-					mclListener.onLoadStart = function(target_mc:MovieClip) {
-					   // target_mc.startTimer = getTimer();
-					trace("START "+target_mc)
-					};
-					mclListener.onLoadComplete = function(target_mc:MovieClip) {
-					    //target_mc.completeTimer = getTimer();
-						trace("COMPLETE "+target_mc)
-					
-					};
-					mclListener.onLoadInit = function(target_mc:MovieClip) {
-					    //var timerMS:Number = target_mc.completeTimer-target_mc.startTimer;
-					    //target_mc.createTextField("timer_txt", target_mc.getNextHighestDepth(), 0, target_mc._height, target_mc._width, 22);
-					    //target_mc.timer_txt.text = "loaded in "+timerMS+" ms.";
-						trace("BING BANG "+target_mc)
-					}; 
-		*/
-
-		
-			//image_mcl.addListener(mclListener);
-			image_mcl.loadClip(galleryArray[0].filename, subpage1_mc.empty_mc);
-			
-		
-	}
-	
 //// subnav
 
 	private function getSubSectionXMLData():Void{
-	// maybe cal_xml = null; ??
-	trace("getting X2  "+ XMLPATH);
-	subsect_xml = new XML();
-	subsect_xml.ignoreWhite = true;
-	subsect_xml.load(XMLPATH); 
+		// maybe cal_xml = null; ??
+		// trace("getting X2  "+ XMLPATH);
+		subsect_xml = new XML();
+		subsect_xml.ignoreWhite = true;
+		subsect_xml.load(XMLPATH); 
 
-	subsect_xml.onLoad = Delegate.create(this, onSubXmlLoad);
+		subsect_xml.onLoad = Delegate.create(this, onSubXmlLoad);
 	
-}
+	}
 	
 	private function onSubXmlLoad($success:Boolean):Void{		
 		
 			if ($success) {
 			
-				trace("load supbage data :"+$success);
+				// trace("load supbage data :"+$success);
 							
 				mySubXmlObject = new XMLObject();
 				sSubXml = myXmlObject.parseXML(subsect_xml);
 			
 			} else {
-				 trace("load data died "+ $success);
+				 // trace("load data died "+ $success);
 			}
 		popSubData();
 	}
 
 	private function popSubData(){
 		// bCopy = bCopy+ itemArray[i].childNodes[b].toString();
-		trace("POP sub data "+sSubXml.main.item.headline.data);
+		 trace("POP sub data "+sSubXml.main.item.headline.data);
 		subpage1_mc.header_tf.text = sSubXml.main.item.headline.data;
 		_global.mainImagePath =  sSubXml.main.item.attributes.swfName;
 		BroadCaster.broadcastEvent("reloadMainImage");
 		
-		subpage1_mc.bodycopy_tf.htmlText = sSubXml.main.item.copy.data;
+		subpage1_mc.bodycopy_tf_mc.bodycopy_tf.htmlText = sSubXml.main.item.copy.data;
+		subpage1_mc.bodycopy_tf_mc.bodycopy_tf.autoSize = "left";
+		
+		var tfh = subpage1_mc.bodycopy_tf_mc.bodycopy_tf._height;
+		
+		trace("TEXT FIELD HEIGHT [sub]"+ subpage1_mc.bodycopy_tf_mc.bodycopy_tf._height +"<------- - - - - - -  - -");	
+
+		//	test for scroller
+		if(tfh > TEXTFIELDMASKHEIGHT){
+			disablescroller();
+			initScroll();
+		
+		}else{
+			disablescroller();
+		}
+		
+		
 	//	Tweener.addTween(subpage1_mc, {_alpha:100, _y:ANIM_ENDPOINT, delay:.5, time:1.1, transition:"easeOut"});
 		Tweener.addTween(subpage1_mc, {_alpha:100, delay:.5, time:1.1, transition:"easeOut"});
 		
+
+		
+	}
 	
+
+
+	
+	//////////////////////////////////
+	// 		   SCROLLER JUNK		//
+	//////////////////////////////////
+	
+	
+	///////// scroller stuff //////// 
+	private var channelheight:Number;
+	private var scrubheight:Number;
+	private var maskHeight:Number;
+	private var clipHeight:Number;
+	private var clipStartY:Number;
+	private var scrubX:Number;
+	private var scrubStartY:Number;
+	private var scrubEndY:Number;
+	private var startPct:Number;
+	private var scrubberStartY:Number;
+	private var mouseListener:Object = new Object();
+	
+	private function initScroll(){
+		trace("SCROLLER INIT")
+		subpage1_mc.subpage_scroller._alpha=100;
+		var scrub:MovieClip = subpage1_mc.subpage_scroller.scrollscrubber;
+		//// these are set for the startDrag args //////
+		scrubStartY = 0;//scrub._y;
+
+		channelheight = subpage1_mc.subpage_scroller.scrollchannel_mc._height;
+		var _cH = channelheight;// local for the mouse listener
+
+		scrubheight = scrub._height;
+		scrubEndY = scrub._y + (channelheight - scrubheight);
+		scrubX = scrub._x;
+
+		////////////////////////////////////////////
+		fireupScroller();
 	}
 
-	public function disable():Void{ 
-		trace("sub page disable -->");
-		Tweener.addTween(subpage1_mc, {_alpha:0, _y:ANIM_ENDPOINT, time:0.25, transition:"easeOut"});//ANIM_STARTPOINT
-		ML.disable();
-		
-		/* 
-		thisapp.blocker_mc.swapDepths(thisapp.getNextHighestDepth())
-			var invisify:Function = function(_ob:Object){
-				trace("I I :"+_ob);
-				_ob._visible=false;
-				}
-		Tweener.addTween(this, {time:1, transition:"easeOut", _alpha:100, onComplete:invisify, onCompleteParams:[thisapp]}); 
-		*/
+	private function fireupScroller(){
+
+		trace("SCROLL HEIGHT "+subpage1_mc.bodycopy_tf_mc.bodycopy_tf._height)
+		trace("SCROLL channel HEIGHT "+ subpage1_mc.subpage_scroller.scrollchannel_mc._height)
+		trace("SCROLL scrubber HEIGHT "+subpage1_mc.subpage_scroller.scrollscrubber._height)
+
+		var scrub:MovieClip = subpage1_mc.subpage_scroller.scrollscrubber;
+		var clip:MovieClip = subpage1_mc.bodycopy_tf_mc;
+
+	 	clipStartY = subpage1_mc.bodycopy_tf_mc._y;
+
+		var _cY = clipStartY; // local for the mouse listener
+		var _cH = channelheight;// local for the mouse listener
+
+		clipHeight = subpage1_mc.bodycopy_tf_mc.bodycopy_tf._height + 100;  //100 is a buffer area
+
+			//  get start pos of scrubber and adjust clip below
+		//	scrubberStartY = subpage1_mc.subpage_scroller.scrollscrubber._y;
+			startPct = scrub._y / channelheight;
+
+
+
+		maskHeight= TEXTFIELDMASKHEIGHT;//newsApp.news_textmask_mc._height;
+		var clipScrollDist:Number = (clipHeight- maskHeight) +50;
+
+
+		var scrollDist = scrubEndY - scrubStartY;
+
+			// SET MC APPROPRIATELY TO SCRUB START DIST ...
+			// this is for later when scroller is reset
+		clip._y = clipStartY-(clipScrollDist * startPct);
+
+
+
+	   	trace("TEST channel height "+channelheight);
+
+
+		mouseListener.onMouseMove = function() {
+			// get the %Y of the scrubber
+			trace("TEST channel height "+_cH);
+
+			var pct = scrub._y / _cH;
+			trace("moved "+ scrub._y +" :: "+_cH+ " :: "+pct);
+		   	clip._y =_cY-(clipScrollDist * pct);
+			trace( _cY+"::"+clipScrollDist );
+			// set the %Y of the scrollable clip to the % Y of the scrubber
+		    updateAfterEvent();
+		};
+
+
+		scrub.onPress = Delegate.create(this, sDrag);
+		scrub.onRelease = scrub.onReleaseOutside = Delegate.create(this, sDragStop);
+
+
 	}
+
+	private function sDrag(){
+		subpage1_mc.subpage_scroller.scrollscrubber.startDrag(false, scrubX, scrubStartY, scrubX, scrubEndY);
+		Mouse.addListener(mouseListener);
+
+	}
+
+	private function sDragStop(){
+		subpage1_mc.subpage_scroller.scrollscrubber.stopDrag();
+		Mouse.removeListener(mouseListener);
+
+	}
+	
+	private function disablescroller(){
+		trace("DIS SCROLLER");
+		
+		delete subpage1_mc.subpage_scroller.scrollscrubber.onPress;
+		delete subpage1_mc.subpage_scroller.scrollscrubber.onRelease 
+		delete subpage1_mc.subpage_scroller.scrollscrubber.onReleaseOutsidefs;
+
+		subpage1_mc.bodycopy_tf_mc._y=111;
+		subpage1_mc.subpage_scroller.scrollscrubber._y=0;
+		subpage1_mc.subpage_scroller._alpha=0;
+	}
+
+	
+	
+	//////////////////////////////////
+	//////////////////////////////////
+
+	public function disable():Void{ 
+		// trace("sub page disable -->");
+		Tweener.addTween(subpage1_mc, {_alpha:0, _y:ANIM_ENDPOINT, time:0.25, transition:"easeOut"});//ANIM_STARTPOINT
+	//	ML.disable(); // didnt work
+		TL.disable();
+		menuList.getInstance().disable();	
+		gn.disable();
+		
+	}
+	
+	
+	
+	
 
 }

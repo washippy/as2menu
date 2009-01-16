@@ -1,17 +1,9 @@
 ﻿/*	CalendarApp.as:  
 	
 TO DO :
-
-
-
-BUG when you change MONTHS with little arrows, data doesnt change. .  . it keeps current month	
 	
-	
-	
-SCROLLER sucks
-	
-	
-		
+FIX SCROLLER 
+			
 SPANISH SWITCH
 
 
@@ -42,8 +34,8 @@ class CalendarApp extends MovieClip {
 	private var calArrow_left:MovieClip;
 	
     private var calendarTitle_tf:TextField;
-	private var MASKHEIGHT:Number = 186;
-	private var MASKY:Number = 14;
+	//private var MASKHEIGHT:Number = 186;
+	//private var MASKY:Number = 14;
 	
 	//
 	private var currentDay_tf:TextField;
@@ -78,6 +70,10 @@ class CalendarApp extends MovieClip {
 	private var current;
     private var currentLength;
 
+	///// scroller stuff
+	private var totalHops:Number;
+	public var currentHop:Number;
+	private var MASKHEIGHT:Number = 180;  // hard coded 
 	private var firsttime=true;
 
 	public function CalendarApp(passmealong:String, clip:MovieClip){
@@ -93,6 +89,11 @@ class CalendarApp extends MovieClip {
 		
 		BroadCaster.register(this,"setEvents");
 		BroadCaster.register(this,"writeScrollerEvents");
+		BroadCaster.register(this,"incHop");
+		BroadCaster.register(this,"decHop");
+		BroadCaster.register(this,"removeEvents");
+
+		
 		
 		monthArray = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
 		weekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -232,7 +233,7 @@ class CalendarApp extends MovieClip {
 	}
 	
 	private function displayMonth(month, year):Void {
-		// trace("HIT ME!!" +month+" "+year)
+		 trace("HIT ME!!" +month+" "+year)
 			
 	        var d = new Date (); /// date object used to build calendar
 	
@@ -413,14 +414,14 @@ class CalendarApp extends MovieClip {
 		
 		/// ADD EVENTS 
 			for(var gg=1; gg<=42; gg++){		
-				//trace(gg+"BINGO : "+ mc["date" +gg ]);
+				trace(gg+"BINGO : "+ mc["date" +gg ]);
 				if(mc["date" +gg]!=undefined){
 				/*   	mc["date" +gg].onRollOver =function(){
-						//trace(this.date);
+						trace(this.date);
 						trace(this._parent._parent.app.calendarApp.content_tf_STARTY)
 					}
 					mc["date" +gg].onRollOut =function(){
-						//trace(this.date);
+						trace(this.date);
 						trace(this._parent._parent.app.calendarApp.content_tf_STARTY)
 					}   */
 					mc["date" + gg]._visible=false; // make all boxes invisible
@@ -469,17 +470,17 @@ class CalendarApp extends MovieClip {
 	}
 	
 	
-	private function setEvents(__date:Number){ 
-			trace("SET EVENTS : "+ curMonth);
+	private function setEvents(__date:Number){ 	
+			trace("SET EVENTS : "+ curMonth+" :: "+ currentMonth);
 		
 		/// run thru events array
 		/// get events for passed DAY __date
 		/// send em to text field and enable scroller
-		var dString:String =  (curMonth+1)+ "." + __date + "." +  curYear;
+		var dString:String =  (currentMonth+1)+ "." + __date + "." +  currentYear;  // curMonth
 
 	//var dString:String =  (curMonth+1)+ "." + curDay + "." +  curYear;
-		//trace("SET EVENTS ::::::::::: "+ dString); //9.19.2008
-		//trace("SET EVENTS ::::::::::: "+ __date); //19
+		trace("SET EVENTS ::::::::::: "+ dString); //9.19.2008
+		trace("SET EVENTS ::::::::::: "+ __date); //19
 				
 		var counter=0;
 		var tempArr = new Array();
@@ -488,7 +489,7 @@ class CalendarApp extends MovieClip {
 		
 		for(var x=0; x<eventsArray.length; x++){ 
 			if(dString==eventsArray[x].id){
-				//trace("WHOA "+eventsArray[x].id)
+				trace("WHOA "+eventsArray[x].id)
 				tempArr[g] = eventsArray[x];
 				g++;
 				
@@ -502,35 +503,44 @@ class CalendarApp extends MovieClip {
 		}
 		calApp.calscroller_mc.content_tf.htmlText =""; 
 
-		calApp.currentDay_tf.htmlText = monthArray[currentMonth]+" "+__date + ", "+ curYear; // changes Date above scroller
+		calApp.currentDay_tf.htmlText = monthArray[currentMonth]+" "+__date + ", "+ currentYear; // changes Date above scroller
 
 		var tAlen = tempArr.length;
 		
 		for (var z=0; z<tAlen; z++){
-			//trace("? ? ? ? "+tempArr[z].headline);
+			trace("? ? ? ? "+tempArr[z].headline);
 			var boldMe = "<B>"+tempArr[z].headline +"</B>" ; //cXml.item[z].attributes.headline; 
 			var cData = tempArr[z].description;
 			if (cData == undefined || cData == null){
-				var pile:String = boldMe + "\r"+tempArr[z].eventTime +"\r\r";
+				var pile:String = boldMe + "\r"+tempArr[z].eventTime +"\r";
 			}else{
-				var pile:String = boldMe + "\r"+tempArr[z].eventTime + "\r"+cData +"\r\r";
+				var pile:String = boldMe + "\r"+tempArr[z].eventTime + "\r"+cData +"\r";
+			}
+		
+			if(z!=(tAlen-1)){ // if youre at the last one, skip this extra return... its messing up the spacing
+				pile+="\r";
 			}
 			
-					//trace("PILE :"+pile);
-					calApp.calscroller_mc.content_tf.htmlText += pile;
+			trace("PILE :"+pile);
+			calApp.calscroller_mc.content_tf.htmlText += pile;
 
 		}
 		
 		
 		
 		if(tempArr.length<=0){
-			calApp.calscroller_mc.content_tf.htmlText = "No events scheduled."; //Ningunos acontecimientos programados.
+			calApp.calscroller_mc.content_tf.htmlText = "No events scheduled."; 
 		}
-		calApp.calscroller_mc.content_tf.autoSize = true;
+		trace(calApp.calscroller_mc.content_tf._height);
+		trace("PRESTOOOO");
 		
-	
+		calApp.calscroller_mc.content_tf.autoSize = "left";
 		
-		if(calApp.calscroller_mc.content_tf._height >=MASKHEIGHT){
+		trace(calApp.calscroller_mc.content_tf._height);
+		
+		var diff = Math.abs(calApp.calscroller_mc.content_tf._height - MASKHEIGHT)
+		if(diff >= 5){
+		//if(calApp.calscroller_mc.content_tf._height > MASKHEIGHT){
 			enableScroller(calApp.calscroller_mc.content_tf._height);
 		}else{
 			disableScroller();
@@ -556,87 +566,139 @@ class CalendarApp extends MovieClip {
 		// nuthin
 		};
 			
-		calApp.calscroller_mc.moreDOWN.	onPress=function(){
+		calApp.calscroller_mc.moreDOWN.onPress=function(){
 		// nuthin
 						
 		};
 	}
 	
 	private function enableScroller(h:Number){
-		//trace("scroller tf height = "+h);
-		// mask height = 186
+		// trace("ENABLE SCROLLER : scroller tf height = "+h);
+		// MASKHEIGHT = 178
+		currentHop=1;
+		
+		var tH = calApp.calscroller_mc.content_tf._height;
+		var REM = tH % MASKHEIGHT;
+		// trace(tH + " : MOD :"+REM);
+	//	// trace("REMAINDER  :"+ (tH-(178*2)));
+// trace(Math.round( tH / MASKHEIGHT));
+		if(REM > 0){
+			// take round +1
+			totalHops = Math.floor( tH / MASKHEIGHT)+1;
+
+		}else{
+			// take round 
+			totalHops = Math.floor( tH / MASKHEIGHT);	
+		}
+
+		trace("TOTALHOPS : "+totalHops);
+		trace("C HOP : "+currentHop);
 		
 		writeScrollerEvents();
 		
 	}
 	
-	private function shipIt(){
-		//trace("SHIPPED");
-		BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
+	private function incHop(){
+		// trace("INC")
+		currentHop++;
+	}
+	private function decHop(){
+		// trace("DEC")
+		currentHop--;
 	}
 	
-	private function writeScrollerEvents(){
-	//	trace(calApp.calscroller_mc.content_tf._height);
-	//	trace(calApp.calscroller_mc.content_tf._y);
-		//trace("WSE ::::::::::::::::");
-		
-		// MASKHEIGHT = 186
-		
-		
-		
+ 
+	private function addEvents(where:String){
+		// trace("ADDED")
+		var fn:Function = function(){
+					// trace("WORKED");
+					BroadCaster.broadcastEvent("writeScrollerEvents");
+				}
+				
+		switch(where){
+			case "both":
+				calApp.calscroller_mc.moreUP.onPress=function(){
+					// trace("UP");
+					BroadCaster.broadcastEvent("removeEvents");
+					BroadCaster.broadcastEvent("incHop");
+					Tweener.addTween(this._parent.content_tf, {time:0.5, transition:"easeOut", _y:this._parent.content_tf._y-177, onComplete:fn});
+				};
+				
+				calApp.calscroller_mc.moreDOWN.onPress=function(){
+					// trace("DN");
+					BroadCaster.broadcastEvent("removeEvents");
+					BroadCaster.broadcastEvent("decHop");	
+					Tweener.addTween(this._parent.content_tf, {time:0.5, transition:"easeOut", _y:this._parent.content_tf._y+177, onComplete:fn});
+				};
+			break;
+			
+			
+			case "upOnly":
+				calApp.calscroller_mc.moreUP.onPress=function(){
+					// trace("UP");
+					BroadCaster.broadcastEvent("removeEvents");
+					BroadCaster.broadcastEvent("incHop");
+					Tweener.addTween(this._parent.content_tf, {time:0.5, transition:"easeOut", _y:this._parent.content_tf._y-177, onComplete:fn});
+				};
+				
+			break;
+			
+			case "downOnly":
+				calApp.calscroller_mc.moreDOWN.onPress=function(){
+					// trace("DN");
+					BroadCaster.broadcastEvent("removeEvents");
+					BroadCaster.broadcastEvent("decHop");
+					Tweener.addTween(this._parent.content_tf, {time:0.5, transition:"easeOut", _y:this._parent.content_tf._y+177, onComplete:fn});
+				};
+			break;
+	
+		}
+	} 
+
+	private function removeEvents():Void{
+		// trace("REMOVED :::::: "+calApp.calscroller_mc.moreUP)
+		calApp.calscroller_mc.moreUP.onPress=function(){};
+		calApp.calscroller_mc.moreDOWN.onPress=function(){};
+	}
+
+	
+	private function writeScrollerEvents(){	
+		// trace("WSE ::::::::::::::::");		
+		// MASKHEIGHT = 178
+	
+//		this stinks		
+/* 
 		
 		//if the Y of the tf is near start y  - height 
-		var tf = calApp.calscroller_mc.content_tf._y;
-		//trace("tf Y: "+tf)
-		var topY = 14 -calApp.calscroller_mc.content_tf._height;
-		//trace("topY: "+topY)
-		var bottomY =  14;
-		//trace("bottomY: "+bottomY)
-		var deltaTOP = tf+Math.abs(topY);
-		//trace("delta top :"+deltaTOP);
-		
-		var deltaBTM = Math.abs(bottomY-tf);
-		//trace("delta bottom :"+deltaBTM);
-		
-		
-		
-		if(tf > topY && tf < bottomY){
+		var tf = calApp.calscroller_mc.content_tf._y;					trace("tf Y: "+tf)
+		var topY = 16.8 -calApp.calscroller_mc.content_tf._height;		trace("topY: "+topY)
+		var bottomY =  14;												trace("bottomY: "+bottomY)
+		var deltaTOP = tf+Math.abs(topY);								trace("delta top :"+deltaTOP);
+		var deltaBTM = Math.abs(bottomY-tf);							trace("delta bottom :"+deltaBTM);
+		 
+*/
+
+		if(currentHop < totalHops && currentHop > 1  ){   // if there are HOPS above and below ... [not first or last]
+	
 			// enable both
-			//trace("A")
+			trace("A")
 			calApp.calscroller_mc.moreUP._visible=true;
 			calApp.calscroller_mc.moreDOWN._visible=true;
-
+			
 			calApp.calscroller_mc.moreUP.enabled=true;
 			calApp.calscroller_mc.moreDOWN.enabled=true;
-
+			
 			calApp.calscroller_mc.moreUP._alpha=100;
 			calApp.calscroller_mc.moreDOWN._alpha=100;
 			
-		
-			calApp.calscroller_mc.moreUP.onPress=function(){
-			//	this._parent.content_tf._y-=10;
-		////	if delta top is greater than 100, use 100,  else use delta top
-				Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y-100, onCompleteEvent:calApp.shipIt});
-				
-			//	BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
-				
-			};
-				
-			calApp.calscroller_mc.moreDOWN.onPress=function(){
-				////	if delta bottom is less than 100 use delta bottom else use 100
-				
-				Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y+100, onCompleteEvent:calApp.shipIt});
-				
-				//this._parent.content_tf._y+=10;		
-				//BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
-							
-			};
-			
-			
-		}else if(tf > topY && tf >= bottomY){
+			addEvents("both");
+	  
+		}else if(currentHop == 1 && currentHop != totalHops){ // if we're at the first HOP    on TOP ...  and there are other HOPS to get to
+	
+	
 			//disable DOWN
 			//enable UP
-			//trace("B")
+			trace("B")
 			calApp.calscroller_mc.moreUP._visible=true;
 			calApp.calscroller_mc.moreDOWN._visible=true;
 
@@ -646,28 +708,16 @@ class CalendarApp extends MovieClip {
 			calApp.calscroller_mc.moreUP._alpha=100;
 			calApp.calscroller_mc.moreDOWN._alpha=50;
 			
+			addEvents("upOnly");
 		
-			calApp.calscroller_mc.moreUP.onPress=function(){
-			//	this._parent.content_tf._y-=10;
+
 			
+		}else if(currentHop == totalHops && totalHops > 1){ // if we're at the bottom and there are some above..
 	
-			Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y-100, onCompleteEvent:shipIt});
-				
-			//	BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
-				
-			};
-				
-			calApp.calscroller_mc.moreDOWN.	onPress=function(){
-			//	this._parent.content_tf._y+=10;					
-			};
-			
-			
-			
-			
-		}else if(tf <= topY && tf < bottomY){
+	
 			//disable UP
 			//enable DOWN
-			//trace("C")
+			trace("C")
 			calApp.calscroller_mc.moreUP._visible=true;
 			calApp.calscroller_mc.moreDOWN._visible=true;
 
@@ -677,27 +727,13 @@ class CalendarApp extends MovieClip {
 			calApp.calscroller_mc.moreUP._alpha=50;
 			calApp.calscroller_mc.moreDOWN._alpha=100;
 			
+			addEvents("downOnly");
 		
-			calApp.calscroller_mc.moreUP.onPress=function(){
-				//this._parent.content_tf._y-=10;
-				Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y-100, onCompleteEvent:shipIt});
-				
-			};
-				
-			calApp.calscroller_mc.moreDOWN.	onPress=function(){
-			//	this._parent.content_tf._y+=10;
-			Tweener.addTween(this._parent.content_tf, {time:1, transition:"easeOut", _y:this._parent.content_tf._y+100, onCompleteEvent:shipIt});
-			
-				//BroadCaster.broadcastEvent("writeScrollerEvents", this, false);
-									
-			};
-			
-			
-			
+		
+		}else{
+			trace("UH... NONE OF THE ABOVE")
+			disableScroller();
 		}
-		
-		
-
 	}
 	
 	
@@ -705,7 +741,7 @@ class CalendarApp extends MovieClip {
 
 		//	trace("length ::"+ cXml.item.length);
 
-		//trace("HERE IT IS :" +dC)
+		trace("HERE IT IS :" +dC)
 
 	var itemLen:Number = cXml.item.length;
 	var dString:String =  (d.getMonth()+1)   + "." + d.getDate() + "." +  d.getFullYear();

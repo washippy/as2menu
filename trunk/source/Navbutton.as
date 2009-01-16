@@ -34,7 +34,7 @@ class Navbutton extends MovieClip {
 	
 	
 	private function onRollOver(){
-		trace("OVER");
+		// trace("OVER");
 		if(!selectedstate){
 			this.gotoAndPlay("over");		
 		}

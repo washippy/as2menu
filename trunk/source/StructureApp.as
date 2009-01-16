@@ -43,15 +43,15 @@ class StructureApp {
 	
 	public function getArrayData():Object {   //////////////this needs a level heirarchy
 			// loop thru array and ship appropriate one
-			trace("GET ARRAY DAATA :: " + hotarray);
+			// trace("GET ARRAY DAATA :: " + hotarray);
 			for(var f in section_array){
-				trace("checkin : "+section_array[f].name +" :: "+ section_array[f].subnav_item_array[0].attributes.name);
+				// trace("checkin : "+section_array[f].name +" :: "+ section_array[f].subnav_item_array[0].attributes.name);
 				
 				if(section_array[f].name == hotarray){
 					return section_array[f];
-					trace("returning : "+section_array[f].name);
+					// trace("returning : "+section_array[f].name);
 				}else{
-					trace("nuthin here");
+					// trace("nuthin here");
 					
 				}
 			}			
@@ -59,16 +59,16 @@ class StructureApp {
 	public function getThirdNavArrayData(_num:Number):Array { 
 			
 			
-			trace(_num + "GET THIRD NAV ARRAY DAATA :: "+hotarray);
+			// trace(_num + "GET THIRD NAV ARRAY DAATA :: "+hotarray);
 			
 			for(var f in section_array){
-				trace("checkin : "+section_array[f].name +" :: "+ section_array[f].subnav_item_array[_num].subnav);
+				// trace("checkin : "+section_array[f].name +" :: "+ section_array[f].subnav_item_array[_num].subnav);
 				
 				if(section_array[f].name == hotarray){
 					return section_array[f].subnav_item_array[_num];
 					//trace("returning : "+section_array[f].subnav_item_array[_num].attributes.name);
 				}else{
-					trace("nuthin here");
+					// trace("nuthin here");
 					
 				}
 			}
@@ -78,7 +78,7 @@ class StructureApp {
 
 	
 	public function getNavArray():Array { 
-			trace("GET NAV ARRAY :: "+section_array);
+			// trace("GET NAV ARRAY :: "+section_array);
 			return section_array;		
 	}	
 	
@@ -89,12 +89,12 @@ class StructureApp {
 	
 	public function setPath(_xP:String):Void { 
 		_xmlPath = "xml/"+_xP;
-		trace("++++++++++++++++ STRUCTURE PATH RECEIVED :"+_xP);
+		// trace("++++++++++++++++ STRUCTURE PATH RECEIVED :"+_xP);
 		getData();
 	}
 	
 	private function getData():Void{
-		trace("GET DATA "+_xmlPath);
+		// trace("GET DATA "+_xmlPath);
 		// maybe str_xml = null; ??
 		str_xml = new XML();
 		str_xml.ignoreWhite = true;
@@ -106,7 +106,7 @@ class StructureApp {
 	}
 	
 	private function onXmlLoad($success:Boolean):Void{
-	trace("onXmlLoad")
+	// trace("onXmlLoad")
 		if ($success) {
 			
 			// trace("load cal data :"+ $success);
@@ -117,14 +117,14 @@ class StructureApp {
 			//trace("FOOOOOOOOOOOOOOOOOOOOO : "+sXml.section[0]);
 			/* 
 			for (var item in sXml.section){
-							trace("structure data : " +item +" :: " +sXml.section[item].attributes.name);
+							// trace("structure data : " +item +" :: " +sXml.section[item].attributes.name);
 						} 
 			*/
 
 		//	
 			setupArrays();
 		} else {
-			 trace("load structure data died WHAA "+ $success);
+			 // trace("load structure data died WHAA "+ $success);
 		}
 	}
 	
@@ -151,7 +151,7 @@ class StructureApp {
 						   });
 						
 						//// third nav here?
-						trace("!!!"+sXml.section[i].attributes.name)
+						// trace("!!!"+sXml.section[i].attributes.name)
 						
 			}
 			
@@ -171,7 +171,7 @@ for (var o=0;o<=iLen;o++){
 	
 	var snLen = sXml.section[i].item[o].subnav.length;
 	for (var p=0;p<=snLen;p++){
-		trace("WELL FOO HERE IT IS "+o+" :: "+p+" :: "+sXml.section[i].item[o].subnav[p].attributes.eng)
+		// trace("WELL FOO HERE IT IS "+o+" :: "+p+" :: "+sXml.section[i].item[o].subnav[p].attributes.eng)
 		
 		
 		thirdnav_array.push({

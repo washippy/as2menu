@@ -44,7 +44,7 @@ class menuItem extends MovieClip {
 		STARTY = this._y;
 		mItem = this;
 		
-		trace(_title + " ::::::: ::::::: ::::: "+ nameNum)
+		// trace(_title + " ::::::: ::::::: ::::: "+ nameNum)
 		if(_justify=="left"){
 			parseTitle(_title);	
 		}else if(_justify=="right"){
@@ -56,12 +56,12 @@ class menuItem extends MovieClip {
 	
 	
 	private function parseTitle(_t:String){
-		trace("+++ PARSE TITLE ++++  "+_t+newline+newline+newline);
+		// trace("+++ PARSE TITLE ++++  "+_t+newline+newline+newline);
 		itemArray = _t.split(" ");	
 		for(var i =0 ; i< itemArray.length; i++){
 		
 			mItem.attachMovie("menuItemWord", "menuItemWord"+i, mItem.getNextHighestDepth(), {_x:0, _y:0, _title:itemArray[i].title}); // move it later;
-			trace("+++ ++++  "+i);
+			// trace("+++ ++++  "+i);
 			
 			
 			if(i!=0){	
@@ -72,7 +72,7 @@ class menuItem extends MovieClip {
 			
 		}
 		
-		trace("HOO AHH "+ fullWidth)
+		// trace("HOO AHH "+ fullWidth)
 		
 		mItem.mask_mc._width = fullWidth;//mItem.top_tf_mc.tf._width;
 		
@@ -107,7 +107,7 @@ class menuItem extends MovieClip {
 	
 	
 	private function parseTitleRight(_t:String){
-		trace("RIGHT ++++++++++++  "+_t);
+		// trace("RIGHT ++++++++++++  "+_t);
 		itemArray = _t.split(" ");	
 		itemArray.reverse();
 		
@@ -131,7 +131,7 @@ class menuItem extends MovieClip {
 		}	
 		
 		mItem.mask_mc._width = fullWidth;//mItem.top_tf_mc.tf._width;
-		trace("HOO AHH "+ fullWidth)
+		// trace("HOO AHH "+ fullWidth)
 
 		
 		popBKG();
@@ -172,7 +172,7 @@ class menuItem extends MovieClip {
 	
 	private function mRollOver(){
 		
-		trace("OVER "+SELECTED);
+		// trace("OVER "+SELECTED);
 		if(!SELECTED){
 			rollEmOver();
 		}
@@ -181,7 +181,7 @@ class menuItem extends MovieClip {
 	
 	public function rollEmOver(){
 		var limit = itemArray.length-1;
-		trace("OY"+limit)
+		// trace("OY"+limit);
 		
 		var count=0;		
 		var timer=3;
@@ -206,10 +206,10 @@ class menuItem extends MovieClip {
 			limit = 0;
 			mItem.onEnterFrame = function(){
 				if(timer<3){
-					trace(timer);
+					// trace(timer);
 					timer++;
 				}else{
-					trace("BOOP "+ count);
+					// trace("BOOP "+ count);
 					timer=0;
 					
 					mItem["menuItemWord"+count].gotoAndPlay("over");
@@ -227,7 +227,7 @@ class menuItem extends MovieClip {
 	}
 	
 	public function rollEmOut(){
-		trace("R OUT+++++++++++++");
+		// trace("R OUT+++++++++++++");
 		
 		delete mItem.onEnterFrame;
 		
@@ -242,7 +242,7 @@ class menuItem extends MovieClip {
 	
 	
 	private function mRollOut(){
-		trace("OUT "+SELECTED);
+		// trace("OUT "+SELECTED);
 		if(!SELECTED){
 			rollEmOut();
 		}
@@ -255,7 +255,7 @@ class menuItem extends MovieClip {
 	}
 	
 	private function mPress(){
-		trace("BOO "+ __mc);
+		// trace("BOO "+ __mc);
 		var _exceptthisone:Object = new Object();
 		_exceptthisone = nameNum;
 		//BroadCaster.broadcastEvent("unselectList", _exceptthisone , false);

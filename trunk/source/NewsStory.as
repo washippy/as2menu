@@ -26,10 +26,10 @@ class NewsStory extends MovieClip {
 	private var TF_SHORT = 79;
 	private var TF_EXTENDED;
 	private function NewsStory(){
-		// trace("NEWS STORY CONSTRUCTOR : "+this+newline+headline +newline+date+newline+bodyCopy+newline+link);
-		// trace("NEWS STORY CONSTRUCTOR :::::::: "+newline+bCopy);
+		// // trace("NEWS STORY CONSTRUCTOR : "+this+newline+headline +newline+date+newline+bodyCopy+newline+link);
+		// // trace("NEWS STORY CONSTRUCTOR :::::::: "+newline+bCopy);
 
-		//if (_global.lang == "SPANISH"){trace("SPAAAAANISH NEWS STORY")}else{}
+		//if (_global.lang == "SPANISH"){// trace("SPAAAAANISH NEWS STORY")}else{}
 			less_button._visible=false;
 			
 			BroadCaster.register(this,"updateMoreButton");
@@ -68,17 +68,17 @@ class NewsStory extends MovieClip {
 		popData();
 	}
 	private function bOnPress(){
-		trace(TF_EXTENDED + " :: "+ TF_SHORT);
+		// trace(TF_EXTENDED + " :: "+ TF_SHORT);
 		Tweener.addTween(story_tf, {time:1.5, transition:"easeOut", _height:TF_EXTENDED, onUpdate:updateAllPositions});  /// fade in  news app
 		less_button._visible=true;
 		more_button._visible = false;
 		popped = true;
 	/* 
 		reportPosition = function() {
-				trace ("My _x is now " + this._x);
+				// trace ("My _x is now " + this._x);
 			};
 			Tweener.addTween(myMovieClip, {_x:100, time:1, onUpdate:reportPosition}); 
-	Tweener.addTween(myMovieClip, {_x:100, time:1, onUpdate:function() { trace ("My _x is now " + this._x); }});
+	Tweener.addTween(myMovieClip, {_x:100, time:1, onUpdate:function() { // trace ("My _x is now " + this._x); }});
 	*/
 
 	
@@ -90,10 +90,10 @@ class NewsStory extends MovieClip {
 		popped = false;
 	/* 
 		reportPosition = function() {
-				trace ("My _x is now " + this._x);
+				// trace ("My _x is now " + this._x);
 			};
 			Tweener.addTween(myMovieClip, {_x:100, time:1, onUpdate:reportPosition}); 
-	Tweener.addTween(myMovieClip, {_x:100, time:1, onUpdate:function() { trace ("My _x is now " + this._x); }});
+	Tweener.addTween(myMovieClip, {_x:100, time:1, onUpdate:function() { // trace ("My _x is now " + this._x); }});
 	*/
 
 	
@@ -116,7 +116,7 @@ class NewsStory extends MovieClip {
 	}
 	
 	private function updateMoreButton(){
-		trace("GO ------------ -- - -- -- - - - -");
+		// trace("GO ------------ -- - -- -- - - - -");
 		less_button._y = more_button._y = story_tf._y + story_tf._height + 4;
 	}
 
