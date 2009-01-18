@@ -29,9 +29,9 @@
 	<leftcolumnpic eng_assetname="pastor_pic.jpg" esp_assetname="esp_pastor_pic.jpg"/>
 	
 	<!-- other XML PATHS -->
-	<newsapp engXMLpath="mtz_news_eng.xml" espXMLpath="mtz_news_esp.xml"/>
-	<calendarapp engXMLpath="mtz_calendar_eng.xml" espXMLpath="mtz_calendar_esp.xml"/>
-	<videoannouncementsapp engXMLpath="mtz_va_eng.xml" espXMLpath="mtz_va_esp.xml"/>
+	<newsapp engXMLpath="mtz_news.xml" espXMLpath="mtz_news_esp.xml"/>
+	<calendarapp engXMLpath="mtz_calendar.xml" espXMLpath="mtz_calendar_esp.xml"/>
+	<videoannouncementsapp engXMLpath="mtz_va.xml" espXMLpath="mtz_va_esp.xml"/>
 	
 	<!-- BUTTON BAR PARTS :: SOME LAUNCH POP UP WINDOWS, SOME CALL FUNCTIONS-->
 	<buttonbar>
