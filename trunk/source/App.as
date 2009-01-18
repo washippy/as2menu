@@ -123,8 +123,8 @@ class App extends MovieClip {
 		
 		
 		_global.assetPath=_oXml.appvalues.attributes.assetpath;
-
-		_global.mainImagePath=_oXml.mainimage.attributes.swfName;
+		_global.homeImagePath=_oXml.mainimage.attributes.swfName; // permanent for returning home
+		_global.mainImagePath=_oXml.mainimage.attributes.swfName; // this one changes w sections
 		
 	/* 
 		navBarArray = new Array();
@@ -256,7 +256,7 @@ class App extends MovieClip {
 					BroadCaster.broadcastEvent("pastorPicEnable");
 					// set main image back to default here /////////////////////////////////
 					_mc.buttonbar_mc.gotoAndPlay("IN");
-					
+					_global.mainImagePath = _global.homeImagePath;
 					BroadCaster.broadcastEvent("reloadMainImage");
 					PAGE = "home";
 				break;

@@ -13,6 +13,7 @@ import menuList;
 class menuItem extends MovieClip {
 	
 	private var _title:String;
+	private var _link:String;
 	
 	private var _pagename:String;
 	
@@ -255,7 +256,10 @@ class menuItem extends MovieClip {
 	}
 	
 	private function mPress(){
-		// trace("BOO "+ __mc);
+		 trace("BOO  "+this+" :: "+ this._link);
+		
+		
+		
 		var _exceptthisone:Object = new Object();
 		_exceptthisone = nameNum;
 		//BroadCaster.broadcastEvent("unselectList", _exceptthisone , false);
@@ -265,11 +269,15 @@ class menuItem extends MovieClip {
 		
 		rollEmOut();
 		
-		var _obj:Object = new Object();
-		_obj.pageName = _pagename;
-		_obj.nameNum = nameNum;
-		BroadCaster.broadcastEvent("loadASubSection", _obj , false);
-	
+		if(this._link != undefined){
+			getURL(this._link, "_blank");
+		}else{
+			var _obj:Object = new Object();
+			_obj.pageName = _pagename;
+			_obj.nameNum = nameNum;
+			BroadCaster.broadcastEvent("loadASubSection", _obj , false);
+		}
+		
 	
 	//	manageList(   ???  );
 	}

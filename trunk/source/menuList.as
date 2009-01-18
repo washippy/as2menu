@@ -114,6 +114,10 @@ class menuList extends MovieClip {
 			var _titleObj:Object = new Object();
 			_titleObj = listArray[num].title;
 			
+			var _linkObj:Object = new Object();
+				_linkObj = listArray[num].link;
+		trace( num + " DDDDDDDDDDDDDDDDDDDDDDDD "+ listArray[num].link);
+		
 			var _pageNameObj:Object = new Object();
 				_pageNameObj = listArray[num].name;
 		//	trace( num + " DDDDDDDDDDDDDDDDDDDDDDDD "+ listArray[num].title);
@@ -122,7 +126,7 @@ class menuList extends MovieClip {
 			_mcObj = menulist;
 
 				
-			menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(TF_HEIGHT * num), _title:_titleObj, _pagename:_pageNameObj, _mc:_mcObj, _justify:justify, nameNum:num});
+			menulist.attachMovie("menuItem", "menuItem"+num, menulist.getNextHighestDepth(), {_x:0, _y:(TF_HEIGHT * num), _title:_titleObj, _link:_linkObj, _pagename:_pageNameObj, _mc:_mcObj, _justify:justify, nameNum:num});
 			
 		}
 

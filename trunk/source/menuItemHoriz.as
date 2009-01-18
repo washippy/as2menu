@@ -13,7 +13,7 @@ import utils.BroadCaster;
 class menuItemHoriz extends MovieClip {
 	
 	private var _title:String;
-	private var _link:String;
+		private var _link:String;
 	private var nameNum:Number;
 	
 	private var _mc:MovieClip; // listHolder
@@ -159,7 +159,7 @@ class menuItemHoriz extends MovieClip {
 	}
 	
 	private function mPress(){
-		// trace("BOO "+ this._link);
+		 trace("MENU ITEM HORZ PRESS "+ this._link +" :: ");
 		getURL(this._link, "_blank");
 	//	var _obj:Object = new Object();
 	//	_obj.pageName = _pagename;
