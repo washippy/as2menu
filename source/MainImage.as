@@ -30,7 +30,6 @@ class MainImage extends MovieClip{
 	
 	public function reloadMainImage(){
 		CLIP.mainimage_mc.loadMovie(_global.mainImagePath);
-		
 	}
 	
 }

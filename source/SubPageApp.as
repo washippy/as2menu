@@ -54,7 +54,9 @@ class SubPageApp extends MovieClip {
 	private var TLArray:Array;
 	private var TLArray_esp:Array;
 	private var thirdmenuholder_mc:MovieClip;
-		
+	
+	private var _subGalleryEnabled:Boolean;		
+
 	private var _galleryEnabled:Boolean;		
 	private var	galleryArray:Array;
 	private var empty_mc:MovieClip;
@@ -166,7 +168,7 @@ class SubPageApp extends MovieClip {
 	//	var _obj:Object = new Object();
 	//	_obj.pageName = _pagename;
 	//	_obj.nameNum = nameNum;
-		// trace("L A S Section :: "+stuff.nameNum);
+		trace("L A S Section :: "+stuff.nameNum);
 			Tweener.removeTweens(subpage1_mc);
 			
 			//subpage1_mc._alpha=0;
@@ -189,10 +191,13 @@ class SubPageApp extends MovieClip {
 					var _lang:String = "";
 				}	
 			
-			XMLPATH = "xml/"+dataObj.attributes.name+ _lang +".xml";   
+			XMLPATH = "xml/"+dataObj.attributes.name+ _lang +".xml"; 
+			trace(XMLPATH);  
 			getSubSectionXMLData(); 
+			
+			_subGalleryEnabled = dataObj.attributes.gallery_enabled;
 
-		// trace("LOL _-_-______------_-_--_-_-_-_- "+dataObj.subnav)
+		 trace(stuff.nameNum+" LOL _-_-______------_-_--_-_-_-_- "+dataObj.attributes.gallery_enabled)
 	 
 		if(dataObj.subnav != undefined){ // change this to the item array
 				buildThirdNav();
@@ -221,7 +226,9 @@ class SubPageApp extends MovieClip {
 		for(var i:Number = 0; i<aLen; i++){
 			MLArray.push({
 						name:dataObj.subnav_item_array[i].attributes.name,
-						title:dataObj.subnav_item_array[i].attributes.eng
+						title:dataObj.subnav_item_array[i].attributes.eng,
+						link:dataObj.subnav_item_array[i].attributes.link
+
 						});
 			MLArray_esp.push({
 						name:dataObj.subnav_item_array[i].attributes.name,
@@ -237,26 +244,29 @@ class SubPageApp extends MovieClip {
 			TLArray = [];
 			TLArray_esp = [];
 		
-	//	trace("-----------------------+++++++++  "+dataObj.subnav_item_array[i].attributes.eng);
+		trace("-----------------------+++++++++  "+dataObj.subnav);
 		var aLen = dataObj.subnav.length;
+		 trace("XXXXXXXXXXXXXXXXXXXXXXX  :: "+aLen)
 		
 	
 	 
+/* 
 		for(var xx=0;xx<aLen;xx++){
-					// trace("XXXXX  :: "+dataObj.subnav[xx].attributes.eng)
+					 trace("XXXXX  :: "+dataObj.subnav[xx].attributes.eng)
 				} 
 		 
-	
-
-
 	 
+*/
+
 		for(var i:Number = 0; i<aLen; i++){
 				TLArray.push({
+							name:dataObj.subnav[i].attributes.name,
 							link:dataObj.subnav[i].attributes.link,
 							title:dataObj.subnav[i].attributes.eng
 							});
 							
 				TLArray_esp.push({
+							name:dataObj.subnav[i].attributes.name,
 							link:dataObj.subnav[i].attributes.link,
 							title:dataObj.subnav[i].attributes.esp
 							});
@@ -341,7 +351,7 @@ class SubPageApp extends MovieClip {
 		BroadCaster.broadcastEvent("reloadMainImage");
 		if(_galleryEnabled=="true"){
 			subpage1_mc.subpagestroke_mc._alpha=0;
-			buildGallery();  // GO GO GADGET GALLERY!
+			buildGallery(sXml);  // GO GO GADGET GALLERY!
 			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.htmlText = "";
 		}else{
 		//	image_mcl.unloadClip(subpage1_mc.empty_mc);
@@ -379,16 +389,16 @@ class SubPageApp extends MovieClip {
 	
 
 	
-	private function buildGallery():Void{
+	private function buildGallery(_sXml):Void{
 		galleryArray=[];
-		var gLen =  sXml.main.pic.length;	
+		var gLen =  _sXml.main.pic.length;	
 		for(var i=0;i<=(gLen-1);i++){
-			// trace("." +sXml.main.pic[i].attributes.filename);
+			// trace("." +_sXml.main.pic[i].attributes.filename);
 		
 			galleryArray.push({
-				filename:sXml.main.pic[i].attributes.filename,
-				picdate:sXml.main.pic[i].attributes.date,
-				caption:sXml.main.pic[i].attributes.caption
+				filename:_sXml.main.pic[i].attributes.filename,
+				picdate:_sXml.main.pic[i].attributes.date,
+				caption:_sXml.main.pic[i].attributes.caption
 			});	
 		}
 		
@@ -436,28 +446,39 @@ class SubPageApp extends MovieClip {
 		_global.mainImagePath =  sSubXml.main.item.attributes.swfName;
 		BroadCaster.broadcastEvent("reloadMainImage");
 		
-		subpage1_mc.bodycopy_tf_mc.bodycopy_tf.htmlText = sSubXml.main.item.copy.data;
-		subpage1_mc.bodycopy_tf_mc.bodycopy_tf.autoSize = "left";
-		
-		var tfh = subpage1_mc.bodycopy_tf_mc.bodycopy_tf._height;
-		
-		trace("TEXT FIELD HEIGHT [sub]"+ subpage1_mc.bodycopy_tf_mc.bodycopy_tf._height +"<------- - - - - - -  - -");	
+		trace(_subGalleryEnabled)
 
-		//	test for scroller
-		if(tfh > TEXTFIELDMASKHEIGHT){
-			disablescroller();
-			initScroll();
 		
-		}else{
-			disablescroller();
+		
+
+		if(_subGalleryEnabled=="true"){
+				subpage1_mc.subpagestroke_mc._alpha=0;
+				buildGallery(sSubXml);  // GO GO GADGET GALLERY!
+				subpage1_mc.bodycopy_tf_mc.bodycopy_tf.htmlText = "";
+		}else{ 
+			gn.disable();
+		    subpage1_mc.subpagestroke_mc._alpha=100;
+		
+			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.htmlText = sSubXml.main.item.copy.data;
+			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.autoSize = "left";
+		
+			var tfh = subpage1_mc.bodycopy_tf_mc.bodycopy_tf._height;
+		
+			trace("TEXT FIELD HEIGHT [sub]"+ subpage1_mc.bodycopy_tf_mc.bodycopy_tf._height +"<------- - - - - - -  - -");	
+
+			//	test for scroller
+			if(tfh > TEXTFIELDMASKHEIGHT){
+				disablescroller();
+				initScroll();
+		
+			}else{
+				disablescroller();
+			}
 		}
-		
 		
 	//	Tweener.addTween(subpage1_mc, {_alpha:100, _y:ANIM_ENDPOINT, delay:.5, time:1.1, transition:"easeOut"});
 		Tweener.addTween(subpage1_mc, {_alpha:100, delay:.5, time:1.1, transition:"easeOut"});
-		
-
-		
+	
 	}
 	
 

@@ -53,7 +53,8 @@ class menuListHoriz extends MovieClip {
 			var _mcObj:Object = new Object();
 			_mcObj = menulistH;
 
-				
+			
+			
 			menulistH.attachMovie("menuItemHoriz", "menuItemH"+num, menulistH.getNextHighestDepth(), {_x:0, _y:0, _title:_titleObj, _link:_linkObj, _mc:_mcObj, nameNum:num});
 			
 		}
