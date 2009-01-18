@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<calendar>
+	
+	<!-- CALENDAR EVENT ITEMS -->
+		<settings startx="-10" starty="40" width="36" height="33"/>
+		
+		<item id="1.4.2009" headline="Sunday Morning Communion" eventTime="8:00 AM"><![CDATA[]]></item>
+		<item id="1.4.2009" headline="Sunday Morning Services" eventTime="8:10 AM"><![CDATA[]]></item>
+		<item id="1.4.2009" headline="Sunday Morning Services" eventTime="9:30 AM"><![CDATA[]]></item>
+		<item id="1.4.2009" headline="Sunday Morning Services" eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="1.4.2009" headline="Special Connections Class " eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="1.4.2009" headline="Baptism Prep Class" eventTime="5:00 PM"><![CDATA[]]></item>
+		<item id="1.4.2009" headline="Bible and Leadership Training Classes" eventTime="6:00 PM"><![CDATA[Children's Ministry
+           Counselor Training
+           Generation One Service - 18 to 35 year olds (The District)
+           Hispanic Service (English translation provided)
+           Student Ministry Service - Jr. & Sr. High ]]></item>
+		   
+		<item id="1.5.2009" headline="Counselor Training" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.5.2009" headline="New Testament Class" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.5.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.6.2009" headline="Miracle Healing Service" eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="1.6.2009" headline="Ministry of a Pastor" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.6.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.7.2009" headline="Baptism Prep Class " eventTime="6:30 PM"><![CDATA[]]></item>
+		<item id="1.7.2009" headline="Holy Spirit Apostolic Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.7.2009" headline="Children's Ministry" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.7.2009" headline="Student Ministry Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.7.2009" headline="Understanding God Classes - Jr. & Sr. High" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.8.2009" headline="Worship & Creative Arts Rehearsal" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.8.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.8.2009" headline="Managing Our Finances God's Way (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.10.2009" headline="The Lord's Prayer Service " eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="1.10.2009" headline="Prayer " eventTime="5:30 PM"><![CDATA[]]></item>
+		<item id="1.10.2009" headline="Student Ministry Service/Hangout (WCA)" eventTime="6:00 PM"><![CDATA[]]></item>
+		
+		
+		   
+		   
+		 
+		   
+		   
+		<item id="1.11.2009" headline="Sunday Morning Communion" eventTime="8:00 AM"><![CDATA[]]></item>
+		<item id="1.11.2009" headline="Sunday Morning Services" eventTime="8:10 AM"><![CDATA[]]></item>
+		<item id="1.11.2009" headline="Sunday Morning Services" eventTime="9:30 AM"><![CDATA[]]></item>
+		<item id="1.11.2009" headline="Sunday Morning Services" eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="1.11.2009" headline="Special Connections Class " eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="1.11.2009" headline="Baptism Prep Class" eventTime="5:00 PM"><![CDATA[]]></item>
+		<item id="1.11.2009" headline="Bible and Leadership Training Classes" eventTime="6:00 PM"><![CDATA[Children's Ministry
+           Counselor Training
+           Generation One Service - 18 to 35 year olds (The District)
+           Hispanic Service (English translation provided)
+           Student Ministry Service - Jr. & Sr. High ]]></item>
+		   
+		<item id="1.12.2009" headline="Counselor Training" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.12.2009" headline="New Testament Class" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.12.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.13.2009" headline="Miracle Healing Service" eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="1.13.2009" headline="Ministry of a Pastor" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.13.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.14.2009" headline="Baptism Prep Class " eventTime="6:30 PM"><![CDATA[]]></item>
+		<item id="1.14.2009" headline="Holy Spirit Apostolic Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.14.2009" headline="Children's Ministry" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.14.2009" headline="Student Ministry Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.14.2009" headline="Understanding God Classes - Jr. & Sr. High" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.15.2009" headline="Worship & Creative Arts Rehearsal" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.15.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.15.2009" headline="Managing Our Finances God's Way (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.17.2009" headline="The Lord's Prayer Service " eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="1.17.2009" headline="Prayer " eventTime="5:30 PM"><![CDATA[]]></item>
+		<item id="1.17.2009" headline="Student Ministry Service/Hangout (WCA)" eventTime="6:00 PM"><![CDATA[]]></item>
+		
+		
+		
+		
+		
+		
+		<item id="1.18.2009" headline="Sunday Morning Communion" eventTime="8:00 AM"><![CDATA[]]></item>
+		<item id="1.18.2009" headline="Sunday Morning Services" eventTime="8:10 AM"><![CDATA[]]></item>
+		<item id="1.18.2009" headline="Sunday Morning Services" eventTime="9:30 AM"><![CDATA[]]></item>
+		<item id="1.18.2009" headline="Sunday Morning Services" eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="1.18.2009" headline="Special Connections Class " eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="1.18.2009" headline="Baptism Prep Class" eventTime="5:00 PM"><![CDATA[]]></item>
+		<item id="1.18.2009" headline="Bible and Leadership Training Classes" eventTime="6:00 PM"><![CDATA[Children's Ministry
+           Counselor Training
+           Generation One Service - 18 to 35 year olds (The District)
+           Hispanic Service (English translation provided)
+           Student Ministry Service - Jr. & Sr. High ]]></item>
+		   
+		<item id="1.19.2009" headline="Counselor Training" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.19.2009" headline="New Testament Class" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.19.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.20.2009" headline="Miracle Healing Service" eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="1.20.2009" headline="Ministry of a Pastor" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.20.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.21.2009" headline="Baptism Prep Class " eventTime="6:30 PM"><![CDATA[]]></item>
+		<item id="1.21.2009" headline="Holy Spirit Apostolic Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.21.2009" headline="Children's Ministry" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.21.2009" headline="Student Ministry Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.21.2009" headline="Understanding God Classes - Jr. & Sr. High" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.22.2009" headline="Worship & Creative Arts Rehearsal" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.22.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.22.2009" headline="Managing Our Finances God's Way (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.24.2009" headline="The Lord's Prayer Service " eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="1.24.2009" headline="Prayer " eventTime="5:30 PM"><![CDATA[]]></item>
+		<item id="1.24.2009" headline="Student Ministry Service/Hangout (WCA)" eventTime="6:00 PM"><![CDATA[]]></item>
+		
+		
+		
+		
+		
+		
+		<item id="1.25.2009" headline="Sunday Morning Communion" eventTime="8:00 AM"><![CDATA[]]></item>
+		<item id="1.25.2009" headline="Sunday Morning Services" eventTime="8:10 AM"><![CDATA[]]></item>
+		<item id="1.25.2009" headline="Sunday Morning Services" eventTime="9:30 AM"><![CDATA[]]></item>
+		<item id="1.25.2009" headline="Sunday Morning Services" eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="1.25.2009" headline="Special Connections Class " eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="1.25.2009" headline="Baptism Prep Class" eventTime="5:00 PM"><![CDATA[]]></item>
+		<item id="1.25.2009" headline="Bible and Leadership Training Classes" eventTime="6:00 PM"><![CDATA[Children's Ministry
+           Counselor Training
+           Generation One Service - 18 to 35 year olds (The District)
+           Hispanic Service (English translation provided)
+           Student Ministry Service - Jr. & Sr. High ]]></item>
+		   
+		<item id="1.26.2009" headline="Counselor Training" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.26.2009" headline="New Testament Class" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.26.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.27.2009" headline="Miracle Healing Service" eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="1.27.2009" headline="Ministry of a Pastor" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.27.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.28.2009" headline="Baptism Prep Class " eventTime="6:30 PM"><![CDATA[]]></item>
+		<item id="1.28.2009" headline="Holy Spirit Apostolic Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.28.2009" headline="Children's Ministry" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.28.2009" headline="Student Ministry Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.28.2009" headline="Understanding God Classes - Jr. & Sr. High" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.29.2009" headline="Worship & Creative Arts Rehearsal" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="1.29.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="1.29.2009" headline="Managing Our Finances God's Way (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="1.31.2009" headline="The Lord's Prayer Service " eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="1.31.2009" headline="Prayer " eventTime="5:30 PM"><![CDATA[]]></item>
+		<item id="1.31.2009" headline="Student Ministry Service/Hangout (WCA)" eventTime="6:00 PM"><![CDATA[]]></item>
+		
+		
+		
+		
+		
+		
+		<item id="2.1.2009" headline="Sunday Morning Communion" eventTime="8:00 AM"><![CDATA[]]></item>
+		<item id="2.1.2009" headline="Sunday Morning Services" eventTime="8:10 AM"><![CDATA[]]></item>
+		<item id="2.1.2009" headline="Sunday Morning Services" eventTime="9:30 AM"><![CDATA[]]></item>
+		<item id="2.1.2009" headline="Sunday Morning Services" eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="2.1.2009" headline="Special Connections Class " eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="2.1.2009" headline="Baptism Prep Class" eventTime="5:00 PM"><![CDATA[]]></item>
+		<item id="2.1.2009" headline="Bible and Leadership Training Classes" eventTime="6:00 PM"><![CDATA[Children's Ministry
+           Counselor Training
+           Generation One Service - 18 to 35 year olds (The District)
+           Hispanic Service (English translation provided)
+           Student Ministry Service - Jr. & Sr. High ]]></item>
+		   
+		<item id="2.2.2009" headline="Counselor Training" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.2.2009" headline="New Testament Class" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.2.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="2.3.2009" headline="Miracle Healing Service" eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="2.3.2009" headline="Ministry of a Pastor" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.3.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="2.4.2009" headline="Baptism Prep Class " eventTime="6:30 PM"><![CDATA[]]></item>
+		<item id="2.4.2009" headline="Holy Spirit Apostolic Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.4.2009" headline="Children's Ministry" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.4.2009" headline="Student Ministry Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.4.2009" headline="Understanding God Classes - Jr. & Sr. High" eventTime="7:30 PM"><![CDATA[]]></item>
+	
+		<item id="2.5.2009" headline="Worship & Creative Arts Rehearsal" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.5.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.5.2009" headline="Managing Our Finances God's Way (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="2.7.2009" headline="The Lord's Prayer Service " eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="2.7.2009" headline="Prayer " eventTime="5:30 PM"><![CDATA[]]></item>
+		<item id="2.7.2009" headline="Student Ministry Service/Hangout (WCA)" eventTime="6:00 PM"><![CDATA[]]></item>
+		
+		
+		
+		
+		
+		
+		<item id="2.8.2009" headline="Sunday Morning Communion" eventTime="8:00 AM"><![CDATA[]]></item>
+		<item id="2.8.2009" headline="Sunday Morning Services" eventTime="8:10 AM"><![CDATA[]]></item>
+		<item id="2.8.2009" headline="Sunday Morning Services" eventTime="9:30 AM"><![CDATA[]]></item>
+		<item id="2.8.2009" headline="Sunday Morning Services" eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="2.8.2009" headline="Special Connections Class " eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="2.8.2009" headline="Baptism Prep Class" eventTime="5:00 PM"><![CDATA[]]></item>
+		<item id="2.8.2009" headline="Bible and Leadership Training Classes" eventTime="6:00 PM"><![CDATA[Children's Ministry
+           Counselor Training
+           Generation One Service - 18 to 35 year olds (The District)
+           Hispanic Service (English translation provided)
+           Student Ministry Service - Jr. & Sr. High ]]></item>
+		   
+		<item id="2.9.2009" headline="Counselor Training" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.9.2009" headline="New Testament Class" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.9.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+	
+		<item id="2.10.2009" headline="Miracle Healing Service" eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="2.10.2009" headline="Ministry of a Pastor" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.10.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+	
+		<item id="2.11.2009" headline="Baptism Prep Class " eventTime="6:30 PM"><![CDATA[]]></item>
+		<item id="2.11.2009" headline="Holy Spirit Apostolic Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.11.2009" headline="Children's Ministry" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.11.2009" headline="Student Ministry Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.11.2009" headline="Understanding God Classes - Jr. & Sr. High" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="2.12.2009" headline="Worship & Creative Arts Rehearsal" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.12.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.12.2009" headline="Managing Our Finances God's Way (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="2.14.2009" headline="The Lord's Prayer Service " eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="2.14.2009" headline="Prayer " eventTime="5:30 PM"><![CDATA[]]></item>
+		<item id="2.14.2009" headline="Student Ministry Service/Hangout (WCA)" eventTime="6:00 PM"><![CDATA[]]></item>
+		
+		
+		
+		
+		
+		
+		<item id="2.15.2009" headline="Sunday Morning Communion" eventTime="8:00 AM"><![CDATA[]]></item>
+		<item id="2.15.2009" headline="Sunday Morning Services" eventTime="8:10 AM"><![CDATA[]]></item>
+		<item id="2.15.2009" headline="Sunday Morning Services" eventTime="9:30 AM"><![CDATA[]]></item>
+		<item id="2.15.2009" headline="Sunday Morning Services" eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="2.15.2009" headline="Special Connections Class " eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="2.15.2009" headline="Baptism Prep Class" eventTime="5:00 PM"><![CDATA[]]></item>
+		<item id="2.15.2009" headline="Bible and Leadership Training Classes" eventTime="6:00 PM"><![CDATA[Children's Ministry
+           Counselor Training
+           Generation One Service - 18 to 35 year olds (The District)
+           Hispanic Service (English translation provided)
+           Student Ministry Service - Jr. & Sr. High ]]></item>
+		   
+		<item id="2.16.2009" headline="Counselor Training" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.16.2009" headline="New Testament Class" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.16.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="2.17.2009" headline="Miracle Healing Service" eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="2.17.2009" headline="Ministry of a Pastor" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.17.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="2.18.2009" headline="Baptism Prep Class " eventTime="6:30 PM"><![CDATA[]]></item>
+		<item id="2.18.2009" headline="Holy Spirit Apostolic Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.18.2009" headline="Children's Ministry" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.18.2009" headline="Student Ministry Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.18.2009" headline="Understanding God Classes - Jr. & Sr. High" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="2.19.2009" headline="Worship & Creative Arts Rehearsal" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.19.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.19.2009" headline="Managing Our Finances God's Way (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="2.21.2009" headline="The Lord's Prayer Service " eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="2.21.2009" headline="Prayer " eventTime="5:30 PM"><![CDATA[]]></item>
+		<item id="2.21.2009" headline="Student Ministry Service/Hangout (WCA)" eventTime="6:00 PM"><![CDATA[]]></item>
+		
+		
+		
+		
+		
+		
+		<item id="2.22.2009" headline="Sunday Morning Communion" eventTime="8:00 AM"><![CDATA[]]></item>
+		<item id="2.22.2009" headline="Sunday Morning Services" eventTime="8:10 AM"><![CDATA[]]></item>
+		<item id="2.22.2009" headline="Sunday Morning Services" eventTime="9:30 AM"><![CDATA[]]></item>
+		<item id="2.22.2009" headline="Sunday Morning Services" eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="2.22.2009" headline="Special Connections Class " eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="2.22.2009" headline="Baptism Prep Class" eventTime="5:00 PM"><![CDATA[]]></item>
+		<item id="2.22.2009" headline="Bible and Leadership Training Classes" eventTime="6:00 PM"><![CDATA[Children's Ministry
+           Counselor Training
+           Generation One Service - 18 to 35 year olds (The District)
+           Hispanic Service (English translation provided)
+           Student Ministry Service - Jr. & Sr. High ]]></item>
+		   
+		<item id="2.23.2009" headline="Counselor Training" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.23.2009" headline="New Testament Class" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.23.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+	
+		<item id="2.24.2009" headline="Miracle Healing Service" eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="2.24.2009" headline="Ministry of a Pastor" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.24.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="2.25.2009" headline="Baptism Prep Class " eventTime="6:30 PM"><![CDATA[]]></item>
+		<item id="2.25.2009" headline="Holy Spirit Apostolic Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.25.2009" headline="Children's Ministry" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.25.2009" headline="Student Ministry Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.25.2009" headline="Understanding God Classes - Jr. & Sr. High" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="2.26.2009" headline="Worship & Creative Arts Rehearsal" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="2.26.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="2.26.2009" headline="Managing Our Finances God's Way (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="2.28.2009" headline="The Lord's Prayer Service " eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="2.28.2009" headline="Prayer " eventTime="5:30 PM"><![CDATA[]]></item>
+		<item id="2.28.2009" headline="Student Ministry Service/Hangout (WCA)" eventTime="6:00 PM"><![CDATA[]]></item>
+		
+		
+		
+		
+		
+		
+		<item id="3.1.2009" headline="Sunday Morning Communion" eventTime="8:00 AM"><![CDATA[]]></item>
+		<item id="3.1.2009" headline="Sunday Morning Services" eventTime="8:10 AM"><![CDATA[]]></item>
+		<item id="3.1.2009" headline="Sunday Morning Services" eventTime="9:30 AM"><![CDATA[]]></item>
+		<item id="3.1.2009" headline="Sunday Morning Services" eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="3.1.2009" headline="Special Connections Class " eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="3.1.2009" headline="Baptism Prep Class" eventTime="5:00 PM"><![CDATA[]]></item>
+		<item id="3.1.2009" headline="Bible and Leadership Training Classes" eventTime="6:00 PM"><![CDATA[Children's Ministry
+           Counselor Training
+           Generation One Service - 18 to 35 year olds (The District)
+           Hispanic Service (English translation provided)
+           Student Ministry Service - Jr. & Sr. High ]]></item>
+		   
+		<item id="3.2.2009" headline="Counselor Training" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.2.2009" headline="New Testament Class" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.2.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="3.3.2009" headline="Miracle Healing Service" eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="3.3.2009" headline="Ministry of a Pastor" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.3.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="3.4.2009" headline="Baptism Prep Class " eventTime="6:30 PM"><![CDATA[]]></item>
+		<item id="3.4.2009" headline="Holy Spirit Apostolic Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.4.2009" headline="Children's Ministry" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.4.2009" headline="Student Ministry Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.4.2009" headline="Understanding God Classes - Jr. & Sr. High" eventTime="7:30 PM"><![CDATA[]]></item>
+	
+		<item id="3.5.2009" headline="Worship & Creative Arts Rehearsal" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.5.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.5.2009" headline="Managing Our Finances God's Way (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="3.7.2009" headline="The Lord's Prayer Service " eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="3.7.2009" headline="Prayer " eventTime="5:30 PM"><![CDATA[]]></item>
+		<item id="3.7.2009" headline="Student Ministry Service/Hangout (WCA)" eventTime="6:00 PM"><![CDATA[]]></item>
+	
+		
+		
+		
+		
+		
+		<item id="3.8.2009" headline="Sunday Morning Communion" eventTime="8:00 AM"><![CDATA[]]></item>
+		<item id="3.8.2009" headline="Sunday Morning Services" eventTime="8:10 AM"><![CDATA[]]></item>
+		<item id="3.8.2009" headline="Sunday Morning Services" eventTime="9:30 AM"><![CDATA[]]></item>
+		<item id="3.8.2009" headline="Sunday Morning Services" eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="3.8.2009" headline="Special Connections Class " eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="3.8.2009" headline="Baptism Prep Class" eventTime="5:00 PM"><![CDATA[]]></item>
+		<item id="3.8.2009" headline="Bible and Leadership Training Classes" eventTime="6:00 PM"><![CDATA[Children's Ministry
+           Counselor Training
+           Generation One Service - 18 to 35 year olds (The District)
+           Hispanic Service (English translation provided)
+           Student Ministry Service - Jr. & Sr. High ]]></item>
+		   
+		<item id="3.9.2009" headline="Counselor Training" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.9.2009" headline="New Testament Class" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.9.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+	
+		<item id="3.10.2009" headline="Miracle Healing Service" eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="3.10.2009" headline="Ministry of a Pastor" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.10.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+	
+		<item id="3.11.2009" headline="Baptism Prep Class " eventTime="6:30 PM"><![CDATA[]]></item>
+		<item id="3.11.2009" headline="Holy Spirit Apostolic Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.11.2009" headline="Children's Ministry" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.11.2009" headline="Student Ministry Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.11.2009" headline="Understanding God Classes - Jr. & Sr. High" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="3.12.2009" headline="Worship & Creative Arts Rehearsal" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.12.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.12.2009" headline="Managing Our Finances God's Way (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="3.14.2009" headline="The Lord's Prayer Service " eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="3.14.2009" headline="Prayer " eventTime="5:30 PM"><![CDATA[]]></item>
+		<item id="3.14.2009" headline="Student Ministry Service/Hangout (WCA)" eventTime="6:00 PM"><![CDATA[]]></item>
+		
+		
+		
+		
+		
+		
+		<item id="3.15.2009" headline="Sunday Morning Communion" eventTime="8:00 AM"><![CDATA[]]></item>
+		<item id="3.15.2009" headline="Sunday Morning Services" eventTime="8:10 AM"><![CDATA[]]></item>
+		<item id="3.15.2009" headline="Sunday Morning Services" eventTime="9:30 AM"><![CDATA[]]></item>
+		<item id="3.15.2009" headline="Sunday Morning Services" eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="3.15.2009" headline="Special Connections Class " eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="3.15.2009" headline="Baptism Prep Class" eventTime="5:00 PM"><![CDATA[]]></item>
+		<item id="3.15.2009" headline="Bible and Leadership Training Classes" eventTime="6:00 PM"><![CDATA[Children's Ministry
+           Counselor Training
+           Generation One Service - 18 to 35 year olds (The District)
+           Hispanic Service (English translation provided)
+           Student Ministry Service - Jr. & Sr. High ]]></item>
+		   
+		<item id="3.16.2009" headline="Counselor Training" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.16.2009" headline="New Testament Class" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.16.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+	
+		<item id="3.17.2009" headline="Miracle Healing Service" eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="3.17.2009" headline="Ministry of a Pastor" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.17.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="3.18.2009" headline="Baptism Prep Class " eventTime="6:30 PM"><![CDATA[]]></item>
+		<item id="3.18.2009" headline="Holy Spirit Apostolic Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.18.2009" headline="Children's Ministry" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.18.2009" headline="Student Ministry Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.18.2009" headline="Understanding God Classes - Jr. & Sr. High" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="3.19.2009" headline="Worship & Creative Arts Rehearsal" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.19.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.19.2009" headline="Managing Our Finances God's Way (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+
+		<item id="3.21.2009" headline="The Lord's Prayer Service " eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="3.21.2009" headline="Prayer " eventTime="5:30 PM"><![CDATA[]]></item>
+		<item id="3.21.2009" headline="Student Ministry Service/Hangout (WCA)" eventTime="6:00 PM"><![CDATA[]]></item>
+		
+		
+		
+		
+		
+		
+		<item id="3.22.2009" headline="Sunday Morning Communion" eventTime="8:00 AM"><![CDATA[]]></item>
+		<item id="3.22.2009" headline="Sunday Morning Services" eventTime="8:10 AM"><![CDATA[]]></item>
+		<item id="3.22.2009" headline="Sunday Morning Services" eventTime="9:30 AM"><![CDATA[]]></item>
+		<item id="3.22.2009" headline="Sunday Morning Services" eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="3.22.2009" headline="Special Connections Class " eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="3.22.2009" headline="Baptism Prep Class" eventTime="5:00 PM"><![CDATA[]]></item>
+		<item id="3.22.2009" headline="Bible and Leadership Training Classes" eventTime="6:00 PM"><![CDATA[Children's Ministry
+           Counselor Training
+           Generation One Service - 18 to 35 year olds (The District)
+           Hispanic Service (English translation provided)
+           Student Ministry Service - Jr. & Sr. High ]]></item>
+		   
+		<item id="3.23.2009" headline="Counselor Training" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.23.2009" headline="New Testament Class" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.23.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+	
+		<item id="3.24.2009" headline="Miracle Healing Service" eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="3.24.2009" headline="Ministry of a Pastor" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.24.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="3.25.2009" headline="Baptism Prep Class " eventTime="6:30 PM"><![CDATA[]]></item>
+		<item id="3.25.2009" headline="Holy Spirit Apostolic Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.25.2009" headline="Children's Ministry" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.25.2009" headline="Student Ministry Service" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.25.2009" headline="Understanding God Classes - Jr. & Sr. High" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="3.26.2009" headline="Worship & Creative Arts Rehearsal" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.26.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		<item id="3.26.2009" headline="Managing Our Finances God's Way (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="3.28.2009" headline="The Lord's Prayer Service " eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="3.28.2009" headline="Prayer " eventTime="5:30 PM"><![CDATA[]]></item>
+		<item id="3.28.2009" headline="Student Ministry Service/Hangout (WCA)" eventTime="6:00 PM"><![CDATA[]]></item>		
+		
+		
+		
+		
+		
+		<item id="3.29.2009" headline="Sunday Morning Communion" eventTime="8:00 AM"><![CDATA[]]></item>
+		<item id="3.29.2009" headline="Sunday Morning Services" eventTime="8:10 AM"><![CDATA[]]></item>
+		<item id="3.29.2009" headline="Sunday Morning Services" eventTime="9:30 AM"><![CDATA[]]></item>
+		<item id="3.29.2009" headline="Sunday Morning Services" eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="3.29.2009" headline="Special Connections Class " eventTime="11:15 AM"><![CDATA[]]></item>
+		<item id="3.29.2009" headline="Baptism Prep Class" eventTime="5:00 PM"><![CDATA[]]></item>
+		<item id="3.29.2009" headline="Bible and Leadership Training Classes" eventTime="6:00 PM"><![CDATA[Children's Ministry
+           Counselor Training
+           Generation One Service - 18 to 35 year olds (The District)
+           Hispanic Service (English translation provided)
+           Student Ministry Service - Jr. & Sr. High ]]></item>
+		   
+		<item id="3.30.2009" headline="Counselor Training" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.30.2009" headline="New Testament Class" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.30.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+		
+		<item id="3.31.2009" headline="Miracle Healing Service" eventTime="10:00 AM"><![CDATA[]]></item>
+		<item id="3.31.2009" headline="Ministry of a Pastor" eventTime="7:00 PM"><![CDATA[]]></item>
+		<item id="3.31.2009" headline="Life Enrichment (The District)" eventTime="7:30 PM"><![CDATA[]]></item>
+	
+		
+		
+		
+		
+		
+		
+		
+						   
+</calendar>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<vidapp>
+	
+	<!-- vid path  -->
+	<item title="Video Announcements" filePath="assets/vids/AllVAs06-081.flv" eventTime="10 AM"><![CDATA[]]></item>
+	<settings startx="-10" starty="40" width="36" height="33" />
+	
+</vidapp>

@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<main>
+	
+	<appvalues assetpath="assets/" />
+
+	<!-- MAIN IMAGE : can be a swf, jpg, gif, or png :: path relative to root dir-->
+	<mainimage swfName="homepage_image.swf"/>
+
+	
+	<!-- RED NAV BAR VALUES -->
+	<!-- navName MUST LINE UP WITH structure.xml VALUES     MOVED
+	
+	<navbar>
+		<item navName="about" title="About Us" />	 
+		<item navName="connections" title="Get Connected" />	
+		<item navName="education" title="Education" />
+		<item navName="ministries" title="Ministries" />						
+		<item navName="international" title="International" />	
+		<item navName="pastoralcare" title="Pastoral Care" />					
+		
+	</navbar>
+	
+	-->
+	
+	
+
+
+	
+	
+	<!-- DYNAMIC PROMO BAR PARTS :: may be overridden by SWF some day 
+	
+		launchType="section" launchName="building_updates"
+	
+		launchType="url" launchName="http://www.thedistrictvenue.com"
+	
+	-->
+	
+	
+	<promobar>
+		<item headline="MID-YEAR SPOTLIGHT" assetname="promo_bldgupdates.jpg" launchType="section" launchName="building_updates"><![CDATA[It was an amazing 2009 mid-year spotlight showcasing the many talents in the school.]]></item>
+		<item headline="BABY DEDICATION" assetname="promo_elsalvador.jpg" launchType="section" launchName="babydedication"><![CDATA[Raising a godly seed is our plan and baby dedication is the start.]]></item>
+		
+		<item headline="2ND SATURDAY" assetname="promo_genone.jpg" launchType="url" launchName="http://www.thedistrictvenue.com"><![CDATA[Come out for a fun night with friends or make some new ones!]]></item>
+		<item headline="EMPTY PROMO" assetname="promoswf.swf" type="swf"><![CDATA[This on is empty to test the arrow nav. HIT IT!]]></item>
+		<item headline="THEATER" assetname="promo_owie.jpg"><![CDATA[Too be or not to be! It's always exciting when you have actors among us.]]></item>	
+		
+		<item headline="ACQUIRE THE FIRE" assetname="promo_owie.jpg"><![CDATA[Get the youth fired up and enjoy a weekend of music and speakers.]]></item>	
+		
+		<item headline="EMPTY PROMO" assetname="promo_owie.jpg"><![CDATA[This on is empty to test the arrow nav. HIT IT!]]></item>	
+		
+			
+	</promobar>
+	
+	
+	<!-- LEFT COLUMN PIC above the NEWS app :: 249x99 :: could be jpg gif swf or png -->
+	<leftcolumnpic assetname="pastor_pic.jpg"/>
+	
+	<!-- other XML PATHS -->
+	
+	<structureapp XMLpath="structure.xml"/>
+
+	<newsapp XMLpath="mtz_news.xml"/>
+	<calendarapp XMLpath="mtz_calendar.xml"/>
+	<vidapp XMLpath="mtz_va.xml"/>
+	
+	<!-- BUTTON BAR PARTS :: SOME LAUNCH POP UP WINDOWS, SOME CALL FUNCTIONS-->
+	<sidebuttonbar>
+		<item title="MEDIA CENTER" url="mediacenter.html" />
+		<item title="PRAYER REQUESTS" url="prayerrequests.html" />
+		<item title="E NEWS LETTER" url="enewsletter.html" />
+		<item title="QUICK LINKS" url="quicklinks.html" />	
+	</sidebuttonbar>
+	
+	
+</main>
