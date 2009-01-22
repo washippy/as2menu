@@ -90,6 +90,7 @@ class SubPageApp extends MovieClip {
 		TLArray = new Array();
 		TLArray_esp = new Array();
 		
+		subpage1_mc.bodycopy_tf_mc.bodycopy_tf.selectable = false;
 		
 		
 			
@@ -273,11 +274,19 @@ class SubPageApp extends MovieClip {
 			} 
 		
 		// if theres a third nav, launch it
-		if (_global.lang == "SPANISH"){
-				TL = new menuListHoriz(TLArray_esp, subpage1_mc.thirdmenuholder_mc);
-			}else{
-				TL = new menuListHoriz(TLArray, subpage1_mc.thirdmenuholder_mc); 
-			}
+	
+	
+	//	if (_global.lang == "SPANISH"){
+	//			TL = new menuListHoriz(TLArray_esp, subpage1_mc.thirdmenuholder_mc);
+	//		}else{
+	
+		
+		if(TL != undefined){
+			TL.disable();
+			delete TL;
+		}
+		TL = new menuListHoriz(TLArray, subpage1_mc.thirdmenuholder_mc); 
+	//		}
 	
 	
 	}
@@ -353,6 +362,8 @@ class SubPageApp extends MovieClip {
 			subpage1_mc.subpagestroke_mc._alpha=0;
 			buildGallery(sXml);  // GO GO GADGET GALLERY!
 			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.htmlText = "";
+			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.selectable = false;
+			
 		}else{
 		//	image_mcl.unloadClip(subpage1_mc.empty_mc);
 		    subpage1_mc.subpagestroke_mc._alpha=100;
@@ -361,6 +372,7 @@ class SubPageApp extends MovieClip {
 			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.styleSheet = styles;
 			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.htmlText = sXml.main.item.copy.data;
 			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.autoSize = true;
+			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.selectable = true;
 			
 			trace("TEXT FIELD HEIGHT "+ subpage1_mc.bodycopy_tf_mc.bodycopy_tf._height +"<------- - - - - - -  - -"+TEXTFIELDMASKHEIGHT);	
 			var tfh = subpage1_mc.bodycopy_tf_mc.bodycopy_tf._height;
@@ -404,11 +416,12 @@ class SubPageApp extends MovieClip {
 		
 		trace("GALLERY : "+subpage1_mc.galleryNav);
 		//image_mcl.loadClip(galleryArray[0].filename, subpage1_mc.empty_mc);
-		if(gn){
-			delete gn;//.init(galleryArray, subpage1_mc.galleryNav);
+		
+		if(gn != undefined){
+			gn.disable();
+			delete gn;
 		}
 			gn = new GalleryNav(galleryArray, subpage1_mc.galleryNav);
-		
 	}	
 			
 //// subnav
@@ -446,21 +459,23 @@ class SubPageApp extends MovieClip {
 		_global.mainImagePath =  sSubXml.main.item.attributes.swfName;
 		BroadCaster.broadcastEvent("reloadMainImage");
 		
-		trace(_subGalleryEnabled)
-
-		
-		
+		trace(_subGalleryEnabled);
 
 		if(_subGalleryEnabled=="true"){
+			gn.disable();
+			
 				subpage1_mc.subpagestroke_mc._alpha=0;
 				buildGallery(sSubXml);  // GO GO GADGET GALLERY!
 				subpage1_mc.bodycopy_tf_mc.bodycopy_tf.htmlText = "";
+				subpage1_mc.bodycopy_tf_mc.bodycopy_tf.selectable = false;
+				
 		}else{ 
 			gn.disable();
 		    subpage1_mc.subpagestroke_mc._alpha=100;
 		
 			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.htmlText = sSubXml.main.item.copy.data;
 			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.autoSize = "left";
+			subpage1_mc.bodycopy_tf_mc.bodycopy_tf.selectable = true;
 		
 			var tfh = subpage1_mc.bodycopy_tf_mc.bodycopy_tf._height;
 		
@@ -612,6 +627,8 @@ class SubPageApp extends MovieClip {
 		TL.disable();
 		menuList.getInstance().disable();	
 		gn.disable();
+		subpage1_mc.bodycopy_tf_mc.bodycopy_tf.selectable = false;
+		
 		
 	}
 	

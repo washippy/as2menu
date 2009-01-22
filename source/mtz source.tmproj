@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>SubPageApp.as</string>
+	<string>App.as</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -22,7 +22,9 @@
 			<key>filename</key>
 			<string>App.as</string>
 			<key>lastUsed</key>
-			<date>2009-01-17T06:35:14Z</date>
+			<date>2009-01-22T06:15:35Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>children</key>
@@ -31,19 +33,19 @@
 					<key>filename</key>
 					<string>MainImage.as</string>
 					<key>lastUsed</key>
-					<date>2009-01-18T03:02:27Z</date>
+					<date>2009-01-22T06:10:57Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>Navbutton.as</string>
 					<key>lastUsed</key>
-					<date>2009-01-16T06:42:25Z</date>
+					<date>2009-01-22T06:15:31Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>Navbar.as</string>
 					<key>lastUsed</key>
-					<date>2009-01-16T06:42:26Z</date>
+					<date>2009-01-22T06:13:01Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -55,13 +57,13 @@
 					<key>filename</key>
 					<string>NewsApp.as</string>
 					<key>lastUsed</key>
-					<date>2009-01-16T04:44:02Z</date>
+					<date>2009-01-22T06:02:32Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>NewsStory.as</string>
 					<key>lastUsed</key>
-					<date>2009-01-18T03:01:43Z</date>
+					<date>2009-01-22T06:07:23Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -97,9 +99,7 @@
 			<key>filename</key>
 			<string>SubPageApp.as</string>
 			<key>lastUsed</key>
-			<date>2009-01-18T04:47:12Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2009-01-22T06:15:35Z</date>
 		</dict>
 		<dict>
 			<key>children</key>
@@ -114,7 +114,7 @@
 					<key>filename</key>
 					<string>menuListHoriz.as</string>
 					<key>lastUsed</key>
-					<date>2009-01-18T04:43:46Z</date>
+					<date>2009-01-22T03:36:47Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -147,7 +147,7 @@
 					<key>filename</key>
 					<string>GalleryNav.as</string>
 					<key>lastUsed</key>
-					<date>2009-01-08T06:07:12Z</date>
+					<date>2009-01-20T04:34:04Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -194,6 +194,138 @@
 	<integer>199</integer>
 	<key>metaData</key>
 	<dict>
+		<key>App.as</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>274</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>247</integer>
+		</dict>
+		<key>MainImage.as</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>35</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Navbar.as</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>29</integer>
+				<key>line</key>
+				<integer>81</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>99</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>23</integer>
+				<key>line</key>
+				<integer>81</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>39</integer>
+				<key>line</key>
+				<integer>81</integer>
+			</dict>
+		</dict>
+		<key>Navbutton.as</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>38</integer>
+				<key>line</key>
+				<integer>63</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>21</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>30</integer>
+				<key>line</key>
+				<integer>63</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>43</integer>
+				<key>line</key>
+				<integer>63</integer>
+			</dict>
+		</dict>
+		<key>NewsApp.as</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>33</integer>
+				<key>line</key>
+				<integer>119</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>222</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>30</integer>
+				<key>line</key>
+				<integer>119</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>43</integer>
+				<key>line</key>
+				<integer>119</integer>
+			</dict>
+		</dict>
+		<key>NewsStory.as</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>18</integer>
+				<key>line</key>
+				<integer>55</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>49</integer>
+		</dict>
 		<key>StructureApp.as</key>
 		<dict>
 			<key>caret</key>
@@ -213,14 +345,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>29</integer>
 				<key>line</key>
-				<integer>460</integer>
+				<integer>135</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>422</integer>
+			<integer>76</integer>
 		</dict>
 		<key>menuItemHoriz.as</key>
 		<dict>
@@ -262,7 +394,7 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>36</integer>
+			<integer>39</integer>
 		</dict>
 		<key>mtz_init.as</key>
 		<dict>
@@ -311,6 +443,12 @@
 	<array>
 		<string>mtz_init.as</string>
 		<string>SubPageApp.as</string>
+		<string>App.as</string>
+		<string>NewsApp.as</string>
+		<string>NewsStory.as</string>
+		<string>MainImage.as</string>
+		<string>Navbar.as</string>
+		<string>Navbutton.as</string>
 		<string>menuItemHoriz.as</string>
 		<string>menuList.as</string>
 		<string>StructureApp.as</string>
@@ -319,6 +457,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{235, 197}, {1418, 831}}</string>
+	<string>{{209, 4}, {1231, 874}}</string>
 </dict>
 </plist>

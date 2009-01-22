@@ -269,10 +269,11 @@ class App extends MovieClip {
 		// trace("LAUNCH "+_obj);
 		// fade out existing apps
 		//if(PAGE=="home" && _obj=="home"){  // at home and home is clicked
-		if(PAGE==_obj){  // at 
+			
+	//	if(PAGE==_obj){  // at 
 			// trace("LAUNCH ::: PAGE=_obj :: "+ PAGE +" :: "+_obj);
-			return;
-			}
+	//		return;
+	//		}
 		
 		if(_obj=="home"){ // not home but home is clicked
 			
