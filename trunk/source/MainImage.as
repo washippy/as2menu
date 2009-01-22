@@ -10,6 +10,7 @@ import utils.BroadCaster;
 
 class MainImage extends MovieClip{
 	private var MAINIMAGEPATH:String;
+	
 	private var mainimage_mc:MovieClip;
 	private var CLIP:MovieClip;
 
@@ -25,11 +26,12 @@ class MainImage extends MovieClip{
 	
 	public function loadMainImage(){
 		CLIP.mainimage_mc.loadMovie(MAINIMAGEPATH);
-		
 	}
 	
 	public function reloadMainImage(){
-		CLIP.mainimage_mc.loadMovie(_global.mainImagePath);
+		if(MAINIMAGEPATH != _global.mainImagePath){
+			CLIP.mainimage_mc.loadMovie(_global.mainImagePath);
+			MAINIMAGEPATH = _global.mainImagePath;
+		}
 	}
-	
 }
