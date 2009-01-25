@@ -19,6 +19,9 @@ class VidPlayer extends MovieClip
 
 	private var G_unselected:ColorTransform;
 	private var G_selected:ColorTransform;
+	
+	
+	private var ENABLEDELAY:Number=1;
 
 
 	private var vid_xml:XML;
@@ -44,6 +47,7 @@ class VidPlayer extends MovieClip
 	private var videoSet:Number = 0; // range: 0 or 1
 	private var atMainVideo:Boolean = true;
 	
+		public var ready:Boolean=false;
 //	var thumbLoader:Array = new Array();
 //	var thumbLoaderListener:Array = new Array();
 //	var promptLoader:Array = new Array();
@@ -134,8 +138,8 @@ class VidPlayer extends MovieClip
 		
 		showPrompt();		
 		addEvents();
-		enable(_mc);
-
+	//	enable(_mc); /// MOVED TO DEEPLINKER
+		this.ready=true;
 		// ... Note, events must be enable()'ed		
 	}
 	
@@ -202,10 +206,10 @@ class VidPlayer extends MovieClip
 		// trace("EN ABLE  VIDEO"+ _go );
 		if(_go){
 			_go._x = hotX;
-			Tweener.addTween(_go, { _alpha:100, time:1, delay:2} );
+			Tweener.addTween(_go, { _alpha:100, time:1, delay:ENABLEDELAY} );
 		}else{
 			_mc._x = hotX;
-			Tweener.addTween(_mc, { _alpha:100, time:1, delay:2} );
+			Tweener.addTween(_mc, { _alpha:100, time:1, delay:ENABLEDELAY} );
 		}
 	}
 	

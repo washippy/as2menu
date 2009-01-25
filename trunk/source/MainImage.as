@@ -13,15 +13,17 @@ class MainImage extends MovieClip{
 	
 	private var mainimage_mc:MovieClip;
 	private var CLIP:MovieClip;
+	public var ready:Boolean=false;
 
-	function MainImage(_MIP:String, _clip:MovieClip){
+	public function MainImage(_MIP:String, _clip:MovieClip){
 		
 		BroadCaster.register(this,"reloadMainImage");
 		
 		MAINIMAGEPATH = _MIP;
 		CLIP = _clip;
-		trace("MAIN IMAGE AS LOAD : "+ CLIP.mainimage_mc._y);
-		loadMainImage();
+		trace("MAIN IMAGE AS LOAD : "+ CLIP.mainimage_mc._y +" :: "+ ready);
+		//loadMainImage();
+		ready = true;
 	}
 	
 	public function loadMainImage(){
@@ -33,5 +35,9 @@ class MainImage extends MovieClip{
 			CLIP.mainimage_mc.loadMovie(_global.mainImagePath);
 			MAINIMAGEPATH = _global.mainImagePath;
 		}
+	}
+	
+	public function enable(){
+		loadMainImage();
 	}
 }

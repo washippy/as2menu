@@ -28,7 +28,8 @@ class menuList extends MovieClip {
 	private var listArray:Array;
 	private var mc:MovieClip;
 	private var justify:String; // left or right
-	
+		private var parentPage:String; 
+
 	private var menulist:MovieClip;
 	
 	private var TF_HEIGHT:Number=15;
@@ -43,14 +44,14 @@ class menuList extends MovieClip {
 		return _instance;
 	}
 		
-	public function init(_list:Array, _mc:MovieClip, _justify:String):Void{
-		disable();
+	public function init(_list:Array, _mc:MovieClip, _justify:String, _parentPage:String):Void{
+			disable();
 			listArray = [];
 			listArray = new Array();
 			listArray = _list;
 			mc = _mc;
 			justify = _justify;
-			
+			parentPage = _parentPage
 			
 			MI_unselected = new ColorTransform( 1,1,1,1,0,0,0,0); //greyed out
 			MI_selected = new ColorTransform(0, 0, 0, 1, 122, 25, 47, 0);
@@ -119,7 +120,9 @@ class menuList extends MovieClip {
 		trace( num + " DDDDDDDDDDDDDDDDDDDDDDDD "+ listArray[num].link);
 		
 			var _pageNameObj:Object = new Object();
-				_pageNameObj = listArray[num].name;
+				_pageNameObj.name = listArray[num].name;
+				_pageNameObj.parentPage = parentPage;
+
 		//	trace( num + " DDDDDDDDDDDDDDDDDDDDDDDD "+ listArray[num].title);
 			
 			var _mcObj:Object = new Object();

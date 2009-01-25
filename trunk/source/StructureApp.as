@@ -19,9 +19,12 @@ class StructureApp {
 	private var sXml:Object;
 	private var myXmlObject:XMLObject;
 	private var hotarray:String;
+	
 	private var section_array:Array;
 	private var thirdnav_array:Array;
 	
+	private var hotsubarray:String;
+
 	private var navbar_array:Array;
 	
 	private function StructureApp(){
@@ -39,6 +42,10 @@ class StructureApp {
 	public function setArrayData(_set:String):Void { 
 		// set var to loop thru array and ship appropriate one
 		hotarray = _set;
+	}	
+	public function setSubArrayData(_set:String):Void { 
+		// set var to loop thru array and ship appropriate one
+		hotsubarray = _set;
 	}
 	
 	public function getArrayData():Object {   //////////////this needs a level heirarchy
@@ -56,23 +63,31 @@ class StructureApp {
 				}
 			}			
 	}
-	public function getThirdNavArrayData(_num:Number):Array { 
-			
-			
-			// trace(_num + "GET THIRD NAV ARRAY DAATA :: "+hotarray);
-			
-			for(var f in section_array){
-				// trace("checkin : "+section_array[f].name +" :: "+ section_array[f].subnav_item_array[_num].subnav);
-				
-				if(section_array[f].name == hotarray){
-					return section_array[f].subnav_item_array[_num];
-					//trace("returning : "+section_array[f].subnav_item_array[_num].attributes.name);
-				}else{
-					// trace("nuthin here");
+	public function getThirdNavArrayData():Array { 	
+		trace("G T N A Data ..................... "+hotarray+" || "+hotsubarray)
+		for(var f in section_array){
+			if(section_array[f].name == hotarray){
+				for(var s in section_array[f].subnav_item_array){
 					
+				if(section_array[f].subnav_item_array.length == undefined){
+					trace("A " +section_array[f].subnav_item_array.attributes.name)
+					
+						if(section_array[f].subnav_item_array.attributes.name == hotsubarray){
+								return section_array[f].subnav_item_array;
+						}
+				}else{
+					trace("B " + section_array[f].subnav_item_array[s].attributes.name)
+					
+						if(section_array[f].subnav_item_array[s].attributes.name == hotsubarray){
+								return section_array[f].subnav_item_array[s];
+						}
+				}
+				
+				
+				
 				}
 			}
-				
+		}
 	}
 
 

@@ -25,6 +25,8 @@ class PromoBar extends MovieClip{
 	private var PROMOTOTAL:Number;
 	private var CURRENTLEFTPROMO:Number=1;
 	
+	public var ready:Boolean=false;
+	
 	
 	public function PromoBar(_promoArray:Array, _clip:MovieClip){
 		
@@ -33,6 +35,7 @@ class PromoBar extends MovieClip{
 		promoArray = _promoArray;
 		//trace("PROMO BAR CONSTRUCTOR :"+PROMOTOTAL);
 		PROMOTOTAL=promoArray.length;
+		CLIP.promo_app_mc._visible=false;
 		fireItUp();
 	}
 	
@@ -41,7 +44,7 @@ class PromoBar extends MovieClip{
 
 		
 		var promoholder:MovieClip = CLIP.promo_app_mc.createEmptyMovieClip("promoholder", this.getNextHighestDepth());
-		promoholder._x +=60;//20;
+		promoholder._x +=20;//60;
 		promoholder._alpha=0;
 		/*
 		promoBarArray.push({
@@ -66,11 +69,11 @@ class PromoBar extends MovieClip{
 			
 		} 
 		
-		
-	
 		promoholder.setMask(CLIP.promo_app_mc.promomask_mc);
+		
+		this.ready=true;
 		// fade it in
-		Tweener.addTween(CLIP.promo_app_mc.promoholder, {time:1.2, delay:FADEINDELAY, transition:"easeOutExpo",_x:20, _alpha:100});
+//		Tweener.addTween(CLIP.promo_app_mc.promoholder, {time:1.2, delay:FADEINDELAY, transition:"easeOutExpo",_x:20, _alpha:100});
 	
 		manageArrows();
 	}
@@ -190,6 +193,8 @@ class PromoBar extends MovieClip{
 	// trace("ENABLE PROMO BAR || | | | | | || | | | | || || "+newline+newline);
 		CLIP.promo_app_mc._visible=true;
 		Tweener.addTween(CLIP.promo_app_mc, {time:1, transition:"easeOut", _alpha:100});//_x:20
+		Tweener.addTween(CLIP.promo_app_mc.promoholder, {time:1.2, delay:FADEINDELAY, transition:"easeOutExpo", _alpha:100});
+		
 	}
 	
 }

@@ -6,11 +6,6 @@
 
 TO DO
 
-
-
-
-
-
 GLOBAL FADE IN TIMING
 
 */
@@ -21,28 +16,28 @@ import utils.BroadCaster;
 
 class PastorPic extends MovieClip{
 	
+	private var pastorphoto_mc:MovieClip;
 	private var pastorpic_mc:MovieClip;
 	
-	private var pastorphoto_mc:MovieClip;
-	
-		private var FADEINDELAY:Number = 1.5; // seconds
-	
+		private var FADEINDELAY:Number = 1; // seconds
+		
+		public var ready:Boolean=false;
+		
 	private var __mcImageLoader:MovieClipLoader;
 	private var loadImageListener:Object = new Object();	
 
-	private function PastorPic(){
-		this._alpha=0;		
-		trace("PASTOR PIC");
-		BroadCaster.register(this,"pastorPicDisable");
-		BroadCaster.register(this,"pastorPicEnable");
+	public function PastorPic(_leftColumnPicPath:String, _mc:MovieClip){
+		pastorphoto_mc = _mc.pastorphoto_mc;
+		pastorpic_mc = _mc.pastorphoto_mc.pastorpic_mc;
+		trace("PASTOR PIC "+pastorphoto_mc);
 		
-		
+		pastorphoto_mc._alpha=0;		
 		
 		loadImageListener = new Object();
 		__mcImageLoader = new MovieClipLoader();
 		setUpImage();
 		
-		__mcImageLoader.loadClip(_global.assetPath + _global.leftColumnPicPath, pastorpic_mc);
+		__mcImageLoader.loadClip(_global.assetPath + _leftColumnPicPath, pastorpic_mc);
 	}
 	
 	
@@ -50,36 +45,38 @@ class PastorPic extends MovieClip{
 
 		loadImageListener.onLoadStart = function(target_mc:MovieClip, httpStatus:Number):Void {}		
 		loadImageListener.onLoadComplete = function(target_mc:MovieClip, httpStatus:Number):Void {
-			//trace("PASTOR PIC COMPLETE "+target_mc);
+			trace("PASTOR PIC COMPLETE "+target_mc);
 			} 
 		loadImageListener.onLoadInit = Delegate.create(this, imageLoaded);
 		
 		loadImageListener.onLoadProgress = function(target:MovieClip, bytesLoaded:Number, bytesTotal:Number):Void {
-				//trace("progress "+bytesLoaded);
+				trace("progress "+bytesLoaded);
 		}
-		this.__mcImageLoader.addListener(loadImageListener);
+		__mcImageLoader.addListener(loadImageListener);
 	}
 	
 	private function imageLoaded():Void {
-		//trace("PASTOR IMAGE LOADED");
-		Tweener.addTween(this, {_alpha:100, delay:FADEINDELAY, time:1.1, transition:"easeOut"});
+		trace("PASTOR IMAGE LOADED"+this.ready);
+		this.ready=true;
+	//	Tweener.addTween(pastorphoto_mc, {_alpha:100, delay:FADEINDELAY, time:1.1, transition:"easeOut"});
 	}
 	
 	
-	public function pastorPicDisable():Void{
+	public function disable():Void{
 		// trace(pastorpic_mc);
 		var invisify:Function = function(_ob:Object){
 			// trace("I I :"+_ob);
 			_ob._visible=false;
 			}
 			
-		Tweener.addTween(this, {time:1, transition:"easeOut", _alpha:0, onComplete:invisify, onCompleteParams:[this]});
+		Tweener.addTween(pastorphoto_mc, {time:1, transition:"easeOut", _alpha:0, onComplete:invisify, onCompleteParams:[this]});
 		
 	}
-	public function pastorPicEnable():Void{
+	public function enable():Void{
 	
 		this._visible=true;	
-		Tweener.addTween(this, {time:1, transition:"easeOut", _alpha:100});
+			Tweener.addTween(pastorphoto_mc, {_alpha:100, delay:FADEINDELAY, time:1.1, transition:"easeOut"});
+	//	Tweener.addTween(pastorphoto_mc, {time:1, transition:"easeOut", _alpha:100});
 		
 	}
 	

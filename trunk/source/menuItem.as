@@ -15,7 +15,7 @@ class menuItem extends MovieClip {
 	private var _title:String;
 	private var _link:String;
 	
-	private var _pagename:String;
+	private var _pagename:Object;
 	
 	private var SELECTED:Boolean=false;
 	
@@ -55,6 +55,8 @@ class menuItem extends MovieClip {
 		}
  	}
 	
+	
+
 	
 	private function parseTitle(_t:String){
 		// trace("+++ PARSE TITLE ++++  "+_t+newline+newline+newline);
@@ -258,28 +260,30 @@ class menuItem extends MovieClip {
 	private function mPress(){
 		 trace("BOO  "+this+" :: "+ this._link);
 		
-		
-		
 		var _exceptthisone:Object = new Object();
 		_exceptthisone = nameNum;
-		//BroadCaster.broadcastEvent("unselectList", _exceptthisone , false);
-	//	_mc._parent.unselectList(_exceptthisone);
-	//_mc.unselectList(_exceptthisone);
+		
 		menuList.getInstance().unselectList(_exceptthisone);
 		
 		rollEmOut();
 		
 		if(this._link != undefined){
-			getURL(this._link, "_blank");
+			SWFAddress.href(this._link, '_blank');
+			//getURL(this._link, "_blank");
 		}else{
-			var _obj:Object = new Object();
-			_obj.pageName = _pagename;
-			_obj.nameNum = nameNum;
-			BroadCaster.broadcastEvent("loadASubSection", _obj , false);
+			
+
+
+			
+		var sendPageName = _pagename.parentPage +'/'+_pagename.name;
+			SWFAddress.setValue(sendPageName);
+			
+
+		//	BroadCaster.broadcastEvent("loadASubSection", _obj , false);
+
+			
+			
 		}
-		
-	
-	//	manageList(   ???  );
 	}
 	
 	 
