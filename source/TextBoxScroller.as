@@ -34,8 +34,6 @@ private function initScroll(){
 
 private function fireupScroller(){
 	
-
-	
 	trace("SCROLL HEIGHT "+newsScroller._height)
 	trace("SCROLL channel HEIGHT "+ newsApp.news_scrollbar_mc.scrollchannel_mc._height)
 	trace("SCROLL scrubber HEIGHT "+newsApp.news_scrollbar_mc.scrollscrubber._height)

@@ -32,6 +32,9 @@ class Navbar extends MovieClip {
 	private var justify:String = "center";
 	public var hotSection:String;
 	
+	public var ready:Boolean=false;
+	
+	
 	public function Navbar(clip:MovieClip){
 		navbar=clip.navbar_mc;
 		
@@ -119,27 +122,43 @@ class Navbar extends MovieClip {
 		} 
 	//	navbar._y+=15;
 	
-		Tweener.addTween(navbar, {delay:0.75, time:1, transition:"easeOut", _alpha:100});
+	// enable me instead of this
+	//	Tweener.addTween(navbar, {delay:0.75, time:1, transition:"easeOut", _alpha:100});
 		
-		
-		var dObj:Object = new Object(); 
-		dObj = "home"; // GET FROM DEEP LINK //
-		BroadCaster.broadcastEvent("updateHotSection", dObj, false);
+		this.ready=true;
+	//	var dObj:Object = new Object(); 
+	//	dObj = "home"; // GET FROM DEEP LINK //
+	//	BroadCaster.broadcastEvent("updateHotSection", dObj, false);
 	}
 	
 
 
-	public function updateHotSection(foo:Object){
+	public function updateHotSection(foo:Object){ // update navbar w selected section blue
 		// trace(foo + " :: :: :: " +hotSection);
 		hotSection = String(foo);
 		for(var i=1;i<navLength;i++){
 			if(hotSection == navbar["nb"+i].nameID){
-					navbar["nb"+i].Select();
+				navbar["nb"+i].Select();
 			}else{
 				navbar["nb"+i].unSelect();
 			}
 		}
 		// trace("++++++++++++++++++ + ++ ++ ++ + + +  "+hotSection);
+	}
+	
+	
+	public function disable(){
+		navbar._visible=false;
+		navbar._alpha=0;
+		
+	}
+	
+	public function enable(){
+		trace("0 NAVBAR ENABLE <<<<<<<<<");
+		navbar._parent.tracer.text+="0 NAVBAR ENABLE <<<<<<<<<"+newline;
+		navbar._visible=true;
+		Tweener.addTween(navbar, {delay:0.75, time:1, transition:"easeOut", _alpha:100});
+		
 	}
 
 }

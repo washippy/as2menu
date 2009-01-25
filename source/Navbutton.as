@@ -7,7 +7,7 @@ import mx.utils.Delegate;
 import utils.BroadCaster;
 import caurina.transitions.*;
 import Navbar;
-
+import SWFAddress;
 
 
 class Navbutton extends MovieClip {
@@ -60,8 +60,12 @@ class Navbutton extends MovieClip {
 		var testObj:Object = new Object(); // TESTING == FIX THIS
 		testObj = this.nameID;
 		BroadCaster.broadcastEvent("updateHotSection", testObj, false);
+		//BroadCaster.broadcastEvent("launchNewPage", testObj, false);
 		
-		BroadCaster.broadcastEvent("launchNewPage", testObj, false);
+		// just set this and it GOES !!
+	//	_global.SUBLAUNCH = false; // not sub page .. main page 
+		SWFAddress.setValue(this.nameID);
+        
 	}
 
 }

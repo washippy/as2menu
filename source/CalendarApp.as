@@ -75,6 +75,9 @@ class CalendarApp extends MovieClip {
 	public var currentHop:Number;
 	private var MASKHEIGHT:Number = 180;  // hard coded 
 	private var firsttime=true;
+	
+	public var ready:Boolean=false;
+	
 
 	public function CalendarApp(passmealong:String, clip:MovieClip){
 		 trace("Calendar APP CONSTRUCTOR");
@@ -86,6 +89,10 @@ class CalendarApp extends MovieClip {
 		
 		XMLPATH = "xml/"+passmealong;     /////  FIX THIS>?
 		calApp = clip.calendar_app_mc;
+		
+		
+		// start disabled
+		calApp._visible=false;
 		
 		BroadCaster.register(this,"setEvents");
 		BroadCaster.register(this,"writeScrollerEvents");
@@ -414,7 +421,7 @@ class CalendarApp extends MovieClip {
 		
 		/// ADD EVENTS 
 			for(var gg=1; gg<=42; gg++){		
-				trace(gg+"BINGO : "+ mc["date" +gg ]);
+			//	trace(gg+"BINGO : "+ mc["date" +gg ]);
 				if(mc["date" +gg]!=undefined){
 				/*   	mc["date" +gg].onRollOver =function(){
 						trace(this.date);
@@ -458,15 +465,26 @@ class CalendarApp extends MovieClip {
 	
 		calApp.blocker_mc.swapDepths(calApp.getNextHighestDepth())
 		
+		
+		
+		///  MOVED TO ENABLE
+	// enable from app after deep link   	enable();
+	
+	this.ready = true;
+	
+	
+	/* 
 		Tweener.addTween(calApp, {delay:1.5, _x:279}); // its loading off stage so put it back when the bkg is done transitioning
-		
-		Tweener.addTween(calApp.blocker_mc, {time:1, delay:FADEINDELAY, transition:"easeOut", _alpha:0}); // fade it in
-		
-		
-			for(var ff=0; ff<=42; ff++){	// re visible all the boxes
-				mc["sDate" + ff]._visible=true;
-				mc["date" + ff]._visible=true;
-			}
+			Tweener.addTween(calApp.blocker_mc, {time:1, delay:FADEINDELAY, transition:"easeOut", _alpha:0}); // fade it in
+			
+			
+				for(var ff=0; ff<=42; ff++){	// re visible all the boxes
+					mc["sDate" + ff]._visible=true;
+					mc["date" + ff]._visible=true;
+				} 
+	*/
+
+	
 	}
 	
 	
@@ -741,7 +759,7 @@ class CalendarApp extends MovieClip {
 
 		//	trace("length ::"+ cXml.item.length);
 
-		trace("HERE IT IS :" +dC)
+		//trace("HERE IT IS :" +dC)
 
 	var itemLen:Number = cXml.item.length;
 	var dString:String =  (d.getMonth()+1)   + "." + d.getDate() + "." +  d.getFullYear();
@@ -826,9 +844,20 @@ class CalendarApp extends MovieClip {
 		
 	}
 	
-	public function enable():Void{ 
-		calApp._visible=true;				
-		Tweener.addTween(calApp.blocker_mc, {time:1, transition:"easeOut", _alpha:0});
+	public function enable(mc):Void{ 
+		calApp._visible=true;
+		Tweener.addTween(calApp, {delay:1.5, _x:279}); // its loading off stage so put it back when the bkg is done transitioning
+		Tweener.addTween(calApp.blocker_mc, {time:1, delay:FADEINDELAY, transition:"easeOut", _alpha:0}); // fade it in
+
+
+		for(var ff=0; ff<=42; ff++){	// re visible all the boxes
+			calApp["sDate" + ff]._visible=true;
+			calApp["date" + ff]._visible=true;
+		}
+		
+		
+						
+		//Tweener.addTween(calApp.blocker_mc, {time:1, transition:"easeOut", _alpha:0});
 	}
 
 }

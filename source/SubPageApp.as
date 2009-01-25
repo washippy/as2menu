@@ -39,11 +39,14 @@ class SubPageApp extends MovieClip {
 		private var subsect_xml:XML;
 	private var sXml:Object;
 	private var mySubXmlObject:XMLObject;
+	
+	private var parentPage:String;
 
 	private var sSubXml:Object;
 	private var myXmlObject:XMLObject;
 	private var subpage1_mc:MovieClip;
 	private var menuholder_mc:MovieClip;
+	private var CLIP:MovieClip;
 	
 	private var ML:menuList;
 	
@@ -53,9 +56,14 @@ class SubPageApp extends MovieClip {
 	private var TL:menuListHoriz;
 	private var TLArray:Array;
 	private var TLArray_esp:Array;
+	
+	private var DEEPWORK:Boolean=false;
+	
+	
 	private var thirdmenuholder_mc:MovieClip;
 	
 	private var _subGalleryEnabled:Boolean;		
+	private var _subGalleryName:String;		
 
 	private var _galleryEnabled:Boolean;		
 	private var	galleryArray:Array;
@@ -65,7 +73,8 @@ class SubPageApp extends MovieClip {
 	private var gn:GalleryNav;
 
 	private var TEXTFIELDMASKHEIGHT = 310; // hardcoded
-
+	
+	public var ready:Boolean=false;
 
 	private var ANIM_ENDPOINT:Number;
 	private var ANIM_STARTPOINT:Number;
@@ -74,13 +83,16 @@ class SubPageApp extends MovieClip {
 	
 	private var styles:StyleSheet;
 	
-	public function SubPageApp(clip:MovieClip){
+	public function SubPageApp(_clip:MovieClip){
 		 trace("SUBPAGE APP CONSTRUCTOR ");
 		// trace(" HEY SUBPAGE   ::: "+StructureApp.getInstance().getPath()); 	
 		BroadCaster.register(this,"loadASubPage");
 		BroadCaster.register(this,"loadASubSection");
+				BroadCaster.register(this,"loadADeepSubSection");
+
 		
-		subpage1_mc = clip.subpage1;
+		CLIP=_clip
+		subpage1_mc = CLIP.subpage1;
 		ANIM_ENDPOINT = subpage1_mc._y;
 		ANIM_STARTPOINT = subpage1_mc._y +40;
 		subpage1_mc._y = ANIM_STARTPOINT;
@@ -117,23 +129,30 @@ class SubPageApp extends MovieClip {
 		});
 					 
 		
-
-			
+		this.ready=true;
+		//subpage1_mc.ready=true;
 		//////////////  WAIT PATIENTLY ////////////////
 		
 	}
 	
 	public function loadASubPage(_pagename:String):Void{
+		
+		DEEPWORK=false;
+		
 		// use page name to get data
-		// trace("L A S P :: "+subpage1_mc);
+	
+		 trace("L A S P :: "+subpage1_mc);
 		Tweener.removeTweens(subpage1_mc);
 		
 		subpage1_mc._alpha=0;
 		subpage1_mc._y=ANIM_ENDPOINT;//ANIM_STARTPOINT; I BAILED ON THE SLIDE IN ANIM FOR NOW
 		
 		dataObj = new Object();
-		// trace("DANGIT "+_pagename);//StructureApp.getInstance().getArrayData(_pagename));
-		var bob:String = _pagename;
+		
+		 trace("DANGIT "+_pagename);
+		
+		parentPage = _pagename; // keep this for later .. to pass to subnav
+		
 		StructureApp.getInstance().setArrayData(_pagename); 
 		
 		dataObj = StructureApp.getInstance().getArrayData(); 
@@ -145,11 +164,12 @@ class SubPageApp extends MovieClip {
 			}	
 			
 		
-		XMLPATH = "xml/"+dataObj.name+ _lang +".xml";   
+		XMLPATH = "xml/"+dataObj.name+ _lang +".xml";  
+		trace("X PATH ER DUDE "+ XMLPATH) 
 		getXMLData();
 		
 			// GALLERY ENABLED
-		// trace("HEY HERE IT IS :::::::::::::::::::::::::: "+dataObj.galleryenabled);
+		trace("HEY HERE IT IS :::::::::::::::::::::::::: "+dataObj.subnav_item_array);
 		
 		_galleryEnabled = dataObj.galleryenabled;
 		
@@ -164,41 +184,125 @@ class SubPageApp extends MovieClip {
 		}
 	}
 	
-	public function loadASubSection(stuff:Object):Void{
-		// use page name to get data
-	//	var _obj:Object = new Object();
-	//	_obj.pageName = _pagename;
-	//	_obj.nameNum = nameNum;
-		trace("L A S Section :: "+stuff.nameNum);
-			Tweener.removeTweens(subpage1_mc);
-			
-			//subpage1_mc._alpha=0;
-		//	subpage1_mc._y=ANIM_STARTPOINT;
-			
-			dataObj = new Object(); 
+				//	testObj.sect = e.pathNames[0] // grab the 1st one
+				//	testObj.subsect = e.pathNames[1] // grab the 2nd one
 	
-
-	
-			// trace("DANGIT "+stuff.pageName);//StructureApp.getInstance().getArrayData(_pagename));
-	//	var bob:String = _pagename;
-	//	StructureApp.getInstance().setArrayData(stuff.pageName); 
+	public function loadADeepSubSection(_spOBJ:Object):Void{
+		//this is gonna hurt
+		DEEPWORK = true;
 		
-	
-			dataObj = StructureApp.getInstance().getThirdNavArrayData(stuff.nameNum); 
-			
+		trace("L A DEEP sub Section :: "+_spOBJ.sect + " <-->" + _spOBJ.subsect);
+		CLIP.tracer.text+= "L A DEEP sub Section :: " +_spOBJ.subsect +newline;
+		
+		/////////////////////////
+		
+			Tweener.removeTweens(subpage1_mc);
+
+			subpage1_mc._alpha=0;
+			subpage1_mc._y=ANIM_ENDPOINT;//ANIM_STARTPOINT; I BAILED ON THE SLIDE IN ANIM FOR NOW
+
+			dataObj = new Object();
+
+			 trace("DANGIT "+_spOBJ.sect);
+
+			parentPage = _spOBJ.sect; // keep this for later .. to pass to subnav
+
+			StructureApp.getInstance().setArrayData(_spOBJ.sect); 
+
+			dataObj = StructureApp.getInstance().getArrayData(); 
+
 				if (_global.lang == "SPANISH"){
 					var _lang:String = "_esp";
 				}else{
 					var _lang:String = "";
 				}	
-			
-			XMLPATH = "xml/"+dataObj.attributes.name+ _lang +".xml"; 
-			trace(XMLPATH);  
-			getSubSectionXMLData(); 
-			
-			_subGalleryEnabled = dataObj.attributes.gallery_enabled;
 
-		 trace(stuff.nameNum+" LOL _-_-______------_-_--_-_-_-_- "+dataObj.attributes.gallery_enabled)
+
+			XMLPATH = "xml/"+dataObj.name+ _lang +".xml";  
+			trace("X PATH ER DUDE "+ XMLPATH) 
+			getXMLData();
+
+			_galleryEnabled = dataObj.galleryenabled;
+
+			if(dataObj.subnav_item_array != undefined){
+				buildSubNav();
+			} else{
+					MLArray = [];
+					MLArray_esp = [];
+				ML.disable();
+			}
+		
+		  ////////////////////
+		//\//  NEXT !  //\//
+		
+		LDSScarryon(_spOBJ);
+	}
+	
+	private function LDSScarryon(_spOBJ:Object){
+		_subGalleryName = _spOBJ.subsect;
+
+		dataObj = new Object(); 
+
+		StructureApp.getInstance().setArrayData(_spOBJ.sect);  	
+		StructureApp.getInstance().setSubArrayData(_spOBJ.subsect); 
+
+		dataObj = StructureApp.getInstance().getThirdNavArrayData(); 
+
+			if (_global.lang == "SPANISH"){
+				var _lang:String = "_esp";
+			}else{
+				var _lang:String = "";
+			}
+
+		XMLPATH = "xml/"+dataObj.attributes.name+ _lang +".xml"; 
+		trace("XMLPATH ()())()()"+XMLPATH);  
+		
+		CLIP.tracer.text+= "XMLPATH ()()()()()"+XMLPATH +newline;
+		
+		getSubSectionXMLData(); 
+
+		_subGalleryEnabled = dataObj.attributes.gallery_enabled;
+
+		 trace(" LOL _-_-______------_-_--_-_-_-_- "+dataObj.attributes.gallery_enabled)
+
+		if(dataObj.subnav != undefined){ // change this to the item array
+				buildThirdNav();
+			} else{
+					TLArray = [];
+					TLArray_esp = [];
+				TL.disable();
+			}
+	}
+	
+	public function loadASubSection(_subpageName:String):Void{
+		DEEPWORK=false;
+
+		trace("L A S Section :: "+_subpageName);
+		CLIP.tracer.text+= "H L A S Section " +_subpageName+newline;
+
+		Tweener.removeTweens(subpage1_mc);
+
+		_subGalleryName = _subpageName;
+
+		dataObj = new Object(); 
+		
+		StructureApp.getInstance().setSubArrayData(_subpageName); 
+
+		dataObj = StructureApp.getInstance().getThirdNavArrayData(); 
+
+			if (_global.lang == "SPANISH"){
+				var _lang:String = "_esp";
+			}else{
+				var _lang:String = "";
+			}	
+
+		XMLPATH = "xml/"+dataObj.attributes.name+ _lang +".xml"; 
+		trace("XMLPATH ()())()()"+XMLPATH);  
+		getSubSectionXMLData(); 
+
+		_subGalleryEnabled = dataObj.attributes.gallery_enabled;
+
+		 trace(" LOL _-_-______------_-_--_-_-_-_- "+dataObj.attributes.gallery_enabled)
 	 
 		if(dataObj.subnav != undefined){ // change this to the item array
 				buildThirdNav();
@@ -210,19 +314,44 @@ class SubPageApp extends MovieClip {
 			
 	}
 	
-	private function buildSubNav():Void{
+	private function buildSubNav():Void{ // this waits till the XML comes back
 
 			MLArray = [];
 			MLArray_esp = [];
 		
-	//	trace("-----------------------+++++++++  "+dataObj.subnav_item_array[i].attributes.eng);
 		var aLen = dataObj.subnav_item_array.length;
+		trace("HEY HERE IT IS :::::::::::::::::::::::::: "+dataObj.subnav_item_array.attributes.eng);
+		for(var item in dataObj.subnav_item_array){
+			for(var stuff in dataObj.subnav_item_array[item]){
+				trace("HEY HERE IT IS :::::::: "+item+" : "+ stuff + " : " +dataObj.subnav_item_array[item][stuff]);
+				
+			}
+		}
+/* 
 		
-	/* 
-		for(var xx=0;xx<aLen;xx++){
-				// trace("XXXXX  :: "+dataObj.subnav_item_array[xx].attributes.eng)
-			} 
-	*/
+		HEY HERE IT IS :::::::: attributes : name : building_updates
+		HEY HERE IT IS :::::::: attributes : eng : PHOTO GALLERY
+		HEY HERE IT IS :::::::: attributes : esp : 
+		HEY HERE IT IS :::::::: attributes : gallery_enabled : true 
+*/
+
+
+		trace(aLen+" BUILD SUBNAV-----------------------+++++++++  "+dataObj.subnav_item_array[0].attributes.eng);
+		
+		if(aLen == undefined){
+			MLArray.push({
+						name:dataObj.subnav_item_array.attributes.name,
+						title:dataObj.subnav_item_array.attributes.eng,
+						link:dataObj.subnav_item_array.attributes.link
+
+						});
+			MLArray_esp.push({
+						name:dataObj.subnav_item_array.attributes.name,
+						title:dataObj.subnav_item_array.attributes.esp
+						});
+			return;
+			
+		}
 		
 		for(var i:Number = 0; i<aLen; i++){
 			MLArray.push({
@@ -320,31 +449,16 @@ class SubPageApp extends MovieClip {
 		disable();
 		// trace(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> "+ML)
 		if (_global.lang == "SPANISH"){
-		/* 
-			
-					
-					Create another class like below, this will make another connection to the singleton 
-					class, now if you use the standard way of connecting to another class you would use 
-					the ‘new’ keyword like so: 
-					var foo:Singleton = new Singleton(); 
-					The above call will create a new instance and therefore return 0 the default value set 
-					in the singleton class. So to retrieve the amount stored in the class you use: 
-					Singleton.getInstance().getAmount(); 
-					Of course you must remember to import the file for this method to work. 
-					The caller class uses this Singleton pattern.
-					
-					 
-		*/
 
-				menuList.getInstance().init(MLArray_esp, subpage1_mc.menuholder_mc, "right");
+				menuList.getInstance().init(MLArray_esp, subpage1_mc.menuholder_mc, "right", parentPage);
 		
 			//	ML = new menuList(MLArray_esp, subpage1_mc.menuholder_mc, "right"); // justify right or left
 			}else{
 			//	ML = new menuList(MLArray, subpage1_mc.menuholder_mc, "right"); // justify right or left
-				menuList.getInstance().init(MLArray, subpage1_mc.menuholder_mc, "right");
+				menuList.getInstance().init(MLArray, subpage1_mc.menuholder_mc, "right", parentPage);
 			}
+		if(!DEEPWORK){popData()}
 		
-		popData();
 	}
 	
 	private function popData(){
@@ -356,6 +470,12 @@ class SubPageApp extends MovieClip {
 		
 //		trace(subpage1_mc);
 		subpage1_mc.header_tf.text = sXml.main.item.headline.data;
+		
+		
+		var title = 'Mt. Zion / ' + sXml.main.item.headline.data;
+        SWFAddress.setTitle(title);
+		
+		
 		_global.mainImagePath =  sXml.main.item.attributes.swfName;
 		BroadCaster.broadcastEvent("reloadMainImage");
 		if(_galleryEnabled=="true"){
@@ -450,9 +570,28 @@ class SubPageApp extends MovieClip {
 				 // trace("load data died "+ $success);
 			}
 		popSubData();
+		
 	}
 
 	private function popSubData(){
+		trace("PARENT SECTION IS "+MLArray[0].title)
+		CLIP.tracer.text+= "popSubData ()()()()()()()()()()"+XMLPATH +newline;
+		BroadCaster.broadcastEvent("navbarEnable");
+		
+	//	loop thru MLArray and match _subGalleryName to .name
+	//	use that number for this 
+		var numHolder:Number;
+	for(var g in MLArray){
+		if(MLArray[g].name == _subGalleryName){
+			numHolder = g;
+			trace("numHolder ::::::: "+numHolder)
+		}
+	}	
+		
+		var title = 'Mt. Zion / ' + sXml.main.item.headline.data + ' / '+  MLArray[numHolder].title;//sSubXml.main.item.headline.data;
+        SWFAddress.setTitle(title);
+		
+		
 		// bCopy = bCopy+ itemArray[i].childNodes[b].toString();
 		 trace("POP sub data "+sSubXml.main.item.headline.data);
 		subpage1_mc.header_tf.text = sSubXml.main.item.headline.data;

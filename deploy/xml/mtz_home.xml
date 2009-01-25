@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+	<?xml version="1.0"?>
 <main>
 	
 	<appvalues assetpath="assets/" />
@@ -7,21 +7,20 @@
 	<mainimage swfName="homepage_image.swf"/>
 
 	
-	<!-- RED NAV BAR VALUES -->
-	<!-- navName MUST LINE UP WITH structure.xml VALUES     MOVED
 	
-	<navbar>
-		<item navName="about" title="About Us" />	 
-		<item navName="connections" title="Get Connected" />	
-		<item navName="education" title="Education" />
-		<item navName="ministries" title="Ministries" />						
-		<item navName="international" title="International" />	
-		<item navName="pastoralcare" title="Pastoral Care" />					
-		
-	</navbar>
+	<!-- RED BOXES VALUES -->
 	
-	-->
+	<redboxnav>
+		<item id="1" section="" url="http://www.itsanewday.tv/media.htm" />	 
+		<item id="2" section="" url="http://www.mtzion.org/prayerrequests.php" />
+		<item id="3" section="" url="http://www.mtzion.org/enewsletter.php" />						
+		<item id="4" section="" url="http://www.cfmmedia.org/" />	
+		<item id="5" section="" url="http://www.cfmmedia.org/category.sc?categoryId=12" />					
+		<item id="6" section="servicetimes" url="" />							
+	</redboxnav>
 	
+
+
 	
 
 
@@ -37,18 +36,15 @@
 	
 	
 	<promobar>
-		<item headline="MID-YEAR SPOTLIGHT" assetname="promo_bldgupdates.jpg" launchType="section" launchName="building_updates"><![CDATA[It was an amazing 2009 mid-year spotlight showcasing the many talents in the school.]]></item>
-		<item headline="BABY DEDICATION" assetname="promo_elsalvador.jpg" launchType="section" launchName="babydedication"><![CDATA[Raising a godly seed is our plan and baby dedication is the start.]]></item>
+		<item headline="MID-YEAR SPOTLIGHT" assetname="midyear.gif" launchType="section" launchName="midyear"><![CDATA[An amazing 2009 mid-year spotlight showcasing the many talents in the school.]]></item>
+		
+		<item headline="30th ANNIVERSARY" assetname="30Anni.gif" launchType="section" launchName="anni"><![CDATA[We are in exciting times!]]></item>
 		
 		<item headline="2ND SATURDAY" assetname="promo_genone.jpg" launchType="url" launchName="http://www.thedistrictvenue.com"><![CDATA[Come out for a fun night with friends or make some new ones!]]></item>
-		<item headline="EMPTY PROMO" assetname="promoswf.swf" type="swf"><![CDATA[This on is empty to test the arrow nav. HIT IT!]]></item>
-		<item headline="THEATER" assetname="promo_owie.jpg"><![CDATA[Too be or not to be! It's always exciting when you have actors among us.]]></item>	
 		
-		<item headline="ACQUIRE THE FIRE" assetname="promo_owie.jpg"><![CDATA[Get the youth fired up and enjoy a weekend of music and speakers.]]></item>	
+		<!--<item headline="THEATER" assetname="promo_owie.jpg"><![CDATA[Too be or not to be! It's always exciting when you have actors among us.]]></item>-->
 		
-		<item headline="EMPTY PROMO" assetname="promo_owie.jpg"><![CDATA[This on is empty to test the arrow nav. HIT IT!]]></item>	
-		
-			
+		<!--<item headline="EMPTY PROMO" assetname="promoswf.swf" type="swf"><![CDATA[This on is empty to test the arrow nav. HIT IT!]]></item>-->	
 	</promobar>
 	
 	

@@ -43,6 +43,8 @@ class NewsApp extends MovieClip {
 	private var itemArray:Array;
 	//25 x 45
 		private var FADEINDELAY:Number = 1.5; // seconds
+		
+		public var ready:Boolean=false;
 	
 
 	
@@ -129,7 +131,9 @@ class NewsApp extends MovieClip {
 	//	<item headline="HEADLINE HERE." date="FRIDAY, JULY 05, 2008" link="moreinfo.html">
 	//	<![CDATA[Story here.]]></item>
 		initScroll();
-		Tweener.addTween(newsApp, {time:1.5, delay:FADEINDELAY, transition:"easeOut", _alpha:100});  /// fade in  news app
+
+		// fade in moved to enable();
+		this.ready=true;
 		
 	}
 	
@@ -270,7 +274,9 @@ class NewsApp extends MovieClip {
 				}
 		}
 		newsApp._visible=true;
-		Tweener.addTween(newsApp, {time:1, transition:"easeOut", _alpha:100});	
+	//	Tweener.addTween(newsApp, {time:1, transition:"easeOut", _alpha:100});	
+		Tweener.addTween(newsApp, {time:1.5, delay:FADEINDELAY, transition:"easeOut", _alpha:100});  /// fade in  news app
+		
 	}
 	
 }

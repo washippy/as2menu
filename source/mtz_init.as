@@ -53,7 +53,8 @@
 
 import mx.utils.Delegate;
 import utils.XMLObject;
-
+import SWFAddress;
+import SWFAddressEvent;
 //var defaultLang; // from embed flash var
 
 //if (defaultLang != undefined){
@@ -66,13 +67,60 @@ import utils.XMLObject;
 
 
 ////   DEEP LINKING	  ////////////
-//	make an object with all deep elements
-		//language
-		//firstpage
+/* 
+this.deepLink = '/portfolio/2/';
+this.onRelease = _parent.btnRelease;
+this.onRollOver = _parent.btnRollOver;
+this.onRollOut = _parent.btnRollOut;
+
+ 
+*/
+
+
+
+// SWFAddress include
+//#include "SWFAddress.as"
+
+// SWFAddress actions
+/* 
+function btnRelease() {
+	SWFAddress.setValue(this.deepLink);
+}
+function btnRollOver() {
+	SWFAddress.setStatus(this.deepLink);
+}
+function btnRollOut() {
+	SWFAddress.resetStatus();
+}
+
+
+
+// SWFAddress handling
+SWFAddress.onChange = function() {
+	var value = SWFAddress.getValue(); // "deeplink"
+	
+
+	var title = 'SWFAddress Website';	
+	var names = SWFAddress.getPathNames();
+	for (var i = 0; i < names.length; i++) {
+		title += ' / ' + names[i].substr(0,1).toUpperCase() + names[i].substr(1);
+		trace(names[i])
+		
+	}
+	SWFAddress.setTitle(title); // HTML page title
+	
+}
+
+*/
+
+
+
 		//
 	
 /////////////////////////////////	
-	
+
+		
+		
 /*   	esp.onPress = function(){
 		// trace("GGGGGGGGGGGGGGGGGGGGGG "+_global.lang)
 		if(_global.lang == "SPANISH"){
@@ -110,9 +158,9 @@ function loadXML(_xmlPath:String):Void{
 }
 
 function onXmlLoad($success:Boolean):Void{
-	// trace('xml loaded');
+	 trace('xml loaded');
 	if (!$success) {
-		// trace('xml died');
+		 trace('xml died');
 		return;
 	}
 
