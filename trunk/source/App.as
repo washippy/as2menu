@@ -430,7 +430,7 @@ class App extends MovieClip {
 				break;
 				default :
 				
-					subPageApp.disable(); 
+					subPageApp.disable("RELOAD"); 
 					calendarApp.enable();
 					navbarApp.enable();
 					mainImageApp.enable();
