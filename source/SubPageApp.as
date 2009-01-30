@@ -263,7 +263,7 @@ class SubPageApp extends MovieClip {
 
 		_subGalleryEnabled = dataObj.attributes.gallery_enabled;
 
-		 trace(" LOL _-_-______------_-_--_-_-_-_- "+dataObj.attributes.gallery_enabled)
+		 trace(" LOL _-_-______------_-_--_-_-_-_- "+dataObj.subnav);
 
 		if(dataObj.subnav != undefined){ // change this to the item array
 				buildThirdNav();
@@ -411,7 +411,7 @@ class SubPageApp extends MovieClip {
 	
 		
 		if(TL != undefined){
-			TL.disable();
+			TL.disable("dude");
 			delete TL;
 		}
 		TL = new menuListHoriz(TLArray, subpage1_mc.thirdmenuholder_mc); 
@@ -446,7 +446,7 @@ class SubPageApp extends MovieClip {
 	}
 	
 	private function fireitupman():Void{
-		disable();
+	//	disable("dude fup man");
 		// trace(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> "+ML)
 		if (_global.lang == "SPANISH"){
 
@@ -574,7 +574,7 @@ class SubPageApp extends MovieClip {
 	}
 
 	private function popSubData(){
-		trace("PARENT SECTION IS "+MLArray[0].title)
+		trace("POP SUB DATA")
 		CLIP.tracer.text+= "popSubData ()()()()()()()()()()"+XMLPATH +newline;
 		BroadCaster.broadcastEvent("navbarEnable");
 		
@@ -759,16 +759,15 @@ class SubPageApp extends MovieClip {
 	//////////////////////////////////
 	//////////////////////////////////
 
-	public function disable():Void{ 
-		// trace("sub page disable -->");
+	public function disable(x):Void{ 
+		trace("sub page disable --> "+x);
 		Tweener.addTween(subpage1_mc, {_alpha:0, _y:ANIM_ENDPOINT, time:0.25, transition:"easeOut"});//ANIM_STARTPOINT
 	//	ML.disable(); // didnt work
-		TL.disable();
+		TL.disable("SUBPAGEDISABLE");
 		menuList.getInstance().disable();	
 		gn.disable();
 		subpage1_mc.bodycopy_tf_mc.bodycopy_tf.selectable = false;
-		
-		
+	
 	}
 	
 	

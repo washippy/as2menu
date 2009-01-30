@@ -154,8 +154,22 @@ XML.prototype.ignoreWhite = true;
 function loadXML(_xmlPath:String):Void{
 	xml = new XML();
 	xml.onLoad = Delegate.create(this, onXmlLoad);
-	xml.load(_xmlPath);
+	
+		if (System.capabilities.playerType=="External") {
+			xml.load(_xmlPath);
+		}else{
+			numbersss = Math.ceil(Math.random()*1000000)+100000;
+			xml.load(_xmlPath+"?random="+numbersss);
+		}
+	
+
 }
+
+/*
+numbersss = Math.ceil(Math.random()*1000000)+100000;
+xml.load("Cal.xml?random="+numbersss);
+
+*/
 
 function onXmlLoad($success:Boolean):Void{
 	 trace('xml loaded');

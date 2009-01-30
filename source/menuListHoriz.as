@@ -30,7 +30,7 @@ class menuListHoriz extends MovieClip {
 		//mc=_mc;
 		//menuitem = new menuItem();
 		menulistH = _mc.createEmptyMovieClip("mIH", _mc.getNextHighestDepth());
-		// trace("menu List // trace this :: "+_list+" :: ");
+		 trace("menu List HORIZ trace this :: "+_list+" :: ");
 		listArray = _list;
 		
 		
@@ -65,19 +65,18 @@ class menuListHoriz extends MovieClip {
 	 
 	private function spaceEmOut():Void {
 		for(var num = 0; num<listArray.length ; num++){
-			// trace("------- - -  - --------"+menulistH["menuItemH"+num].fullWidth);
+			 trace("SPACEM ------- - -  - --------"+menulistH["menuItemH"+num].fullWidth);
 			if(num!=0){
 				menulistH["menuItemH"+num]._x = menulistH["menuItemH"+(num-1)]._x + menulistH["menuItemH"+(num-1)].fullWidth+10;
 			}
 		}
 	}
-	
-	public function disable(){
-		// trace("menu list disable ------------- ");
+
+	public function disable(x){
+		 trace("menu list disable ------------- "+x);
 		for(var num = 0; num<listArray.length ; num++){
 			menulistH["menuItemH"+num].removeMovieClip();
 			}
-
 	}
 
 }

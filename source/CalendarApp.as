@@ -111,8 +111,9 @@ class CalendarApp extends MovieClip {
 		sp_weekSArray = ["D", "L", "Mt", "Mc", "J", "V", "S"];
 		
 		// grab current date info
-		tempDate = new Date ();	
+		tempDate = new Date();	
 		currentMonth = tempDate.getMonth();
+		//trace("GOT MONTH "+ currentMonth);
 		currentYear = tempDate.getFullYear();
 		
 		curDay = tempDate.getDate();
@@ -249,8 +250,8 @@ class CalendarApp extends MovieClip {
 	        var yspan = 1;        
 	        d.setFullYear(year, month, 1);
 	        var firstDay = d.getDay() +1;
-		// trace("first day is "+firstDay);
-		//	trace("1st day of "+monthArray[currentMonth] +" is "+ weekArray[firstDay]);
+		 trace("first day is "+firstDay);
+			trace("1st day of "+monthArray[currentMonth] +" is "+ weekArray[firstDay]);
 			
 			
 			var mc = calApp;
@@ -342,7 +343,7 @@ class CalendarApp extends MovieClip {
 			
 			
 			for (var x=22; x<=28; x++){
-				// trace(dayCounter+" : "+x)
+				trace(dayCounter+" : "+x)
 				d.setDate(dayCounter);
 					mc.attachMovie("day", "date" + dayCounter, dayCounter);   
 				 	mc["date" + dayCounter]._x = startx + (w * (x-21));             
@@ -366,7 +367,7 @@ class CalendarApp extends MovieClip {
 	  		
 				
 			for (var x=29; x<=35; x++){
-				// trace("dim"+ dim+" :: ::" +dayCounter);
+			 trace("dim"+ dim+" :: ::" +dayCounter);
 				d.setDate(dayCounter);
 				
 				if(dayCounter>dim){
@@ -421,7 +422,7 @@ class CalendarApp extends MovieClip {
 		
 		/// ADD EVENTS 
 			for(var gg=1; gg<=42; gg++){		
-			//	trace(gg+"BINGO : "+ mc["date" +gg ]);
+				trace(gg+"BINGO : "+ mc["date" +gg ]);
 				if(mc["date" +gg]!=undefined){
 				/*   	mc["date" +gg].onRollOver =function(){
 						trace(this.date);
@@ -463,7 +464,7 @@ class CalendarApp extends MovieClip {
 		//	calApp._alpha=100;        		// FADE MAYBE??
 		
 	
-		calApp.blocker_mc.swapDepths(calApp.getNextHighestDepth())
+		calApp.blocker_mc.swapDepths(calApp.getNextHighestDepth());
 		
 		
 		
@@ -472,17 +473,17 @@ class CalendarApp extends MovieClip {
 	
 	this.ready = true;
 	
-	
-	/* 
-		Tweener.addTween(calApp, {delay:1.5, _x:279}); // its loading off stage so put it back when the bkg is done transitioning
-			Tweener.addTween(calApp.blocker_mc, {time:1, delay:FADEINDELAY, transition:"easeOut", _alpha:0}); // fade it in
+//	enable();
+	 
+	//	Tweener.addTween(calApp, {delay:1.5, _x:279}); // its loading off stage so put it back when the bkg is done transitioning
+	//		Tweener.addTween(calApp.blocker_mc, {time:1, delay:FADEINDELAY, transition:"easeOut", _alpha:0}); // fade it in
 			
 			
 				for(var ff=0; ff<=42; ff++){	// re visible all the boxes
 					mc["sDate" + ff]._visible=true;
 					mc["date" + ff]._visible=true;
 				} 
-	*/
+	
 
 	
 	}
@@ -806,7 +807,7 @@ class CalendarApp extends MovieClip {
 
 	
 	private function rightArrowRelease(){
-			// trace("HEY "+this.currentMonth);
+		trace("HEY RIGHT "+this.currentMonth);
 			 cleanUp();
 			    if (currentMonth == 11) {
 			        currentMonth = 0;
@@ -819,6 +820,8 @@ class CalendarApp extends MovieClip {
 
 	private function leftArrowRelease(){
 		 //	back button
+		trace("HEY LEFT "+this.currentMonth);
+		
 			    cleanUp();
 			    if (currentMonth == 0) {
 			        currentMonth = 11;
