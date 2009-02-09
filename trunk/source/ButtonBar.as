@@ -9,7 +9,7 @@ class ButtonBar extends MovieClip{
 	
 	private var rbbArray:Array;
 	private var buttonbar_mc:MovieClip;
-	private var TOTALBUTTONS:Number = 6;
+	private var TOTALBUTTONS:Number = 8;
 	private var FADEINDELAY:Number = 1.5; // seconds
 	private var CLIP:MovieClip;
 	public var ready:Boolean=false;
