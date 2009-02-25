@@ -725,7 +725,7 @@ class CalendarApp extends MovieClip {
 			calApp.calscroller_mc.moreDOWN.enabled=false;
 
 			calApp.calscroller_mc.moreUP._alpha=100;
-			calApp.calscroller_mc.moreDOWN._alpha=50;
+			calApp.calscroller_mc.moreDOWN._alpha=20;
 			
 			addEvents("upOnly");
 		
@@ -743,7 +743,7 @@ class CalendarApp extends MovieClip {
 			calApp.calscroller_mc.moreUP.enabled=false;
 			calApp.calscroller_mc.moreDOWN.enabled=true;
 
-			calApp.calscroller_mc.moreUP._alpha=50;
+			calApp.calscroller_mc.moreUP._alpha=20;
 			calApp.calscroller_mc.moreDOWN._alpha=100;
 			
 			addEvents("downOnly");
