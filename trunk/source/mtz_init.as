@@ -2,16 +2,13 @@
 	ACTIONSCRIPT ON FRAME 1 OF MAIN TIMELINE
 	Responsible for loading XML and initializing App.
 	
-	
-	
-	
 	TO DO
 	
 	[X] Add BUTTON BAR functions
 	
 	[X] SUB PAGE FORMATTING IS HOSED
 	
-	[] STEAL DEEP LINK CODE
+	[  ] STEAL DEEP LINK CODE
 	
 	[...] CHANGE the way SPANISH BUTTON WORKS ... and where it goes
 	
@@ -19,19 +16,19 @@
 	
 	[X] ADD SCROLLER TO SUBPAGEAPP
 	
-	[] LOTS OF DATA TO FORMAT
+	[  ] LOTS OF DATA TO FORMAT
 	
-	[] TWEAK LOAD SEQUENCE
+	[  ] TWEAK LOAD SEQUENCE
 	
-	[] SIDE TABS
+	[  ] SIDE TABS
 	
-	[] HTML FOOTER
+	[  ] HTML FOOTER
 	
-	[] PROMO AUTO FLIPPER ??
-	[]  NEWS / CALENDAR APP ??	
+	[  ] PROMO AUTO FLIPPER ??
+	[  ]  NEWS / CALENDAR APP ??	
 
 
-	[] TEST TEST TEST
+	[  ] TEST TEST TEST
 	
 	
 	
