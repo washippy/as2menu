@@ -155,7 +155,7 @@ function loadXML(_xmlPath:String):Void{
 		if (System.capabilities.playerType=="External") {
 			xml.load(_xmlPath);
 		}else{
-			numbersss = Math.ceil(Math.random()*1000000)+100000;
+			var numbersss = Math.ceil(Math.random()*1000000)+100000;
 			xml.load(_xmlPath+"?random="+numbersss);
 		}
 	
@@ -163,7 +163,7 @@ function loadXML(_xmlPath:String):Void{
 }
 
 /*
-numbersss = Math.ceil(Math.random()*1000000)+100000;
+var numbersss = Math.ceil(Math.random()*1000000)+100000;
 xml.load("Cal.xml?random="+numbersss);
 
 */

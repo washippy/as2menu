@@ -139,7 +139,15 @@ class CalendarApp extends MovieClip {
 		// maybe cal_xml = null; ??
 		cal_xml = new XML();
 		cal_xml.ignoreWhite = true;
-		cal_xml.load(XMLPATH); 
+		
+			if (System.capabilities.playerType=="External") {
+				cal_xml.load(XMLPATH); 	
+			}else{
+				var numbersss = Math.ceil(Math.random()*1000000)+100000;
+				cal_xml.load(XMLPATH+"?random="+numbersss);
+			}
+		
+		
 
 		cal_xml.onLoad = Delegate.create(this, onXmlLoad);
 		

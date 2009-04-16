@@ -425,7 +425,16 @@ class SubPageApp extends MovieClip {
 		// trace("getting X1"+ XMLPATH)
 		subpage_xml = new XML();
 		subpage_xml.ignoreWhite = true;
-		subpage_xml.load(XMLPATH); 
+		
+		
+				if (System.capabilities.playerType=="External") {
+					subpage_xml.load(XMLPATH);
+				}else{
+					var numbersss = Math.ceil(Math.random()*1000000)+100000;
+					subpage_xml.load(XMLPATH+"?random="+numbersss);
+				}
+		
+		
 
 		subpage_xml.onLoad = Delegate.create(this, onXmlLoad);
 		
@@ -551,7 +560,14 @@ class SubPageApp extends MovieClip {
 		// trace("getting X2  "+ XMLPATH);
 		subsect_xml = new XML();
 		subsect_xml.ignoreWhite = true;
-		subsect_xml.load(XMLPATH); 
+		
+			if (System.capabilities.playerType=="External") {
+				subsect_xml.load(XMLPATH);
+			}else{
+				var numbersss = Math.ceil(Math.random()*1000000)+100000;
+				subsect_xml.load(XMLPATH+"?random="+numbersss);
+			}
+		
 
 		subsect_xml.onLoad = Delegate.create(this, onSubXmlLoad);
 	

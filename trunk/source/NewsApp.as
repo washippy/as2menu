@@ -40,6 +40,8 @@ class NewsApp extends MovieClip {
 	private var newsApp:MovieClip;
 	private var newsScroller:MovieClip;
 	private var news_textmask_mc:MovieClip;
+	private var newspopper_mc:MovieClip;
+	
 	private var itemArray:Array;
 	//25 x 45
 		private var FADEINDELAY:Number = 1.5; // seconds
@@ -49,9 +51,10 @@ class NewsApp extends MovieClip {
 
 	
 	public function NewsApp(passmealong:String, clip:MovieClip){
-		// trace("NEWS APP CONSTRUCTOR "+passmealong+clip);
+		trace("NEWS APP CONSTRUCTOR "+clip);
 		newsApp = clip.news_app_mc;
 		//if (_global.lang == "SPANISH"){}else{}
+		newspopper_mc = clip.newspopper_mc;
 		
 		XMLPATH = "xml/"+passmealong;     
 		//newsApp = clip.calendar_app_mc;
@@ -72,7 +75,14 @@ class NewsApp extends MovieClip {
 
 		news_xml = new XML();
 		news_xml.ignoreWhite = true;
-		news_xml.load(XMLPATH); ////////////// add espANOL func later
+		
+			if (System.capabilities.playerType=="External") {
+				news_xml.load(XMLPATH);
+			}else{
+				var numbersss = Math.ceil(Math.random()*1000000)+100000;
+				news_xml.load(XMLPATH+"?random="+numbersss);
+			}
+		////////////// add espANOL func later
 		news_xml.onLoad = Delegate.create(this, onXmlLoad);
 		
 	}
