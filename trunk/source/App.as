@@ -63,6 +63,9 @@ class App extends MovieClip {
 	
 	private var vidPlayerXMLPath:String;
 	
+	private var _esp:MovieClip; // spanish button
+	
+	
 	private var subPageApp:SubPageApp;
 
 	private var vidPlayer:VidPlayer;
@@ -85,10 +88,14 @@ class App extends MovieClip {
 	
 
 	public function App($mc:MovieClip, $oXml:Object){
-		trace("APP CONSTRUCTOR ")
-	$mc.tracer.text= "APP CONSTRUCTOR "
+		trace("APP CONSTRUCTOR "+ 	_global.lang);
+		$mc.tracer.text+= "APP CONSTRUCTOR ::: >>" + 	_global.lang
+		
 		_mc = $mc;
 		_oXml = $oXml;
+	
+		_esp=_mc.esp;
+	
 	//	_global.SUBLAUNCH
 	//	_global.SUBLAUNCH = false; // THIS SWITCH GETS FLIPPED DEPENDING ON WHICH PAGE IS LOADED .. FOR DEEP LINKING
 	//	_global.SUBLAUNCHNUM;
@@ -190,12 +197,12 @@ class App extends MovieClip {
 	
 	private function traceMe(doohicky){
 		trace(_mc);
-		_mc.tracer.text=doohicky;
+		_mc.tracer.text+=doohicky;
 	}
 	
     public function handleChange(e:SWFAddressEvent):Void {
 		trace("HANDLE CHANGE +++++++++++++++++" + e.value +" >>> "+FIRSTTIMETHRU);
-		_mc.tracer.text +="HANDLE CHANGE +++++++++++++++++" + e.value +" >>> "+FIRSTTIMETHRU+newline;
+	//	_mc.tracer.text +="HANDLE CHANGE +++++++++++++++++" + e.value +" >>> "+FIRSTTIMETHRU+newline;
 
 
 	//	on the first time thru, set the status check interval and wait for the apps to be ready
@@ -248,7 +255,7 @@ class App extends MovieClip {
         }
         SWFAddress.setTitle(title);
 
-		_mc.tracer.text +=  "H C  e.value is  >>>>  " +e.value +newline;
+	//	_mc.tracer.text +=  "H C  e.value is  >>>>  " +e.value +newline;
 		
 	//	for (var i = 0; i < e.pathNames.length; i++) {
       //   	_mc.tracer.text+= "H C ++++++++ PATHNAME is  >>>>  " +e.pathNames[i] + newline;
@@ -286,9 +293,9 @@ class App extends MovieClip {
 
 
 
-	_mc.tracer.text+= "E PATHNAMES len : "+e.pathNames.length + newline;
+//	_mc.tracer.text+= "E PATHNAMES len : "+e.pathNames.length + newline;
 	
-	_mc.tracer.text+= "E VALUE : " +e.value+newline;
+//	_mc.tracer.text+= "E VALUE : " +e.value+newline;
 /* 
 
 		var testObj:Object = new Object(); 
@@ -314,7 +321,7 @@ class App extends MovieClip {
 				}else{
 			
 					trace("YO AAUGH " +e.value.substr(1))
-					_mc.tracer.text+= "H C ++++++++  SUB FALSE" +e.value.substr(1)+newline;
+//					_mc.tracer.text+= "H C ++++++++  SUB FALSE" +e.value.substr(1)+newline;
 			
 					var testObj:Object = new Object(); 
 					testObj = e.value.substr(1);
@@ -351,7 +358,7 @@ class App extends MovieClip {
 	private function initDisplayElements():Void{
 		// LAUNCH SUB APPS which should be ALPHA zero to fade in when loaded
 	 trace("APP :: INIT DISPLAY ELEMENTS "+_mc)
-	_mc.tracer.text+= "APP :: INIT DISPLAY ELEMENTS "+newline;
+//_mc.tracer.text+= "APP :: INIT DISPLAY ELEMENTS "+newline;
 	
 				StructureApp.getInstance().setPath(structurePath);
 				
@@ -397,7 +404,7 @@ class App extends MovieClip {
 			
 			clearInterval(launchinterval);
 			trace("CLEAR FOR TAKEOFF ........."+typeof(FIRSTTIMETHRUDROP)+" is "+FIRSTTIMETHRUDROP); 
-			_mc.tracer.text+="CLEAR FOR TAKEOFF ........."+typeof(FIRSTTIMETHRUDROP)+" is >>>"+FIRSTTIMETHRUDROP+"<<<"+newline;
+			//_mc.tracer.text+="CLEAR FOR TAKEOFF ........."+typeof(FIRSTTIMETHRUDROP)+" is >>>"+FIRSTTIMETHRUDROP+"<<<"+newline;
 			
 			
 			SWFAddress.addEventListener(SWFAddressEvent.CHANGE, delegater(this, handleChange));
@@ -409,7 +416,7 @@ class App extends MovieClip {
 		
 		var p = String(PAGE);
 			 trace("RELOAD DISPLAY ELEMENTS :: currentPAGE ::"+ p+"  :: "+_sendPAGE);
-			_mc.tracer.text+="RELOAD DISPLAY ELEMENTS :: currentPAGE ::"+ p+"  :: "+_sendPAGE + newline;
+		//	_mc.tracer.text+="RELOAD DISPLAY ELEMENTS :: currentPAGE ::"+ p+"  :: "+_sendPAGE + newline;
 			
 			if(p==_sendPAGE){
 				return;

@@ -1,0 +1,120 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>mtZ_main</title>
+<script language="javascript">AC_FL_RunContent = 0;</script>
+<script src="AC_RunActiveContent.js" language="javascript"></script>
+<script type="text/javascript" src="swfobject/swfobject.js"></script>
+<script type="text/javascript" src="swfaddress/swfaddress.js"></script>
+
+
+
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #FFFFFF;
+	background-image: url(assets/bkg_rpt.gif);
+}
+.style1 {font-size: 10px}
+
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.style8 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color:#555555;
+	}
+	
+a {color: #555555}	
+-->
+</style>
+
+
+    <script type="text/javascript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+	 	<script type="text/javascript">
+			     alert('<?php echo "setLang=". $_GET['setLang']; ?>');
+		</script>
+</head>
+<body bgcolor="#ffffff">
+	<BR><BR>
+	<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		
+	<tr>
+		<td rowspan=5 width="25%">&nbsp;</td>
+		
+		<td rowspan=5 valign="top">
+			 <div id="content">
+		            <p>In order to view this page you need JavaScript and Flash Player 8+ support!</p>
+		        </div>
+			 <script type="text/javascript">
+		        // <![CDATA[
+		            var so = new SWFObject('c.swf?path=mtZ_main.swf', 'mtZ_main', '841', '923', '8', '#FFFFFF');
+		            so.useExpressInstall('swfobject/expressinstall.swf');
+		            so.addParam('menu', 'false');
+					so.addParam('FlashVars', '<?php echo "setLang=". $_GET['setLang']; ?>');
+		            so.write('content');
+		        // ]]>
+		
+		
+		        </script>
+		</td>
+		
+	<td><a href="http://www.mtzionarts.org" target="_blank" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('spa','','assets/cpa_1_over.gif',1)"><img src="assets/cpa_1.gif" name="spa" width="32" height="166" border="0"></a></td>
+<td rowspan=5 width="25%">&nbsp;</td>
+</tr>
+
+<tr><td><a href="http://www.thedistrictvenue.com" target="_blank" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('dist','','assets/dist_2_over.gif',1)"><img src="assets/dist_2.gif" name="dist" width="32" height="96" alt="" border="0"></a></td></tr>
+<tr><td><a href="http://www.thedistrictvenue.com/index.php?page=LIFE" target="_blank" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('le','','assets/lifeenrichment_3_over.gif',1)"><img src="assets/lifeenrichment_3.gif" name="le" width="32" height="116" alt="" border="0"></a></td></tr>
+<tr><td><a href="http://www.zerogravitysk8.com/" target="_blank" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('zerog','','assets/zerogravity_5_over.gif',1)"><img src="assets/zerogravity_5.gif" name="zerog" width="32" height="99" alt="" border="0"></a></td></tr>
+<tr><td><img src="assets/spacer.gif" width="32" height="445" alt="" border="0"></td></tr>
+
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+<td rowspan=5 width="25%">&nbsp;</td>
+<!-- footer -->
+
+
+
+<td><img src="assets/spacer.gif" width="873" height="5" alt=""><span class="style8"> Mt. Zion &nbsp;&bull;&nbsp; 4900 Maybee Rd &nbsp;&bull;&nbsp; Clarkston, MI 48348 &nbsp;&bull;&nbsp; 248.391.6166 &nbsp;&bull;
+	<script>
+			document.write('<a href="mailto:info@mtz');
+			document.write('ion.org">info@mtz');
+			document.write('ion.org</a></span></td>');
+	</script>
+<td rowspan=5 width="25%">&nbsp;</td>
+</tr>
+</table>
+<BR><BR><BR>
+</body>
+</html>

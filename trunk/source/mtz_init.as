@@ -52,16 +52,17 @@ import mx.utils.Delegate;
 import utils.XMLObject;
 import SWFAddress;
 import SWFAddressEvent;
-//var defaultLang; // from embed flash var
 
-//if (defaultLang != undefined){
-//	_global.lang = defaultLang; // SPANISH for yes spanish
+
+if (this._parent.setLang != undefined){
+	_global.lang = this._parent.setLang; // SPANISH for yes spanish
 	
-//}else{
+}else{
 	_global.lang ="ENGLISH";
-//}
+}
 
-
+tracer.text+= "LANGUAGE SET TO ::::::: "+this._parent.setLang + newline+_global.lang+newline+"=================="+newline;
+trace("LANGUAGE SET TO ::::::: "+this._parent.setLang)
 
 ////   DEEP LINKING	  ////////////
 /* 
