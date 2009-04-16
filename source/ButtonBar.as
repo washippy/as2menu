@@ -46,6 +46,8 @@ class ButtonBar extends MovieClip{
 				};
 
 				CLIP.buttonbar_mc["b"+x].onPress = function() {
+					this.bkg.gotoAndPlay("OFF");
+					
 					//trace(this.nameNum+" :: "+ rbbA[this.nameNum-1].section)
 					if(rbbA[this.nameNum-1].section!=undefined && rbbA[this.nameNum-1].section!=""){ // if theres a section defined, go to it and leave
 					

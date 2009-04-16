@@ -23,18 +23,22 @@ class NewsStory extends MovieClip {
 	private var less_button:Button;
 	public var popped:Boolean=false;
 	private var styles:TextField.StyleSheet;
+	private var style2:TextField.StyleSheet;
 	
 	private var newsWindow;
 	
 	private var TF_SHORT = 79;
 	private var TF_EXTENDED;
+	
+	private var newspopper_mc:MovieClip;
+	
 	private function NewsStory(){
-		// // trace("NEWS STORY CONSTRUCTOR : "+this+newline+headline +newline+date+newline+bodyCopy+newline+link);
+		 trace("NEWS STORY CONSTRUCTOR : "+this._parent._parent._parent.newspopper_mc+newline+"------------");//headline +newline+date+newline+bodyCopy+newline+link);
 		// // trace("NEWS STORY CONSTRUCTOR :::::::: "+newline+bCopy);
 
 		//if (_global.lang == "SPANISH"){// trace("SPAAAAANISH NEWS STORY")}else{}
 			less_button._visible=false;
-			
+			newspopper_mc = this._parent._parent._parent.newspopper_mc;
 			BroadCaster.register(this,"updateMoreButton");
 		
 			styles = new TextField.StyleSheet();
@@ -64,7 +68,35 @@ class NewsStory extends MovieClip {
 			    textDecoration:'underline'
 			});
 
+			
+				style2 = new TextField.StyleSheet();
 
+				style2.setStyle("headline", {
+				    color:'#7A192F', 
+					fontFamily:'Univers 67 CondensedBold', 
+				    fontSize:'14', 
+				    fontWeight:'bold'
+				});
+				style2.setStyle("date", {
+				    color:'#8EB8BF', 
+					fontFamily:'Univers 57 Condensed', 
+				    fontWeight:'bold', 
+				    fontSize:'14'
+				});
+				style2.setStyle("copy", {
+				    color:'#666666', 
+					fontFamily:'Univers 57 Condensed', 
+				    fontSize:'14'
+				});
+
+				style2.setStyle("a:link", {
+				    color:'#7A192F'
+				});
+				style2.setStyle("a:hover", {
+				    textDecoration:'underline'
+				});
+			
+			
 		more_button.onPress = Delegate.create(this, bOnPress);	
 		less_button.onPress = Delegate.create(this, bLessOnPress);	
 		
@@ -73,17 +105,13 @@ class NewsStory extends MovieClip {
 	private function bOnPress(){
 		 trace(TF_EXTENDED + " :: "+ TF_SHORT);
 		
-		//popNewsWindow();
+		popNewsWindow();
 		
-		Tweener.addTween(story_tf, {time:1.5, transition:"easeOut", _height:TF_EXTENDED, onUpdate:updateAllPositions});  /// fade in  news app
-				less_button._visible=true;
-				more_button._visible = false;
-				popped = true; 
-	
+		//Tweener.addTween(story_tf, {time:1.5, transition:"easeOut", _height:TF_EXTENDED, onUpdate:updateAllPositions});  /// fade in  news app
+		//		less_button._visible=true;
+		//		more_button._visible = false;
+		//		popped = true; 
 
-		
-		
-		
 		
 	/* 
 		reportPosition = function() {
@@ -135,8 +163,8 @@ class NewsStory extends MovieClip {
 
 	private function popNewsWindow(){
 		
-		
-		_root.attachMovie("newsWindow", "newsWindow", _root.getNextHighestDepth());
+		newspopper_mc.gotoAndPlay("IN");
+	//	_root.attachMovie("newsWindow", "newsWindow", _root.getNextHighestDepth());
 /* 
 		newsWindow.beginFill(0xFFFFFF);
 		newsWindow.lineStyle(5, 0x000000, 100);
@@ -152,12 +180,12 @@ class NewsStory extends MovieClip {
 
 		
 		
+		//newspop_textboxes.newspop_header_tf
 		
-
-				newsWindow.story_tf.styleSheet = styles;
-			    newsWindow.story_tf.htmlText = bCopy;
-				newsWindow.story_tf.autoSize=true;
-				newsWindow.bkg._height = newsWindow.story_tf._height+20; 
+		newspopper_mc.newspop_textboxes.newspop_tf.styleSheet = style2;
+	    newspopper_mc.newspop_textboxes.newspop_tf.htmlText = bCopy;
+		newspopper_mc.newspop_textboxes.newspop_tf.autoSize=true;
+				//newsWindow.bkg._height = newsWindow.story_tf._height+20; 
 	
 				//TF_EXTENDED =story_tf._height + 20;
 				//story_tf.autoSize=false;

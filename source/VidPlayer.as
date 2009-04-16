@@ -76,7 +76,13 @@ class VidPlayer extends MovieClip
 			// maybe cal_xml = null; ??
 			vid_xml = new XML();
 			vid_xml.ignoreWhite = true;
-			vid_xml.load(XMLPATH); 
+			
+				if (System.capabilities.playerType=="External") {
+					vid_xml.load(XMLPATH);
+				}else{
+					var numbersss = Math.ceil(Math.random()*1000000)+100000;
+					vid_xml.load(XMLPATH+"?random="+numbersss);
+				}
 
 			vid_xml.onLoad = Delegate.create(this, onXmlLoad);
 

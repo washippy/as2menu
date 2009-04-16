@@ -115,7 +115,14 @@ class StructureApp {
 		str_xml.ignoreWhite = true;
 		str_xml.onLoad = Delegate.create(this, onXmlLoad);
 		
-		str_xml.load(_xmlPath); 
+		
+			if (System.capabilities.playerType=="External") {
+				str_xml.load(_xmlPath); 
+			}else{
+				var numbersss = Math.ceil(Math.random()*1000000)+100000;
+				str_xml.load(_xmlPath+"?random="+numbersss);
+			}
+		
 
 		
 	}
