@@ -54,12 +54,22 @@ import SWFAddress;
 import SWFAddressEvent;
 
 
+
+
 if (this._parent.setLang != undefined){
-	_global.lang = this._parent.setLang; // SPANISH for yes spanish
-	
-}else{
-	_global.lang ="ENGLISH";
+	_global.lang = this._parent.setLang; // SPANISH or ENGLISH if defined
+}else{ 
+	_global.lang ="SPANISH";
 }
+
+var XMLPATH:String; 
+
+XMLPATH = "xml/mtz_home.xml"; // set to english
+
+if(_global.lang == "SPANISH"){
+	XMLPATH = "xml/mtz_home_esp.xml"; // or maybe spanish
+}
+
 
 tracer.text+= "LANGUAGE SET TO ::::::: "+this._parent.setLang + newline+_global.lang+newline+"=================="+newline;
 trace("LANGUAGE SET TO ::::::: "+this._parent.setLang)
@@ -140,8 +150,7 @@ SWFAddress.onChange = function() {
 
 
 
-var XMLPATH:String; // sent in from embed params
-if(XMLPATH == undefined){XMLPATH = "xml/mtz_home.xml"}
+
 
 var xml:XML;
 var oXml:Object;

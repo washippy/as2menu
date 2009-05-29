@@ -36,7 +36,8 @@ class SubPageApp extends MovieClip {
 
 	private var XMLPATH:String="";
 	private var subpage_xml:XML;
-		private var subsect_xml:XML;
+	private var subsect_xml:XML;
+	
 	private var sXml:Object;
 	private var mySubXmlObject:XMLObject;
 	
@@ -88,7 +89,7 @@ class SubPageApp extends MovieClip {
 		// trace(" HEY SUBPAGE   ::: "+StructureApp.getInstance().getPath()); 	
 		BroadCaster.register(this,"loadASubPage");
 		BroadCaster.register(this,"loadASubSection");
-				BroadCaster.register(this,"loadADeepSubSection");
+		BroadCaster.register(this,"loadADeepSubSection");
 
 		
 		CLIP=_clip
@@ -153,19 +154,28 @@ class SubPageApp extends MovieClip {
 		
 		parentPage = _pagename; // keep this for later .. to pass to subnav
 		
-		StructureApp.getInstance().setArrayData(_pagename); 
+		StructureApp.getInstance().setArrayData(_pagename); // set this first
 		
-		dataObj = StructureApp.getInstance().getArrayData(); 
+		dataObj = StructureApp.getInstance().getArrayData(); // then go find it
 		
-			if (_global.lang == "SPANISH"){
-				var _lang:String = "_esp";
-			}else{
-				var _lang:String = "";
-			}	
-			
 		
-		XMLPATH = "xml/"+dataObj.name+ _lang +".xml";  
-		trace("X PATH ER DUDE "+ XMLPATH) 
+		
+		/////////////  KILL THIS MAYBE \\\\\\\\\\\\\\
+	
+
+					if (_global.lang == "SPANISH"){
+						var _lang:String = "_esp";
+					}else{
+						var _lang:String = "";
+					}	
+					
+				
+				XMLPATH = "xml/"+dataObj.name+ _lang +".xml";  
+				 
+		
+		
+		
+		trace("X PATH ER DUDE "+ XMLPATH) ;
 		getXMLData();
 		
 			// GALLERY ENABLED
@@ -203,7 +213,7 @@ class SubPageApp extends MovieClip {
 
 			dataObj = new Object();
 
-			 trace("DANGIT "+_spOBJ.sect);
+			trace("DANGIT "+_spOBJ.sect);
 
 			parentPage = _spOBJ.sect; // keep this for later .. to pass to subnav
 
@@ -298,6 +308,9 @@ class SubPageApp extends MovieClip {
 
 		XMLPATH = "xml/"+dataObj.attributes.name+ _lang +".xml"; 
 		trace("XMLPATH ()())()()"+XMLPATH);  
+		
+		
+		
 		getSubSectionXMLData(); 
 
 		_subGalleryEnabled = dataObj.attributes.gallery_enabled;
