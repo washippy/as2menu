@@ -81,17 +81,13 @@ class CalendarApp extends MovieClip {
 
 	public function CalendarApp(passmealong:String, clip:MovieClip){
 		 trace("Calendar APP CONSTRUCTOR");
-	/* 
-		if (_global.lang == "SPANISH"){
-				
-			}else{
-				
-			} 
-	*/
-
 	
+		XMLPATH = "xml/"+passmealong;    
+		if (_global.lang == "SPANISH"){
+				XMLPATH = "xml/"+passmealong;    		
+			}
 		
-		XMLPATH = "xml/"+passmealong;     /////  FIX THIS>?
+		
 		calApp = clip.calendar_app_mc;
 		
 		

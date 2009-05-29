@@ -160,15 +160,19 @@ class App extends MovieClip {
 		calendarAppXMLPath=_oXml.calendarapp.attributes.XMLpath;
 		vidPlayerXMLPath=_oXml.vidapp.attributes.XMLpath;
 	
+	
 		sideButtonBarArray = new Array();
-		var sLen = _oXml.sidebuttonbar.item.length;
-		
-		for(var s=0;s<sLen;s++){
-			sideButtonBarArray.push({
-				title:_oXml.sidebuttonbar.item[s].attributes.title,
-				url:_oXml.sidebuttonbar.item[s].attributes.url
-				});
-		}	
+			var sLen = _oXml.sidebuttonbar.item.length;
+			
+			for(var s=0;s<sLen;s++){
+				sideButtonBarArray.push({
+					title:_oXml.sidebuttonbar.item[s].attributes.title,
+					url:_oXml.sidebuttonbar.item[s].attributes.url
+					});
+			}	 
+	
+
+	
 		
 		// RED BUTTONS ON BOTTOM RIGHT
 		redButtonBarArray = new Array();
@@ -380,7 +384,6 @@ class App extends MovieClip {
 	
 	public function statusCheck():Void{
 		trace("S check"+ calendarApp.ready);
-	
 		
 			if(!calendarApp.ready){return;}
 			trace("CAL");

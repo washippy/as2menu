@@ -95,12 +95,22 @@ class Navbar extends MovieClip {
 		navbar.attachMovie("menuItem", "nb"+i, navbar.getNextHighestDepth(), {_title:_titleObj, _mc:_mcObj, _justify:justify});//(TF_HEIGHT * i)
 		 
 		*/
-		// trace(navArray[i].eng+" OYOYOY "+navArray[i].name);
+		 trace(navArray[i].eng+" OYOYOY "+navArray[i].esp+" G L  "+_global.lang);
 		
 			navbar["nb"+i].nameNum = i+1;
+		
+		if(_global.lang=="SPANISH"){
+			navbar["nb"+i].nameString = navArray[i].esp;
+			navbar["nb"+i].top_tf_mc.tf.text = navbar["nb"+i].bottom_tf_mc.tf.text = navArray[i].esp;
+		}else{
 			navbar["nb"+i].nameString = navArray[i].eng;
+			navbar["nb"+i].top_tf_mc.tf.text = navbar["nb"+i].bottom_tf_mc.tf.text = navArray[i].eng;	
+		}
+		
+		
 			navbar["nb"+i].nameID = navArray[i].name;
-			navbar["nb"+i].top_tf_mc.tf.text = navbar["nb"+i].bottom_tf_mc.tf.text = navArray[i].eng;
+						
+			
 			navbar["nb"+i].top_tf_mc.tf.autoSize = navbar["nb"+i].bottom_tf_mc.tf.autoSize = "center";
 			
 			navbar["nb"+i].bkg_mc._width = bWidth;

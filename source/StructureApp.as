@@ -40,7 +40,7 @@ class StructureApp {
 	
 	
 	public function setArrayData(_set:String):Void { 
-		// set var to loop thru array and ship appropriate one
+		// set var :: later will loop thru array and ship appropriate one
 		hotarray = _set;
 	}	
 	public function setSubArrayData(_set:String):Void { 
@@ -168,7 +168,8 @@ class StructureApp {
 							data:sXml.section[i].data,
 							galleryenabled:sXml.section[i].attributes.gallery_enabled, // if yes, get XML path later
 						//	subnav_enabled:sXml.section[i].attributes.subnav_enabled, // if yes, get subnav later
-							subnav_item_array:sXml.section[i].item // if yes, get subnav later
+							subnav_item_array:sXml.section[i].item,
+							subnav_spanish_item_array:sXml.section[i].spanishitem // if yes, get subnav later
 							
 						   });
 						
