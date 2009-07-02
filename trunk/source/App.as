@@ -80,7 +80,7 @@ class App extends MovieClip {
 	
 		private var buttonBar:ButtonBar;
 
-	private var sideButtonBarArray:Array;
+//	private var sideButtonBarArray:Array;
 	
 	private var redButtonBarArray:Array;
 
@@ -161,6 +161,7 @@ class App extends MovieClip {
 		vidPlayerXMLPath=_oXml.vidapp.attributes.XMLpath;
 	
 	
+/* 
 		sideButtonBarArray = new Array();
 			var sLen = _oXml.sidebuttonbar.item.length;
 			
@@ -170,7 +171,10 @@ class App extends MovieClip {
 					url:_oXml.sidebuttonbar.item[s].attributes.url
 					});
 			}	 
-	
+	 
+*/
+
+
 
 	
 		

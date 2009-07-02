@@ -54,10 +54,9 @@ class CalendarApp extends MovieClip {
 	private var weekArray:Array;
 	private var weekSArray:Array;
 	
-	
-	private var sp_monthArray:Array;
-	private var sp_weekArray:Array;
-	private var sp_weekSArray:Array;
+//  private var sp_monthArray:Array;
+//	private var sp_weekArray:Array;
+//	private var sp_weekSArray:Array;
 	                          
 	private var tempDate:Date;	
 	private var currentMonth;
@@ -100,15 +99,19 @@ class CalendarApp extends MovieClip {
 		BroadCaster.register(this,"decHop");
 		BroadCaster.register(this,"removeEvents");
 
+		if(_global.lang =="SPANISH"){
+			
+			monthArray = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AUGUSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
+			weekArray = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"];
+			weekSArray = ["D", "L", "Mt", "Mc", "J", "V", "S"];
+			
+		}else{
+
+			monthArray = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+			weekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+			weekSArray = ["S", "M", "T", "W", "T", "F", "S"];
+		}
 		
-		
-		monthArray = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
-		weekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-		weekSArray = ["S", "M", "T", "W", "T", "F", "S"];
-		
-		sp_monthArray = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AUGUSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
-		sp_weekArray = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"];
-		sp_weekSArray = ["D", "L", "Mt", "Mc", "J", "V", "S"];
 		
 		// grab current date info
 		tempDate = new Date();	
