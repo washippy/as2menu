@@ -104,7 +104,7 @@ class StructureApp {
 	
 	public function setPath(_xP:String):Void { 
 		_xmlPath = "xml/"+_xP;
-		// trace("++++++++++++++++ STRUCTURE PATH RECEIVED :"+_xP);
+		 trace("++++++++++++++++ STRUCTURE PATH RECEIVED :"+_xP+newline+newline);
 		getData();
 	}
 	
@@ -146,7 +146,7 @@ class StructureApp {
 		//	
 			setupArrays();
 		} else {
-			 // trace("load structure data died WHAA "+ $success);
+			 trace("load structure data died WHAA "+ $success);
 		}
 	}
 	

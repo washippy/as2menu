@@ -32,6 +32,10 @@ class VidPlayer extends MovieClip
 	private var _mc:MovieClip;
 	private var XMLPATH:String; // 
 	
+	private var vTitle:TextField;
+		private var littlearrow:MovieClip;
+
+	
 	private var nc:NetConnection;
 	private var ns:NetStream;
 	private var sound:Sound;
@@ -47,7 +51,7 @@ class VidPlayer extends MovieClip
 	private var videoSet:Number = 0; // range: 0 or 1
 	private var atMainVideo:Boolean = true;
 	
-		public var ready:Boolean=false;
+	public var ready:Boolean=false;
 //	var thumbLoader:Array = new Array();
 //	var thumbLoaderListener:Array = new Array();
 //	var promptLoader:Array = new Array();
@@ -64,9 +68,21 @@ class VidPlayer extends MovieClip
 			//G_selected = new ColorTransform(0, 0, 0, 1, 122, 25, 47, 0);// DARK RED
 			G_selected = new ColorTransform(0, 0, 0, 1, 128, 171, 178, 0);// BLUE I HOPE
 			
-		
-		
 		XMLPATH = "xml/"+$path;
+		
+
+	if (_global.lang == "SPANISH") {
+	    _mc.vTitle.text = "DECLARACIÓN";
+	    _mc.mcPrompt.mcMain.vidStart.tf.text = "PLAY VID SPANISH";
+	} else {
+	    _mc.vTitle.text = "VIDEO ANNOUNCEMENTS";
+	    _mc.mcPrompt.mcMain.vidStart.tf.text = "PLAY VIDEO ANNOUNCEMENTS";
+	}
+				
+	_mc.mcPrompt.mcMain.vidStart.tf.autoSize="center";
+				
+	_mc.mcPrompt.mcMain.vidStart.littlearrow._x = _mc.mcPrompt.mcMain.vidStart.tf._x+_mc.mcPrompt.mcMain.vidStart.tf._width +8;
+
 	//	_app = $app;
 		getXML();
 	}

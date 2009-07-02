@@ -41,6 +41,9 @@ class NewsApp extends MovieClip {
 	private var newsScroller:MovieClip;
 	private var news_textmask_mc:MovieClip;
 	private var newspopper_mc:MovieClip;
+	private var calendarTitle_tf:TextField;
+	
+	
 	
 	private var itemArray:Array;
 	//25 x 45
@@ -51,9 +54,9 @@ class NewsApp extends MovieClip {
 
 	
 	public function NewsApp(passmealong:String, clip:MovieClip){
-		trace("NEWS APP CONSTRUCTOR "+clip);
+		trace("NEWS APP CONSTRUCTOR "+clip+" :: "+_global.lang);
 		newsApp = clip.news_app_mc;
-		//if (_global.lang == "SPANISH"){}else{}
+		
 		newspopper_mc = clip.newspopper_mc;
 		
 		XMLPATH = "xml/"+passmealong;     
@@ -67,7 +70,14 @@ class NewsApp extends MovieClip {
 		clipStartY = 45;
 		
 		newsScroller.setMask(newsApp.news_textmask_mc);
-	
+		
+		if (_global.lang == "SPANISH"){		
+			newsApp.calendarTitle_tf.text = "NOTICIAS Y ACTUALIZACIONES";
+		}else{
+			newsApp.calendarTitle_tf.text = "NEWS & UPDATES";	
+		}
+				
+
 		getNews();
 	}
 	
@@ -107,6 +117,7 @@ class NewsApp extends MovieClip {
 	}
 	
 	private function makeStories():Void {
+		
 		totalStories = nXml.item.length;
 		
 		for(var i=0;i<totalStories;i++){

@@ -59,8 +59,10 @@ import SWFAddressEvent;
 if (this._parent.setLang != undefined){
 	_global.lang = this._parent.setLang; // SPANISH or ENGLISH if defined
 }else{ 
-	_global.lang ="SPANISH";
+//	_global.lang ="SPANISH";
+	_global.lang ="ENGLISH";
 }
+ 
 
 var XMLPATH:String; 
 
@@ -72,7 +74,7 @@ if(_global.lang == "SPANISH"){
 
 
 tracer.text+= "LANGUAGE SET TO ::::::: "+this._parent.setLang + newline+_global.lang+newline+"=================="+newline;
-trace("LANGUAGE SET TO ::::::: "+this._parent.setLang)
+trace("LANGUAGE SET TO ::::::: "+this._parent.setLang+ newline+_global.lang)
 
 ////   DEEP LINKING	  ////////////
 /* 
