@@ -72,13 +72,13 @@ class VidPlayer extends MovieClip
 		
 
 	if (_global.lang == "SPANISH") {
-	    _mc.vTitle.text = "DECLARACIÓN";
-	    _mc.mcPrompt.mcMain.vidStart.tf.text = "PLAY VID SPANISH";
+	    _mc.vTitle.text = "VIDEO DE ANUNCIOS";
+	    _mc.mcPrompt.mcMain.vidStart.tf.text = "VER VIDEO";
 	} else {
 	    _mc.vTitle.text = "VIDEO ANNOUNCEMENTS";
 	    _mc.mcPrompt.mcMain.vidStart.tf.text = "PLAY VIDEO ANNOUNCEMENTS";
 	}
-				
+
 	_mc.mcPrompt.mcMain.vidStart.tf.autoSize="center";
 				
 	_mc.mcPrompt.mcMain.vidStart.littlearrow._x = _mc.mcPrompt.mcMain.vidStart.tf._x+_mc.mcPrompt.mcMain.vidStart.tf._width +8;

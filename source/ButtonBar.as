@@ -26,6 +26,16 @@ class ButtonBar extends MovieClip{
 	public function fireItUp(){	
 		trace("RBB FIRED UP   |||||||||||   |||||||||||||  "+CLIP)
 		CLIP.buttonbar_mc.gotoAndPlay("IN");
+		
+		if (_global.lang == "SPANISH") {
+		    	for (var x=1; x<=TOTALBUTTONS; x++) {
+					CLIP.buttonbar_mc["b"+x].gotoAndStop("spanish");
+				}
+		} else {
+				for (var x=1; x<=TOTALBUTTONS; x++) {
+					CLIP.buttonbar_mc["b"+x].gotoAndStop("english");
+				}
+		}
 		addEvents();
 	}
 	

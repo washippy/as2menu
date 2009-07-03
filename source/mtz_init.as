@@ -59,8 +59,8 @@ import SWFAddressEvent;
 if (this._parent.setLang != undefined){
 	_global.lang = this._parent.setLang; // SPANISH or ENGLISH if defined
 }else{ 
-//	_global.lang ="SPANISH";
-	_global.lang ="ENGLISH";
+	_global.lang ="SPANISH";
+//	_global.lang ="ENGLISH";
 }
  
 
