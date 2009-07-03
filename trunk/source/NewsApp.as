@@ -72,7 +72,7 @@ class NewsApp extends MovieClip {
 		newsScroller.setMask(newsApp.news_textmask_mc);
 		
 		if (_global.lang == "SPANISH"){		
-			newsApp.calendarTitle_tf.text = "NOTICIAS Y ACTUALIZACIONES";
+			newsApp.calendarTitle_tf.text = "NOTICIAS Y REPORTES";
 		}else{
 			newsApp.calendarTitle_tf.text = "NEWS & UPDATES";	
 		}
