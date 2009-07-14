@@ -40,7 +40,7 @@ class NewsApp extends MovieClip {
 	private var newsApp:MovieClip;
 	private var newsScroller:MovieClip;
 	private var news_textmask_mc:MovieClip;
-	private var newspopper_mc:MovieClip;
+//	private var newspopper_mc:MovieClip;
 	private var calendarTitle_tf:TextField;
 	
 	
@@ -57,7 +57,7 @@ class NewsApp extends MovieClip {
 		trace("NEWS APP CONSTRUCTOR "+clip+" :: "+_global.lang);
 		newsApp = clip.news_app_mc;
 		
-		newspopper_mc = clip.newspopper_mc;
+		//newspopper_mc = clip.newspopper_mc;
 		
 		XMLPATH = "xml/"+passmealong;     
 		//newsApp = clip.calendar_app_mc;
@@ -74,7 +74,7 @@ class NewsApp extends MovieClip {
 		if (_global.lang == "SPANISH"){		
 			newsApp.calendarTitle_tf.text = "NOTICIAS Y REPORTES";
 		}else{
-			newsApp.calendarTitle_tf.text = "NEWS & UPDATES";	
+			newsApp.calendarTitle_tf.text = "NEWS & UPDATES";
 		}
 				
 
