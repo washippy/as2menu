@@ -36,9 +36,16 @@ class NewsStory extends MovieClip {
 		 trace("NEWS STORY CONSTRUCTOR : "+this._parent._parent._parent.newspopper_mc+newline+"------------");//headline +newline+date+newline+bodyCopy+newline+link);
 		// // trace("NEWS STORY CONSTRUCTOR :::::::: "+newline+bCopy);
 
-		//if (_global.lang == "SPANISH"){// trace("SPAAAAANISH NEWS STORY")}else{}
 			less_button._visible=false;
 			newspopper_mc = this._parent._parent._parent.newspopper_mc;
+			
+			if (_global.lang == "SPANISH"){		
+				newspopper_mc.close.closebutton_tf.text = "CERRAR VENTANA";
+			}else{
+				newspopper_mc.close.closebutton_tf.text = "CLOSE WINDOW";
+			}
+			
+			
 			BroadCaster.register(this,"updateMoreButton");
 		
 			styles = new TextField.StyleSheet();
